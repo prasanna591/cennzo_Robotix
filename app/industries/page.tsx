@@ -1,10 +1,38 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/sections/page-hero";
 import { CTASection } from "@/components/sections/cta-section";
-import { StaggerGroup, StaggerItem, Reveal } from "@/components/motion/reveal";
-import { Spotlight } from "@/components/motion/spotlight";
+import { Reveal } from "@/components/motion/reveal";
 import { MediaFrame } from "@/components/media/media-frame";
+import { HorizontalShowcase, type ShowcaseItem } from "@/components/sections/horizontal-showcase";
 import { INDUSTRIES } from "@/lib/content/site";
+
+const INDUSTRY_DETAIL: Record<string, string> = {
+  Manufacturing:
+    "Machine tending, inspection and material handling on live floors — without stopping the line.",
+  Energy: "Inspection and maintenance of plants, substations and renewables in high-risk zones.",
+  Utilities: "Round-the-clock monitoring of critical infrastructure, day or night, any weather.",
+  "Oil & Gas":
+    "Confined-space entry, leak response and offshore operations where human exposure is costly.",
+  Mining: "Deep-shaft reconnaissance and haulage support in unstable, low-visibility conditions.",
+  Construction:
+    "Site surveying, heavy-part positioning and progress verification across active projects.",
+  Logistics: "Continuous loading, sorting and inventory flows inside warehouses that never sleep.",
+  Marine: "Hull inspection, port operations and subsea support in corrosive, wave-beaten settings.",
+  Infrastructure:
+    "Bridge, tunnel and rail inspection without lane closures or scaffold crews.",
+  Government:
+    "Disaster response, reconnaissance and security patrol support for public agencies.",
+  "Space Technology":
+    "Terrain-ready mobility research for exploration beyond Earth's atmosphere.",
+};
+
+const SHOWCASE_ITEMS: ShowcaseItem[] = INDUSTRIES.filter(
+  (industry) => INDUSTRY_DETAIL[industry]
+).map((industry) => ({
+  title: industry,
+  tag: "Sector",
+  body: INDUSTRY_DETAIL[industry],
+}));
 
 export const metadata: Metadata = {
   title: "Industries | Cennzo Robotix",
@@ -17,36 +45,14 @@ export default function IndustriesPage() {
     <main>
       <PageHero
         eyebrow="Industries"
-        lines={["Engineered For Industries", "That Cannot Stop."]}
+        lines={["Engineered For Industries", "That *Cannot Stop.*"]}
       />
 
-      <section className="border-b border-black/[0.08]">
-        <div className="mx-auto w-full max-w-[1440px] px-6 py-section md:px-10">
-          <Spotlight>
-          <StaggerGroup
-            stagger={0.04}
-            className="grid gap-px overflow-hidden rounded-2xl border border-black/[0.1] bg-black/[0.1] shadow-soft sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
-          >
-            {INDUSTRIES.map((industry, i) => (
-              <StaggerItem key={industry}>
-                <div className="spotlight-card group relative h-full bg-graphite p-7 transition-colors duration-500 hover:bg-charcoal/60 md:p-8">
-                  <span
-                    aria-hidden="true"
-                    className="absolute left-0 top-0 h-px w-full origin-left scale-x-0 bg-accent transition-transform duration-500 ease-out group-hover:scale-x-100"
-                  />
-                  <p className="font-mono text-[10px] tracking-[0.25em] text-faint transition-colors duration-300 group-hover:text-accent">
-                    {String(i + 1).padStart(2, "0")}
-                  </p>
-                  <p className="mt-4 text-base font-semibold tracking-tight text-bone">
-                    {industry}
-                  </p>
-                </div>
-            </StaggerItem>
-          ))}
-          </StaggerGroup>
-          </Spotlight>
-        </div>
-      </section>
+      <HorizontalShowcase
+        eyebrow="Sectors"
+        lines={["Where WAFEE", "goes to *work.*"]}
+        items={SHOWCASE_ITEMS}
+      />
 
       <section className="border-b border-black/[0.08]">
         <div className="mx-auto w-full max-w-[1440px] px-6 py-section md:px-10">
@@ -84,7 +90,7 @@ export default function IndustriesPage() {
       </section>
 
       <CTASection
-        lines={["Automate The Tasks", "Nobody Should Do."]}
+        lines={["Automate The Tasks", "*Nobody Should Do.*"]}
         body="Explore a mission configuration for your industry."
         primary={{ label: "Start a Conversation", href: "/contact" }}
         secondary={{ label: "See Applications", href: "/applications" }}

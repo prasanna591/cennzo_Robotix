@@ -3,6 +3,16 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { DURATION, EASE, viewportOnce } from "@/lib/animations";
 
+function parseWord(word: string): { text: string; tone: string } {
+  if (word.length > 2 && word.startsWith("*") && word.endsWith("*")) {
+    return { text: word.slice(1, -1), tone: "text-accent" };
+  }
+  if (word.length > 2 && word.startsWith("~") && word.endsWith("~")) {
+    return { text: word.slice(1, -1), tone: "text-teal" };
+  }
+  return { text: word, tone: "" };
+}
+
 export function WordReveal({
   lines,
   className = "",
@@ -23,18 +33,23 @@ export function WordReveal({
     <span className={`block ${className}`}>
       {lines.map((line, li) => (
         <span key={`${line}-${li}`} className="block">
-          {line.split(" ").map((word) => {
+          {line.split(" ").map((rawWord) => {
             const i = wordIndex++;
+            const { text, tone } = parseWord(rawWord);
             return (
               <span
-                key={`${word}-${i}`}
+                key={`${rawWord}-${i}`}
                 className="inline-block overflow-hidden pb-[0.12em] -mb-[0.12em] align-bottom"
               >
                 {reduced ? (
-                  <span className={`inline-block ${wordClassName}`}>{word}</span>
+                  <span
+                    className={`inline-block ${wordClassName} ${tone}`}
+                  >
+                    {text}
+                  </span>
                 ) : (
                   <motion.span
-                    className={`inline-block will-change-transform ${wordClassName}`}
+                    className={`inline-block will-change-transform ${wordClassName} ${tone}`}
                     initial={{ y: "112%" }}
                     whileInView={{ y: "0%" }}
                     viewport={{ once: true, margin: "-8% 0px" }}
@@ -44,7 +59,7 @@ export function WordReveal({
                       delay: delay + i * stagger,
                     }}
                   >
-                    {word}
+                    {text}
                   </motion.span>
                 )}
                 <span className="inline-block">&nbsp;</span>

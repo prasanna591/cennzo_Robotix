@@ -1,11 +1,17 @@
 "use client";
 
-import { useRef, useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { MaskLines } from "@/components/motion/mask-lines";
 import { Reveal } from "@/components/motion/reveal";
-import { DURATION, EASE, drawStroke, viewportOnce } from "@/lib/animations";
+import { drawStroke, viewportOnce } from "@/lib/animations";
 import { ENVIRONMENTS } from "@/lib/content/site";
+
+const STATUS_STYLE: Record<string, string> = {
+  "PRIMARY DEVELOPMENT": "border-accent/30 bg-accent/[0.06] text-accent",
+  "ENGINEERING ROADMAP": "border-black/[0.12] bg-black/[0.03] text-mist",
+  RESEARCH: "border-teal/30 bg-teal/[0.06] text-teal",
+  "LONG-TERM VISION": "border-teal/30 bg-teal/[0.06] text-teal",
+};
 
 function EnvironmentGlyph({ id }: { id: string }) {
   const common = "stroke-mist/40";
@@ -64,7 +70,7 @@ function EnvironmentGlyph({ id }: { id: string }) {
               strokeWidth="1"
               initial={{ opacity: 0, scaleY: 0 }}
               animate={{ opacity: 1, scaleY: 1 }}
-              transition={{ duration: DURATION.standard, ease: EASE.mechanical, delay: i * 0.06 }}
+              transition={{ duration: 0.55, ease: [0.65, 0, 0.35, 1], delay: i * 0.06 }}
               style={{ transformOrigin: "bottom" }}
             />
           ))}
@@ -120,147 +126,99 @@ function EnvironmentGlyph({ id }: { id: string }) {
 }
 
 export function EnvironmentsSection() {
-  const [active, setActive] = useState(0);
   const reduced = useReducedMotion();
-  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
-  const env = ENVIRONMENTS[active];
-
-  const onTablistKeyDown = (e: React.KeyboardEvent) => {
-    const n = ENVIRONMENTS.length;
-    let next: number | null = null;
-    if (e.key === "ArrowRight" || e.key === "ArrowDown") next = (active + 1) % n;
-    else if (e.key === "ArrowLeft" || e.key === "ArrowUp") next = (active - 1 + n) % n;
-    else if (e.key === "Home") next = 0;
-    else if (e.key === "End") next = n - 1;
-    if (next !== null) {
-      e.preventDefault();
-      setActive(next);
-      tabRefs.current[next]?.focus();
-    }
-  };
 
   return (
-    <section id="environments" className="relative overflow-hidden border-b border-black/[0.08]">
+    <section id="environments" className="relative border-b border-black/[0.08]">
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/50 to-transparent"
+      />
+
       <div className="mx-auto w-full max-w-[1440px] px-6 py-section md:px-10">
         <Reveal mode="fadeIn">
           <p className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.25em] text-mist">
             <span aria-hidden="true" className="h-px w-8 bg-accent" />
-            The Five Environments
+            The Journey — Five Environments
           </p>
         </Reveal>
 
-                  <h2 className="mt-8 text-display font-semibold tracking-[-0.02em] text-bone">
+        <h2 className="mt-8 max-w-3xl text-display font-semibold tracking-[-0.02em] text-bone">
           <MaskLines lines={["One Platform.", "Multiple Worlds."]} lineClassName="text-bone" />
         </h2>
 
-        <div className="mt-16 grid gap-12 lg:grid-cols-[380px_1fr] lg:gap-20">
-          <div
-            role="tablist"
-            aria-label="Mission environments"
-            onKeyDown={onTablistKeyDown}
-            className="flex flex-col"
-          >
-            {ENVIRONMENTS.map((item, i) => {
-              const selected = i === active;
-              return (
-                <button
-                  key={item.id}
-                  ref={(el) => {
-                    tabRefs.current[i] = el;
-                  }}
-                  role="tab"
-                  id={`env-tab-${item.id}`}
-                  aria-selected={selected}
-                  aria-controls={`env-panel-${item.id}`}
-                  tabIndex={selected ? 0 : -1}
-                  onClick={() => setActive(i)}
-                  className={`group relative cursor-pointer border-b border-black/[0.1] py-5 text-left transition-colors duration-300 ${
-                    selected ? "" : "hover:border-steel"
-                  }`}
-                >
-                  {selected && (
-                    <motion.span
-                      layoutId="env-indicator"
-                      className="absolute inset-y-0 left-0 w-[2px] bg-accent"
-                      transition={{ duration: DURATION.fast, ease: EASE.out }}
-                    />
-                  )}
-                  <span className="flex items-baseline justify-between gap-4 pl-6">
-                    <span className="flex items-baseline gap-4">
-                      <span className="font-mono text-[10px] tracking-[0.2em] text-faint">
-                        {item.index}
-                      </span>
-                      <span
-                        className={`text-xl font-semibold uppercase tracking-tight transition-colors duration-300 md:text-2xl ${
-                          selected ? "text-bone" : "text-faint group-hover:text-mist"
-                        }`}
-                      >
-                        {item.name}
-                      </span>
-                    </span>
-                    <span className="hidden font-mono text-[9px] uppercase tracking-[0.18em] text-faint sm:block">
-                      {item.status}
-                    </span>
-                  </span>
-                </button>
-              );
-            })}
+        <p className="mt-6 max-w-xl font-mono text-[10px] uppercase leading-loose tracking-[0.22em] text-faint">
+          Scroll to travel the roadmap
+          <span className="text-accent"> — Earth to Space.</span>
+        </p>
 
-            <p className="mt-8 max-w-sm font-mono text-[10px] leading-relaxed tracking-[0.08em] text-faint">
-              WAFEE&rsquo;s multi-environment vision represents a long-term
-              engineering roadmap. Individual environmental capabilities depend
-              on mission-specific configuration, validation and certification.
-            </p>
-          </div>
-
-          <div
-            role="tabpanel"
-            id={`env-panel-${env.id}`}
-            aria-labelledby={`env-tab-${env.id}`}
-              className="relative min-h-[420px] overflow-hidden rounded-2xl border border-steel bg-graphite shadow-soft md:min-h-[480px]"
-          >
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={env.id}
-                initial={reduced ? false : { opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: DURATION.fast }}
-                className="absolute inset-0"
+        <div className="mt-16">
+          {ENVIRONMENTS.map((env, i) => (
+            <div
+              key={env.id}
+              className="sticky mb-10 last:mb-0"
+              style={{ top: `${88 + i * 26}px`, zIndex: i + 1 }}
+            >
+              <motion.article
+                initial={reduced ? false : { opacity: 0, y: 60 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-8% 0px" }}
+                transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+                className="relative grid overflow-hidden rounded-3xl border border-black/[0.08] bg-graphite shadow-lift lg:min-h-[440px] lg:grid-cols-2"
               >
-                <div className="absolute inset-0 flex items-center justify-center p-10 opacity-70 md:p-16">
-                  <EnvironmentGlyph id={env.id} />
-                </div>
-                <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-graphite via-graphite/70 to-transparent" />
-
-                <motion.div
-                  key={`${env.id}-content`}
-                  initial={reduced ? false : { opacity: 0, y: 24 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: DURATION.standard, ease: EASE.out, delay: 0.1 }}
-                  className="absolute inset-x-0 bottom-0 p-8 md:p-12"
-                >
-                  <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-accent">
+                <div className="relative order-2 flex flex-col justify-center p-8 md:p-14 lg:order-1">
+                  <span
+                    aria-hidden="true"
+                    className="pointer-events-none absolute right-6 top-4 select-none font-mono text-[6rem] font-semibold leading-none text-black/[0.04] md:text-[8rem]"
+                  >
+                    {env.index}
+                  </span>
+                  <span
+                    className={`inline-flex w-fit items-center gap-2 rounded-full border px-4 py-1.5 font-mono text-[9px] uppercase tracking-[0.2em] ${
+                      STATUS_STYLE[env.status] ?? STATUS_STYLE["ENGINEERING ROADMAP"]
+                    }`}
+                  >
+                    <span aria-hidden="true" className="h-1 w-1 rounded-full bg-current" />
+                    {env.status}
+                  </span>
+                  <p className="mt-8 font-mono text-[10px] uppercase tracking-[0.25em] text-faint">
                     {env.index} / 05 — {env.domain}
                   </p>
-                    <h3 className="mt-4 text-headline font-semibold tracking-[-0.01em] text-bone">
+                  <h3 className="mt-4 text-4xl font-semibold tracking-tight text-bone md:text-5xl">
                     {env.name}
                   </h3>
-                  <p className="mt-4 max-w-lg text-body leading-relaxed text-mist">
+                  <p className="mt-5 max-w-md text-body leading-relaxed text-mist">
                     {env.description}
                   </p>
-                </motion.div>
+                  <span
+                    aria-hidden="true"
+                    className="mt-8 h-px w-24 origin-left bg-gradient-to-r from-accent to-teal"
+                  />
+                </div>
 
-                <span
-                  aria-hidden="true"
-                  className="pointer-events-none absolute right-8 top-8 select-none font-mono text-[7rem] font-semibold leading-none text-black/[0.05] md:text-[10rem]"
-                >
-                  {env.index}
-                </span>
-              </motion.div>
-            </AnimatePresence>
-          </div>
+                <div className="relative order-1 min-h-[280px] overflow-hidden bg-charcoal/50 md:min-h-[360px] lg:order-2 lg:min-h-[440px]">
+                  <motion.div
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-15% 0px" }}
+                    className="absolute inset-0 flex items-center justify-center p-10 opacity-75 md:p-16"
+                  >
+                    <EnvironmentGlyph id={env.id} />
+                  </motion.div>
+                  <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-graphite to-transparent lg:hidden" />
+                </div>
+              </motion.article>
+            </div>
+          ))}
         </div>
+
+        <Reveal mode="fadeIn">
+          <p className="mx-auto mt-16 max-w-2xl text-center font-mono text-[10px] leading-relaxed tracking-[0.08em] text-faint">
+            WAFEE&rsquo;s multi-environment vision represents a long-term
+            engineering roadmap. Individual environmental capabilities depend on
+            mission-specific configuration, validation and certification.
+          </p>
+        </Reveal>
       </div>
     </section>
   );

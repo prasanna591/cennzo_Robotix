@@ -20,7 +20,11 @@ export function WafeeSection() {
   const reduced = useReducedMotion();
 
   return (
-    <section id="wafee" className="relative overflow-hidden border-b border-black/[0.08]">
+    <section id="wafee" className="relative overflow-hidden border-b border-black/[0.08] bg-graphite">
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/50 to-transparent"
+      />
       <div
         aria-hidden="true"
         className="absolute inset-0 bg-[radial-gradient(ellipse_50%_40%_at_85%_30%,rgba(22,22,26,0.05),transparent_70%)]"

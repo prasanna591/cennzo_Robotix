@@ -130,7 +130,7 @@ export function MissionConfigurator() {
             <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-accent">
               {cfg.status}
             </p>
-            <h3 className="mt-4 text-3xl font-semibold uppercase tracking-tight text-bone">
+            <h3 className="mt-4 text-3xl font-semibold tracking-tight text-bone">
               {cfg.name}
             </h3>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-mist">

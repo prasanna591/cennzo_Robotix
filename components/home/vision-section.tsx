@@ -6,6 +6,8 @@ import { Magnetic } from "@/components/motion/magnetic";
 import { WordReveal } from "@/components/motion/word-reveal";
 import { Reveal } from "@/components/motion/reveal";
 import { MediaFrame } from "@/components/media/media-frame";
+import { BackgroundObjects } from "@/components/decor/background-objects";
+import { Parallax } from "@/components/motion/parallax";
 import { DURATION, EASE, viewportOnce } from "@/lib/animations";
 
 export function VisionSection() {
@@ -24,8 +26,7 @@ export function VisionSection() {
         transition={{ duration: DURATION.cinematic + 0.4 }}
         className="absolute inset-0"
       >
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_55%_60%_at_50%_100%,rgba(21,94,239,0.14),transparent_75%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_40%_35%_at_15%_10%,rgba(0,168,168,0.07),transparent_70%)]" />
+        <BackgroundObjects variant="dark" />
       </motion.div>
 
       <div className="relative mx-auto w-full max-w-[1440px] px-6 py-section text-center md:px-10">
@@ -45,7 +46,7 @@ export function VisionSection() {
           <WordReveal
             lines={[
               "A future where no environment",
-              "is off-limits to machines.",
+              "is off-limits to ~machines.~",
             ]}
             wordClassName="text-bone"
           />
@@ -70,11 +71,13 @@ export function VisionSection() {
         </motion.div>
 
         <Reveal className="mx-auto mt-16 max-w-5xl">
-          <MediaFrame
-            code="IMG-02"
-            label="WAFEE in Extreme Environments — Concept Visualization"
-            ratio="21/9"
-          />
+          <Parallax speed={0.06}>
+            <MediaFrame
+              code="IMG-02"
+              label="WAFEE in Extreme Environments — Concept Visualization"
+              ratio="21/9"
+            />
+          </Parallax>
         </Reveal>
 
         <motion.div

@@ -92,7 +92,7 @@ export default function ResearchPage() {
         <div className="mx-auto grid w-full max-w-[1440px] gap-12 px-6 py-section md:px-10 lg:grid-cols-2 lg:gap-20">
           <div>
             <Reveal>
-              <h2 className="text-headline font-semibold uppercase tracking-tight text-bone">
+              <h2 className="text-headline font-semibold tracking-tight text-bone">
                 Digital Engineering
               </h2>
               <p className="mt-6 max-w-md text-body leading-relaxed text-mist">
@@ -138,7 +138,7 @@ export default function ResearchPage() {
               <span aria-hidden="true" className="h-px w-8 bg-accent" />
               Build → Test → Measure → Learn
             </p>
-            <h2 className="mt-6 max-w-2xl text-headline font-semibold uppercase tracking-tight text-bone">
+            <h2 className="mt-6 max-w-2xl text-headline font-semibold tracking-tight text-bone">
               Every Subsystem Moves Through The Cycle.
             </h2>
           </Reveal>

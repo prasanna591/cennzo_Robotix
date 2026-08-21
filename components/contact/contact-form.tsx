@@ -129,7 +129,7 @@ export function ContactForm() {
                 />
               </svg>
             </span>
-            <h2 className="mt-8 text-headline font-semibold uppercase tracking-tight text-bone">
+            <h2 className="mt-8 text-headline font-semibold tracking-tight text-bone">
               Almost There.
             </h2>
             <p className="mt-4 max-w-sm text-body leading-relaxed text-mist">

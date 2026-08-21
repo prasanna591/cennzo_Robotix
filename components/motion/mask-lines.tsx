@@ -3,6 +3,28 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { DURATION, EASE } from "@/lib/animations";
 
+const SEGMENT_RE = /(\*[^*]+\*|~[^~]+~)/g;
+
+function renderLine(line: string) {
+  return line.split(SEGMENT_RE).filter(Boolean).map((seg, i) => {
+    if (seg.length > 2 && seg.startsWith("*") && seg.endsWith("*")) {
+      return (
+        <span key={i} className="text-accent">
+          {seg.slice(1, -1)}
+        </span>
+      );
+    }
+    if (seg.length > 2 && seg.startsWith("~") && seg.endsWith("~")) {
+      return (
+        <span key={i} className="text-teal">
+          {seg.slice(1, -1)}
+        </span>
+      );
+    }
+    return <span key={i}>{seg}</span>;
+  });
+}
+
 export function MaskLines({
   lines,
   className = "",
@@ -26,7 +48,7 @@ export function MaskLines({
           className="block overflow-hidden pb-[0.1em] -mb-[0.1em]"
         >
           {reduced ? (
-            <span className={`block ${lineClassName}`}>{line}</span>
+            <span className={`block ${lineClassName}`}>{renderLine(line)}</span>
           ) : (
             <motion.span
               className={`block will-change-transform ${lineClassName}`}
@@ -43,7 +65,7 @@ export function MaskLines({
                 delay: delay + i * 0.09,
               }}
             >
-              {line}
+              {renderLine(line)}
             </motion.span>
           )}
         </span>

@@ -103,7 +103,7 @@ export default function SafetyPage() {
                   <p className="font-mono text-[11px] tracking-[0.25em] text-faint transition-colors duration-300 group-hover:text-accent">
                     {layer.index}
                   </p>
-                  <h2 className="mt-5 text-lg font-semibold uppercase tracking-tight text-bone">
+                  <h2 className="mt-5 text-lg font-semibold tracking-tight text-bone">
                     {layer.name}
                   </h2>
                   <ul className="mt-5 space-y-2.5">
@@ -147,7 +147,7 @@ export default function SafetyPage() {
               <span aria-hidden="true" className="h-px w-8 bg-accent" />
               Validation Philosophy
             </p>
-            <h2 className="mt-6 max-w-3xl text-headline font-semibold uppercase leading-tight tracking-tight text-bone">
+            <h2 className="mt-6 max-w-3xl text-headline font-semibold leading-tight tracking-[-0.01em] text-bone">
               We Separate What We Claim From What We Have Proven.
             </h2>
             <p className="mt-6 max-w-xl text-body leading-relaxed text-mist">
@@ -165,7 +165,7 @@ export default function SafetyPage() {
                     L{i + 1}
                   </span>
                   <span
-                    className={`text-lg font-semibold uppercase tracking-tight ${
+                    className={`text-lg font-semibold tracking-tight ${
                       i === VALIDATION_LEVELS.length - 1 ? "text-accent" : "text-bone"
                     }`}
                   >

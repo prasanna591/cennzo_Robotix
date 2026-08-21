@@ -29,7 +29,7 @@ export default function PartnershipsPage() {
                   <span className="font-mono text-[11px] tracking-[0.2em] text-faint transition-colors duration-300 group-hover:text-accent">
                     {partner.index}
                   </span>
-                  <h2 className="text-xl font-semibold uppercase tracking-tight text-mist transition-colors duration-300 group-hover:text-bone md:text-2xl">
+                  <h2 className="text-xl font-semibold tracking-tight text-mist transition-colors duration-300 group-hover:text-bone md:text-2xl">
                     {partner.title}
                   </h2>
                   <p className="col-span-2 max-w-xl text-sm leading-relaxed text-faint transition-colors duration-300 group-hover:text-mist md:col-span-1">

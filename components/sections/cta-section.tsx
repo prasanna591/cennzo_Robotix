@@ -4,6 +4,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { Button } from "@/components/buttons/button";
 import { Magnetic } from "@/components/motion/magnetic";
 import { MaskLines } from "@/components/motion/mask-lines";
+import { BackgroundObjects } from "@/components/decor/background-objects";
 import { DURATION, EASE, viewportOnce } from "@/lib/animations";
 
 export function CTASection({
@@ -31,8 +32,7 @@ export function CTASection({
         transition={{ duration: DURATION.cinematic + 0.6, ease: EASE.out }}
         className="absolute inset-0"
       >
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_45%_at_50%_110%,rgba(21,94,239,0.16),transparent_70%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_-10%,rgba(0,168,168,0.06),transparent_70%)]" />
+        <BackgroundObjects variant="dark" />
       </motion.div>
 
       <div className="relative mx-auto flex w-full max-w-[1440px] flex-col items-center px-6 py-section text-center md:px-10">

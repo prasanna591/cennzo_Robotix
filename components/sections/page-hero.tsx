@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import type { ReactNode } from "react";
 import { MaskLines } from "@/components/motion/mask-lines";
+import { BackgroundObjects } from "@/components/decor/background-objects";
 import { useReady } from "@/hooks/use-ready";
 import { DURATION, EASE } from "@/lib/animations";
 
@@ -66,6 +67,8 @@ export function PageHero({
           }}
         />
       </motion.div>
+
+      <BackgroundObjects variant="light" />
 
       <motion.div
         style={reduced ? undefined : { y: contentY, opacity: contentOpacity }}

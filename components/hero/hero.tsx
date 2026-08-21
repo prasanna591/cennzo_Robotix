@@ -3,6 +3,7 @@
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { Button } from "@/components/buttons/button";
 import { MaskLines } from "@/components/motion/mask-lines";
+import { BackgroundObjects } from "@/components/decor/background-objects";
 import { useReady } from "@/hooks/use-ready";
 import { DURATION, EASE } from "@/lib/animations";
 
@@ -85,6 +86,56 @@ function ScrollCue() {
   );
 }
 
+function OrbitDecor({ y }: { y?: unknown }) {
+  const reduced = useReducedMotion();
+  return (
+    <motion.div
+      aria-hidden="true"
+      style={reduced ? undefined : { y: y as never }}
+      className="pointer-events-none absolute -right-[12%] top-[8%] hidden h-[720px] w-[720px] lg:block"
+    >
+      <motion.svg
+        viewBox="0 0 400 400"
+        fill="none"
+        className="h-full w-full"
+        initial={{ opacity: 0, scale: 0.92 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 2, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
+      >
+        <motion.g
+          animate={reduced ? undefined : { rotate: 360 }}
+          transition={{ duration: 90, repeat: Infinity, ease: "linear" }}
+          style={{ transformOrigin: "200px 200px" }}
+        >
+          <circle cx="200" cy="200" r="150" stroke="rgba(17,19,24,0.08)" strokeDasharray="3 7" />
+          <circle cx="350" cy="200" r="4" fill="rgba(21,94,239,0.55)" />
+          <circle cx="350" cy="200" r="9" stroke="rgba(21,94,239,0.25)" />
+        </motion.g>
+        <motion.g
+          animate={reduced ? undefined : { rotate: -360 }}
+          transition={{ duration: 140, repeat: Infinity, ease: "linear" }}
+          style={{ transformOrigin: "200px 200px" }}
+        >
+          <circle cx="200" cy="200" r="110" stroke="rgba(17,19,24,0.06)" />
+          <circle cx="200" cy="90" r="3" fill="rgba(0,168,168,0.5)" />
+        </motion.g>
+        <motion.g
+          animate={reduced ? undefined : { rotate: 360 }}
+          transition={{ duration: 200, repeat: Infinity, ease: "linear" }}
+          style={{ transformOrigin: "200px 200px" }}
+        >
+          <circle cx="200" cy="200" r="185" stroke="rgba(17,19,24,0.05)" strokeDasharray="1 9" />
+        </motion.g>
+        <line x1="200" y1="8" x2="200" y2="-6" stroke="rgba(17,19,24,0.16)" strokeWidth="1" />
+        <line x1="200" y1="392" x2="200" y2="406" stroke="rgba(17,19,24,0.16)" strokeWidth="1" />
+        <line x1="8" y1="200" x2="-6" y2="200" stroke="rgba(17,19,24,0.16)" strokeWidth="1" />
+        <line x1="392" y1="200" x2="406" y2="200" stroke="rgba(17,19,24,0.16)" strokeWidth="1" />
+        <circle cx="200" cy="200" r="2.5" fill="rgba(21,94,239,0.5)" />
+      </motion.svg>
+    </motion.div>
+  );
+}
+
 export function Hero() {
   const reduced = useReducedMotion();
   const ready = useReady();
@@ -93,6 +144,7 @@ export function Hero() {
   const contentY = useTransform(scrollYProgress, [0, 0.3], [0, -110]);
   const contentOpacity = useTransform(scrollYProgress, [0, 0.24], [1, 0]);
   const barOpacity = useTransform(scrollYProgress, [0, 0.18], [1, 0]);
+  const decorY = useTransform(scrollYProgress, [0, 0.3], [0, -80]);
 
   const enter = (delay: number) =>
     reduced
@@ -106,6 +158,8 @@ export function Hero() {
   return (
     <section className="relative flex min-h-svh flex-col overflow-hidden">
       <Atmosphere />
+      <BackgroundObjects variant="light" />
+      <OrbitDecor y={decorY} />
 
       <motion.div
         style={reduced ? undefined : { y: contentY, opacity: contentOpacity }}
@@ -125,7 +179,7 @@ export function Hero() {
         <h1 className="text-hero font-semibold tracking-[-0.02em] text-bone">
           <MaskLines
             key={ready ? "ready" : "hold"}
-            lines={["The Humanoid For", "The Hard Places."]}
+            lines={["The Humanoid For", "The *Hard Places.*"]}
             delay={0.15}
             animateOnLoad
             lineClassName="text-bone"

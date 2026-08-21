@@ -20,7 +20,7 @@ export default function Home() {
       <ApplicationsSection />
       <VisionSection />
       <CTASection
-        lines={["The Next Frontier Is Not A Place.", "It Is A Capability."]}
+        lines={["The Next Frontier Is Not A Place.", "It Is A *Capability.*"]}
         body="We are building intelligent machines for the missions that matter."
         primary={{ label: "Partner With Cennzo", href: "/contact" }}
         secondary={{ label: "Explore WAFEE", href: "/wafee" }}

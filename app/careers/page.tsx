@@ -98,7 +98,7 @@ export default function CareersPage() {
                   {CULTURE.map((line) => (
                     <p
                       key={line}
-                      className="text-xl font-semibold uppercase tracking-tight text-bone"
+                      className="text-xl font-semibold tracking-tight text-bone"
                     >
                       {line}
                     </p>

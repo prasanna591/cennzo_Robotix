@@ -52,7 +52,7 @@ function ModuleList({
       >
         {eyebrow}
       </p>
-      <h2 className="mt-4 text-2xl font-semibold uppercase tracking-tight text-bone">
+      <h2 className="mt-4 text-2xl font-semibold tracking-tight text-bone">
         {title}
       </h2>
       <StaggerGroup stagger={0.05} className="mt-8">

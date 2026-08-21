@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useReducedMotion, useScroll, useSpring } from "framer-motion";
 import Link from "next/link";
 import { SectionHeading } from "@/components/sections/section-heading";
 import { Button } from "@/components/buttons/button";
@@ -10,9 +11,19 @@ import { TECHNOLOGY_SYSTEMS } from "@/lib/content/site";
 
 export function TechnologySection() {
   const reduced = useReducedMotion();
+  const listRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: listRef,
+    offset: ["start 0.85", "end 0.55"],
+  });
+  const fill = useSpring(scrollYProgress, { stiffness: 90, damping: 26 });
 
   return (
-    <section id="technology" className="relative border-b border-black/[0.08]">
+    <section id="technology" className="relative border-b border-black/[0.08] bg-charcoal/50">
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/50 to-transparent"
+      />
       <div className="mx-auto w-full max-w-[1440px] px-6 py-section md:px-10">
         <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeading
@@ -34,7 +45,14 @@ export function TechnologySection() {
           </motion.div>
         </div>
 
-        <StaggerGroup stagger={0.06} className="mt-16 border-t border-black/[0.1]">
+        <div ref={listRef} className="relative mt-16 border-t border-black/[0.1] pl-6 md:pl-10">
+          <div aria-hidden="true" className="absolute bottom-0 left-0 top-0 w-px bg-black/[0.08]" />
+          <motion.div
+            aria-hidden="true"
+            style={reduced ? { scaleY: 1 } : { scaleY: fill }}
+            className="absolute bottom-0 left-0 top-0 w-[2px] origin-top bg-gradient-to-b from-accent to-teal"
+          />
+          <StaggerGroup stagger={0.06}>
           {TECHNOLOGY_SYSTEMS.map((system) => (
             <StaggerItem key={system.id}>
               <Link
@@ -63,7 +81,8 @@ export function TechnologySection() {
               </Link>
             </StaggerItem>
           ))}
-        </StaggerGroup>
+          </StaggerGroup>
+        </div>
       </div>
     </section>
   );

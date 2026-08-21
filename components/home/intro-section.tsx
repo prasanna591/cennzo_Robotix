@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { WordReveal } from "@/components/motion/word-reveal";
+import { ScrollFillText } from "@/components/motion/scroll-fill-text";
 import { Reveal } from "@/components/motion/reveal";
 import { DURATION, EASE, viewportOnce } from "@/lib/animations";
 
@@ -19,13 +19,12 @@ export function IntroSection() {
         </Reveal>
 
         <h2 className="mt-8 max-w-5xl text-headline font-semibold leading-[1.08] tracking-[-0.02em] text-bone md:text-display">
-          <WordReveal
+          <ScrollFillText
             lines={[
               "Intelligence should not stop",
-              "at the edge",
+              "at the *edge*",
               "of the environment.",
             ]}
-            wordClassName="text-bone"
           />
         </h2>
 
