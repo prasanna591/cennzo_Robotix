@@ -7,10 +7,12 @@ export function SpecList({
   points,
   teal = false,
   dark = false,
+  dotClass = "",
 }: {
   points: string[];
   teal?: boolean;
   dark?: boolean;
+  dotClass?: string;
 }) {
   const reduced = useReducedMotion();
 
@@ -32,11 +34,12 @@ export function SpecList({
           <span
             aria-hidden="true"
             className={`mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full transition-all duration-300 group-hover:scale-150 ${
-              dark
+              dotClass ||
+              (dark
                 ? "bg-teal/50 group-hover:bg-teal"
                 : teal
                   ? "bg-teal/40 group-hover:bg-teal"
-                  : "bg-accent/40 group-hover:bg-accent"
+                  : "bg-accent/40 group-hover:bg-accent")
             }`}
           />
           <span

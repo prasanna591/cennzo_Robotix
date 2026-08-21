@@ -36,6 +36,10 @@ export function VisionMission() {
 
   return (
     <section className="relative overflow-hidden border-b border-black/[0.08] py-section">
+      <div
+        aria-hidden="true"
+        className="hairline-spectrum absolute inset-x-0 top-0 h-px opacity-70"
+      />
       <div className="mx-auto w-full max-w-[1440px] px-6 md:px-10">
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div>
@@ -100,7 +104,7 @@ export function VisionMission() {
             />
             <div
               aria-hidden="true"
-              className="absolute -right-16 top-1/3 h-64 w-64 rounded-full bg-[radial-gradient(circle,rgba(21,94,239,0.18),transparent_70%)] blur-2xl"
+              className="absolute -right-16 top-1/3 h-64 w-64 rounded-full bg-[radial-gradient(circle,rgba(124,58,237,0.22),transparent_70%)] blur-2xl"
             />
             <div className="relative">
               <div className="flex items-center justify-between">

@@ -56,6 +56,52 @@ const GROUPS: {
   },
 ];
 
+const TONES: Record<
+  GroupId,
+  { stroke: string; badge: string; chip: string; border: string; arrow: string; hex: string }
+> = {
+  mind: {
+    stroke: "stroke-violet-500",
+    badge: "border-violet-500 bg-violet-500",
+    chip: "border-violet-500/30 bg-violet-500/[0.06] text-violet-600",
+    border: "border-violet-500/40",
+    arrow: "text-violet-600",
+    hex: "#7c3aed",
+  },
+  core: {
+    stroke: "stroke-amber-500",
+    badge: "border-amber-500 bg-amber-500",
+    chip: "border-amber-500/30 bg-amber-500/[0.08] text-amber-600",
+    border: "border-amber-500/40",
+    arrow: "text-amber-600",
+    hex: "#f59e0b",
+  },
+  limbs: {
+    stroke: "stroke-sky-500",
+    badge: "border-sky-500 bg-sky-500",
+    chip: "border-sky-500/30 bg-sky-500/[0.06] text-sky-600",
+    border: "border-sky-500/40",
+    arrow: "text-sky-600",
+    hex: "#0ea5e9",
+  },
+  frame: {
+    stroke: "stroke-emerald-500",
+    badge: "border-emerald-500 bg-emerald-500",
+    chip: "border-emerald-500/30 bg-emerald-500/[0.06] text-emerald-600",
+    border: "border-emerald-500/40",
+    arrow: "text-emerald-600",
+    hex: "#10b981",
+  },
+  software: {
+    stroke: "stroke-teal",
+    badge: "border-teal bg-teal",
+    chip: "border-teal/30 bg-teal/[0.06] text-teal",
+    border: "border-teal/40",
+    arrow: "text-teal",
+    hex: "#00a8a8",
+  },
+};
+
 export function SystemMap() {
   const [hovered, setHovered] = useState<GroupId | null>(null);
   const reduced = useReducedMotion();
@@ -78,7 +124,7 @@ export function SystemMap() {
   const partClass = (id: GroupId, base: string) =>
     `${base} transition-all duration-300 ${
       isOn(id)
-        ? "stroke-accent opacity-100"
+        ? `${TONES[id].stroke} opacity-100`
         : dim
           ? "stroke-black/[0.18] opacity-45"
           : "stroke-black/[0.35] opacity-90"
@@ -188,7 +234,7 @@ export function SystemMap() {
                 <ellipse cx="177" cy="512" rx="17" ry="8" strokeWidth="2" className={partClass("limbs", "")} />
                 <ellipse cx="223" cy="512" rx="17" ry="8" strokeWidth="2" className={partClass("limbs", "")} />
                 {[[102, 238], [298, 238], [166, 396], [234, 396]].map(([cx, cy]) => (
-                  <circle key={`${cx}-${cy}`} cx={cx} cy={cy} r="3.5" className="fill-accent/70 transition-opacity duration-300" style={{ opacity: isOn("limbs") ? 1 : 0.45 }} />
+                  <circle key={`${cx}-${cy}`} cx={cx} cy={cy} r="3.5" className="fill-sky-500/70 transition-opacity duration-300" style={{ opacity: isOn("limbs") ? 1 : 0.45 }} />
                 ))}
               </g>
 
@@ -206,7 +252,7 @@ export function SystemMap() {
                   cx="200"
                   cy="168"
                   r="7"
-                  className="fill-accent"
+                  className="fill-amber-500"
                   animate={reduced ? undefined : { opacity: [0.5, 1, 0.5], scale: [1, 1.15, 1] }}
                   transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
                   style={{ transformOrigin: "200px 168px", opacity: isOn("core") ? 1 : 0.7 }}
@@ -226,8 +272,8 @@ export function SystemMap() {
                 <rect x="192" y="96" width="16" height="16" strokeWidth="1.6" className={partClass("mind", "")} />
                 {isOn("mind") && (
                   <>
-                    <circle cx="188" cy="46" r="2" fill="#155EEF" />
-                    <circle cx="212" cy="46" r="2" fill="#155EEF" />
+                    <circle cx="188" cy="46" r="2" fill="#7c3aed" />
+                    <circle cx="212" cy="46" r="2" fill="#7c3aed" />
                   </>
                 )}
               </g>
@@ -251,7 +297,7 @@ export function SystemMap() {
                   onClick={() => jump(group.target)}
                   className={`group block w-full cursor-pointer rounded-2xl border p-6 text-left transition-all duration-300 ${
                     active
-                      ? "border-accent/40 bg-white shadow-lift"
+                      ? `${TONES[group.id].border} bg-white shadow-lift`
                       : "border-black/[0.08] bg-white/60 hover:border-faint hover:bg-white"
                   }`}
                 >
@@ -260,7 +306,7 @@ export function SystemMap() {
                       <span
                         className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full border font-mono text-xs transition-colors duration-300 ${
                           active
-                            ? "border-accent bg-accent text-white"
+                            ? `${TONES[group.id].badge} text-white`
                             : "border-black/[0.12] text-faint group-hover:text-bone"
                         }`}
                       >
@@ -273,7 +319,7 @@ export function SystemMap() {
                     <span
                       aria-hidden="true"
                       className={`font-mono text-lg transition-all duration-300 ${
-                        active ? "translate-x-1 text-accent" : "text-faint"
+                        active ? `translate-x-1 ${TONES[group.id].arrow}` : "text-faint"
                       }`}
                     >
                       &rarr;
@@ -288,7 +334,7 @@ export function SystemMap() {
                         key={s}
                         className={`rounded-full border px-3 py-1 font-mono text-[9px] uppercase tracking-[0.16em] transition-colors duration-300 ${
                           active
-                            ? "border-accent/30 bg-accent/[0.06] text-accent"
+                            ? TONES[group.id].chip
                             : "border-black/[0.1] text-faint"
                         }`}
                       >

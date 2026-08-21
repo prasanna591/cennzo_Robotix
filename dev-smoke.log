@@ -2,19 +2,11 @@
 > cennzo@0.1.0 dev
 > next dev
 
-⚠ Port 3000 is in use by process 31844, using available port 3001 instead.
 ▲ Next.js 16.3.1 (Turbopack)
-- Local:         http://localhost:3001
-- Network:       http://169.254.83.107:3001
-✓ Ready in 528ms
-✓ Running next.config.ts took 30ms
-⨯ Another next dev server is already running.
+- Local:         http://localhost:3000
+- Network:       http://169.254.83.107:3000
+✓ Ready in 383ms
+✓ Running next.config.ts took 32ms
 
-- Local:        http://localhost:3000
-- PID:          31844
-- Dir:          C:\Users\AIC_PECF WS1\Desktop\cennzo
-- Log:          .next\dev\logs\next-development.log
-
-You can access the existing server at http://localhost:3000,
-or run taskkill /PID 31844 /F to stop it and start a new one.
-[?25h
+ GET / 200 in 506ms (next.js: 179ms, application-code: 327ms)
+ GET /technology 200 in 124ms (next.js: 24ms, application-code: 101ms)

@@ -9,6 +9,8 @@ export type DomainCard = {
   name: string;
   tag: string;
   missions: number;
+  bar?: string;
+  chip?: string;
 };
 
 export function DomainGrid({ domains }: { domains: DomainCard[] }) {
@@ -40,7 +42,9 @@ export function DomainGrid({ domains }: { domains: DomainCard[] }) {
         >
           <span
             aria-hidden="true"
-            className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-gradient-to-r from-accent to-teal transition-transform duration-700 ease-out group-hover:scale-x-100"
+            className={`absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 transition-transform duration-700 ease-out group-hover:scale-x-100 ${
+              domain.bar || "bg-gradient-to-r from-accent to-teal"
+            }`}
           />
           <div
             aria-hidden="true"
@@ -50,7 +54,12 @@ export function DomainGrid({ domains }: { domains: DomainCard[] }) {
             <span className="font-mono text-[10px] tracking-[0.25em] text-faint transition-colors duration-300 group-hover:text-accent">
               {domain.index}
             </span>
-            <span className="rounded-full border border-black/[0.08] px-3 py-1 font-mono text-[9px] uppercase tracking-[0.18em] text-faint transition-colors duration-300 group-hover:border-accent/30 group-hover:text-accent">
+            <span
+              className={`rounded-full border px-3 py-1 font-mono text-[9px] uppercase tracking-[0.18em] transition-colors duration-300 ${
+                domain.chip ||
+                "border-black/[0.08] text-faint group-hover:border-accent/30 group-hover:text-accent"
+              }`}
+            >
               {domain.tag}
             </span>
           </div>

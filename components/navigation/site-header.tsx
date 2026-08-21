@@ -12,14 +12,22 @@ function Wordmark() {
   return (
     <Link
       href="/"
-      className="flex items-baseline gap-2"
+      className="group flex items-center gap-2.5"
       aria-label="Cennzo Robotix — Home"
     >
-      <span className="text-[15px] font-semibold tracking-[0.22em] text-bone">
-        CENNZO
+      <span
+        aria-hidden="true"
+        className="relative flex h-6 w-6 items-center justify-center rounded-md bg-gradient-to-br from-accent via-violet-600 to-teal shadow-soft transition-transform duration-500 group-hover:rotate-90"
+      >
+        <span className="h-2 w-2 rounded-sm bg-white/95" />
       </span>
-      <span className="font-mono text-[10px] font-medium tracking-[0.3em] text-mist">
-        ROBOTIX
+      <span className="flex items-baseline gap-2">
+        <span className="text-[15px] font-semibold tracking-[0.22em] text-bone">
+          CENNZO
+        </span>
+        <span className="font-mono text-[10px] font-medium tracking-[0.3em] text-mist">
+          ROBOTIX
+        </span>
       </span>
     </Link>
   );
@@ -87,7 +95,7 @@ export function SiteHeader() {
                 {link.label}
                 <span
                   aria-hidden="true"
-                  className={`absolute -bottom-1.5 left-0 h-px w-full origin-left bg-accent transition-transform duration-300 ease-out ${
+                  className={`absolute -bottom-1.5 left-0 h-[2px] w-full origin-left rounded-full bg-gradient-to-r from-accent via-violet-500 to-teal transition-transform duration-300 ease-out ${
                     isActive(link.href)
                       ? "scale-x-100"
                       : "scale-x-0 group-hover:scale-x-100"
@@ -98,10 +106,10 @@ export function SiteHeader() {
             <Link
               href="/contact"
               aria-current={isActive("/contact") ? "page" : undefined}
-              className={`ml-2 cursor-pointer rounded-full px-5 py-2.5 font-mono text-[11px] uppercase tracking-[0.2em] transition-colors duration-300 ${
+              className={`ml-2 cursor-pointer rounded-full px-5 py-2.5 font-mono text-[11px] uppercase tracking-[0.2em] text-white transition-all duration-300 ${
                 isActive("/contact")
-                  ? "bg-accent text-white"
-                  : "bg-ink text-white hover:bg-[#14274d]"
+                  ? "bg-gradient-to-r from-accent to-violet-600 shadow-lift"
+                  : "bg-gradient-to-r from-ink to-[#1b2a55] hover:from-accent hover:to-violet-600 hover:shadow-lift"
               }`}
             >
               Contact

@@ -43,6 +43,13 @@ function Counter({
   );
 }
 
+const LABEL_HUES = [
+  "text-accent",
+  "text-violet-600",
+  "text-teal",
+  "text-amber-600",
+];
+
 export function StatBand({
   stats,
 }: {
@@ -59,7 +66,15 @@ export function StatBand({
       >
         <div
           aria-hidden="true"
-          className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-[radial-gradient(circle,rgba(21,94,239,0.08),transparent_68%)] blur-2xl"
+          className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-[radial-gradient(circle,rgba(21,94,239,0.09),transparent_68%)] blur-2xl"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute -bottom-28 -left-20 h-64 w-64 rounded-full bg-[radial-gradient(circle,rgba(124,58,237,0.07),transparent_70%)] blur-2xl"
+        />
+        <div
+          aria-hidden="true"
+          className="hairline-spectrum absolute inset-x-0 top-0 h-[3px] opacity-80"
         />
         <div className="relative grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
           {stats.map((stat, i) => (
@@ -76,7 +91,11 @@ export function StatBand({
               <p className="text-5xl font-semibold tracking-tight text-bone md:text-6xl">
                 <Counter value={stat.value} suffix={stat.suffix} />
               </p>
-              <p className="mt-3 font-mono text-[10px] uppercase tracking-[0.22em] text-accent">
+              <p
+                className={`mt-3 font-mono text-[10px] uppercase tracking-[0.22em] ${
+                  LABEL_HUES[i % LABEL_HUES.length]
+                }`}
+              >
                 {stat.label}
               </p>
               <p className="mt-2 text-sm leading-relaxed text-mist">{stat.sub}</p>

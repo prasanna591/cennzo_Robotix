@@ -35,6 +35,21 @@ export function CTASection({
         <BackgroundObjects variant="dark" />
       </motion.div>
 
+      <motion.div aria-hidden="true" className="absolute inset-0">
+        <motion.div
+          style={reduced ? undefined : { y: "-8%" }}
+          className="absolute -left-32 top-[-20%] h-[480px] w-[480px] rounded-full bg-[radial-gradient(circle,rgba(21,94,239,0.22),transparent_65%)] blur-3xl"
+        />
+        <motion.div
+          style={reduced ? undefined : { y: "10%" }}
+          className="absolute -right-24 top-[10%] h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,rgba(124,58,237,0.18),transparent_68%)] blur-3xl"
+        />
+        <motion.div
+          style={reduced ? undefined : { y: "-6%" }}
+          className="absolute bottom-[-25%] left-[30%] h-[380px] w-[380px] rounded-full bg-[radial-gradient(circle,rgba(0,168,168,0.14),transparent_70%)] blur-3xl"
+        />
+      </motion.div>
+
       <div className="relative mx-auto flex w-full max-w-[1440px] flex-col items-center px-6 py-section text-center md:px-10">
         <motion.p
           initial={reduced ? false : { opacity: 0 }}

@@ -44,8 +44,16 @@ export function BackgroundObjects({
         style={reduced ? undefined : { y: yB }}
         className={`absolute -bottom-[28%] -left-[14%] h-[520px] w-[520px] rounded-full blur-3xl ${
           isDark
-            ? "bg-[radial-gradient(circle,rgba(0,168,168,0.11),transparent_68%)]"
-            : "bg-[radial-gradient(circle,rgba(0,168,168,0.07),transparent_68%)]"
+            ? "bg-[radial-gradient(circle,rgba(124,58,237,0.13),transparent_68%)]"
+            : "bg-[radial-gradient(circle,rgba(124,58,237,0.07),transparent_68%)]"
+        }`}
+      />
+      <motion.div
+        style={reduced ? undefined : { y: yDots }}
+        className={`absolute bottom-[6%] right-[4%] h-[300px] w-[300px] rounded-full blur-3xl ${
+          isDark
+            ? "bg-[radial-gradient(circle,rgba(0,168,168,0.10),transparent_70%)]"
+            : "bg-[radial-gradient(circle,rgba(245,158,11,0.07),transparent_70%)]"
         }`}
       />
       <motion.div
