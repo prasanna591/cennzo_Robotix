@@ -1,0 +1,18 @@
+
+> cennzo@0.1.0 dev
+> next dev
+
+▲ Next.js 16.3.1 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://169.254.83.107:3000
+✓ Ready in 408ms
+✓ Running next.config.ts took 35ms
+
+ GET / 200 in 2.3s (next.js: 2.1s, application-code: 194ms)
+ GET / 200 in 37ms (next.js: 6ms, application-code: 31ms)
+ GET / 200 in 10ms (next.js: 4ms, application-code: 6ms)
+ GET / 200 in 7ms (next.js: 3ms, application-code: 4ms)
+ GET / 200 in 29ms (next.js: 2ms, application-code: 27ms)
+ GET / 200 in 7ms (next.js: 2ms, application-code: 5ms)
+ GET / 200 in 30ms (next.js: 2ms, application-code: 27ms)
+ GET / 200 in 27ms (next.js: 2ms, application-code: 25ms)
