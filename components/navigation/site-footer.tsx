@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import {
   FOOTER_EXPLORE,
   FOOTER_COMPANY,
@@ -10,6 +11,26 @@ import {
 import { DURATION, EASE, viewportOnce } from "@/lib/animations";
 
 const SOCIALS = ["LinkedIn", "YouTube", "Instagram", "X"];
+
+function MissionClock() {
+  const reduced = useReducedMotion();
+  const [utc, setUtc] = useState("--:--:--");
+
+  useEffect(() => {
+    if (reduced) return;
+    const tick = () => setUtc(new Date().toISOString().slice(11, 19));
+    tick();
+    const id = setInterval(tick, 1000);
+    return () => clearInterval(id);
+  }, [reduced]);
+
+  return (
+    <p className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-faint tabular-nums">
+      <span aria-hidden="true" className="h-1 w-1 rounded-full bg-teal" />
+      UTC {utc} · 24.71°N 46.68°E
+    </p>
+  );
+}
 
 function FooterColumn({
   title,
@@ -115,6 +136,7 @@ export function SiteFooter() {
           <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-faint">
             © 2026 Cennzo Robotix. All rights reserved.
           </p>
+          <MissionClock />
           <p className="max-w-md font-mono text-[10px] normal-case leading-relaxed tracking-[0.05em] text-faint">
             The future belongs to machines that can understand the world, move
             through it and act within it.

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, JetBrains_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/navigation/site-header";
 import { SiteFooter } from "@/components/navigation/site-footer";
@@ -8,6 +8,8 @@ import { Cursor } from "@/components/technical/cursor";
 import { Preloader } from "@/components/motion/preloader";
 import { SmoothScroll } from "@/components/motion/smooth-scroll";
 import { BackToTop } from "@/components/navigation/back-to-top";
+import { FilmGrain } from "@/components/decor/film-grain";
+import { CircuitSpine } from "@/components/decor/circuit-spine";
 
 const geistSans = Geist({
   subsets: ["latin"],
@@ -15,9 +17,15 @@ const geistSans = Geist({
   display: "swap",
 });
 
-const jetbrainsMono = JetBrains_Mono({
+const geistMono = Geist_Mono({
   subsets: ["latin"],
-  variable: "--font-jetbrains-mono",
+  variable: "--font-geist-mono",
+  display: "swap",
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-space-grotesk",
   display: "swap",
 });
 
@@ -71,7 +79,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${jetbrainsMono.variable}`}
+      className={`${geistSans.variable} ${geistMono.variable} ${spaceGrotesk.variable}`}
     >
       <body>
         <Preloader />
@@ -79,9 +87,11 @@ export default function RootLayout({
         <ScrollProgress />
         <Cursor />
         <SiteHeader />
+        <CircuitSpine />
         {children}
         <SiteFooter />
         <BackToTop />
+        <FilmGrain />
       </body>
     </html>
   );

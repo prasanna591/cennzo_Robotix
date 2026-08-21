@@ -112,7 +112,7 @@ export function VisionMission() {
                   <OrbitIcon />
                   Vision
                 </span>
-                <span className="font-mono text-[11px] tracking-[0.25em] text-white/30">02</span>
+                <span className="font-mono text-[11px] tracking-[0.25em] text-white/40">02</span>
               </div>
               <h3 className="mt-10 max-w-md text-2xl font-semibold leading-snug tracking-tight md:text-[1.9rem]">
                 A world where robots and humanity
@@ -126,7 +126,7 @@ export function VisionMission() {
                 resilience, so people are free to aim higher.
               </p>
             </div>
-            <div className="relative mt-12 flex items-center gap-3 border-t border-white/[0.08] pt-6 font-mono text-[9px] uppercase tracking-[0.22em] text-white/35">
+            <div className="relative mt-12 flex items-center gap-3 border-t border-white/[0.08] pt-6 font-mono text-[9px] uppercase tracking-[0.22em] text-white/45">
               <span aria-hidden="true" className="h-1 w-1 rounded-full bg-teal" />
               Beyond the horizon
             </div>

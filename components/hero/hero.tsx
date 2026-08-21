@@ -2,8 +2,9 @@
 
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { Button } from "@/components/buttons/button";
-import { MaskLines } from "@/components/motion/mask-lines";
+import { BlurLines } from "@/components/motion/blur-lines";
 import { BackgroundObjects } from "@/components/decor/background-objects";
+import { Telemetry } from "@/components/technical/telemetry";
 import { useReady } from "@/hooks/use-ready";
 import { DURATION, EASE } from "@/lib/animations";
 
@@ -177,11 +178,11 @@ export function Hero() {
         </motion.p>
 
         <h1 className="text-hero font-semibold tracking-[-0.02em] text-bone">
-          <MaskLines
+          <BlurLines
             key={ready ? "ready" : "hold"}
             lines={["The Humanoid For", "The *Hard Places.*"]}
             delay={0.15}
-            animateOnLoad
+            start={Boolean(ready) || Boolean(reduced)}
             lineClassName="text-bone"
           />
         </h1>
@@ -220,9 +221,7 @@ export function Hero() {
               </span>
             ))}
           </p>
-          <p className="hidden font-mono text-[10px] uppercase tracking-[0.25em] text-faint lg:block">
-            One platform. Multiple mission environments.
-          </p>
+          <Telemetry />
           <ScrollCue />
         </div>
         </motion.div>

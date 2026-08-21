@@ -5,6 +5,7 @@ import { Button } from "@/components/buttons/button";
 import { Magnetic } from "@/components/motion/magnetic";
 import { MaskLines } from "@/components/motion/mask-lines";
 import { BackgroundObjects } from "@/components/decor/background-objects";
+import { DecodeText } from "@/components/motion/decode-text";
 import { DURATION, EASE, viewportOnce } from "@/lib/animations";
 
 export function CTASection({
@@ -59,7 +60,7 @@ export function CTASection({
           className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.3em] text-mist"
         >
           <span aria-hidden="true" className="h-px w-8 bg-teal" />
-          {eyebrow}
+          <DecodeText text={eyebrow} />
           <span aria-hidden="true" className="h-px w-8 bg-teal" />
         </motion.p>
 

@@ -88,7 +88,7 @@ export function StatBand({
                 i === 0 ? "lg:border-l-0 lg:pl-0" : ""
               }`}
             >
-              <p className="text-5xl font-semibold tracking-tight text-bone md:text-6xl">
+              <p className="text-gradient text-5xl font-semibold tracking-tight md:text-6xl">
                 <Counter value={stat.value} suffix={stat.suffix} />
               </p>
               <p

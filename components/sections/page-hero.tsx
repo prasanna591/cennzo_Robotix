@@ -4,6 +4,8 @@ import { useRef } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import type { ReactNode } from "react";
 import { MaskLines } from "@/components/motion/mask-lines";
+import { BlurLines } from "@/components/motion/blur-lines";
+import { DecodeText } from "@/components/motion/decode-text";
 import { BackgroundObjects } from "@/components/decor/background-objects";
 import { useReady } from "@/hooks/use-ready";
 import { DURATION, EASE } from "@/lib/animations";
@@ -79,15 +81,15 @@ export function PageHero({
           className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.25em] text-mist"
         >
           <span aria-hidden="true" className="h-px w-8 bg-accent" />
-          {eyebrow}
+          <DecodeText text={eyebrow} />
         </motion.p>
 
         <h1 className="mt-8 max-w-5xl text-display font-semibold leading-[1.04] tracking-[-0.02em] text-bone md:text-hero">
-          <MaskLines
+          <BlurLines
             key={ready ? "ready" : "hold"}
             lines={lines}
             delay={0.15}
-            animateOnLoad
+            start={Boolean(ready) || Boolean(reduced)}
             lineClassName="text-bone"
           />
         </h1>

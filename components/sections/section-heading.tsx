@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 import { motion } from "framer-motion";
 import { MaskLines } from "@/components/motion/mask-lines";
 import { Reveal } from "@/components/motion/reveal";
+import { DecodeText } from "@/components/motion/decode-text";
 import { lineDraw, viewportOnce } from "@/lib/animations";
 
 export function SectionHeading({
@@ -38,7 +39,7 @@ export function SectionHeading({
             viewport={viewportOnce}
             className="h-px w-8 origin-left bg-accent"
           />
-          {eyebrow}
+          <DecodeText text={eyebrow} />
           {centered && (
             <motion.span
               aria-hidden="true"

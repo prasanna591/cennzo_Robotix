@@ -6,8 +6,8 @@
   --color-charcoal: #eef1f4;
   --color-steel: #e4e8ed;
   --color-bone: #111318;
-  --color-mist: #4b5563;
-  --color-faint: #7a8491;
+  --color-mist: #475467;
+  --color-faint: #6b7480;
   --color-accent: #155eef;
   --color-accent-dim: #0e44c9;
   --color-ink: #0b1220;
@@ -17,8 +17,8 @@
   --shadow-lift: 0 2px 4px rgba(16, 24, 40, 0.05), 0 16px 40px rgba(16, 24, 40, 0.1);
 
   --text-hero: clamp(2.75rem, 8.5vw, 7.5rem);
-  --text-hero--line-height: 0.98;
-  --text-hero--letter-spacing: -0.03em;
+  --text-hero--line-height: 0.97;
+  --text-hero--letter-spacing: -0.038em;
   --text-display: clamp(2.25rem, 5.5vw, 4.5rem);
   --text-display--line-height: 1.02;
   --text-display--letter-spacing: -0.025em;
@@ -43,7 +43,26 @@
 
 @theme inline {
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --font-display: var(--font-space-grotesk), var(--font-geist-sans), ui-sans-serif, sans-serif;
+}
+
+/* ---- Display typography ---- */
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+.dark-section ::selection {
+  background-color: rgba(0, 168, 168, 0.4);
+  color: #ffffff;
 }
 
 html {
@@ -216,6 +235,33 @@ html.lenis body {
     var(--color-teal),
     transparent
   );
+}
+
+/* ---- Film grain overlay ---- */
+.grain-layer {
+  position: fixed;
+  inset: -100%;
+  z-index: 120;
+  pointer-events: none;
+  opacity: 0.038;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: grain-shift 1.1s steps(8) infinite;
+}
+@keyframes grain-shift {
+  0%, 100% { transform: translate(0, 0); }
+  12.5% { transform: translate(-2%, 3%); }
+  25% { transform: translate(3%, -2%); }
+  37.5% { transform: translate(-3%, -3%); }
+  50% { transform: translate(2%, 2%); }
+  62.5% { transform: translate(-1%, 3%); }
+  75% { transform: translate(3%, 1%); }
+  87.5% { transform: translate(-2%, -1%); }
+}
+
+/* ---- Telemetry blink ---- */
+@keyframes telemetry-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.25; }
 }
 
 /* ---- Cursor spotlight cards ---- */
