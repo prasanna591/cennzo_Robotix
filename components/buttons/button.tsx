@@ -22,13 +22,14 @@ function ArrowIcon() {
 }
 
 const BASE =
-  "group inline-flex items-center gap-3 px-7 py-4 text-xs font-medium uppercase tracking-[0.14em] transition-colors duration-300";
+  "btn-sheen group inline-flex items-center gap-3 rounded-xl px-7 py-4 text-xs font-medium uppercase tracking-[0.14em] transition-colors duration-300";
 
 const VARIANTS = {
-  primary:
-    "bg-ember text-void hover:bg-[#ff6a45] cursor-pointer",
+  primary: "btn-primary text-white cursor-pointer",
+  light:
+    "bg-white text-[#0b1220] shadow-soft hover:bg-charcoal cursor-pointer",
   ghost:
-    "border border-steel text-bone hover:border-faint hover:bg-white/[0.04] cursor-pointer",
+    "border border-steel bg-graphite/60 text-bone hover:border-faint hover:bg-graphite cursor-pointer",
 } as const;
 
 export function Button({

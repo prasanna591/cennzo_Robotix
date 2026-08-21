@@ -1,15 +1,20 @@
 @import "tailwindcss";
 
 @theme {
-  --color-void: #0a0a0b;
-  --color-graphite: #121215;
-  --color-charcoal: #1a1a1f;
-  --color-steel: #26262d;
-  --color-bone: #f5f5f7;
-  --color-mist: #9c9ca6;
-  --color-faint: #62626c;
-  --color-ember: #ff4d1c;
-  --color-ember-dim: #c73a15;
+  --color-void: #f7f8fa;
+  --color-graphite: #ffffff;
+  --color-charcoal: #eef1f4;
+  --color-steel: #e4e8ed;
+  --color-bone: #111318;
+  --color-mist: #4b5563;
+  --color-faint: #7a8491;
+  --color-accent: #155eef;
+  --color-accent-dim: #0e44c9;
+  --color-ink: #0b1220;
+  --color-teal: #00a8a8;
+
+  --shadow-soft: 0 1px 2px rgba(16, 24, 40, 0.04), 0 8px 24px rgba(16, 24, 40, 0.06);
+  --shadow-lift: 0 2px 4px rgba(16, 24, 40, 0.05), 0 16px 40px rgba(16, 24, 40, 0.1);
 
   --text-hero: clamp(2.75rem, 8.5vw, 7.5rem);
   --text-hero--line-height: 0.98;
@@ -55,12 +60,12 @@ body {
 }
 
 ::selection {
-  background-color: var(--color-ember);
-  color: var(--color-void);
+  background-color: var(--color-accent);
+  color: #ffffff;
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-ember);
+  outline: 2px solid var(--color-accent);
   outline-offset: 3px;
 }
 
@@ -89,4 +94,111 @@ body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+/* ---- Lenis smooth scroll ---- */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* ---- Marquee ---- */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.animate-marquee {
+  animation: marquee 48s linear infinite;
+}
+.animate-marquee-reverse {
+  animation: marquee 48s linear infinite reverse;
+}
+.marquee-hover:hover .animate-marquee,
+.marquee-hover:hover .animate-marquee-reverse {
+  animation-play-state: paused;
+}
+
+/* ---- Dark technical sections (scoped token override) ---- */
+.dark-section {
+  --color-void: #0b1220;
+  --color-graphite: #101a30;
+  --color-charcoal: #14203a;
+  --color-steel: #223052;
+  --color-bone: #f5f7fb;
+  --color-mist: #cbd5e1;
+  --color-faint: #8a97ac;
+  background-color: #0b1220;
+  color: #f5f7fb;
+}
+
+/* ---- Primary button (ink) ---- */
+.btn-primary {
+  background-color: var(--color-ink);
+  transition: background-color 0.35s var(--ease-exit),
+    box-shadow 0.4s var(--ease-exit), transform 0.35s var(--ease-exit);
+}
+.btn-primary:hover {
+  background-color: #14274d;
+  box-shadow: 0 10px 32px rgba(21, 94, 239, 0.22);
+}
+.btn-primary:active {
+  transform: translateY(1px);
+}
+
+/* ---- Button sheen sweep ---- */
+.btn-sheen {
+  position: relative;
+  overflow: hidden;
+}
+.btn-sheen::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 35%;
+  transform: skewX(-20deg) translateX(-160%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(245, 245, 247, 0.22),
+    transparent
+  );
+  transition: transform 0.7s var(--ease-exit);
+  pointer-events: none;
+}
+.btn-sheen:hover::after {
+  transform: skewX(-20deg) translateX(420%);
+}
+
+/* ---- Cursor spotlight cards ---- */
+.spotlight-card {
+  position: relative;
+}
+.spotlight-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.45s ease;
+  background: radial-gradient(
+    340px circle at var(--mx, -999px) var(--my, -999px),
+    rgba(21, 94, 239, 0.07),
+    transparent 65%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+.spotlight-group:hover .spotlight-card::before {
+  opacity: 1;
 }

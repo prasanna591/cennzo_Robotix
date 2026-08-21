@@ -84,3 +84,40 @@ export const staggerContainer = (
 });
 
 export const viewportOnce = { once: true, margin: "-12% 0px" } as const;
+
+export const pageEnter: Variants = {
+  hidden: { opacity: 0, y: 18 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: DURATION.standard, ease: EASE.out },
+  },
+};
+
+export const drawStroke: Variants = {
+  hidden: { pathLength: 0, opacity: 0 },
+  visible: (i: number = 0) => ({
+    pathLength: 1,
+    opacity: 1,
+    transition: {
+      pathLength: {
+        duration: DURATION.cinematic + i * 0.15,
+        ease: EASE.mechanical,
+        delay: i * 0.12,
+      },
+      opacity: { duration: 0.2, delay: i * 0.12 },
+    },
+  }),
+};
+
+export const pulseDot: Variants = {
+  visible: {
+    scale: [1, 1.35, 1],
+    opacity: [1, 0.55, 1],
+    transition: {
+      duration: 2.4,
+      ease: "easeInOut",
+      repeat: Infinity,
+    },
+  },
+};

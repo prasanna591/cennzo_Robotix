@@ -1,6 +1,13 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import { SiteHeader } from "@/components/navigation/site-header";
+import { SiteFooter } from "@/components/navigation/site-footer";
+import { ScrollProgress } from "@/components/technical/scroll-progress";
+import { Cursor } from "@/components/technical/cursor";
+import { Preloader } from "@/components/motion/preloader";
+import { SmoothScroll } from "@/components/motion/smooth-scroll";
+import { BackToTop } from "@/components/navigation/back-to-top";
 
 const geistSans = Geist({
   subsets: ["latin"],
@@ -51,7 +58,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0a0a0b",
+  themeColor: "#f7f8fa",
   width: "device-width",
   initialScale: 1,
 };
@@ -66,7 +73,16 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${jetbrainsMono.variable}`}
     >
-      <body>{children}</body>
+      <body>
+        <Preloader />
+        <SmoothScroll />
+        <ScrollProgress />
+        <Cursor />
+        <SiteHeader />
+        {children}
+        <SiteFooter />
+        <BackToTop />
+      </body>
     </html>
   );
 }
