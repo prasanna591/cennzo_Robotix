@@ -7,6 +7,7 @@ import { FlowStack } from "@/components/technical/flow-stack";
 import { MediaFrame } from "@/components/media/media-frame";
 import { SystemNav } from "@/components/technology/system-nav";
 import { SpecList } from "@/components/technology/spec-list";
+import { SystemMap } from "@/components/technology/system-map";
 
 export const metadata: Metadata = {
   title: "Humanoid Robotics Technology | Cennzo Robotix",
@@ -22,19 +23,6 @@ type TechSystem = {
   points?: string[];
   layers?: string[];
   note?: string;
-};
-
-type SystemStyle = { band: string; teal: boolean; dark: boolean };
-
-const STYLE: Record<string, SystemStyle> = {
-  mechanical: { band: "bg-graphite", teal: false, dark: false },
-  actuation: { band: "", teal: false, dark: false },
-  perception: { band: "bg-charcoal/40", teal: true, dark: false },
-  "compute-ai": { band: "", teal: true, dark: true },
-  control: { band: "bg-graphite", teal: false, dark: false },
-  power: { band: "", teal: false, dark: false },
-  thermal: { band: "bg-charcoal/40", teal: true, dark: false },
-  software: { band: "", teal: true, dark: true },
 };
 
 const SYSTEMS: TechSystem[] = [
@@ -224,24 +212,26 @@ export default function TechnologyPage() {
         </div>
       </section>
 
+      <SystemMap />
+
       <div className="relative">
         <SystemNav systems={NAV} />
         <div className="h-10" />
 
         {SYSTEMS.map((system) => {
-          const style = STYLE[system.id] ?? { band: "", teal: false, dark: false };
+          const dark = system.id === "compute-ai";
           return (
             <section
               key={system.id}
               id={system.id}
-              className={`relative scroll-mt-24 overflow-hidden border-b border-black/[0.08] ${style.band} ${
-                style.dark ? "dark-section" : ""
+              className={`relative scroll-mt-24 overflow-hidden border-b border-black/[0.08] ${
+                dark ? "dark-section" : ""
               }`}
             >
               <div
                 aria-hidden="true"
                 className={`absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent ${
-                  style.teal ? "via-teal/60" : "via-accent/60"
+                  dark ? "via-teal/60" : "via-accent/40"
                 } to-transparent`}
               />
               <Parallax
@@ -251,33 +241,20 @@ export default function TechnologyPage() {
                 <span
                   aria-hidden="true"
                   className={`block font-mono text-[16rem] font-semibold leading-none ${
-                    style.dark ? "text-white/[0.05]" : "text-black/[0.05]"
+                    dark ? "text-white/[0.05]" : "text-black/[0.05]"
                   }`}
                 >
                   {system.index}
                 </span>
               </Parallax>
 
-              {!style.dark && style.band === "" && (
-                <div
-                  aria-hidden="true"
-                  className={`absolute -left-32 top-1/3 h-96 w-96 rounded-full blur-3xl ${
-                    style.teal
-                      ? "bg-[radial-gradient(circle,rgba(0,168,168,0.07),transparent_68%)]"
-                      : "bg-[radial-gradient(circle,rgba(21,94,239,0.06),transparent_68%)]"
-                  }`}
-                />
-              )}
-
               <div className="relative mx-auto grid w-full max-w-[1440px] gap-10 px-6 py-20 md:px-10 lg:grid-cols-[1fr_1.2fr] lg:gap-20">
                 <Reveal>
                   <p
                     className={`inline-flex items-center gap-3 rounded-full border px-4 py-1.5 font-mono text-[11px] tracking-[0.3em] ${
-                      style.dark
+                      dark
                         ? "border-teal/30 bg-teal/[0.08] text-teal"
-                        : style.teal
-                          ? "border-teal/25 bg-teal/[0.05] text-teal"
-                          : "border-accent/25 bg-accent/[0.05] text-accent"
+                        : "border-accent/25 bg-accent/[0.05] text-accent"
                     }`}
                   >
                     {system.index}
@@ -294,17 +271,13 @@ export default function TechnologyPage() {
                   {system.layers ? (
                     <FlowStack items={system.layers} />
                   ) : (
-                    <SpecList
-                      points={system.points ?? []}
-                      teal={style.teal}
-                      dark={style.dark}
-                    />
+                    <SpecList points={system.points ?? []} dark={dark} />
                   )}
                   {system.note && (
                     <Reveal delay={0.1}>
                       <p
                         className={`mt-8 max-w-xl border-l-2 pl-6 text-sm leading-relaxed ${
-                          style.dark
+                          dark
                             ? "border-teal/70 text-white/75"
                             : "border-accent/60 text-bone"
                         }`}
