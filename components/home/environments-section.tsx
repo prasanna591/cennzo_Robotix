@@ -1,10 +1,26 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { MaskLines } from "@/components/motion/mask-lines";
 import { Reveal } from "@/components/motion/reveal";
 import { drawStroke, viewportOnce } from "@/lib/animations";
 import { ENVIRONMENTS } from "@/lib/content/site";
+
+const ENV_KEYS = {
+  earth: { name: "earthName", domain: "earthDomain", desc: "earthDesc" },
+  water: { name: "waterName", domain: "waterDomain", desc: "waterDesc" },
+  fire: { name: "fireName", domain: "fireDomain", desc: "fireDesc" },
+  air: { name: "airName", domain: "airDomain", desc: "airDesc" },
+  space: { name: "spaceName", domain: "spaceDomain", desc: "spaceDesc" },
+} as const;
+
+const STATUS_KEYS: Record<string, string> = {
+  "PRIMARY DEVELOPMENT": "statusPrimary",
+  "ENGINEERING ROADMAP": "statusRoadmap",
+  RESEARCH: "statusResearch",
+  "LONG-TERM VISION": "statusVision",
+};
 
 const STATUS_STYLE: Record<string, string> = {
   "PRIMARY DEVELOPMENT": "border-accent/30 bg-accent/[0.06] text-accent",
@@ -127,6 +143,7 @@ function EnvironmentGlyph({ id }: { id: string }) {
 
 export function EnvironmentsSection() {
   const reduced = useReducedMotion();
+  const tHome = useTranslations("home");
 
   return (
     <section id="environments" className="relative border-b border-black/[0.08]">
@@ -139,17 +156,17 @@ export function EnvironmentsSection() {
         <Reveal mode="fadeIn">
           <p className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.25em] text-mist">
             <span aria-hidden="true" className="h-px w-8 bg-accent" />
-            The Journey — Five Environments
+            {tHome("envEyebrow")}
           </p>
         </Reveal>
 
         <h2 className="mt-8 max-w-3xl text-display font-semibold tracking-[-0.02em] text-bone">
-          <MaskLines lines={["One Platform.", "Multiple Worlds."]} lineClassName="text-bone" />
+          <MaskLines lines={[tHome("envTitle1"), tHome("envTitle2")]} lineClassName="text-bone" />
         </h2>
 
         <p className="mt-6 max-w-xl font-mono text-[10px] uppercase leading-loose tracking-[0.22em] text-faint">
-          Scroll to travel the roadmap
-          <span className="text-accent"> — Earth to Space.</span>
+          {tHome("envScrollA")}
+          <span className="text-accent">{tHome("envScrollB")}</span>
         </p>
 
         <div className="mt-16">
@@ -179,16 +196,16 @@ export function EnvironmentsSection() {
                     }`}
                   >
                     <span aria-hidden="true" className="h-1 w-1 rounded-full bg-current" />
-                    {env.status}
+                    {tHome(STATUS_KEYS[env.status] ?? "statusRoadmap")}
                   </span>
                   <p className="mt-8 font-mono text-[10px] uppercase tracking-[0.25em] text-faint">
-                    {env.index} / 05 — {env.domain}
+                    {env.index} / 05 — {tHome(ENV_KEYS[env.id as keyof typeof ENV_KEYS].domain)}
                   </p>
                   <h3 className="mt-4 text-4xl font-semibold tracking-tight text-bone md:text-5xl">
-                    {env.name}
+                    {tHome(ENV_KEYS[env.id as keyof typeof ENV_KEYS].name)}
                   </h3>
                   <p className="mt-5 max-w-md text-body leading-relaxed text-mist">
-                    {env.description}
+                    {tHome(ENV_KEYS[env.id as keyof typeof ENV_KEYS].desc)}
                   </p>
                   <span
                     aria-hidden="true"
@@ -213,10 +230,8 @@ export function EnvironmentsSection() {
         </div>
 
         <Reveal mode="fadeIn">
-          <p className="mx-auto mt-16 max-w-2xl text-center font-mono text-[10px] leading-relaxed tracking-[0.08em] text-faint">
-            WAFEE&rsquo;s multi-environment vision represents a long-term
-            engineering roadmap. Individual environmental capabilities depend on
-            mission-specific configuration, validation and certification.
+          <p className="mx-auto mt-12 max-w-2xl text-center font-mono text-[10px] leading-relaxed tracking-[0.08em] text-faint">
+            {tHome("envDisclaimer")}
           </p>
         </Reveal>
       </div>

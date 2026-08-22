@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/buttons/button";
 import { BlurLines } from "@/components/motion/blur-lines";
 import { BackgroundObjects } from "@/components/decor/background-objects";
@@ -8,7 +9,7 @@ import { Telemetry } from "@/components/technical/telemetry";
 import { useReady } from "@/hooks/use-ready";
 import { DURATION, EASE } from "@/lib/animations";
 
-const ENVIRONMENTS = ["EARTH", "WATER", "FIRE", "AIR", "SPACE"];
+const ENVIRONMENT_KEYS = ["envEarth", "envWater", "envFire", "envAir", "envSpace"] as const;
 
 function Atmosphere() {
   const reduced = useReducedMotion();
@@ -66,10 +67,11 @@ function Atmosphere() {
 }
 
 function ScrollCue() {
+  const t = useTranslations("hero");
   return (
     <div className="flex items-center gap-3">
       <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-faint">
-        Scroll
+        {t("scroll")}
       </span>
       <span className="relative h-px w-10 overflow-hidden bg-black/10">
         <motion.span
@@ -87,65 +89,15 @@ function ScrollCue() {
   );
 }
 
-function OrbitDecor({ y }: { y?: unknown }) {
-  const reduced = useReducedMotion();
-  return (
-    <motion.div
-      aria-hidden="true"
-      style={reduced ? undefined : { y: y as never }}
-      className="pointer-events-none absolute -right-[12%] top-[8%] hidden h-[720px] w-[720px] lg:block"
-    >
-      <motion.svg
-        viewBox="0 0 400 400"
-        fill="none"
-        className="h-full w-full"
-        initial={{ opacity: 0, scale: 0.92 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 2, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
-      >
-        <motion.g
-          animate={reduced ? undefined : { rotate: 360 }}
-          transition={{ duration: 90, repeat: Infinity, ease: "linear" }}
-          style={{ transformOrigin: "200px 200px" }}
-        >
-          <circle cx="200" cy="200" r="150" stroke="rgba(17,19,24,0.08)" strokeDasharray="3 7" />
-          <circle cx="350" cy="200" r="4" fill="rgba(21,94,239,0.55)" />
-          <circle cx="350" cy="200" r="9" stroke="rgba(21,94,239,0.25)" />
-        </motion.g>
-        <motion.g
-          animate={reduced ? undefined : { rotate: -360 }}
-          transition={{ duration: 140, repeat: Infinity, ease: "linear" }}
-          style={{ transformOrigin: "200px 200px" }}
-        >
-          <circle cx="200" cy="200" r="110" stroke="rgba(17,19,24,0.06)" />
-          <circle cx="200" cy="90" r="3" fill="rgba(0,168,168,0.5)" />
-        </motion.g>
-        <motion.g
-          animate={reduced ? undefined : { rotate: 360 }}
-          transition={{ duration: 200, repeat: Infinity, ease: "linear" }}
-          style={{ transformOrigin: "200px 200px" }}
-        >
-          <circle cx="200" cy="200" r="185" stroke="rgba(17,19,24,0.05)" strokeDasharray="1 9" />
-        </motion.g>
-        <line x1="200" y1="8" x2="200" y2="-6" stroke="rgba(17,19,24,0.16)" strokeWidth="1" />
-        <line x1="200" y1="392" x2="200" y2="406" stroke="rgba(17,19,24,0.16)" strokeWidth="1" />
-        <line x1="8" y1="200" x2="-6" y2="200" stroke="rgba(17,19,24,0.16)" strokeWidth="1" />
-        <line x1="392" y1="200" x2="406" y2="200" stroke="rgba(17,19,24,0.16)" strokeWidth="1" />
-        <circle cx="200" cy="200" r="2.5" fill="rgba(21,94,239,0.5)" />
-      </motion.svg>
-    </motion.div>
-  );
-}
-
 export function Hero() {
   const reduced = useReducedMotion();
   const ready = useReady();
+  const t = useTranslations("hero");
 
   const { scrollYProgress } = useScroll();
   const contentY = useTransform(scrollYProgress, [0, 0.3], [0, -110]);
   const contentOpacity = useTransform(scrollYProgress, [0, 0.24], [1, 0]);
   const barOpacity = useTransform(scrollYProgress, [0, 0.18], [1, 0]);
-  const decorY = useTransform(scrollYProgress, [0, 0.3], [0, -80]);
 
   const enter = (delay: number) =>
     reduced
@@ -160,49 +112,47 @@ export function Hero() {
     <section className="relative flex min-h-svh flex-col overflow-hidden">
       <Atmosphere />
       <BackgroundObjects variant="light" />
-      <OrbitDecor y={decorY} />
 
       <motion.div
         style={reduced ? undefined : { y: contentY, opacity: contentOpacity }}
-        className="relative mx-auto flex w-full max-w-[1440px] flex-1 flex-col justify-center px-6 pb-16 pt-[120px] md:px-10"
+        className="relative mx-auto flex w-full max-w-[1440px] flex-1 flex-col justify-center px-6 pb-14 pt-[120px] md:px-10"
       >
-        <motion.p
-          {...enter(0.2)}
-          className="mb-8 flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.25em] text-mist"
-        >
-          <span className="relative flex h-1.5 w-1.5">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-60" />
-            <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent" />
-          </span>
-          WAFEE — Unified Multi-Environment Humanoid Platform
-        </motion.p>
+        <div>
+          <motion.p
+            {...enter(0.2)}
+            className="mb-8 flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.25em] text-mist"
+          >
+            <span className="relative flex h-1.5 w-1.5">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-60" />
+              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent" />
+            </span>
+            {t("eyebrow")}
+          </motion.p>
 
-        <h1 className="text-hero font-semibold tracking-[-0.02em] text-bone">
-          <BlurLines
-            key={ready ? "ready" : "hold"}
-            lines={["The Humanoid For", "The *Hard Places.*"]}
-            delay={0.15}
-            start={Boolean(ready) || Boolean(reduced)}
-            lineClassName="text-bone"
-          />
-        </h1>
+          <h1 className="text-hero font-semibold tracking-[-0.02em] text-bone">
+            <BlurLines
+              key={ready ? "ready" : "hold"}
+              lines={[t("line1"), t("line2")]}
+              delay={0.15}
+              start={Boolean(ready) || Boolean(reduced)}
+              lineClassName="text-bone"
+            />
+          </h1>
 
-        <motion.p
-          {...enter(0.55)}
-          className="mt-8 max-w-xl text-subhead text-mist"
-        >
-          WAFEE is Cennzo Robotix&rsquo;s unified multi-environment humanoid
-          platform — engineered to bring intelligent mobility, perception and
-          manipulation into environments where conventional robots reach their
-          limits.
-        </motion.p>
+          <motion.p
+            {...enter(0.55)}
+            className="mt-8 max-w-2xl text-subhead text-mist"
+          >
+            {t("lede")}
+          </motion.p>
 
-        <motion.div {...enter(0.7)} className="mt-12 flex flex-wrap gap-4">
-          <Button href="/wafee">Explore WAFEE</Button>
-          <Button href="/contact" variant="ghost">
-            Build the Future With Us
-          </Button>
-        </motion.div>
+          <motion.div {...enter(0.7)} className="mt-12 flex flex-wrap gap-4">
+            <Button href="/wafee">{t("ctaPrimary")}</Button>
+            <Button href="/contact" variant="ghost">
+              {t("ctaSecondary")}
+            </Button>
+          </motion.div>
+        </div>
       </motion.div>
 
       <motion.div
@@ -212,10 +162,10 @@ export function Hero() {
         <motion.div {...enter(0.85)}>
         <div className="mx-auto flex w-full max-w-[1440px] items-center justify-between gap-6 px-6 py-5 md:px-10">
           <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-faint sm:text-[11px]">
-            {ENVIRONMENTS.map((env, i) => (
-              <span key={env}>
-                <span className="text-mist">{env}</span>
-                {i < ENVIRONMENTS.length - 1 && (
+            {ENVIRONMENT_KEYS.map((key, i) => (
+              <span key={key}>
+                <span className="text-mist">{t(key)}</span>
+                {i < ENVIRONMENT_KEYS.length - 1 && (
                   <span className="mx-2 text-black/25">/</span>
                 )}
               </span>

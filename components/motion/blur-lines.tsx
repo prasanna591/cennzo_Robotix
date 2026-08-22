@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import { splitGraphemes } from "@/lib/graphemes";
 import { DURATION, EASE } from "@/lib/animations";
 
 function parseWord(word: string): { text: string; tone: string } {
@@ -39,7 +40,7 @@ export function BlurLines({
             const { text, tone } = parseWord(rawWord);
             return (
               <span key={`${rawWord}-${li}`} className="inline-block whitespace-nowrap">
-                {text.split("").map((ch) => {
+                {splitGraphemes(text).map((ch) => {
                   const i = charIndex++;
                   const d = delay + li * 0.14 + i * stagger;
                   return reduced ? (

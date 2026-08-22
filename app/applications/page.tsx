@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 import { PageHero } from "@/components/sections/page-hero";
 import { SectionHeading } from "@/components/sections/section-heading";
 import { CTASection } from "@/components/sections/cta-section";
@@ -10,11 +11,10 @@ import { SpecList } from "@/components/technology/spec-list";
 import { DomainGrid } from "@/components/applications/domain-grid";
 import { ScaleMedia } from "@/components/applications/scale-media";
 
-export const metadata: Metadata = {
-  title: "Humanoid Robots for Industry, Hazardous Environments & Infrastructure | Cennzo Robotix",
-  description:
-    "Potential WAFEE applications across industrial inspection, energy, disaster response, hazardous environments, marine, mining, logistics, defense research and space robotics.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("appsPage.meta");
+  return { title: t("title"), description: t("description") };
+}
 
 type Tone = {
   chip: string;
@@ -110,153 +110,27 @@ const TONES: Record<string, Tone> = {
   },
 };
 
-const DOMAINS = [
-  {
-    id: "industrial-inspection",
-    index: "01",
-    name: "Industrial Inspection",
-    tag: "Inspect",
-    intro:
-      "Inspect equipment, structures and facilities while reducing exposure to hazardous conditions.",
-    missions: [
-      "Plant inspection",
-      "Asset monitoring",
-      "Valve and control interaction",
-      "Remote visual inspection",
-      "Thermal inspection",
-      "Routine maintenance support",
-    ],
-  },
-  {
-    id: "energy-utilities",
-    index: "02",
-    name: "Energy & Utilities",
-    tag: "Sustain",
-    intro:
-      "Robotic systems can support inspection and maintenance across power, energy and utility infrastructure.",
-    missions: [
-      "Power plant inspection",
-      "Substation inspection",
-      "Pipeline environments",
-      "Renewable energy infrastructure",
-      "Remote maintenance support",
-    ],
-  },
-  {
-    id: "disaster-response",
-    index: "03",
-    name: "Disaster Response",
-    tag: "Respond",
-    intro:
-      "After earthquakes, fires, industrial accidents or structural failures, access can be unpredictable and dangerous. WAFEE's humanoid form factor is intended to support operations in environments designed around humans.",
-    missions: [
-      "Search support",
-      "Hazard mapping",
-      "Remote inspection",
-      "Object manipulation",
-      "Access route assessment",
-      "Communication relay",
-    ],
-  },
-  {
-    id: "fire-hazardous",
-    index: "04",
-    name: "Fire & Hazardous Environments",
-    tag: "Withstand",
-    intro:
-      "Extreme environments require specialized robotic architectures. WAFEE's long-term roadmap includes high-temperature mission configurations using specialized thermal protection, insulation and cooling architectures.",
-    missions: [] as string[],
-    note: "Temperature ratings will be published only after validation under defined exposure conditions.",
-  },
-  {
-    id: "marine-offshore",
-    index: "05",
-    name: "Marine & Offshore",
-    tag: "Submerge",
-    intro: "Robotic support for maritime and offshore assets.",
-    missions: [
-      "Offshore asset inspection",
-      "Marine infrastructure",
-      "Shipboard inspection",
-      "Remote maintenance",
-      "Environmental monitoring",
-    ],
-    note: "Deep-water operation requires dedicated pressure-rated architectures and is subject to engineering qualification.",
-  },
-  {
-    id: "mining",
-    index: "06",
-    name: "Mining",
-    tag: "Descend",
-    intro:
-      "Robotic capability for one of the most demanding industrial environments.",
-    missions: [
-      "Inspection",
-      "Remote equipment interaction",
-      "Hazard mapping",
-      "Material handling",
-      "Autonomous monitoring",
-    ],
-  },
-  {
-    id: "logistics",
-    index: "07",
-    name: "Logistics & Industrial Automation",
-    tag: "Move",
-    intro:
-      "Humanoid robots can potentially interact with infrastructure already designed for people.",
-    missions: [
-      "Material movement",
-      "Picking and placement",
-      "Machine tending",
-      "Warehouse operations",
-      "Loading/unloading",
-      "Flexible production support",
-    ],
-  },
-  {
-    id: "defense-research",
-    index: "08",
-    name: "Defense & Government Research",
-    tag: "Protect",
-    intro:
-      "Cennzo Robotix is interested in responsible collaboration with government and research organizations for applications where robotics can improve safety, reach and operational capability.",
-    missions: [
-      "Hazardous inspection",
-      "Disaster response",
-      "Remote logistics",
-      "Infrastructure support",
-      "Search and reconnaissance",
-      "Extreme-environment research",
-    ],
-    note: "All deployments are subject to applicable law, safety requirements and responsible-use principles.",
-  },
-  {
-    id: "space-robotics",
-    index: "09",
-    name: "Space Robotics",
-    tag: "Orbit",
-    intro: "Space is a long-term research frontier for Cennzo Robotix.",
-    missions: [
-      "Habitat inspection",
-      "Infrastructure maintenance",
-      "Surface operations",
-      "Cargo handling",
-      "Human-machine collaboration",
-      "Planetary exploration support",
-    ],
-    note: "Space capability requires dedicated vacuum, radiation, thermal and life-cycle qualification.",
-  },
-];
+type Domain = {
+  id: string;
+  index: string;
+  name: string;
+  tag: string;
+  intro: string;
+  missions: string[];
+  note?: string;
+};
 
-export default function ApplicationsPage() {
+export default async function ApplicationsPage() {
+  const t = await getTranslations("appsPage");
+  const domains = t.raw("domains") as Domain[];
+
   return (
     <main>
       <PageHero
-        eyebrow="Applications"
-        lines={["Robots Where People", "*Should Not Have To Go.*"]}
-        intro="From industrial inspection to planetary research — potential mission domains for the WAFEE platform."
-        meta="Applications represent engineering roadmap areas, not current commercial deployments."
+        eyebrow={t("hero.eyebrow")}
+        lines={[t("hero.line1"), t("hero.line2")]}
+        intro={t("hero.intro")}
+        meta={t("hero.meta")}
       />
 
       <section className="relative overflow-hidden border-b border-black/[0.08] py-section">
@@ -266,15 +140,15 @@ export default function ApplicationsPage() {
             <Parallax speed={0.05}>
               <MediaFrame
                 code="IMG-06"
-                label="WAFEE Mission Configurations — Concept Plate"
+                label={t("media.label")}
                 ratio="21/9"
               />
             </Parallax>
           </Reveal>
           <Reveal delay={0.15}>
             <p className="mx-auto mt-10 max-w-2xl text-center font-mono text-[10px] uppercase leading-loose tracking-[0.25em] text-faint">
-              One chassis, many faces
-              <span className="block text-accent">— configured per mission.</span>
+              {t("media.captionA")}
+              <span className="block text-accent">{t("media.captionB")}</span>
             </p>
           </Reveal>
         </div>
@@ -287,18 +161,13 @@ export default function ApplicationsPage() {
         />
         <div className="mx-auto w-full max-w-[1440px] px-6 py-section md:px-10">
           <SectionHeading
-            eyebrow="Mission Matrix"
-            lines={["Nine Frontiers.", "One *Machine.*"]}
-            body={
-              <p>
-                Every domain below is a doorway into a configuration study —
-                color-coded by frontier. Select one to explore its mission profile.
-              </p>
-            }
+            eyebrow={t("matrix.eyebrow")}
+            lines={[t("matrix.line1"), t("matrix.line2")]}
+            body={<p>{t("matrix.body")}</p>}
           />
           <div className="mt-14">
             <DomainGrid
-              domains={DOMAINS.map((d) => ({
+              domains={domains.map((d) => ({
                 id: d.id,
                 index: d.index,
                 name: d.name,
@@ -312,7 +181,7 @@ export default function ApplicationsPage() {
         </div>
       </section>
 
-      {DOMAINS.map((domain, i) => {
+      {domains.map((domain, i) => {
         const odd = i % 2 === 1;
         const tone = TONES[domain.id];
         const frontier = domain.id === "space-robotics";
@@ -383,7 +252,7 @@ export default function ApplicationsPage() {
                 <Reveal delay={0.1}>
                   <MediaFrame
                     code={`IMG-D${i + 1}`}
-                    label={`${domain.name} — Mission Concept`}
+                    label={`${domain.name} — ${t("domainMediaSuffix")}`}
                     ratio="4/3"
                   />
                 </Reveal>
@@ -394,10 +263,10 @@ export default function ApplicationsPage() {
       })}
 
       <CTASection
-        lines={["Have A Hard Problem?", "Let's Engineer The Answer."]}
-        body="Bring your mission to the platform."
-        primary={{ label: "Start a Conversation", href: "/contact" }}
-        secondary={{ label: "Partner With Us", href: "/partnerships" }}
+        lines={[t("cta.line1"), t("cta.line2")]}
+        body={t("cta.body")}
+        primary={{ label: t("cta.primary"), href: "/contact" }}
+        secondary={{ label: t("cta.secondary"), href: "/partnerships" }}
       />
     </main>
   );

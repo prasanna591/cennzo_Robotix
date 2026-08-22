@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 import { PageHero } from "@/components/sections/page-hero";
 import { CTASection } from "@/components/sections/cta-section";
 import { Reveal } from "@/components/motion/reveal";
@@ -9,11 +10,10 @@ import { SystemNav } from "@/components/technology/system-nav";
 import { SpecList } from "@/components/technology/spec-list";
 import { SystemMap } from "@/components/technology/system-map";
 
-export const metadata: Metadata = {
-  title: "Humanoid Robotics Technology | Cennzo Robotix",
-  description:
-    "WAFEE is built as a vertically integrated robotic architecture — mechanical systems, actuation, perception, compute & AI, control, power, thermal management, materials and software.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("techPage.meta");
+  return { title: t("title"), description: t("description") };
+}
 
 type TechSystem = {
   id: string;
@@ -25,177 +25,18 @@ type TechSystem = {
   note?: string;
 };
 
-const SYSTEMS: TechSystem[] = [
-  {
-    id: "mechanical",
-    index: "01",
-    name: "Mechanical Architecture",
-    intro:
-      "A lightweight structural system provides the mechanical foundation for the robot.",
-    points: [
-      "High stiffness-to-weight ratio",
-      "Controlled mass distribution",
-      "Serviceability",
-      "Modular joint interfaces",
-      "Structural redundancy where required",
-      "Protection of critical internal systems",
-    ],
-  },
-  {
-    id: "actuation",
-    index: "02",
-    name: "Actuation",
-    intro: "Humanoid performance depends on the quality of its joints.",
-    points: [
-      "High torque density",
-      "High efficiency",
-      "Backdrivability where appropriate",
-      "Thermal stability",
-      "Position and torque control",
-      "High-speed feedback",
-      "Mechanical durability",
-    ],
-    note: "The platform is being developed around advanced electric motor and transmission technologies, including PMSM/BLDC-class architectures and high-performance servo control.",
-  },
-  {
-    id: "perception",
-    index: "03",
-    name: "Perception",
-    intro:
-      "A robot cannot intelligently act without understanding its environment.",
-    points: [
-      "RGB cameras",
-      "Depth sensing",
-      "LiDAR where mission requirements justify it",
-      "IMU",
-      "Joint encoders",
-      "Force/torque sensing",
-      "Tactile sensing",
-      "Environmental sensors",
-      "Thermal sensing",
-    ],
-    note: "Sensor fusion converts raw measurements into a consistent representation of the robot and its environment.",
-  },
-  {
-    id: "compute-ai",
-    index: "04",
-    name: "Compute & AI",
-    intro:
-      "Onboard computing supports the full intelligence pipeline of the platform.",
-    points: [
-      "Perception",
-      "Localization",
-      "Mapping",
-      "Motion planning",
-      "Manipulation planning",
-      "Predictive control",
-      "Anomaly detection",
-      "Natural-language interfaces",
-      "Mission intelligence",
-    ],
-    note: "AI is treated as one layer of the robotic system — not a replacement for deterministic safety and control.",
-  },
-  {
-    id: "control",
-    index: "05",
-    name: "Control",
-    intro: "The control stack connects intelligence to physical action.",
-    layers: [
-      "Mission Layer",
-      "Behavior & Task Planning",
-      "Motion Planning",
-      "Whole-Body Control",
-      "Joint Control",
-      "Motor Control",
-      "Sensors & Feedback",
-    ],
-    note: "This architecture allows high-level intelligence to coexist with fast, deterministic low-level control.",
-  },
-  {
-    id: "power",
-    index: "06",
-    name: "Power",
-    intro:
-      "WAFEE requires a power architecture capable of delivering high instantaneous power while maintaining safety and efficiency.",
-    points: [
-      "High-energy battery system",
-      "Battery management system",
-      "Power distribution",
-      "DC/DC conversion",
-      "Motor inverters",
-      "Protection and isolation",
-      "Current and voltage monitoring",
-      "Thermal monitoring",
-    ],
-  },
-  {
-    id: "thermal",
-    index: "07",
-    name: "Thermal Management",
-    intro:
-      "Heat is one of the fundamental engineering constraints in high-performance humanoids.",
-    points: [
-      "Thermal conduction from heat sources",
-      "Cold plates",
-      "Closed-loop liquid cooling where required",
-      "Heat exchangers",
-      "Thermal storage",
-      "Temperature and flow monitoring",
-      "Localized thermal barriers",
-      "Passive heat spreading",
-    ],
-    note: "The architecture is intended to reduce dependence on conventional exposed fans in mission-critical areas.",
-  },
-  {
-    id: "materials",
-    index: "08",
-    name: "Materials & Protection",
-    intro: "Material selection is mission dependent.",
-    points: [
-      "Titanium alloys",
-      "Aluminum alloys where appropriate",
-      "Carbon-fiber composites",
-      "Carbon-carbon composites for specialized high-temperature zones",
-      "Silicon-carbide-based ceramics/composites",
-      "Inconel-class nickel alloys for localized high-temperature hardware",
-      "Ceramic insulation",
-      "Aerogel-based thermal insulation",
-    ],
-    note: "No single material is expected to solve every environmental requirement. WAFEE uses zoned material architecture based on load, temperature, pressure, corrosion and serviceability.",
-  },
-  {
-    id: "software",
-    index: "09",
-    name: "Software",
-    intro: "WAFEE's software architecture is designed as a modular robotics stack.",
-    points: [
-      "Hardware abstraction",
-      "Real-time control",
-      "State estimation",
-      "Perception",
-      "Localization and mapping",
-      "Motion planning",
-      "Manipulation",
-      "Behavior planning",
-      "Mission management",
-      "Diagnostics",
-      "Human-robot interaction",
-      "Fleet management",
-    ],
-    note: "The platform is designed for continuous software evolution without requiring complete hardware redesign.",
-  },
-];
+export default async function TechnologyPage() {
+  const t = await getTranslations("techPage");
+  const systems = t.raw("systems") as TechSystem[];
+  const nav = systems.map(({ id, index, name }) => ({ id, index, name }));
 
-const NAV = SYSTEMS.map(({ id, index, name }) => ({ id, index, name }));
-
-export default function TechnologyPage() {
   return (
     <main>
       <PageHero
-        eyebrow="Technology"
-        lines={["The Technology Stack", "Behind WAFEE."]}
-        intro="WAFEE is built as a vertically integrated robotic architecture."
-        meta="Every joint. Every sensor. Every line of code. One system."
+        eyebrow={t("hero.eyebrow")}
+        lines={[t("hero.line1"), t("hero.line2")]}
+        intro={t("hero.intro")}
+        meta={t("hero.meta")}
       />
 
       <section className="border-b border-black/[0.08]">
@@ -204,7 +45,7 @@ export default function TechnologyPage() {
             <Parallax speed={0.05}>
               <MediaFrame
                 code="IMG-05"
-                label="WAFEE System Architecture — Concept Diagram"
+                label={t("media.label")}
                 ratio="21/9"
               />
             </Parallax>
@@ -215,10 +56,10 @@ export default function TechnologyPage() {
       <SystemMap />
 
       <div className="relative">
-        <SystemNav systems={NAV} />
+        <SystemNav systems={nav} />
         <div className="h-10" />
 
-        {SYSTEMS.map((system) => {
+        {systems.map((system) => {
           const dark = system.id === "compute-ai";
           return (
             <section
@@ -294,10 +135,10 @@ export default function TechnologyPage() {
       </div>
 
       <CTASection
-        lines={["From First Principles", "To Field Validation."]}
-        body="See how our engineering discipline turns research into mission-ready capability."
-        primary={{ label: "Research & Engineering", href: "/research" }}
-        secondary={{ label: "Validation & Safety", href: "/safety" }}
+        lines={[t("cta.line1"), t("cta.line2")]}
+        body={t("cta.body")}
+        primary={{ label: t("cta.primary"), href: "/research" }}
+        secondary={{ label: t("cta.secondary"), href: "/safety" }}
       />
     </main>
   );

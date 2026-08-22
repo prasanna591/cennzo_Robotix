@@ -3,41 +3,23 @@
 import { useRef } from "react";
 import { motion, useReducedMotion, useScroll, useSpring } from "framer-motion";
 import { SectionHeading } from "@/components/sections/section-heading";
+import { useTranslations } from "next-intl";
 import { viewportOnce } from "@/lib/animations";
 
-const PHASES = [
-  {
-    phase: "Phase 01",
-    title: "Foundation",
-    body: "Architecture definition, reference design and the engineering doctrine behind WAFEE.",
-    status: "Current focus",
-    active: true,
-  },
-  {
-    phase: "Phase 02",
-    title: "Development",
-    body: "Subsystem integration — actuation, perception, compute and power — built and bench-validated as one machine.",
-    status: "Next",
-    active: false,
-  },
-  {
-    phase: "Phase 03",
-    title: "Validation",
-    body: "Controlled laboratory testing, subsystem qualification and full-system verification against mission requirements.",
-    status: "Planned",
-    active: false,
-  },
-  {
-    phase: "Phase 04",
-    title: "Deployment",
-    body: "Progressive environmental qualification — extending WAFEE across land, sea, fire, air and space domains.",
-    status: "Long-term",
-    active: false,
-  },
-];
+type Phase = {
+  phase: string;
+  title: string;
+  body: string;
+  status: string;
+  active: boolean;
+};
 
 export function Timeline() {
   const reduced = useReducedMotion();
+  const t = useTranslations("aboutTimeline");
+  const phases: Phase[] = (t.raw("phases") as Omit<Phase, "active">[]).map(
+    (p, i) => ({ ...p, active: i === 0 })
+  );
   const listRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: listRef,
@@ -54,15 +36,9 @@ export function Timeline() {
       <div className="mx-auto grid w-full max-w-[1440px] gap-16 px-6 py-section md:px-10 lg:grid-cols-[1fr_1.3fr] lg:gap-24">
         <div className="lg:sticky lg:top-28 lg:self-start">
           <SectionHeading
-            eyebrow="The Road Ahead"
-            lines={["From Blueprint", "To *Breach.*"]}
-            body={
-              <p>
-                Every frontier starts as a drawing. Ours is a phased engineering
-                campaign — each stage unlocking the next, each claim earned
-                before it is made.
-              </p>
-            }
+            eyebrow={t("eyebrow")}
+            lines={[t("line1"), t("line2")]}
+            body={<p>{t("body")}</p>}
           />
         </div>
 
@@ -75,7 +51,7 @@ export function Timeline() {
           />
 
           <div className="space-y-14">
-            {PHASES.map((phase, i) => (
+            {phases.map((phase, i) => (
               <motion.div
                 key={phase.phase}
                 initial={reduced ? false : { opacity: 0, x: -28 }}

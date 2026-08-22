@@ -70,19 +70,19 @@ export function HorizontalShowcase({
 
   return (
     <section ref={wrapRef} className="relative overflow-hidden border-b border-black/[0.08]">
-      <div className="flex min-h-screen flex-col justify-center py-20 lg:h-screen lg:py-0">
+      <div className="flex min-h-screen flex-col justify-center py-20 md:py-16 lg:min-h-screen lg:pt-2 lg:pb-28">
         <div className="mx-auto w-full max-w-[1440px] px-6 md:px-10">
           <p className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.25em] text-mist">
             <span aria-hidden="true" className="h-px w-8 bg-accent" />
             {eyebrow}
           </p>
-          <h2 className="mt-6 max-w-3xl text-display font-semibold leading-[1.05] tracking-[-0.02em] text-bone">
+          <h2 className="mt-4 max-w-3xl text-display font-semibold leading-[1.05] tracking-[-0.02em] text-bone">
             <WordReveal lines={lines} />
           </h2>
           {children}
         </div>
 
-        <div className="mt-12 overflow-x-auto pb-6 lg:mt-16 lg:overflow-hidden lg:pb-0">
+        <div className="mt-12 overflow-x-auto pb-6 lg:mt-10 lg:overflow-hidden lg:pb-0">
           <div
             ref={trackRef}
             className="flex w-max snap-x snap-mandatory gap-5 px-6 will-change-transform md:px-10 lg:snap-none lg:pl-[max(2.5rem,calc((100vw-1440px)/2+2.5rem))]"
@@ -90,7 +90,7 @@ export function HorizontalShowcase({
             {items.map((item, i) => (
               <article
                 key={item.title}
-                className="group relative flex h-[420px] w-[82vw] shrink-0 snap-center flex-col justify-between overflow-hidden rounded-3xl border border-black/[0.08] bg-graphite p-8 shadow-soft transition-colors duration-500 hover:border-faint sm:w-[54vw] md:p-10 lg:h-[52vh] lg:min-h-[400px] lg:w-[30vw] lg:max-w-[420px]"
+                className="group relative flex h-[420px] w-[82vw] shrink-0 snap-center flex-col justify-between overflow-hidden rounded-3xl border border-black/[0.08] bg-graphite p-8 shadow-soft transition-colors duration-500 hover:border-faint sm:w-[54vw] md:p-10 lg:h-[46vh] lg:min-h-[340px] lg:w-[30vw] lg:max-w-[420px]"
               >
                 <span
                   aria-hidden="true"
@@ -121,7 +121,7 @@ export function HorizontalShowcase({
 
             <div
               aria-hidden="true"
-              className="flex h-[420px] w-[40vw] shrink-0 items-center lg:h-[52vh] lg:min-h-[400px] lg:w-[24vw]"
+              className="flex h-[420px] w-[40vw] shrink-0 items-center lg:h-[46vh] lg:min-h-[340px] lg:w-[24vw]"
             >
               <p className="font-mono text-[11px] uppercase leading-loose tracking-[0.22em] text-faint">
                 End of sequence
@@ -131,7 +131,7 @@ export function HorizontalShowcase({
           </div>
         </div>
 
-        <div className="mx-auto mt-10 hidden w-full max-w-[1440px] px-6 md:px-10 lg:block">
+        <div className="mx-auto mt-8 hidden w-full max-w-[1440px] px-6 md:px-10 lg:block">
           <div className="h-px w-full overflow-hidden bg-black/[0.08]">
             <div
               ref={progressRef}

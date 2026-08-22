@@ -52,12 +52,12 @@ export function SectionHeading({
           )}
         </p>
       </Reveal>
-      <h2 className="mt-6 text-display font-semibold tracking-[-0.02em] text-bone">
+      <h2 className="mt-5 text-display font-semibold tracking-[-0.02em] text-bone">
         <MaskLines lines={lines} lineClassName="text-bone" />
       </h2>
       {body && (
         <Reveal delay={0.15}>
-          <div className={`mt-6 text-body leading-relaxed text-mist ${centered ? "mx-auto max-w-2xl" : "max-w-2xl"}`}>
+          <div className={`mt-4 text-body leading-relaxed text-mist ${centered ? "mx-auto max-w-2xl" : "max-w-2xl"}`}>
             {body}
           </div>
         </Reveal>

@@ -3,14 +3,36 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import {
-  FOOTER_EXPLORE,
-  FOOTER_COMPANY,
-  FOOTER_LEGAL,
-} from "@/lib/content/site";
+import { useTranslations } from "next-intl";
 import { DURATION, EASE, viewportOnce } from "@/lib/animations";
 
 const SOCIALS = ["LinkedIn", "YouTube", "Instagram", "X"];
+
+const EXPLORE_LINKS = [
+  { href: "/", key: "linkHome" },
+  { href: "/about", key: "linkAbout" },
+  { href: "/wafee", key: "linkWafee" },
+  { href: "/technology", key: "linkTechnology" },
+  { href: "/applications", key: "linkApplications" },
+] as const;
+
+const COMPANY_LINKS = [
+  { href: "/platform", key: "linkPlatform" },
+  { href: "/research", key: "linkResearch" },
+  { href: "/safety", key: "linkSafety" },
+  { href: "/industries", key: "linkIndustries" },
+  { href: "/partnerships", key: "linkPartnerships" },
+  { href: "/investors", key: "linkInvestors" },
+  { href: "/careers", key: "linkCareers" },
+  { href: "/contact", key: "linkContact" },
+] as const;
+
+const LEGAL_LINKS = [
+  { href: "/privacy-policy", key: "legalPrivacy" },
+  { href: "/terms-of-use", key: "legalTerms" },
+  { href: "/responsible-ai-robotics", key: "legalAI" },
+  { href: "/safety-compliance", key: "legalCompliance" },
+] as const;
 
 function MissionClock() {
   const reduced = useReducedMotion();
@@ -37,8 +59,9 @@ function FooterColumn({
   links,
 }: {
   title: string;
-  links: { label: string; href: string }[];
+  links: readonly { href: string; key: string }[];
 }) {
+  const t = useTranslations("footer");
   return (
     <div>
       <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-faint">
@@ -46,12 +69,12 @@ function FooterColumn({
       </p>
       <ul className="mt-5 space-y-3">
         {links.map((link) => (
-          <li key={link.label}>
+          <li key={link.href}>
             <Link
               href={link.href}
               className="group relative inline-block cursor-pointer text-[13px] text-mist transition-colors duration-300 hover:text-bone"
             >
-              {link.label}
+              {t(link.key as never)}
               <span
                 aria-hidden="true"
                 className="absolute -bottom-0.5 left-0 h-px w-full origin-left scale-x-0 bg-accent transition-transform duration-300 ease-out group-hover:scale-x-100"
@@ -65,6 +88,7 @@ function FooterColumn({
 }
 
 export function SiteFooter() {
+  const t = useTranslations("footer");
   return (
     <footer className="relative overflow-hidden border-t border-black/[0.08] bg-void">
       <div
@@ -90,21 +114,20 @@ export function SiteFooter() {
               </span>
             </Link>
             <p className="mt-6 max-w-xs text-sm leading-relaxed text-mist">
-              Building intelligent robotic systems for complex and demanding
-              environments.
+              {t("description")}
             </p>
             <p className="mt-6 font-mono text-[10px] uppercase tracking-[0.3em] text-faint">
               Innovate · Automate · Elevate
             </p>
           </div>
 
-          <FooterColumn title="Explore" links={FOOTER_EXPLORE} />
-          <FooterColumn title="Company" links={FOOTER_COMPANY} />
+          <FooterColumn title={t("explore")} links={EXPLORE_LINKS} />
+          <FooterColumn title={t("company")} links={COMPANY_LINKS} />
           <div>
-            <FooterColumn title="Legal" links={FOOTER_LEGAL} />
+            <FooterColumn title={t("legal")} links={LEGAL_LINKS} />
             <div className="mt-10">
               <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-faint">
-                Follow
+                {t("follow")}
               </p>
               <ul className="mt-5 flex flex-wrap gap-x-5 gap-y-3">
                 {SOCIALS.map((social) => (
@@ -134,12 +157,11 @@ export function SiteFooter() {
 
         <div className="mt-6 flex flex-col gap-4 border-t border-black/[0.08] pt-8 md:flex-row md:items-center md:justify-between">
           <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-faint">
-            © 2026 Cennzo Robotix. All rights reserved.
+            {t("rights")}
           </p>
           <MissionClock />
           <p className="max-w-md font-mono text-[10px] normal-case leading-relaxed tracking-[0.05em] text-faint">
-            The future belongs to machines that can understand the world, move
-            through it and act within it.
+            {t("mission")}
           </p>
         </div>
       </div>

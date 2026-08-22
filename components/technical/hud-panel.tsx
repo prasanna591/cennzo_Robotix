@@ -2,14 +2,10 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { DURATION, EASE, viewportOnce } from "@/lib/animations";
 
-const BASE_ROWS = [
-  { label: "Perception", value: "ONLINE" },
-  { label: "Motion", value: "ONLINE" },
-  { label: "Planning", value: "ACTIVE" },
-  { label: "Environment", value: "MAPPED" },
-];
+type Row = { label: string; value: string };
 
 const SCAN_VALUES = ["ONLINE", "ACTIVE", "SCAN", "SYNC", "TRACK", "MAPPED"];
 
@@ -17,7 +13,9 @@ type Phase = "idle" | "scanning" | "done";
 
 export function HudPanel({ className = "" }: { className?: string }) {
   const reduced = useReducedMotion();
-  const [rows, setRows] = useState(BASE_ROWS);
+  const t = useTranslations("wafeePage.hud");
+  const baseRows: Row[] = t.raw("rows") as Row[];
+  const [rows, setRows] = useState(baseRows);
   const [latency, setLatency] = useState(12);
   const [confidence, setConfidence] = useState(98.4);
   const [phase, setPhase] = useState<Phase>("idle");
@@ -39,7 +37,7 @@ export function HudPanel({ className = "" }: { className?: string }) {
     setPhase("scanning");
     const scramble = setInterval(() => {
       setRows(
-        BASE_ROWS.map((row) => ({
+        baseRows.map((row) => ({
           ...row,
           value: SCAN_VALUES[Math.floor(Math.random() * SCAN_VALUES.length)],
         }))
@@ -51,7 +49,7 @@ export function HudPanel({ className = "" }: { className?: string }) {
 
     window.setTimeout(() => {
       clearInterval(scramble);
-      setRows(BASE_ROWS);
+      setRows(baseRows);
       setLatency(12);
       setConfidence(98.4);
       setPhase("done");
@@ -69,11 +67,11 @@ export function HudPanel({ className = "" }: { className?: string }) {
     >
       <div className="flex items-center justify-between border-b border-steel px-5 py-3">
         <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-mist">
-          System Status
+          {t("title")}
         </p>
         <span className="flex items-center gap-2 font-mono text-[9px] uppercase tracking-[0.2em] text-faint">
           <span className="h-1 w-1 rounded-full bg-teal" />
-          Concept Demo
+          {t("conceptDemo")}
         </span>
       </div>
 
@@ -110,7 +108,7 @@ export function HudPanel({ className = "" }: { className?: string }) {
       <div className="grid grid-cols-2 divide-x divide-steel border-t border-steel">
         <div className="px-5 py-4">
           <p className="font-mono text-[9px] uppercase tracking-[0.22em] text-faint">
-            Latency
+            {t("latency")}
           </p>
           <p className="mt-1 font-mono text-xl tabular-nums text-bone">
             {latency}
@@ -119,7 +117,7 @@ export function HudPanel({ className = "" }: { className?: string }) {
         </div>
         <div className="px-5 py-4">
           <p className="font-mono text-[9px] uppercase tracking-[0.22em] text-faint">
-            Confidence
+            {t("confidence")}
           </p>
           <p className="mt-1 font-mono text-xl tabular-nums text-bone">
             {confidence.toFixed(1)}
@@ -131,10 +129,10 @@ export function HudPanel({ className = "" }: { className?: string }) {
       <div className="flex items-center justify-between gap-4 border-t border-steel px-5 py-3">
         <p className="font-mono text-[9px] uppercase tracking-[0.14em] text-faint">
           {phase === "scanning"
-            ? "RUNNING DIAGNOSTIC…"
+            ? t("stateScanning")
             : phase === "done"
-              ? "DIAGNOSTIC COMPLETE — ALL SYSTEMS NOMINAL"
-              : "VISUAL CONCEPT — NOT LIVE TELEMETRY"}
+              ? t("stateDone")
+              : t("stateIdle")}
         </p>
         <button
           type="button"
@@ -149,7 +147,7 @@ export function HudPanel({ className = "" }: { className?: string }) {
                 : "border-steel text-mist hover:border-accent hover:text-accent"
           }`}
         >
-          {phase === "scanning" ? "Scanning…" : phase === "done" ? "Nominal" : "Run Diagnostic"}
+          {phase === "scanning" ? t("btnScanning") : phase === "done" ? t("btnDone") : t("btnIdle")}
         </button>
       </div>
     </motion.div>

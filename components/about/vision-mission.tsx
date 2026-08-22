@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { WordReveal } from "@/components/motion/word-reveal";
 import { DURATION, EASE, viewportOnce } from "@/lib/animations";
 
@@ -26,6 +27,7 @@ function OrbitIcon() {
 
 export function VisionMission() {
   const reduced = useReducedMotion();
+  const t = useTranslations("aboutVm");
 
   const panel = (dark: boolean) => ({
     initial: reduced ? false : { opacity: 0, y: 48 },
@@ -45,15 +47,14 @@ export function VisionMission() {
           <div>
             <p className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.25em] text-mist">
               <span aria-hidden="true" className="h-px w-8 bg-accent" />
-              Purpose
+              {t("eyebrow")}
             </p>
             <h2 className="mt-6 max-w-2xl text-display font-semibold leading-[1.05] tracking-[-0.02em] text-bone">
-              <WordReveal lines={["One company.", "Two ~promises.~"]} />
+              <WordReveal lines={[t("line1"), t("line2")]} />
             </h2>
           </div>
           <p className="max-w-sm text-sm leading-relaxed text-mist">
-            Everything we engineer — every actuator, every model, every line of
-            code — traces back to these two commitments.
+            {t("sideNote")}
           </p>
         </div>
 
@@ -70,26 +71,23 @@ export function VisionMission() {
               <div className="flex items-center justify-between">
                 <span className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.25em] text-accent">
                   <TargetIcon />
-                  Mission
+                  {t("mission.label")}
                 </span>
                 <span className="font-mono text-[11px] tracking-[0.25em] text-faint">01</span>
               </div>
               <h3 className="mt-10 max-w-md text-2xl font-semibold leading-snug tracking-tight text-bone md:text-[1.9rem]">
-                Extend human capability.
+                {t("mission.title1")}
                 <span className="block text-mist">
-                  Keep people out of <span className="text-accent">harm&apos;s way.</span>
+                  {t("mission.titlePre")} <span className="text-accent">{t("mission.titleAccent")}</span>
                 </span>
               </h3>
               <p className="mt-6 max-w-md text-sm leading-relaxed text-mist">
-                We build intelligent machines that go where it is difficult,
-                dangerous or inefficient for people — improving operational
-                safety while opening environments that were previously
-                unreachable.
+                {t("mission.body")}
               </p>
             </div>
             <div className="relative mt-12 flex items-center gap-3 border-t border-black/[0.06] pt-6 font-mono text-[9px] uppercase tracking-[0.22em] text-faint">
               <span aria-hidden="true" className="h-1 w-1 rounded-full bg-accent" />
-              Grounded in engineering reality
+              {t("mission.footer")}
             </div>
           </motion.article>
 
@@ -110,25 +108,23 @@ export function VisionMission() {
               <div className="flex items-center justify-between">
                 <span className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.25em] text-teal">
                   <OrbitIcon />
-                  Vision
+                  {t("vision.label")}
                 </span>
                 <span className="font-mono text-[11px] tracking-[0.25em] text-white/40">02</span>
               </div>
               <h3 className="mt-10 max-w-md text-2xl font-semibold leading-snug tracking-tight md:text-[1.9rem]">
-                A world where robots and humanity
+                {t("vision.title1")}
                 <span className="block text-white/50">
-                  work <span className="text-teal">side by side.</span>
+                  {t("vision.titlePre")} <span className="text-teal">{t("vision.titleAccent")}</span>
                 </span>
               </h3>
               <p className="mt-6 max-w-md text-sm leading-relaxed text-white/60">
-                Dangerous, repetitive, inaccessible and technically demanding
-                missions — handled by machines with persistence, precision and
-                resilience, so people are free to aim higher.
+                {t("vision.body")}
               </p>
             </div>
             <div className="relative mt-12 flex items-center gap-3 border-t border-white/[0.08] pt-6 font-mono text-[9px] uppercase tracking-[0.22em] text-white/45">
               <span aria-hidden="true" className="h-1 w-1 rounded-full bg-teal" />
-              Beyond the horizon
+              {t("vision.footer")}
             </div>
           </motion.article>
         </div>

@@ -2,59 +2,10 @@
 
 import { useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { viewportOnce } from "@/lib/animations";
 
 type GroupId = "mind" | "core" | "limbs" | "frame" | "software";
-
-const GROUPS: {
-  id: GroupId;
-  index: string;
-  label: string;
-  systems: string[];
-  target: string;
-  desc: string;
-}[] = [
-  {
-    id: "mind",
-    index: "A",
-    label: "Perception & Intelligence",
-    systems: ["03 · Perception", "04 · Compute & AI"],
-    target: "perception",
-    desc: "Sensor suite and onboard compute — how WAFEE understands and decides.",
-  },
-  {
-    id: "core",
-    index: "B",
-    label: "Power & Thermal",
-    systems: ["06 · Power", "07 · Thermal"],
-    target: "power",
-    desc: "Energy delivery and heat extraction — the endurance of the machine.",
-  },
-  {
-    id: "limbs",
-    index: "C",
-    label: "Actuation & Control",
-    systems: ["02 · Actuation", "05 · Control"],
-    target: "actuation",
-    desc: "Joints and the control stack — how intelligence becomes motion.",
-  },
-  {
-    id: "frame",
-    index: "D",
-    label: "Structure & Materials",
-    systems: ["01 · Mechanical", "08 · Materials"],
-    target: "mechanical",
-    desc: "Skeleton and skin — zoned materials for load, heat and pressure.",
-  },
-  {
-    id: "software",
-    index: "E",
-    label: "Software Layer",
-    systems: ["09 · Software"],
-    target: "software",
-    desc: "The modular stack flowing through every subsystem.",
-  },
-];
 
 const TONES: Record<
   GroupId,
@@ -105,6 +56,15 @@ const TONES: Record<
 export function SystemMap() {
   const [hovered, setHovered] = useState<GroupId | null>(null);
   const reduced = useReducedMotion();
+  const t = useTranslations("techPage.map");
+  const groups = t.raw("groups") as {
+    id: GroupId;
+    index: string;
+    label: string;
+    systems: string[];
+    target: string;
+    desc: string;
+  }[];
 
   const isOn = (id: GroupId) => hovered === id;
   const dim = hovered !== null;
@@ -139,15 +99,15 @@ export function SystemMap() {
       <div className="mx-auto w-full max-w-[1440px] px-6 py-section md:px-10">
         <p className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.25em] text-mist">
           <span aria-hidden="true" className="h-px w-8 bg-accent" />
-          Interactive Anatomy
+          {t("eyebrow")}
         </p>
         <h2 className="mt-6 max-w-2xl text-display font-semibold leading-[1.05] tracking-[-0.02em] text-bone">
-          One body. Nine{" "}
-          <span className="text-accent">systems.</span>
+          {t("linePre")}{" "}
+          <span className="text-accent">{t("lineAccent")}</span>
         </h2>
         <p className="mt-4 max-w-xl font-mono text-[10px] uppercase leading-loose tracking-[0.22em] text-faint">
-          Hover the figure or the list
-          <span className="text-accent"> — click to dive deeper.</span>
+          {t("hint")}
+          <span className="text-accent"> {t("hintAccent")}</span>
         </p>
 
         <div className="mt-14 grid items-center gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
@@ -281,7 +241,7 @@ export function SystemMap() {
           </motion.div>
 
           <div className="space-y-3">
-            {GROUPS.map((group, i) => {
+            {groups.map((group, i) => {
               const active = isOn(group.id);
               return (
                 <motion.button

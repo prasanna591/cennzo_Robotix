@@ -4,16 +4,31 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { DURATION, EASE } from "@/lib/animations";
-import { PRIMARY_NAV, MOBILE_NAV } from "@/lib/content/site";
 import { useReady } from "@/hooks/use-ready";
+import { LanguageSwitcher } from "@/components/navigation/language-switcher";
+
+const NAV_LINKS = [
+  { href: "/about", key: "about" },
+  { href: "/wafee", key: "wafee" },
+  { href: "/technology", key: "technology" },
+  { href: "/applications", key: "applications" },
+  { href: "/industries", key: "industries" },
+] as const;
+
+const MOBILE_LINKS = [
+  { href: "/", key: "home" },
+  ...NAV_LINKS,
+] as const;
 
 function Wordmark() {
+  const tHeader = useTranslations("header");
   return (
     <Link
       href="/"
       className="group flex items-center gap-2.5"
-      aria-label="Cennzo Robotix — Home"
+      aria-label={tHeader("home")}
     >
       <span
         aria-hidden="true"
@@ -39,6 +54,8 @@ export function SiteHeader() {
   const reduced = useReducedMotion();
   const ready = useReady();
   const pathname = usePathname();
+  const tNav = useTranslations("nav");
+  const tHeader = useTranslations("header");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -83,7 +100,7 @@ export function SiteHeader() {
           <Wordmark />
 
           <nav aria-label="Primary" className="hidden items-center gap-9 lg:flex">
-            {PRIMARY_NAV.map((link) => (
+            {NAV_LINKS.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
@@ -92,7 +109,7 @@ export function SiteHeader() {
                   isActive(link.href) ? "text-bone" : "text-mist hover:text-bone"
                 }`}
               >
-                {link.label}
+                {tNav(link.key)}
                 <span
                   aria-hidden="true"
                   className={`absolute -bottom-1.5 left-0 h-[2px] w-full origin-left rounded-full bg-gradient-to-r from-accent via-violet-500 to-teal transition-transform duration-300 ease-out ${
@@ -103,16 +120,19 @@ export function SiteHeader() {
                 />
               </Link>
             ))}
+            <span className="ml-2 flex items-center gap-2">
+              <LanguageSwitcher />
+            </span>
             <Link
               href="/contact"
               aria-current={isActive("/contact") ? "page" : undefined}
-              className={`ml-2 cursor-pointer rounded-full px-5 py-2.5 font-mono text-[11px] uppercase tracking-[0.2em] text-white transition-all duration-300 ${
+              className={`cursor-pointer rounded-full px-5 py-2.5 font-mono text-[11px] uppercase tracking-[0.2em] text-white transition-all duration-300 ${
                 isActive("/contact")
                   ? "bg-gradient-to-r from-accent to-violet-600 shadow-lift"
                   : "bg-gradient-to-r from-ink to-[#1b2a55] hover:from-accent hover:to-violet-600 hover:shadow-lift"
               }`}
             >
-              Contact
+              {tNav("contact")}
             </Link>
           </nav>
 
@@ -121,7 +141,7 @@ export function SiteHeader() {
             onClick={() => setMenuOpen((v) => !v)}
             aria-expanded={menuOpen}
             aria-controls="mobile-menu"
-            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-label={menuOpen ? tHeader("closeMenu") : tHeader("openMenu")}
             className="relative z-50 flex h-10 w-10 cursor-pointer flex-col items-center justify-center gap-[7px] lg:hidden"
           >
             <span
@@ -149,7 +169,7 @@ export function SiteHeader() {
             className="fixed inset-0 z-40 flex flex-col justify-between overflow-y-auto bg-void px-6 pb-10 pt-24"
           >
             <nav aria-label="Mobile" className="flex flex-col gap-1">
-              {MOBILE_NAV.map((link, i) => (
+              {MOBILE_LINKS.map((link, i) => (
                 <div key={link.href} className="overflow-hidden">
                   <motion.div
                     initial={reduced ? false : { y: "110%" }}
@@ -169,7 +189,7 @@ export function SiteHeader() {
                         isActive(link.href) ? "text-accent" : "text-bone"
                       }`}
                     >
-                      {link.label}
+                      {tNav(link.key)}
                       <span className="font-mono text-[10px] tracking-[0.2em] text-faint">
                         {String(i + 1).padStart(2, "0")}
                       </span>
@@ -183,14 +203,12 @@ export function SiteHeader() {
               initial={reduced ? false : { opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4, duration: DURATION.standard }}
-              className="mt-10 flex items-end justify-between border-t border-black/[0.1] pt-6"
+              className="mt-10 flex items-end justify-between gap-4 border-t border-black/[0.1] pt-6"
             >
               <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-faint">
                 Innovate · Automate · Elevate
               </p>
-              <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-faint">
-                EST. 2026
-              </p>
+              <LanguageSwitcher />
             </motion.div>
           </motion.div>
         )}

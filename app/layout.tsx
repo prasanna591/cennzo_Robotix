@@ -1,5 +1,13 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono, Space_Grotesk } from "next/font/google";
+import {
+  Geist,
+  Geist_Mono,
+  Space_Grotesk,
+  Noto_Sans_Tamil,
+  Noto_Sans_Devanagari,
+} from "next/font/google";
+import { NextIntlClientProvider } from "next-intl";
+import { getLocale, getMessages, getTranslations } from "next-intl/server";
 import "./globals.css";
 import { SiteHeader } from "@/components/navigation/site-header";
 import { SiteFooter } from "@/components/navigation/site-footer";
@@ -8,6 +16,7 @@ import { Cursor } from "@/components/technical/cursor";
 import { Preloader } from "@/components/motion/preloader";
 import { SmoothScroll } from "@/components/motion/smooth-scroll";
 import { BackToTop } from "@/components/navigation/back-to-top";
+import { LanguagePrompt } from "@/components/navigation/language-prompt";
 import { FilmGrain } from "@/components/decor/film-grain";
 import { CircuitSpine } from "@/components/decor/circuit-spine";
 
@@ -29,41 +38,55 @@ const spaceGrotesk = Space_Grotesk({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  metadataBase: new URL("https://cennzorobotix.com"),
-  title: {
-    default: "Cennzo Robotix | Deep-Tech Humanoid Robotics & Intelligent Machines",
-    template: "%s | Cennzo Robotix",
-  },
-  description:
-    "Cennzo Robotix develops advanced humanoid robots and intelligent robotic systems for industrial, hazardous and multi-environment applications. Meet WAFEE.",
-  keywords: [
-    "humanoid robot",
-    "robotics company",
-    "deep-tech robotics",
-    "WAFEE",
-    "intelligent machines",
-    "multi-environment robotics",
-  ],
-  openGraph: {
-    type: "website",
-    siteName: "Cennzo Robotix",
-    title: "Cennzo Robotix | Deep-Tech Humanoid Robotics & Intelligent Machines",
-    description:
-      "Intelligent machines for the real world. Meet WAFEE — the unified multi-environment humanoid platform.",
-    locale: "en_US",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Cennzo Robotix | Deep-Tech Humanoid Robotics",
-    description:
-      "Intelligent machines for the real world. Meet WAFEE — the unified multi-environment humanoid platform.",
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
-};
+const notoTamil = Noto_Sans_Tamil({
+  subsets: ["tamil"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-noto-tamil",
+  display: "swap",
+});
+
+const notoDevanagari = Noto_Sans_Devanagari({
+  subsets: ["devanagari"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-noto-devanagari",
+  display: "swap",
+});
+
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("meta");
+  return {
+    metadataBase: new URL("https://cennzorobotix.com"),
+    title: {
+      default: t("title"),
+      template: "%s | Cennzo Robotix",
+    },
+    description: t("description"),
+    keywords: [
+      "humanoid robot",
+      "robotics company",
+      "deep-tech robotics",
+      "WAFEE",
+      "intelligent machines",
+      "multi-environment robotics",
+    ],
+    openGraph: {
+      type: "website",
+      siteName: "Cennzo Robotix",
+      title: t("title"),
+      description: t("description"),
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: "Cennzo Robotix | Deep-Tech Humanoid Robotics",
+      description:
+        "Intelligent machines for the real world. Meet WAFEE — the unified multi-environment humanoid platform.",
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
+  };
+}
 
 export const viewport: Viewport = {
   themeColor: "#f7f8fa",
@@ -71,27 +94,54 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-export default function RootLayout({
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Cennzo Robotix",
+  url: "https://cennzorobotix.com",
+  slogan: "Innovate · Automate · Elevate",
+  description:
+    "Deep-tech robotics company building WAFEE — a full-size humanoid robot platform engineered for the world's hardest industrial environments.",
+  knowsAbout: [
+    "Humanoid robotics",
+    "Multi-environment robotics",
+    "Industrial inspection",
+    "Hazardous environment operations",
+    "Embodied AI",
+  ],
+};
+
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const locale = await getLocale();
+  const messages = await getMessages();
+
   return (
     <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${spaceGrotesk.variable}`}
+      lang={locale}
+      className={`${geistSans.variable} ${geistMono.variable} ${spaceGrotesk.variable} ${notoTamil.variable} ${notoDevanagari.variable}`}
     >
       <body>
-        <Preloader />
-        <SmoothScroll />
-        <ScrollProgress />
-        <Cursor />
-        <SiteHeader />
-        <CircuitSpine />
-        {children}
-        <SiteFooter />
-        <BackToTop />
-        <FilmGrain />
+        <NextIntlClientProvider messages={messages}>
+          <Preloader />
+          <SmoothScroll />
+          <ScrollProgress />
+          <Cursor />
+          <SiteHeader />
+          <CircuitSpine />
+          {children}
+          <SiteFooter />
+          <BackToTop />
+          <LanguagePrompt />
+          <FilmGrain />
+        </NextIntlClientProvider>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </body>
     </html>
   );

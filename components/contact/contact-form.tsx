@@ -2,28 +2,8 @@
 
 import { useState, type FormEvent } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { DURATION, EASE } from "@/lib/animations";
-
-const ORGANIZATION_TYPES = [
-  "Industrial Operator",
-  "Technology Company",
-  "Research Institution",
-  "Government / Public Sector",
-  "Investor",
-  "Individual",
-  "Other",
-];
-
-const INTERESTS = [
-  "WAFEE demonstrations",
-  "Technology partnerships",
-  "Industrial pilots",
-  "Research collaboration",
-  "Investment discussions",
-  "Component partnerships",
-  "Careers",
-  "Media",
-];
 
 const INPUT_CLASS =
   "w-full cursor-text rounded-xl border border-steel bg-white px-4 py-3.5 text-sm text-bone placeholder:text-faint transition-all duration-300 focus:border-accent focus:shadow-[0_0_0_1px_rgba(21,94,239,0.35),0_0_24px_rgba(21,94,239,0.12)] focus:outline-none";
@@ -59,19 +39,23 @@ function buildMailto(data: FormData): string {
   )}&body=${encodeURIComponent(lines.join("\n"))}`;
 }
 
-function validateField(field: keyof Errors, value: string): string | undefined {
+function validateField(
+  field: keyof Errors,
+  value: string,
+  messages: (key: string) => string
+): string | undefined {
   const v = value.trim();
   if (field === "name") {
-    if (!v) return "Name is required.";
-    if (v.length < 2) return "Name is too short.";
+    if (!v) return messages("errors.nameRequired");
+    if (v.length < 2) return messages("errors.nameShort");
   }
   if (field === "email") {
-    if (!v) return "Email is required.";
-    if (!EMAIL_RE.test(v)) return "Enter a valid email address.";
+    if (!v) return messages("errors.emailRequired");
+    if (!EMAIL_RE.test(v)) return messages("errors.emailInvalid");
   }
   if (field === "message") {
-    if (!v) return "Message is required.";
-    if (v.length < 10) return "Tell us a little more (min. 10 characters).";
+    if (!v) return messages("errors.messageRequired");
+    if (v.length < 10) return messages("errors.messageShort");
   }
   return undefined;
 }
@@ -80,9 +64,10 @@ export function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
   const [errors, setErrors] = useState<Errors>({});
   const [msgCount, setMsgCount] = useState(0);
+  const t = useTranslations("contactPage.form");
 
   const handleBlur = (field: keyof Errors, value: string) => {
-    const error = validateField(field, value);
+    const error = validateField(field, value, t);
     setErrors((prev) => ({ ...prev, [field]: error }));
   };
 
@@ -90,9 +75,9 @@ export function ContactForm() {
     e.preventDefault();
     const data = new FormData(e.currentTarget);
     const nextErrors: Errors = {
-      name: validateField("name", String(data.get("name") ?? "")),
-      email: validateField("email", String(data.get("email") ?? "")),
-      message: validateField("message", String(data.get("message") ?? "")),
+      name: validateField("name", String(data.get("name") ?? ""), t),
+      email: validateField("email", String(data.get("email") ?? ""), t),
+      message: validateField("message", String(data.get("message") ?? ""), t),
     };
     setErrors(nextErrors);
     if (!nextErrors.name && !nextErrors.email && !nextErrors.message) {
@@ -103,6 +88,9 @@ export function ContactForm() {
 
   const inputState = (field: keyof Errors) =>
     errors[field] ? "border-red-500" : "";
+
+  const orgTypes = t.raw("options.orgTypes") as string[];
+  const interests = t.raw("options.interests") as string[];
 
   return (
     <div className="relative rounded-2xl border border-black/[0.1] bg-graphite p-8 shadow-soft md:p-12">
@@ -130,19 +118,19 @@ export function ContactForm() {
               </svg>
             </span>
             <h2 className="mt-8 text-headline font-semibold tracking-tight text-bone">
-              Almost There.
+              {t("success.title")}
             </h2>
             <p className="mt-4 max-w-sm text-body leading-relaxed text-mist">
-              Your email client should now open with your message pre-addressed
-              to{" "}
-              <a
-                href={`mailto:${CONTACT_EMAIL}`}
-                className="text-accent underline-offset-4 transition-colors duration-300 hover:underline"
-              >
-                {CONTACT_EMAIL}
-              </a>
-              . Press send and our team will get back to you as soon as
-              possible.
+              {t.rich("success.body", {
+                email: (chunks) => (
+                  <a
+                    href={`mailto:${CONTACT_EMAIL}`}
+                    className="text-accent underline-offset-4 transition-colors duration-300 hover:underline"
+                  >
+                    {chunks}
+                  </a>
+                ),
+              })}
             </p>
             <button
               type="button"
@@ -153,7 +141,7 @@ export function ContactForm() {
               }}
               className="mt-10 cursor-pointer border border-steel px-7 py-3.5 font-mono text-[11px] uppercase tracking-[0.2em] text-bone transition-colors duration-300 hover:border-accent hover:text-accent"
             >
-              Send Another Message
+              {t("success.again")}
             </button>
           </motion.div>
         ) : (
@@ -169,7 +157,7 @@ export function ContactForm() {
           >
             <div>
               <label htmlFor="name" className={LABEL_CLASS}>
-                Name *
+                {t("labels.name")}
               </label>
               <input
                 id="name"
@@ -178,19 +166,19 @@ export function ContactForm() {
                 aria-invalid={Boolean(errors.name)}
                 onBlur={(e) => handleBlur("name", e.target.value)}
                 className={`${INPUT_CLASS} ${inputState("name")}`}
-                placeholder="Your full name"
+                placeholder={t("placeholders.name")}
               />
               {errors.name && <p className={ERROR_CLASS}>{errors.name}</p>}
             </div>
             <div>
               <label htmlFor="company" className={LABEL_CLASS}>
-                Company
+                {t("labels.company")}
               </label>
-              <input id="company" name="company" className={INPUT_CLASS} placeholder="Organization" />
+              <input id="company" name="company" className={INPUT_CLASS} placeholder={t("placeholders.company")} />
             </div>
             <div>
               <label htmlFor="email" className={LABEL_CLASS}>
-                Email *
+                {t("labels.email")}
               </label>
               <input
                 id="email"
@@ -200,25 +188,25 @@ export function ContactForm() {
                 aria-invalid={Boolean(errors.email)}
                 onBlur={(e) => handleBlur("email", e.target.value)}
                 className={`${INPUT_CLASS} ${inputState("email")}`}
-                placeholder="name@company.com"
+                placeholder={t("placeholders.email")}
               />
               {errors.email && <p className={ERROR_CLASS}>{errors.email}</p>}
             </div>
             <div>
               <label htmlFor="phone" className={LABEL_CLASS}>
-                Phone
+                {t("labels.phone")}
               </label>
               <input id="phone" name="phone" type="tel" className={INPUT_CLASS} placeholder="+1 000 000 0000" />
             </div>
             <div>
               <label htmlFor="country" className={LABEL_CLASS}>
-                Country
+                {t("labels.country")}
               </label>
-              <input id="country" name="country" className={INPUT_CLASS} placeholder="Country" />
+              <input id="country" name="country" className={INPUT_CLASS} placeholder={t("placeholders.country")} />
             </div>
             <div>
               <label htmlFor="org-type" className={LABEL_CLASS}>
-                Organization Type
+                {t("labels.orgType")}
               </label>
               <select
                 id="org-type"
@@ -227,9 +215,9 @@ export function ContactForm() {
                 defaultValue=""
               >
                 <option value="" disabled>
-                  Select type
+                  {t("selectOrgType")}
                 </option>
-                {ORGANIZATION_TYPES.map((type) => (
+                {orgTypes.map((type) => (
                   <option key={type} value={type} className="bg-void">
                     {type}
                   </option>
@@ -238,7 +226,7 @@ export function ContactForm() {
             </div>
             <div className="sm:col-span-2">
               <label htmlFor="interest" className={LABEL_CLASS}>
-                Area of Interest
+                {t("labels.interest")}
               </label>
               <select
                 id="interest"
@@ -247,9 +235,9 @@ export function ContactForm() {
                 defaultValue=""
               >
                 <option value="" disabled>
-                  Select area
+                  {t("selectInterest")}
                 </option>
-                {INTERESTS.map((item) => (
+                {interests.map((item) => (
                   <option key={item} value={item} className="bg-void">
                     {item}
                   </option>
@@ -259,7 +247,7 @@ export function ContactForm() {
             <div className="sm:col-span-2">
               <div className="flex items-baseline justify-between">
                 <label htmlFor="message" className={LABEL_CLASS}>
-                  Message *
+                  {t("labels.message")}
                 </label>
                 <span className="font-mono text-[9px] tabular-nums tracking-[0.18em] text-faint">
                   {msgCount} / 1000
@@ -278,13 +266,13 @@ export function ContactForm() {
                   if (errors.message) {
                     setErrors((prev) => ({
                       ...prev,
-                      message: validateField("message", e.target.value),
+                      message: validateField("message", e.target.value, t),
                     }));
                   }
                 }}
                 onBlur={(e) => handleBlur("message", e.target.value)}
                 className={`${INPUT_CLASS} resize-y ${inputState("message")}`}
-                placeholder="Tell us about your mission, project or interest."
+                placeholder={t("placeholders.message")}
               />
               {errors.message && <p className={ERROR_CLASS}>{errors.message}</p>}
             </div>
@@ -293,7 +281,7 @@ export function ContactForm() {
                 type="submit"
                 className="btn-sheen btn-primary group inline-flex w-full cursor-pointer items-center justify-center gap-3 rounded-xl px-7 py-4 text-xs font-medium uppercase tracking-[0.14em] text-white sm:w-auto"
               >
-                <span>Start a Conversation</span>
+                <span>{t("submit")}</span>
                 <svg
                   width="14"
                   height="14"

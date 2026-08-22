@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/buttons/button";
 import { Magnetic } from "@/components/motion/magnetic";
 import { WordReveal } from "@/components/motion/word-reveal";
@@ -12,6 +13,7 @@ import { DURATION, EASE, viewportOnce } from "@/lib/animations";
 
 export function VisionSection() {
   const reduced = useReducedMotion();
+  const t = useTranslations("home");
 
   return (
     <section
@@ -38,16 +40,13 @@ export function VisionSection() {
           className="flex items-center justify-center gap-3 font-mono text-[11px] uppercase tracking-[0.25em] text-mist"
         >
           <span aria-hidden="true" className="h-px w-8 bg-teal" />
-          Vision
+          {t("visionEyebrow")}
           <span aria-hidden="true" className="h-px w-8 bg-teal" />
         </motion.p>
 
         <h2 className="mx-auto mt-8 max-w-5xl text-headline font-semibold leading-[1.08] tracking-[-0.02em] text-bone md:text-display">
           <WordReveal
-            lines={[
-              "A future where no environment",
-              "is off-limits to ~machines.~",
-            ]}
+            lines={[t("visionL1"), t("visionL2")]}
             wordClassName="text-bone"
           />
         </h2>
@@ -59,22 +58,16 @@ export function VisionSection() {
           transition={{ duration: DURATION.standard, ease: EASE.out, delay: 0.2 }}
           className="mx-auto mt-8 max-w-xl space-y-5 text-body leading-relaxed text-mist"
         >
-          <p>
-            Humans have always built tools to go farther, deeper, higher and
-            closer to danger.
-          </p>
-          <p>
-            The next step is intelligent machines that can do the same with
-            greater persistence, precision and resilience.
-          </p>
-          <p className="text-bone">Cennzo Robotix is building toward that future.</p>
+          <p>{t("visionP1")}</p>
+          <p>{t("visionP2")}</p>
+          <p className="text-bone">{t("visionP3")}</p>
         </motion.div>
 
         <Reveal className="mx-auto mt-16 max-w-5xl">
           <Parallax speed={0.06}>
             <MediaFrame
               code="IMG-02"
-              label="WAFEE in Extreme Environments — Concept Visualization"
+              label={t("visionImgLabel")}
               ratio="21/9"
             />
           </Parallax>
@@ -89,7 +82,7 @@ export function VisionSection() {
         >
           <Magnetic>
             <Button href="/partnerships" variant="light">
-              Join the Journey
+              {t("visionCta")}
             </Button>
           </Magnetic>
         </motion.div>

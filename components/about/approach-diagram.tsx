@@ -1,45 +1,41 @@
 "use client";
 
+import type { ReactNode } from "react";
 import { motion, useReducedMotion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { drawStroke, viewportOnce } from "@/lib/animations";
 
-const NOT_ENOUGH = [
-  {
-    label: "A powerful motor",
-    body: "Raw actuation without perception or control is just kinetic energy.",
-    icon: (
-      <path d="M13 2 L5 13 H11 L9 22 L19 9 H12 Z" strokeWidth="1.3" strokeLinejoin="round" />
-    ),
-  },
-  {
-    label: "A sophisticated AI model",
-    body: "Intelligence without a capable body stays trapped in the cloud.",
-    icon: (
-      <>
-        <rect x="5" y="5" width="14" height="14" rx="2" strokeWidth="1.3" />
-        <path d="M9 1v4M15 1v4M9 19v4M15 19v4M1 9h4M1 15h4M19 9h4M19 15h4" strokeWidth="1.3" />
-      </>
-    ),
-  },
-  {
-    label: "A strong chassis",
-    body: "Structure without sensing and autonomy is inert material.",
-    icon: (
-      <>
-        <path d="M12 2 L21 6 V12 C21 17 17 20.5 12 22 C7 20.5 3 17 3 12 V6 Z" strokeWidth="1.3" strokeLinejoin="round" />
-        <path d="M8.5 12 l2.5 2.5 L16 9.5" strokeWidth="1.3" strokeLinecap="round" />
-      </>
-    ),
-  },
+type NotEnoughItem = {
+  label: string;
+  body: string;
+  icon: ReactNode;
+};
+
+const ICONS: ReactNode[] = [
+  <path key="bolt" d="M13 2 L5 13 H11 L9 22 L19 9 H12 Z" strokeWidth="1.3" strokeLinejoin="round" />,
+  <>
+    <rect key="chip-r" x="5" y="5" width="14" height="14" rx="2" strokeWidth="1.3" />
+    <path key="chip-p" d="M9 1v4M15 1v4M9 19v4M15 19v4M1 9h4M1 15h4M19 9h4M19 15h4" strokeWidth="1.3" />
+  </>,
+  <>
+    <path key="shield-a" d="M12 2 L21 6 V12 C21 17 17 20.5 12 22 C7 20.5 3 17 3 12 V6 Z" strokeWidth="1.3" strokeLinejoin="round" />
+    <path key="shield-b" d="M8.5 12 l2.5 2.5 L16 9.5" strokeWidth="1.3" strokeLinecap="round" />
+  </>,
 ];
 
 export function ApproachDiagram() {
   const reduced = useReducedMotion();
+  const t = useTranslations("aboutApproach");
+  const notEnough = t.raw("notEnough") as Omit<NotEnoughItem, "icon">[];
+  const items: NotEnoughItem[] = notEnough.map((item, i) => ({
+    ...item,
+    icon: ICONS[i],
+  }));
 
   return (
     <div className="mt-16">
       <div className="grid gap-5 md:grid-cols-3">
-        {NOT_ENOUGH.map((item, i) => (
+        {items.map((item, i) => (
           <motion.div
             key={item.label}
             initial={reduced ? false : { opacity: 0, y: 32 }}
@@ -68,7 +64,7 @@ export function ApproachDiagram() {
             </h3>
             <p className="mt-3 text-sm leading-relaxed text-faint">{item.body}</p>
             <p className="mt-5 font-mono text-[9px] uppercase tracking-[0.25em] text-accent">
-              Not enough.
+              {t("notEnoughTag")}
             </p>
           </motion.div>
         ))}
@@ -92,16 +88,14 @@ export function ApproachDiagram() {
         <div className="relative grid items-center gap-10 lg:grid-cols-[1fr_1.2fr]">
           <div>
             <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-teal">
-              The Synthesis
+              {t("synthesis.eyebrow")}
             </p>
             <h3 className="mt-4 text-3xl font-semibold leading-tight tracking-tight text-white md:text-4xl">
-              A useful robot emerges when everything operates as{" "}
-              <span className="text-teal">one system.</span>
+              {t("synthesis.linePre")}{" "}
+              <span className="text-teal">{t("synthesis.lineAccent")}</span>
             </h3>
             <p className="mt-5 max-w-md text-sm leading-relaxed text-white/60">
-              Mechanics, electronics, energy, software, intelligence, perception
-              and safety — engineered as a single integrated architecture. That
-              is the philosophy behind WAFEE.
+              {t("synthesis.body")}
             </p>
           </div>
 
@@ -170,11 +164,11 @@ export function ApproachDiagram() {
             >
               WAFEE
             </motion.text>
-            {[52, 130, 208].map((label, i) => (
+            {(["labelA", "labelB", "labelC"] as const).map((key, i) => (
               <motion.text
-                key={`l-${i}`}
+                key={key}
                 x="46"
-                y={label + 30}
+                y={[52, 130, 208][i] + 30}
                 textAnchor="middle"
                 className="fill-white/40 font-mono text-[8px] uppercase tracking-[0.18em]"
                 variants={{
@@ -182,7 +176,7 @@ export function ApproachDiagram() {
                   visible: { opacity: 1, transition: { duration: 0.5, delay: 0.4 + i * 0.15 } },
                 }}
               >
-                {["ACTUATION", "INTELLIGENCE", "STRUCTURE"][i]}
+                {t(`synthesis.${key}`)}
               </motion.text>
             ))}
           </motion.svg>

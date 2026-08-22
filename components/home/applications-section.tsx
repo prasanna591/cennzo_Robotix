@@ -1,14 +1,30 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { SectionHeading } from "@/components/sections/section-heading";
 import { Button } from "@/components/buttons/button";
 import { Magnetic } from "@/components/motion/magnetic";
 import { DURATION, EASE, viewportOnce } from "@/lib/animations";
-import { APPLICATION_DOMAINS } from "@/lib/content/site";
 
-function MarqueeRow({ reverse = false }: { reverse?: boolean }) {
-  const items = [...APPLICATION_DOMAINS];
+const DOMAIN_KEYS = [
+  "domain1",
+  "domain2",
+  "domain3",
+  "domain4",
+  "domain5",
+  "domain6",
+  "domain7",
+  "domain8",
+  "domain9",
+  "domain10",
+  "domain11",
+  "domain12",
+  "domain13",
+  "domain14",
+] as const;
+
+function MarqueeRow({ reverse = false, items }: { reverse?: boolean; items: string[] }) {
   const doubled = [...items, ...items];
 
   return (
@@ -33,18 +49,18 @@ function MarqueeRow({ reverse = false }: { reverse?: boolean }) {
 
 export function ApplicationsSection() {
   const reduced = useReducedMotion();
+  const t = useTranslations("home");
+  const domains = DOMAIN_KEYS.map((key) => t(key));
 
   return (
     <section id="applications" className="relative overflow-hidden border-b border-black/[0.08]">
       <div className="mx-auto w-full max-w-[1440px] px-6 pt-section md:px-10">
         <SectionHeading
           eyebrow="Applications"
-          lines={["From Industry", "To The Impossible."]}
+          lines={[t("appsL1"), t("appsL2")]}
           body={
             <p>
-              The first generation of WAFEE applications will focus on
-              practical, measurable problems where robotic deployment can create
-              clear safety, productivity or operational advantages.
+              {t("appsBody")}
             </p>
           }
         />
@@ -57,7 +73,7 @@ export function ApplicationsSection() {
         >
           <Magnetic>
             <Button href="/applications" variant="ghost">
-              Explore Applications
+              {t("appsCta")}
             </Button>
           </Magnetic>
         </motion.div>
@@ -68,10 +84,10 @@ export function ApplicationsSection() {
         whileInView={{ opacity: 1 }}
         viewport={viewportOnce}
         transition={{ duration: DURATION.cinematic }}
-        className="marquee-hover mt-16 space-y-2 border-y border-black/[0.08] py-8 md:space-y-3"
+        className="marquee-hover mt-12 space-y-2 border-y border-black/[0.08] py-8 md:space-y-3"
       >
-        <MarqueeRow />
-        <MarqueeRow reverse />
+        <MarqueeRow items={domains} />
+        <MarqueeRow reverse items={domains} />
       </motion.div>
 
       <div className="h-16" aria-hidden="true" />

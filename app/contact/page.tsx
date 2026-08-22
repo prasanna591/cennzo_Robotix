@@ -1,33 +1,25 @@
 import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 import { PageHero } from "@/components/sections/page-hero";
 import { ContactForm } from "@/components/contact/contact-form";
 import { Reveal } from "@/components/motion/reveal";
 
-export const metadata: Metadata = {
-  title: "Contact | Cennzo Robotix",
-  description:
-    "Let's build what comes next. Contact Cennzo Robotix for WAFEE demonstrations, technology partnerships, industrial pilots, research collaboration, investment discussions and careers.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("contactPage.meta");
+  return { title: t("title"), description: t("description") };
+}
 
-const CONTACT_FOR = [
-  "WAFEE demonstrations",
-  "Technology partnerships",
-  "Industrial pilots",
-  "Research collaboration",
-  "Investment discussions",
-  "Component partnerships",
-  "Careers",
-  "Media",
-];
+export default async function ContactPage() {
+  const t = await getTranslations("contactPage");
+  const contactFor = t.raw("contactFor.items") as string[];
 
-export default function ContactPage() {
   return (
     <main>
       <PageHero
-        eyebrow="Contact"
-        lines={["Let's Build", "What Comes Next."]}
-        intro="Whether you are an industrial operator, technology partner, researcher, investor or engineer, we would like to hear from you."
-        meta="Have a hard problem? Let's engineer the answer."
+        eyebrow={t("hero.eyebrow")}
+        lines={[t("hero.line1"), t("hero.line2")]}
+        intro={t("hero.intro")}
+        meta={t("hero.meta")}
       />
 
       <section className="border-b border-black/[0.08]">
@@ -35,12 +27,12 @@ export default function ContactPage() {
           <div>
             <Reveal>
               <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-mist">
-                Contact For
+                {t("contactFor.label")}
               </p>
             </Reveal>
             <Reveal delay={0.1}>
               <ul className="mt-8 space-y-0">
-                {CONTACT_FOR.map((item) => (
+                {contactFor.map((item) => (
                   <li
                     key={item}
                     className="flex items-center gap-4 border-b border-black/[0.08] py-4 text-sm text-mist"
@@ -55,7 +47,7 @@ export default function ContactPage() {
               <p className="mt-12 font-mono text-[10px] uppercase leading-relaxed tracking-[0.2em] text-faint">
                 Cennzo Robotix
                 <br />
-                Intelligent Machines for the Real World.
+                {t("contactFor.tagline")}
               </p>
             </Reveal>
           </div>

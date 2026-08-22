@@ -1,0 +1,1202 @@
+{
+  "meta": {
+    "title": "Cennzo Robotix | Robótica humanoide deep-tech y máquinas inteligentes",
+    "description": "Cennzo Robotix desarrolla robots humanoides avanzados y sistemas robóticos inteligentes para aplicaciones industriales, peligrosas y multientorno. Conoce a WAFEE."
+  },
+  "nav": {
+    "about": "Nosotros",
+    "wafee": "WAFEE",
+    "technology": "Tecnología",
+    "applications": "Aplicaciones",
+    "industries": "Industrias",
+    "contact": "Contacto"
+  },
+  "palette": {
+    "searchPlaceholder": "Buscar en la máquina…",
+    "noResults": "Sin señal para «{query}»",
+    "groupNavigate": "Navegar",
+    "groupMachine": "Máquina",
+    "groupActions": "Acciones",
+    "hintNavigate": "Navegar",
+    "hintOpen": "Abrir",
+    "hintToggle": "Alternar",
+    "openLabel": "ABRIR",
+    "itemHome": "Inicio",
+    "itemHomeHint": "Proyección en vivo y resumen",
+    "itemAboutHint": "Quiénes somos",
+    "itemWafeeHint": "La plataforma humanoide",
+    "itemTechnologyHint": "Nueve subsistemas, una máquina",
+    "itemApplicationsHint": "Nueve dominios de misión",
+    "itemIndustriesHint": "Sectores que atendemos",
+    "itemPlatformHint": "La plataforma de desarrollo",
+    "itemResearchHint": "Investigación e ingeniería",
+    "itemSafetyHint": "Validación y seguridad",
+    "itemPartnershipsHint": "Construye con nosotros",
+    "itemInvestorsHint": "Impulsa la misión",
+    "itemCareersHint": "Únete a la tripulación",
+    "itemContact": "Iniciar una conversación",
+    "itemContactHint": "Alianzas, prensa, talento",
+    "sysPerception": "Percepción e inteligencia",
+    "sysPerceptionHint": "SYS·03 — sensores y conciencia",
+    "sysCompute": "Cómputo e IA",
+    "sysComputeHint": "SYS·04 — inteligencia a bordo",
+    "sysActuation": "Actuación y control",
+    "sysActuationHint": "SYS·02/05 — movimiento",
+    "sysPower": "Energía y térmica",
+    "sysPowerHint": "SYS·06/07 — resistencia",
+    "sysMechanical": "Estructura y materiales",
+    "sysMechanicalHint": "SYS·01/08 — chasis",
+    "keywordsHome": "inicio aterrizar héroe",
+    "keywordsAbout": "empresa historia equipo",
+    "keywordsWafee": "robot plataforma especificaciones",
+    "keywordsTechnology": "sistemas ingeniería anatomía",
+    "keywordsApplications": "misiones dominios casos de uso",
+    "keywordsIndustries": "sectores energía minería marino",
+    "keywordsContact": "correo hablar contacto formulario",
+    "keywordsSys": "mente sensores visión ia cerebro cómputo articulaciones motores batería calor chasis cuerpo"
+  },
+  "preloader": {
+    "initializing": "Inicializando WAFEE",
+    "line1": "Calibrando actuadores",
+    "line2": "Sincronizando sistema de percepción",
+    "line3": "Arrancando núcleo de energía",
+    "line4": "Estableciendo enlace de telemetría",
+    "line5": "Integridad del chasis verificada"
+  },
+  "header": {
+    "openMenu": "Abrir menú",
+    "closeMenu": "Cerrar menú",
+    "home": "Cennzo Robotix — Inicio",
+    "language": "Idioma"
+  },
+  "footer": {
+    "description": "Construimos sistemas robóticos inteligentes para entornos complejos y exigentes.",
+    "explore": "Explorar",
+    "company": "Compañía",
+    "legal": "Legal",
+    "follow": "Seguir",
+    "linkHome": "Inicio",
+    "linkAbout": "Nosotros",
+    "linkWafee": "WAFEE",
+    "linkTechnology": "Tecnología",
+    "linkApplications": "Aplicaciones",
+    "linkPlatform": "Plataforma",
+    "linkResearch": "Investigación e Ingeniería",
+    "linkSafety": "Validación y Seguridad",
+    "linkIndustries": "Industrias",
+    "linkPartnerships": "Alianzas",
+    "linkInvestors": "Inversores",
+    "linkCareers": "Empleo",
+    "linkContact": "Contacto",
+    "legalPrivacy": "Política de privacidad",
+    "legalTerms": "Términos de uso",
+    "legalAI": "IA y robótica responsables",
+    "legalCompliance": "Seguridad y cumplimiento",
+    "rights": "© 2026 Cennzo Robotix. Todos los derechos reservados.",
+    "mission": "El futuro pertenece a las máquinas capaces de comprender el mundo, moverse por él y actuar dentro de él."
+  },
+  "hero": {
+    "eyebrow": "WAFEE — Plataforma humanoide multientorno unificada",
+    "line1": "El humanoide para",
+    "line2": "los *lugares hostiles.*",
+    "lede": "WAFEE es la plataforma humanoide multientorno unificada de Cennzo Robotix: diseñada para llevar movilidad inteligente, percepción y manipulación a entornos donde los robots convencionales alcanzan sus límites.",
+    "ctaPrimary": "Explorar WAFEE",
+    "ctaSecondary": "Construyamos el futuro juntos",
+    "scroll": "Desplázate",
+    "envEarth": "TIERRA",
+    "envWater": "AGUA",
+    "envFire": "FUEGO",
+    "envAir": "AIRE",
+    "envSpace": "ESPACIO",
+    "panelProjection": "WAFEE·01 — Proyección holográfica",
+    "panelSysOnline": "Sistema en línea",
+    "panelRenderLive": "Render · En vivo",
+    "panelHint": "Mueve el cursor — te está observando.",
+    "panelFig": "FIG·A / CHASIS REV·04",
+    "panelCalibrating": "Calibrando proyección…",
+    "panelAria": "Proyección holográfica en vivo del robot humanoide WAFEE ensamblándose sobre un suelo de rejilla"
+  },
+  "home": {
+    "introEyebrow": "La Misión",
+    "introL1": "La inteligencia no debería detenerse",
+    "introL2": "en el *límite*",
+    "introL3": "del entorno.",
+    "introP1": "Las misiones más difíciles del mundo rara vez se limitan a entornos controlados.",
+    "introP2": "Instalaciones industriales, zonas de desastre, activos marinos, sitios de infraestructura, ambientes de temperatura extrema y futuras operaciones fuera de la Tierra exigen máquinas capaces de moverse, percibir, decidir y actuar con mayor resiliencia.",
+    "introP3": "Cennzo Robotix desarrolla WAFEE como una nueva clase de plataforma robótica humanoide: combina forma compatible con el ser humano, actuación avanzada, percepción inteligente, control autónomo y protección ambiental diseñada con precisión.",
+    "introGoalLabel": "Nuestro Objetivo",
+    "introGoal": "Desplegar máquinas capaces donde la exposición humana, la complejidad operativa o la incertidumbre del entorno hacen que los métodos convencionales sean ineficaces o inseguros.",
+    "wafeeEyebrow": "La Plataforma",
+    "wafeeTitle": "Conoce a WAFEE.",
+    "wafeeP1": "WAFEE es una plataforma robótica humanoide de clase 178 cm, construida sobre una arquitectura modular para movilidad, manipulación, percepción y operación autónoma.",
+    "wafeeP2": "Diseñada como plataforma y no como máquina de un solo propósito, WAFEE puede evolucionar entre industrias, perfiles de misión y futuras generaciones de inteligencia robótica.",
+    "statHeight": "Altura de clase humanoide",
+    "statEnvironments": "Entornos de misión",
+    "statAttributes": "Atributos clave de la plataforma",
+    "wafeeCta": "Descubre la plataforma WAFEE",
+    "wafeeImgLabel": "WAFEE Plataforma completa — Render conceptual",
+    "attr1": "Formato a escala humana",
+    "attr2": "Actuación eléctrica de alto rendimiento",
+    "attr3": "Percepción avanzada y fusión de sensores",
+    "attr4": "Toma de decisiones asistida por IA",
+    "attr5": "Arquitectura modular de hardware y software",
+    "attr6": "Arquitectura de protección ambiental",
+    "attr7": "Autonomía orientada a la misión",
+    "attr8": "Operación remota y autónoma",
+    "attr9": "Monitoreo continuo de salud y sistemas",
+    "envEyebrow": "El Viaje — Cinco entornos",
+    "envTitle1": "Una plataforma.",
+    "envTitle2": "Múltiples mundos.",
+    "envScrollA": "Desplázate para recorrer la hoja de ruta",
+    "envScrollB": " — de la Tierra al Espacio.",
+    "envDisclaimer": "La visión multientorno de WAFEE representa una hoja de ruta de ingeniería a largo plazo. Cada capacidad ambiental depende de una configuración, validación y certificación específicas de cada misión.",
+    "statusPrimary": "DESARROLLO PRINCIPAL",
+    "statusRoadmap": "HOJA DE RUTA DE INGENIERÍA",
+    "statusResearch": "INVESTIGACIÓN",
+    "statusVision": "VISIÓN A LARGO PLAZO",
+    "earthName": "Tierra",
+    "earthDomain": "Industrial · Infraestructura · Desastres",
+    "earthDesc": "Navegar entornos industriales, de infraestructura, logística y desastres con movilidad y manipulación compatibles con el ser humano.",
+    "waterName": "Agua",
+    "waterDomain": "Marino · Costa afuera · Subsuelo",
+    "waterDesc": "Habilitar inspección, intervención y operaciones de apoyo en entornos acuáticos mediante una arquitectura robótica protegida.",
+    "fireName": "Fuego",
+    "fireDomain": "Alta temperatura · Zonas peligrosas",
+    "fireDesc": "Apoyar operaciones en zonas de alta temperatura y peligro donde el acceso humano directo es limitado.",
+    "airName": "Aire",
+    "airDomain": "Alturas · Exposición · Acceso limitado",
+    "airDesc": "Operar en entornos elevados, expuestos y de difícil acceso mediante movilidad inteligente y sistemas dedicados a la misión.",
+    "spaceName": "Espacio",
+    "spaceDomain": "Vacío · Radiación · Fuera de la Tierra",
+    "spaceDesc": "Abrir camino hacia operaciones robóticas en vacío, radiación extrema y entornos extraterrestres.",
+    "whyEyebrow": "Por qué Cennzo",
+    "whyL1": "Hecho para la misión,",
+    "whyL2": "no para la ~demo.~",
+    "whyBodyPre": "Cennzo Robotix aborda la robótica humanoide como un problema de ingeniería de sistemas. El diseño mecánico, la actuación, la energía, la gestión térmica, la detección, el control, la IA, las comunicaciones, los materiales y la seguridad no pueden desarrollarse de forma independiente: por eso diseñamos WAFEE como ",
+    "whyBodyBold": "un único sistema integrado",
+    "whyBodyPost": ", donde cada subsistema contribuye al rendimiento de la misión.",
+    "principle1Title": "Compatible con humanos",
+    "principle1Desc": "Diseñado alrededor de un formato a escala humana para que el robot interactúe con espacios, herramientas e infraestructura creados para las personas.",
+    "principle2Title": "Modular",
+    "principle2Desc": "Hardware y software están pensados para evolucionar sin rediseñar toda la plataforma.",
+    "principle3Title": "Inteligente",
+    "principle3Desc": "Percepción, planificación y control están integrados para habilitar una operación cada vez más autónoma.",
+    "principle4Title": "Resiliente",
+    "principle4Desc": "La plataforma se diseña en torno a exigentes requisitos ambientales, térmicos, mecánicos y operativos.",
+    "techL1": "Ingeniería de",
+    "techL2": "la máquina completa.",
+    "techCta": "Explora nuestra tecnología",
+    "techMechanicalName": "Sistemas mecánicos",
+    "techMechanicalSummary": "Articulaciones de alto rendimiento, estructura ligera y sistemas de transmisión de precisión.",
+    "techActuationName": "Actuación",
+    "techActuationSummary": "Actuación eléctrica de alto par diseñada para movimiento humanoide dinámico, manipulación y fuerza controlada.",
+    "techPerceptionName": "Percepción",
+    "techPerceptionSummary": "Sensores multimodales que combinan visión, profundidad, información inercial, retroalimentación fuerza/par y detección ambiental.",
+    "techComputeName": "Cómputo e IA",
+    "techComputeSummary": "Arquitectura de cómputo a bordo para percepción, planificación, control, diagnóstico e inteligencia de misión.",
+    "techPowerName": "Energía",
+    "techPowerSummary": "Almacenamiento de energía de alta densidad, distribución inteligente y sistemas de protección.",
+    "techThermalName": "Gestión térmica",
+    "techThermalSummary": "Arquitectura térmica integrada para controlar el calor en motores, variadores, cómputo y electrónica de potencia.",
+    "techMaterialsName": "Materiales y protección",
+    "techMaterialsSummary": "Materiales estructurales y de protección avanzados seleccionados según requisitos mecánicos, térmicos, ambientales y de misión.",
+    "techSoftwareName": "Software",
+    "techSoftwareSummary": "Una pila de software robótico por capas que conecta sensores, percepción, planificación, control, diagnóstico y aplicaciones de misión.",
+    "appsL1": "De la industria",
+    "appsL2": "a lo imposible.",
+    "appsBody": "La primera generación de aplicaciones de WAFEE se centrará en problemas prácticos y medibles donde el despliegue robótico genere ventajas claras en seguridad, productividad u operación.",
+    "appsCta": "Explorar aplicaciones",
+    "domain1": "Inspección industrial",
+    "domain2": "Operaciones en zonas peligrosas",
+    "domain3": "Respuesta a desastres",
+    "domain4": "Apoyo contra incendios y emergencias",
+    "domain5": "Inspección de infraestructura",
+    "domain6": "Operaciones costa afuera y marinas",
+    "domain7": "Energía y servicios públicos",
+    "domain8": "Minería e industria pesada",
+    "domain9": "Almacenes y logística",
+    "domain10": "Construcción",
+    "domain11": "Defensa e investigación gubernamental",
+    "domain12": "Búsqueda y reconocimiento",
+    "domain13": "Mantenimiento remoto",
+    "domain14": "Robótica espacial y planetaria",
+    "visionEyebrow": "Visión",
+    "visionL1": "Un futuro donde ningún entorno",
+    "visionL2": "está vedado para las ~máquinas.~",
+    "visionP1": "Los seres humanos siempre han creado herramientas para ir más lejos, más profundo, más alto y más cerca del peligro.",
+    "visionP2": "El siguiente paso son máquinas inteligentes que logren lo mismo con mayor persistencia, precisión y resiliencia.",
+    "visionP3": "Cennzo Robotix construye ese futuro.",
+    "visionCta": "Únete al viaje",
+    "visionImgLabel": "WAFEE en entornos extremos — Visualización conceptual",
+    "ctaL1": "La próxima frontera no es un lugar.",
+    "ctaL2": "Es una *capacidad.*",
+    "ctaBody": "Estamos construyendo máquinas inteligentes para las misiones que importan.",
+    "ctaPrimary": "Colabora con Cennzo",
+    "ctaSecondary": "Explorar WAFEE"
+  },
+  "langPrompt": {
+    "title": "Elige tu idioma",
+    "subtitle": "Selecciona un idioma para Cennzo Robotix. Puedes cambiarlo cuando quieras.",
+    "skip": "Continuar en inglés"
+  },
+  "aboutPage": {
+    "meta": {
+      "title": "Acerca de Cennzo Robotix | Empresa de robótica deep-tech",
+      "description": "Cennzo Robotix es una empresa de robótica deep-tech que construye sistemas humanoides inteligentes para los entornos reales más exigentes."
+    },
+    "hero": {
+      "eyebrow": "Acerca de",
+      "line1": "Ingeniería",
+      "line2": "*inteligente.*",
+      "intro": "Cennzo Robotix es una empresa de robótica deep-tech que construye sistemas humanoides inteligentes para los entornos reales más exigentes."
+    },
+    "whoWeAre": {
+      "eyebrow": "Quiénes somos",
+      "fill1a": "Nuestra misión: llevar la inteligencia",
+      "fill1b": "donde el ser humano *no llega con seguridad*.",
+      "para1": "Unimos robótica, inteligencia artificial, ingeniería mecánica, sistemas embebidos, materiales avanzados, sistemas energéticos y control autónomo en plataformas robóticas integradas.",
+      "para2": "Nuestra plataforma insignia, <wafee>WAFEE</wafee>, encarna nuestra visión de una máquina a escala humana capaz de adaptarse a múltiples entornos de misión."
+    },
+    "stats": {
+      "items": [
+        {
+          "label": "Disciplinas de ingeniería",
+          "sub": "De la actuación y los materiales a la IA y el control autónomo."
+        },
+        {
+          "label": "Dominios de misión",
+          "sub": "Tierra, mar, fuego, aire — y pronto, el espacio."
+        },
+        {
+          "label": "Atributos del sistema",
+          "sub": "Las características que definen la arquitectura de referencia WAFEE."
+        },
+        {
+          "label": "Valores fundamentales",
+          "sub": "Los principios que cada decisión de ingeniería debe honrar."
+        }
+      ]
+    },
+    "media": {
+      "label": "Dentro del laboratorio de Cennzo Robotix — visual conceptual",
+      "captionA": "Donde convergen las disciplinas",
+      "captionB": "— un equipo, una máquina."
+    },
+    "approach": {
+      "eyebrow": "Nuestro enfoque",
+      "line1": "La integración de sistemas",
+      "line2": "*es el verdadero progreso.*",
+      "body": "Creemos que el futuro de la robótica lo definirá la integración de sistemas, no un único componente revolucionario."
+    },
+    "values": {
+      "eyebrow": "Nuestros valores",
+      "line1": "Los principios que",
+      "line2": "*defendemos.*",
+      "items": [
+        {
+          "title": "La ingeniería primero",
+          "description": "Priorizar el rendimiento medible por encima de la apariencia."
+        },
+        {
+          "title": "La misión primero",
+          "description": "Cada subsistema debe servir a una necesidad operativa real."
+        },
+        {
+          "title": "El bienestar humano",
+          "description": "La tecnología debe reducir el riesgo y ampliar la capacidad humana."
+        },
+        {
+          "title": "Iteración rápida",
+          "description": "Construir, probar, medir, aprender, mejorar."
+        },
+        {
+          "title": "Innovación abierta",
+          "description": "Los grandes avances suelen nacer entre disciplinas y organizaciones."
+        },
+        {
+          "title": "Autonomía responsable",
+          "description": "Los robots deben operar dentro de límites de seguridad definidos, con trazabilidad y supervisión humana cuando sea necesario."
+        }
+      ]
+    },
+    "cta": {
+      "line1": "Suficientemente audaces para imaginar",
+      "line2": "*lo imposible.*",
+      "body": "Y suficientemente disciplinados para demostrarlo.",
+      "primary": "Construir con nosotros",
+      "secondary": "Conocer WAFEE"
+    }
+  },
+  "aboutVm": {
+    "eyebrow": "Propósito",
+    "line1": "Una empresa.",
+    "line2": "~Dos promesas.~",
+    "sideNote": "Todo lo que diseñamos — cada actuador, cada prototipo, cada línea de código — apunta a estos dos compromisos.",
+    "mission": {
+      "label": "Misión",
+      "title1": "Ampliar las capacidades humanas.",
+      "titlePre": "Mantener a las personas",
+      "titleAccent": "fuera de peligro.",
+      "body": "Construimos máquinas inteligentes que van donde es difícil, peligroso o improductivo para los humanos — mejorando la seguridad operativa mientras abrimos entornos antes inaccesibles.",
+      "footer": "Cuando la ingeniería cumple su promesa"
+    },
+    "vision": {
+      "label": "Visión",
+      "title1": "Un mundo donde robots y humanidad",
+      "titlePre": "trabajen",
+      "titleAccent": "codo con codo.",
+      "body": "Las tareas peligrosas, repetitivas, inaccesibles y técnicamente exigentes se confían a máquinas con resistencia, precisión y resiliencia; los humanos pueden perseguir ambiciones más altas.",
+      "footer": "Más allá del horizonte"
+    }
+  },
+  "aboutApproach": {
+    "notEnough": [
+      {
+        "label": "Un motor potente",
+        "body": "Sin percepción ni control, la actuación bruta es solo capacidad locomotora."
+      },
+      {
+        "label": "Un modelo de IA avanzado",
+        "body": "Sin un cuerpo competente, la inteligencia sigue prisionera de la nube."
+      },
+      {
+        "label": "Una estructura robusta",
+        "body": "Sin sensores ni autonomía, una estructura es solo un objeto estático."
+      }
+    ],
+    "notEnoughTag": "No es suficiente.",
+    "synthesis": {
+      "eyebrow": "La síntesis",
+      "linePre": "Un robot útil surge cuando todo opera como",
+      "lineAccent": "un solo sistema.",
+      "body": "Mecanismos, electrónica, energía, software, inteligencia, percepción y seguridad — diseñados como una arquitectura unificada. Esa es la filosofía detrás de WAFEE.",
+      "labelA": "Actuación",
+      "labelB": "Inteligencia",
+      "labelC": "Arquitectura"
+    }
+  },
+  "aboutTimeline": {
+    "eyebrow": "El camino por delante",
+    "line1": "Del plano",
+    "line2": "*a la hazaña.*",
+    "body": "Cada frontera comienza con un plano. Nuestro camino es un esfuerzo de ingeniería progresivo: cada fase abre la siguiente, cada afirmación se demuestra antes de enunciarse.",
+    "phases": [
+      {
+        "phase": "Fase 01",
+        "title": "Fundamentos",
+        "body": "Definición de la arquitectura, diseño de referencia y principios de ingeniería detrás de WAFEE.",
+        "status": "Enfoque actual"
+      },
+      {
+        "phase": "Fase 02",
+        "title": "Construcción",
+        "body": "Integración de subsistemas — actuación, percepción, cómputo, energía — ensamblados como una sola máquina y verificados en laboratorio.",
+        "status": "Siguiente"
+      },
+      {
+        "phase": "Fase 03",
+        "title": "Verificación",
+        "body": "Pruebas controladas de laboratorio, calificación de subsistemas y verificación completa frente a los requisitos de misión.",
+        "status": "Planificado"
+      },
+      {
+        "phase": "Fase 04",
+        "title": "Despliegue",
+        "body": "Calificación ambiental progresiva — ampliando WAFEE a los dominios tierra, mar, fuego, aire y espacio.",
+        "status": "Largo plazo"
+      }
+    ]
+  },
+  "wafeePage": {
+    "meta": {
+      "title": "Robot humanoide WAFEE | Cennzo Robotix",
+      "description": "WAFEE — la plataforma robótica humanoide multidominio integrada de Cennzo Robotix, diseñada para la movilidad inteligente, la manipulación, la percepción y la operación autónoma."
+    },
+    "hero": {
+      "eyebrow": "WAFEE — plataforma humanoide multidominio integrada",
+      "line1": "Un humanoide diseñado",
+      "line2": "para el mundo *más allá del laboratorio.*",
+      "intro": "WAFEE es la plataforma robótica humanoide insignia de Cennzo Robotix. Su arquitectura integra movilidad a escala humana, actuación de alto rendimiento, percepción multimodal, control inteligente y protección frente al entorno en un único sistema robótico desplegable.",
+      "meta": "WAFEE es una plataforma de ingeniería en desarrollo."
+    },
+    "stats": {
+      "items": [
+        {
+          "label": "Altura (cm)",
+          "sub": "Morfología humanoide diseñada para un mundo hecho para humanos."
+        },
+        {
+          "label": "Dominios de misión",
+          "sub": "Tierra, mar, fuego, aire, espacio — una sola arquitectura."
+        },
+        {
+          "label": "Capacidades clave",
+          "sub": "Movilidad, manipulación, percepción, autonomía y más."
+        },
+        {
+          "label": "Atributos del sistema",
+          "sub": "De la actuación eléctrica al monitoreo continuo del bienestar."
+        }
+      ]
+    },
+    "philosophy": {
+      "eyebrow": "Filosofía de diseño",
+      "line1": "Cinco palabras definen",
+      "line2": "*esta máquina.*",
+      "items": [
+        {
+          "word": "Compatible humano",
+          "body": "Diseñado en torno a personas, herramientas y flujos de trabajo existentes."
+        },
+        {
+          "word": "Modular",
+          "body": "Hardware y software concebidos para evolucionar misión a misión."
+        },
+        {
+          "word": "Inteligente",
+          "body": "Percepción y autonomía que convierten datos crudos en decisiones accionables."
+        },
+        {
+          "word": "Resiliente",
+          "body": "Seguro, robusto y persistente cuando el entorno se vuelve hostil."
+        },
+        {
+          "word": "Evolutivo",
+          "body": "Una arquitectura que se afina generación tras generación."
+        }
+      ]
+    },
+    "hud": {
+      "title": "Estado del sistema",
+      "conceptDemo": "Demostración conceptual",
+      "rows": [
+        {
+          "label": "Percepción",
+          "value": "ONLINE"
+        },
+        {
+          "label": "Movilidad",
+          "value": "ONLINE"
+        },
+        {
+          "label": "Planificación",
+          "value": "ACTIVE"
+        },
+        {
+          "label": "Entorno",
+          "value": "MAPPED"
+        }
+      ],
+      "latency": "Latencia",
+      "confidence": "Confianza",
+      "stateScanning": "Escaneando…",
+      "stateDone": "Escaneo completado — todos los sistemas nominales",
+      "stateIdle": "Vista conceptual — no es telemetría en vivo",
+      "btnScanning": "Escaneando…",
+      "btnDone": "Nominal",
+      "btnIdle": "Iniciar escaneo"
+    },
+    "media": {
+      "label": "Cabeza sensora WAFEE — concepto en primer plano",
+      "captionA": "Cada sensor está diseñado para mantener a WAFEE consciente de su entorno",
+      "captionB": "— incluso cuando el mundo se oscurece."
+    },
+    "showcase": {
+      "eyebrow": "Dominios de misión",
+      "line1": "Una plataforma.",
+      "line2": "Cinco ~fronteras.~",
+      "items": [
+        {
+          "title": "Tierra",
+          "tag": "Activo",
+          "body": "Despliegue en entornos industriales, de infraestructura, logísticos y de desastres gracias a una movilidad y manipulación compatibles con el humano."
+        },
+        {
+          "title": "Mar",
+          "tag": "Cartografiado",
+          "body": "Reconocimiento, intervención y operaciones de apoyo en entornos subacuáticos mediante una arquitectura robótica segura."
+        },
+        {
+          "title": "Fuego",
+          "tag": "Cartografiado",
+          "body": "Apoyo a operaciones en zonas calientes y peligrosas donde el acceso humano directo está restringido."
+        },
+        {
+          "title": "Aire",
+          "tag": "En estudio",
+          "body": "Operaciones en altitud, exposición y acceso mediante movilidad inteligente y sistemas propios de cada misión."
+        },
+        {
+          "title": "Espacio",
+          "tag": "Visión",
+          "body": "Abrir el camino a la operación robótica en vacío, radiación extrema y entornos extraterrestres."
+        }
+      ]
+    },
+    "reference": {
+      "eyebrow": "Plataforma de referencia",
+      "line1": "Arquitectura",
+      "line2": "de un vistazo.",
+      "specs": [
+        {
+          "label": "Estatura",
+          "value": "178 cm",
+          "note": "aprox., clase humanoide"
+        },
+        {
+          "label": "Arquitectura",
+          "value": "Cuerpo completo",
+          "note": "Plataforma robótica humanoide"
+        },
+        {
+          "label": "Movilidad",
+          "value": "Bípeda",
+          "note": "Marcha variable"
+        },
+        {
+          "label": "Actuación",
+          "value": "Eléctrica",
+          "note": "Actuación articular de alto rendimiento"
+        },
+        {
+          "label": "Sensores",
+          "value": "Multimodal",
+          "note": "Visión + evaluación de postura"
+        },
+        {
+          "label": "Cómputo",
+          "value": "Distribuido",
+          "note": "Arquitectura de cómputo robótico"
+        },
+        {
+          "label": "Control",
+          "value": "Tiempo real",
+          "note": "Control locomotor y de sistema"
+        },
+        {
+          "label": "Comunicaciones",
+          "value": "Gran ancho de banda",
+          "note": "Enlaces locales y remotos"
+        },
+        {
+          "label": "Seguridad",
+          "value": "Por zonas",
+          "note": "Bloqueos propios de la misión"
+        }
+      ],
+      "disclaimer": "Las especificaciones publicadas representan la arquitectura de la plataforma de referencia. Las cifras de rendimiento son objetivos de diseño salvo que se indiquen explícitamente como verificados."
+    },
+    "capabilities": {
+      "eyebrow": "Capacidades",
+      "line1": "¿Para qué está",
+      "line2": "*diseñado WAFEE?*",
+      "items": [
+        {
+          "index": "01",
+          "name": "Locomoción",
+          "description": "Marcha variable, equilibrio, adaptación al terreno y movimiento corporal total controlado."
+        },
+        {
+          "index": "02",
+          "name": "Manipulación",
+          "description": "Manos y piernas compatibles con el humano, diseñadas para interactuar con herramientas, equipos e infraestructura."
+        },
+        {
+          "index": "03",
+          "name": "Percepción",
+          "description": "Comprensión del entorno en tiempo real mediante múltiples modalidades sensoriales."
+        },
+        {
+          "index": "04",
+          "name": "Autonomía",
+          "description": "Planificación de misión, navegación, manejo de obstáculos, monitoreo del sistema y apoyo a decisiones inteligentes."
+        },
+        {
+          "index": "05",
+          "name": "Teleoperación",
+          "description": "Control humano remoto para entornos donde se desea o requiere operación supervisada."
+        },
+        {
+          "index": "06",
+          "name": "Cooperación",
+          "description": "Diseñado para trabajar junto a personas, herramientas e infraestructura existente."
+        }
+      ],
+      "tag": "Transparencia",
+      "note": "WAFEE es una plataforma de ingeniería en desarrollo. Las afirmaciones de aptitud ambiental se publicarán progresivamente tras pruebas controladas en laboratorio, calificación de subsistemas y verificación completa del sistema."
+    },
+    "cta": {
+      "line1": "Una sola *plataforma*,",
+      "line2": "múltiples ~misiones.~",
+      "body": "Vea cómo WAFEE se adapta a diferentes perfiles de misión.",
+      "primary": "Explorar la arquitectura de la plataforma",
+      "secondary": "Hablar con nosotros"
+    }
+  },
+  "techPage": {
+    "meta": {
+      "title": "Tecnología robótica humanoide | Cennzo Robotix",
+      "description": "WAFEE está construido como una arquitectura robótica de integración vertical — sistemas mecánicos, actuación, percepción, cómputo e IA, control, energía, gestión térmica, materiales y software."
+    },
+    "hero": {
+      "eyebrow": "Tecnología",
+      "line1": "La pila tecnológica",
+      "line2": "detrás de WAFEE.",
+      "intro": "WAFEE está construido como una arquitectura robótica de integración vertical.",
+      "meta": "Cada articulación. Cada sensor. Cada línea de código. Un solo sistema."
+    },
+    "media": {
+      "label": "Arquitectura del sistema WAFEE — esquema conceptual"
+    },
+    "map": {
+      "eyebrow": "Anatomía asociada",
+      "linePre": "Un cuerpo. Nueve",
+      "lineAccent": "sistemas.",
+      "hint": "Pase el cursor por la figura o la lista",
+      "hintAccent": "— haga clic para profundizar.",
+      "groups": [
+        {
+          "id": "mind",
+          "index": "A",
+          "label": "Percepción e inteligencia",
+          "systems": [
+            "03 · Percepción",
+            "04 · Cómputo e IA"
+          ],
+          "target": "perception",
+          "desc": "Suite de sensores y cómputo embarcado — cómo WAFEE entiende el mundo y decide."
+        },
+        {
+          "id": "core",
+          "index": "B",
+          "label": "Energía y térmica",
+          "systems": [
+            "06 · Energía",
+            "07 · Térmica"
+          ],
+          "target": "power",
+          "desc": "Suministro eléctrico y evacuación térmica — la resistencia de la máquina."
+        },
+        {
+          "id": "limbs",
+          "index": "C",
+          "label": "Actuación y control",
+          "systems": [
+            "02 · Actuación",
+            "05 · Control"
+          ],
+          "target": "actuation",
+          "desc": "Articulaciones y pila de control — cómo la inteligencia se convierte en movimiento."
+        },
+        {
+          "id": "frame",
+          "index": "D",
+          "label": "Estructura y materiales",
+          "systems": [
+            "01 · Mecánica",
+            "08 · Materiales"
+          ],
+          "target": "mechanical",
+          "desc": "Esqueleto y piel — materiales zonificados según carga, calor y tensión."
+        },
+        {
+          "id": "software",
+          "index": "E",
+          "label": "Capa de software",
+          "systems": [
+            "09 · Software"
+          ],
+          "target": "software",
+          "desc": "La capa desplegable que atraviesa todos los subsistemas."
+        }
+      ]
+    },
+    "systems": [
+      {
+        "id": "mechanical",
+        "index": "01",
+        "name": "Marco mecánico",
+        "intro": "Una arquitectura estructural ligera proporciona la base mecánica del robot.",
+        "points": [
+          "Alta rigidez en relación al peso",
+          "Distribución de masa controlada",
+          "Reparabilidad",
+          "Interfaces articulares desplegables",
+          "Margen estructural donde se necesita",
+          "Protección de los sistemas internos críticos"
+        ]
+      },
+      {
+        "id": "actuation",
+        "index": "02",
+        "name": "Actuación",
+        "intro": "El desempeño de un humanoide depende de la calidad de sus articulaciones.",
+        "points": [
+          "Alta densidad de par motor",
+          "Alta eficiencia",
+          "Cumplimiento donde corresponde",
+          "Estabilidad térmica",
+          "Control de posición y par",
+          "Retroalimentación de alta velocidad",
+          "Solidez mecánica"
+        ],
+        "note": "Esta plataforma se construye en torno a tecnologías avanzadas de accionamiento eléctrico, incluidas topologías tipo PMSM/BLDC con control servo de alto rendimiento."
+      },
+      {
+        "id": "perception",
+        "index": "03",
+        "name": "Percepción",
+        "intro": "Un robot que no puede entender su entorno no puede actuar de manera inteligente.",
+        "points": [
+          "Cámaras RGB",
+          "Sensores de profundidad",
+          "LiDAR según la misión",
+          "IMU",
+          "Encoders articulares",
+          "Sensado de fuerza/par",
+          "Percepción táctil",
+          "Sensores ambientales",
+          "Medición de temperatura"
+        ],
+        "note": "La fusión de sensores convierte las mediciones crudas en una representación coherente del estado del robot y su entorno."
+      },
+      {
+        "id": "compute-ai",
+        "index": "04",
+        "name": "Cómputo e IA",
+        "intro": "La plataforma de cómputo embarcada sostiene todo el pipeline de inteligencia del robot.",
+        "points": [
+          "Percepción",
+          "Localización",
+          "Cartografía",
+          "Planificación de movimiento",
+          "Planificación de manipulación",
+          "Control computacional",
+          "Detección de anomalías",
+          "Interfaces de lenguaje natural",
+          "Inteligencia de misión"
+        ],
+        "note": "La IA es una capa del sistema robótico — no sustituye la seguridad ni el control deterministas."
+      },
+      {
+        "id": "control",
+        "index": "05",
+        "name": "Control",
+        "intro": "La pila de control traduce la inteligencia en movimiento corporal.",
+        "layers": [
+          "Capa de misión",
+          "Comportamiento y planificación de tareas",
+          "Planificación de movimiento",
+          "Control de cuerpo completo",
+          "Control articular",
+          "Control de motores",
+          "Sensado y retroalimentación"
+        ],
+        "note": "Esta arquitectura permite que la inteligencia de alto nivel y el control de bajo nivel, rápido y determinista, trabajen juntos."
+      },
+      {
+        "id": "power",
+        "index": "06",
+        "name": "Energía",
+        "intro": "WAFEE necesita una arquitectura energética capaz de suministrar altos picos de potencia sin comprometer seguridad ni eficiencia.",
+        "points": [
+          "Paquetes de baterías de alta energía",
+          "Gestión de baterías",
+          "Distribución eléctrica",
+          "Conversión DC/DC",
+          "Inversores de motor",
+          "Protección y aislamiento",
+          "Monitoreo de corriente y voltaje",
+          "Monitoreo térmico"
+        ]
+      },
+      {
+        "id": "thermal",
+        "index": "07",
+        "name": "Gestión térmica",
+        "intro": "El calor es una de las restricciones fundamentales de ingeniería en humanoides de alto rendimiento.",
+        "points": [
+          "Conducción desde fuentes calientes",
+          "Placas frías",
+          "Enfriamiento líquido de circuito cerrado donde es crítico",
+          "Intercambiadores de calor",
+          "Almacenamiento térmico",
+          "Monitoreo de temperatura y flujo",
+          "Manejo de puntos calientes locales",
+          "Disipación pasiva"
+        ],
+        "note": "La arquitectura busca reducir la dependencia de ventiladores expuestos tradicionales en zonas críticas de misión."
+      },
+      {
+        "id": "materials",
+        "index": "08",
+        "name": "Materiales y protección",
+        "intro": "La selección de materiales depende de la misión.",
+        "points": [
+          "Aleaciones de titanio",
+          "Aleaciones de aluminio donde corresponda",
+          "Compuestos de fibra de carbono",
+          "Compuestos carbono-carbono para zonas especiales de alta temperatura",
+          "Cerámicas y compuestos base carburo de silicio",
+          "Superaleaciones base níquel tipo Inconel para hardware local caliente",
+          "Aislamiento cerámico",
+          "Aislamiento base aerogel"
+        ],
+        "note": "Ningún material único satisface todos los requerimientos ambientales. WAFEE adopta una estrategia de materiales por zonas basada en carga, temperatura, tensión, corrosión y mantenibilidad."
+      },
+      {
+        "id": "software",
+        "index": "09",
+        "name": "Software",
+        "intro": "La arquitectura de software de WAFEE está diseñada como una capa robótica desplegable.",
+        "points": [
+          "Abstracción de hardware",
+          "Control en tiempo real",
+          "Estimación de estado",
+          "Percepción",
+          "Localización y cartografía",
+          "Planificación de movimiento",
+          "Manipulación",
+          "Planificación conductual",
+          "Gestión de misión",
+          "Telemetría",
+          "Interacción humano-robot",
+          "Gestión de flota"
+        ],
+        "note": "La plataforma está diseñada para que el software evolucione continuamente sin rediseñar completamente el hardware."
+      }
+    ],
+    "cta": {
+      "line1": "De los primeros principios",
+      "line2": "a la verificación en campo.",
+      "body": "Vea la disciplina de ingeniería que convierte investigación en capacidades listas para la misión.",
+      "primary": "Investigación e ingeniería",
+      "secondary": "Verificación y seguridad"
+    }
+  },
+  "appsPage": {
+    "meta": {
+      "title": "Robots humanoides para industria, ambientes peligrosos e infraestructura | Cennzo Robotix",
+      "description": "Aplicaciones previstas de WAFEE en inspección industrial, energía, respuesta ante desastres, ambientes peligrosos, marítimo, minería, logística, inspección de seguridad y robótica espacial."
+    },
+    "hero": {
+      "eyebrow": "Aplicaciones",
+      "line1": "Robots donde",
+      "line2": "*las personas no deberían ir.*",
+      "intro": "Desde inspección industrial hasta exploración planetaria — dominios de misión previstos para la plataforma WAFEE.",
+      "meta": "Las aplicaciones representan territorios de exploración de ingeniería, no despliegues comerciales actuales."
+    },
+    "media": {
+      "label": "Perfiles de misión WAFEE — tablero conceptual",
+      "captionA": "Un chasis, muchas configuraciones",
+      "captionB": "— configurados por misión."
+    },
+    "matrix": {
+      "eyebrow": "Matriz de misiones",
+      "line1": "Nueve fronteras.",
+      "line2": "Una sola *máquina.*",
+      "body": "Cada dominio a continuación es una puerta hacia la exploración del sistema, codificada por frontera. Seleccione uno para ver los detalles de la misión."
+    },
+    "domainMediaSuffix": "Concepto de misión",
+    "domains": [
+      {
+        "id": "industrial-inspection",
+        "index": "01",
+        "name": "Inspección industrial",
+        "tag": "Inspección",
+        "intro": "Inspeccionar equipos, sistemas e instalaciones mientras se reduce la exposición humana en condiciones peligrosas.",
+        "missions": [
+          "Inspección de planta",
+          "Monitoreo de activos",
+          "Operación de válvulas y controles",
+          "Inspección visual remota",
+          "Imagen térmica",
+          "Apoyo al mantenimiento de rutina"
+        ]
+      },
+      {
+        "id": "energy-utilities",
+        "index": "02",
+        "name": "Energía y servicios públicos",
+        "tag": "Continuidad",
+        "intro": "Los sistemas robóticos pueden apoyar la inspección y el mantenimiento de infraestructura eléctrica, energética y de servicios públicos.",
+        "missions": [
+          "Inspección de plantas de generación",
+          "Inspección de subestaciones",
+          "Entornos de tuberías",
+          "Infraestructura renovable",
+          "Apoyo remoto al mantenimiento"
+        ]
+      },
+      {
+        "id": "disaster-response",
+        "index": "03",
+        "name": "Respuesta ante desastres",
+        "tag": "Respuesta",
+        "intro": "Después de un terremoto, un incendio, un accidente industrial o un colapso estructural, el acceso puede ser impredecible y peligroso. La forma humanoide de WAFEE ayuda a operar en entornos diseñados para humanos.",
+        "missions": [
+          "Apoyo a la búsqueda",
+          "Mapeo de peligros",
+          "Reconocimiento remoto",
+          "Manejo de materiales",
+          "Evaluación de rutas de acceso",
+          "Retransmisión de comunicaciones"
+        ]
+      },
+      {
+        "id": "fire-hazardous",
+        "index": "04",
+        "name": "Fuego y ambientes peligrosos",
+        "tag": "Enfrentar",
+        "intro": "Los entornos extremos exigen arquitecturas robóticas especializadas. Los perfiles de misión de alta temperatura con protección térmica, aislamiento y enfriamiento dedicados forman parte de la hoja de ruta a largo plazo de WAFEE.",
+        "missions": [],
+        "note": "Las temperaturas nominales se publicarán después de verificarlas bajo condiciones de exposición controladas."
+      },
+      {
+        "id": "marine-offshore",
+        "index": "05",
+        "name": "Marítimo y offshore",
+        "tag": "Inmersión",
+        "intro": "Apoyo robótico para activos marítimos y offshore.",
+        "missions": [
+          "Inspección de activos offshore",
+          "Infraestructura marina",
+          "Inspección naval",
+          "Mantenimiento remoto",
+          "Monitoreo ambiental"
+        ],
+        "note": "Las operaciones de aguas profundas requieren arquitecturas resistentes a presión dedicadas y calificación de ingeniería."
+      },
+      {
+        "id": "mining",
+        "index": "06",
+        "name": "Minería",
+        "tag": "Descenso",
+        "intro": "Capacidad robótica para uno de los entornos industriales más duros.",
+        "missions": [
+          "Exploración",
+          "Operación remota de equipos",
+          "Mapeo de peligros",
+          "Manejo de materiales",
+          "Monitoreo autónomo"
+        ]
+      },
+      {
+        "id": "logistics",
+        "index": "07",
+        "name": "Logística y automatización industrial",
+        "tag": "Flujo",
+        "intro": "Los robots humanoides pueden interactuar con infraestructura ya diseñada para humanos.",
+        "missions": [
+          "Movimiento de materiales",
+          "Tomar y colocar",
+          "Operación de máquinas",
+          "Operaciones de almacén",
+          "Carga y descarga",
+          "Soporte de manufactura flexible"
+        ]
+      },
+      {
+        "id": "defense-research",
+        "index": "08",
+        "name": "Defensa e investigación gubernamental",
+        "tag": "Seguridad",
+        "intro": "Cennzo Robotix tiene interés en colaborar responsablemente con gobiernos e institutos de investigación en aplicaciones donde la robótica puede mejorar seguridad, acceso y eficiencia.",
+        "missions": [
+          "Reconocimiento en ambientes peligrosos",
+          "Respuesta ante desastres",
+          "Logística remota",
+          "Apoyo a infraestructura",
+          "Exploración y reconocimiento",
+          "Investigación en ambientes extremos"
+        ],
+        "note": "Todos los usos están sujetos a las leyes aplicables, requisitos de seguridad y principios de uso responsable."
+      },
+      {
+        "id": "space-robotics",
+        "index": "09",
+        "name": "Robótica espacial",
+        "tag": "Orbital",
+        "intro": "El espacio es la frontera de investigación a largo plazo de Cennzo Robotix.",
+        "missions": [
+          "Inspección de hábitats",
+          "Mantenimiento de infraestructura",
+          "Actividades de superficie",
+          "Manejo de carga",
+          "Cooperación humano-robot",
+          "Apoyo a exploración planetaria"
+        ],
+        "note": "La capacidad espacial requiere certificaciones dedicadas de vacío, radiación, térmica y ciclos de vida."
+      }
+    ],
+    "cta": {
+      "line1": "¿Un problema difícil?",
+      "line2": "Construiremos la solución de ingeniería para ello.",
+      "body": "Lleve su misión a la plataforma.",
+      "primary": "Iniciar la conversación",
+      "secondary": "Crear con nosotros"
+    }
+  },
+  "industriesPage": {
+    "meta": {
+      "title": "Industrias | Cennzo Robotix",
+      "description": "Diseñado para industrias que no pueden detenerse — manufactura, energía, servicios públicos, petróleo y gas, minería, construcción, logística, marítimo, infraestructura, gobierno y tecnología aeroespacial."
+    },
+    "hero": {
+      "eyebrow": "Industrias",
+      "line1": "Diseñado para industrias",
+      "line2": "*que no pueden detenerse.*"
+    },
+    "showcase": {
+      "eyebrow": "Sectores",
+      "line1": "Donde WAFEE va",
+      "line2": "*a trabajar.*",
+      "tag": "Sector",
+      "items": [
+        {
+          "title": "Manufactura",
+          "body": "Operación de máquinas, inspección y manejo de materiales en plantas en funcionamiento — sin detener líneas de producción."
+        },
+        {
+          "title": "Energía",
+          "body": "Inspección y mantenimiento de zonas de alto riesgo en plantas, subestaciones e instalaciones renovables."
+        },
+        {
+          "title": "Servicios públicos",
+          "body": "Monitoreo ininterrumpido de infraestructura crítica — día y noche, en cualquier clima."
+        },
+        {
+          "title": "Petróleo y gas",
+          "body": "Entrada a espacios confinados, respuesta a fugas y operaciones offshore — donde la exposición humana cuesta caro."
+        },
+        {
+          "title": "Minería",
+          "body": "Reconocimiento profundo y apoyo de carga en condiciones inestables y de baja visibilidad."
+        },
+        {
+          "title": "Construcción",
+          "body": "Levantamientos topográficos, ayuda a estabilizar cargas pesadas y verificación de avance en obras activas."
+        },
+        {
+          "title": "Logística",
+          "body": "Carga continua, clasificación y flujo de inventario en almacenes que nunca duermen."
+        },
+        {
+          "title": "Marítimo",
+          "body": "Inspección de cascos, operaciones portuarias y soporte submarino en ambientes corrosivos y azotados por olas."
+        },
+        {
+          "title": "Infraestructura",
+          "body": "Inspección de puentes, túneles y vías férreas sin cierres ni andamios."
+        },
+        {
+          "title": "Gobierno",
+          "body": "Apoyo en respuesta ante desastres, levantamientos y patrullas de seguridad para sistemas públicos."
+        },
+        {
+          "title": "Tecnología aeroespacial",
+          "body": "Investigación de movilidad lista para vuelo para extender la exploración más allá de nuestra atmósfera."
+        }
+      ]
+    },
+    "media": {
+      "label": "WAFEE en un sitio industrial — visual conceptual"
+    },
+    "value": {
+      "title1": "El valor de un humanoide no está en su forma.",
+      "title2": "Está en lo que puede lograr.",
+      "quote1": "Un robot compatible con humanos puede usar los entornos, herramientas y flujos de trabajo que ya existen.",
+      "quote2": "Esto crea la oportunidad de automatizar trabajo sin reconstruir cada entorno para una máquina."
+    },
+    "cta": {
+      "line1": "Automatice el trabajo",
+      "line2": "*que nadie debería hacer.*",
+      "body": "Explore un perfil de misión adaptado a su industria.",
+      "primary": "Iniciar la conversación",
+      "secondary": "Ver aplicaciones"
+    }
+  },
+  "contactPage": {
+    "meta": {
+      "title": "Contacto | Cennzo Robotix",
+      "description": "Construyamos juntos el próximo capítulo. Contacte a Cennzo Robotix para demostraciones WAFEE, alianzas tecnológicas, pilotos industriales, colaboración en investigación, conversaciones con inversionistas y carreras."
+    },
+    "hero": {
+      "eyebrow": "Contacto",
+      "line1": "Construyamos el próximo",
+      "line2": "capítulo juntos.",
+      "intro": "Ya sea director de operaciones, aliado tecnológico, investigador, inversionista o ingeniero — queremos escucharlo.",
+      "meta": "¿Un problema difícil? Construiremos la solución de ingeniería para ello."
+    },
+    "contactFor": {
+      "label": "Motivos para contactarnos",
+      "tagline": "Máquinas inteligentes para el mundo real.",
+      "items": [
+        "Demostraciones WAFEE",
+        "Alianzas tecnológicas",
+        "Pilotos industriales",
+        "Colaboración en investigación",
+        "Conversaciones con inversionistas",
+        "Alianzas de componentes",
+        "Carreras",
+        "Prensa"
+      ]
+    },
+    "form": {
+      "labels": {
+        "name": "Nombre *",
+        "company": "Empresa",
+        "email": "Correo electrónico *",
+        "phone": "Teléfono",
+        "country": "País",
+        "orgType": "Tipo de organización",
+        "interest": "Área de interés",
+        "message": "Mensaje *"
+      },
+      "placeholders": {
+        "name": "Su nombre completo",
+        "company": "Nombre de empresa",
+        "email": "nombre@empresa.com",
+        "country": "España",
+        "message": "Cuéntenos sobre su misión, proyecto o interés."
+      },
+      "errors": {
+        "nameRequired": "El nombre es obligatorio.",
+        "nameShort": "El nombre es demasiado corto.",
+        "emailRequired": "El correo electrónico es obligatorio.",
+        "emailInvalid": "Ingrese una dirección de correo válida.",
+        "messageRequired": "El mensaje es obligatorio.",
+        "messageShort": "Cuéntenos un poco más (al menos 10 caracteres)."
+      },
+      "selectOrgType": "Seleccionar tipo",
+      "selectInterest": "Seleccionar área",
+      "options": {
+        "orgTypes": [
+          "Director industrial",
+          "Empresa tecnológica",
+          "Instituto de investigación",
+          "Gobierno / sector público",
+          "Inversionista",
+          "Individual",
+          "Otro"
+        ],
+        "interests": [
+          "Demostración WAFEE",
+          "Alianza tecnológica",
+          "Piloto industrial",
+          "Colaboración en investigación",
+          "Conversación con inversionistas",
+          "Alianza de componentes",
+          "Carreras",
+          "Prensa"
+        ]
+      },
+      "submit": "Iniciar la conversación",
+      "success": {
+        "title": "Casi listo.",
+        "body": "Su cliente de correo ahora abrirá <email>info@cennzo.com</email> con su mensaje. Envíelo; nuestro equipo responderá pronto.",
+        "again": "Enviar otro mensaje"
+      }
+    }
+  }
+}

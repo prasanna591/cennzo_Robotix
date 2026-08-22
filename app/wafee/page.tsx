@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 import { PageHero } from "@/components/sections/page-hero";
 import { SectionHeading } from "@/components/sections/section-heading";
 import { CTASection } from "@/components/sections/cta-section";
@@ -12,76 +13,46 @@ import { Spotlight } from "@/components/motion/spotlight";
 import { Parallax } from "@/components/motion/parallax";
 import { MediaFrame } from "@/components/media/media-frame";
 import { BackgroundObjects } from "@/components/decor/background-objects";
-import {
-  ENVIRONMENTS,
-  WAFEE_CAPABILITIES,
-  REFERENCE_PLATFORM,
-} from "@/lib/content/site";
 
-export const metadata: Metadata = {
-  title: "WAFEE Humanoid Robot | Cennzo Robotix",
-  description:
-    "Explore WAFEE, Cennzo Robotix's unified multi-environment humanoid robotics platform for intelligent mobility, manipulation, perception and autonomous operation.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("wafeePage.meta");
+  return { title: t("title"), description: t("description") };
+}
 
-const STATUS_TAG: Record<string, string> = {
-  earth: "Active",
-  water: "Roadmap",
-  fire: "Roadmap",
-  air: "Research",
-  space: "Vision",
-};
+type StatCopy = { label: string; sub: string };
+type SpecCopy = { label: string; value: string; note: string };
+type CapabilityCopy = { index: string; name: string; description: string };
 
-const DOMAIN_ITEMS: ShowcaseItem[] = ENVIRONMENTS.map((env) => ({
-  title: env.name,
-  tag: STATUS_TAG[env.id] ?? "Concept",
-  body: env.description,
-}));
+export default async function WafeePage() {
+  const t = await getTranslations("wafeePage");
+  const stats = t.raw("stats.items") as StatCopy[];
+  const specs = t.raw("reference.specs") as SpecCopy[];
+  const capabilities = t.raw("capabilities.items") as CapabilityCopy[];
 
-export default function WafeePage() {
+  const domainItems: ShowcaseItem[] = (
+    t.raw("showcase.items") as { title: string; tag: string; body: string }[]
+  ).map((item) => ({
+    title: item.title,
+    tag: item.tag,
+    body: item.body,
+  }));
+
   return (
     <main>
       <PageHero
-        eyebrow="WAFEE — Unified Multi-Environment Humanoid Platform"
-        lines={["A Humanoid Designed For", "The World *Beyond The Lab.*"]}
-        intro={
-          <>
-            WAFEE is Cennzo Robotix&rsquo;s flagship humanoid robotics platform.
-            Its architecture combines human-scale mobility, high-performance
-            actuation, multimodal perception, intelligent control and
-            environmental protection into one modular robotic system.
-          </>
-        }
-        meta="WAFEE is an engineering platform under development."
+        eyebrow={t("hero.eyebrow")}
+        lines={[t("hero.line1"), t("hero.line2")]}
+        intro={<>{t("hero.intro")}</>}
+        meta={t("hero.meta")}
       />
 
       <section className="relative border-b border-black/[0.08]">
         <StatBand
           stats={[
-            {
-              value: 178,
-              suffix: "",
-              label: "cm stature",
-              sub: "Human-scale form factor built for a world sized for people.",
-            },
-            {
-              value: 5,
-              suffix: "",
-              label: "mission domains",
-              sub: "One architecture targeting land, sea, fire, air and space.",
-            },
-            {
-              value: 6,
-              suffix: "",
-              label: "core capabilities",
-              sub: "Mobility, manipulation, perception, autonomy and more.",
-            },
-            {
-              value: 9,
-              suffix: "",
-              label: "system attributes",
-              sub: "From electric actuation to continuous health monitoring.",
-            },
+            { value: 178, suffix: "", label: stats[0].label, sub: stats[0].sub },
+            { value: 5, suffix: "", label: stats[1].label, sub: stats[1].sub },
+            { value: 6, suffix: "", label: stats[2].label, sub: stats[2].sub },
+            { value: 9, suffix: "", label: stats[3].label, sub: stats[3].sub },
           ]}
         />
       </section>
@@ -90,7 +61,7 @@ export default function WafeePage() {
         <BackgroundObjects variant="light" />
         <div className="relative mx-auto grid w-full max-w-[1440px] gap-16 px-6 py-section md:px-10 lg:grid-cols-2 lg:gap-20">
           <div>
-            <SectionHeading eyebrow="Design Philosophy" lines={["Five Words That", "Shape *The Machine.*"]} />
+            <SectionHeading eyebrow={t("philosophy.eyebrow")} lines={[t("philosophy.line1"), t("philosophy.line2")]} />
             <PhilosophyList />
           </div>
           <div className="flex items-center lg:pt-24">
@@ -106,34 +77,34 @@ export default function WafeePage() {
             <Parallax speed={0.05}>
               <MediaFrame
                 code="IMG-04"
-                label="WAFEE Sensory Array — Close-Up Concept"
+                label={t("media.label")}
                 ratio="16/9"
               />
             </Parallax>
           </Reveal>
           <Reveal delay={0.15}>
             <p className="mx-auto mt-10 max-w-2xl text-center font-mono text-[10px] uppercase leading-loose tracking-[0.25em] text-faint">
-              Every sensor array is engineered to keep WAFEE aware
-              <span className="block text-accent">— even when the world goes dark.</span>
+              {t("media.captionA")}
+              <span className="block text-accent">{t("media.captionB")}</span>
             </p>
           </Reveal>
         </div>
       </section>
 
       <HorizontalShowcase
-        eyebrow="Mission Domains"
-        lines={["One Platform.", "Five ~Frontiers.~"]}
-        items={DOMAIN_ITEMS}
+        eyebrow={t("showcase.eyebrow")}
+        lines={[t("showcase.line1"), t("showcase.line2")]}
+        items={domainItems}
       />
 
       <section className="border-b border-black/[0.08]">
         <div className="mx-auto w-full max-w-[1440px] px-6 py-section md:px-10">
           <SectionHeading
-            eyebrow="Reference Platform"
-            lines={["The Architecture", "At A Glance."]}
+            eyebrow={t("reference.eyebrow")}
+            lines={[t("reference.line1"), t("reference.line2")]}
           />
           <StaggerGroup stagger={0.04} className="mt-14 border-t border-black/[0.1]">
-            {REFERENCE_PLATFORM.map((spec) => (
+            {specs.map((spec) => (
               <StaggerItem key={spec.label}>
                 <div className="group relative grid grid-cols-[110px_1fr] items-baseline gap-x-6 border-b border-black/[0.1] px-2 py-6 transition-colors duration-300 hover:bg-graphite md:grid-cols-[200px_260px_1fr] md:px-4 md:py-7">
                   <span
@@ -155,9 +126,7 @@ export default function WafeePage() {
           </StaggerGroup>
           <Reveal delay={0.1}>
             <p className="mt-8 max-w-3xl font-mono text-[10px] leading-relaxed tracking-[0.08em] text-faint">
-              Published values represent the reference platform architecture.
-              Performance figures are design targets unless explicitly
-              identified as validated results.
+              {t("reference.disclaimer")}
             </p>
           </Reveal>
         </div>
@@ -166,15 +135,15 @@ export default function WafeePage() {
       <section className="border-b border-black/[0.08] bg-charcoal/50">
         <div className="mx-auto w-full max-w-[1440px] px-6 py-section md:px-10">
           <SectionHeading
-            eyebrow="Capabilities"
-            lines={["What WAFEE", "Is Built To *Do.*"]}
+            eyebrow={t("capabilities.eyebrow")}
+            lines={[t("capabilities.line1"), t("capabilities.line2")]}
           />
           <Spotlight>
             <StaggerGroup
               stagger={0.07}
               className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-black/[0.1] bg-black/[0.1] shadow-soft sm:grid-cols-2 lg:grid-cols-3"
             >
-              {WAFEE_CAPABILITIES.map((capability) => (
+              {capabilities.map((capability) => (
                 <StaggerItem key={capability.index}>
                   <TiltCard className="h-full">
                     <article className="spotlight-card group relative h-full overflow-hidden bg-graphite p-8 transition-colors duration-500 hover:bg-charcoal/60 md:p-10">
@@ -201,12 +170,10 @@ export default function WafeePage() {
           <Reveal delay={0.1}>
             <div className="mt-12 flex flex-col gap-4 rounded-2xl border border-black/[0.08] bg-graphite p-8 shadow-soft md:flex-row md:items-center md:p-10">
               <span className="shrink-0 rounded-full border border-accent/30 bg-accent/[0.06] px-4 py-1.5 font-mono text-[9px] uppercase tracking-[0.2em] text-accent">
-                Transparency
+                {t("capabilities.tag")}
               </span>
               <p className="text-sm leading-relaxed text-mist">
-                WAFEE is an engineering platform under development. Environmental
-                claims will be released progressively after controlled laboratory
-                testing, subsystem qualification and full-system validation.
+                {t("capabilities.note")}
               </p>
             </div>
           </Reveal>
@@ -214,10 +181,10 @@ export default function WafeePage() {
       </section>
 
       <CTASection
-        lines={["One *Platform.*", "Many ~Missions.~"]}
-        body="See how WAFEE adapts across mission configurations."
-        primary={{ label: "Explore the Platform Architecture", href: "/platform" }}
-        secondary={{ label: "Talk To Us", href: "/contact" }}
+        lines={[t("cta.line1"), t("cta.line2")]}
+        body={t("cta.body")}
+        primary={{ label: t("cta.primary"), href: "/platform" }}
+        secondary={{ label: t("cta.secondary"), href: "/contact" }}
       />
     </main>
   );

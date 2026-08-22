@@ -42,9 +42,9 @@
 }
 
 @theme inline {
-  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-geist-sans), var(--font-noto-devanagari), var(--font-noto-tamil), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
-  --font-display: var(--font-space-grotesk), var(--font-geist-sans), ui-sans-serif, sans-serif;
+  --font-display: var(--font-space-grotesk), var(--font-geist-sans), var(--font-noto-devanagari), var(--font-noto-tamil), ui-sans-serif, sans-serif;
 }
 
 /* ---- Display typography ---- */

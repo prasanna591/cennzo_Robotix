@@ -1,37 +1,19 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { DURATION, EASE, viewportOnce } from "@/lib/animations";
 
-const ITEMS = [
-  {
-    word: "Human-Compatible",
-    body: "Built around people, tools and workflows that already exist.",
-  },
-  {
-    word: "Modular",
-    body: "Hardware and software designed to evolve mission by mission.",
-  },
-  {
-    word: "Intelligent",
-    body: "Perception and autonomy that turn raw data into decisions.",
-  },
-  {
-    word: "Resilient",
-    body: "Protected, robust and persistent when conditions turn hostile.",
-  },
-  {
-    word: "Upgradeable",
-    body: "An architecture that grows sharper with every generation.",
-  },
-];
+type Item = { word: string; body: string };
 
 export function PhilosophyList() {
   const reduced = useReducedMotion();
+  const t = useTranslations("wafeePage.philosophy");
+  const items = t.raw("items") as Item[];
 
   return (
     <div className="mt-12">
-      {ITEMS.map((item, i) => (
+      {items.map((item, i) => (
         <motion.div
           key={item.word}
           initial={reduced ? false : { opacity: 0, x: -24 }}
