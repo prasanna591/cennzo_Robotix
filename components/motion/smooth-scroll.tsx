@@ -6,7 +6,11 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export function SmoothScroll() {
+  // A/B toggle: false = fully native browser scrolling (no smoothing at all).
+  const ENABLED = false;
+
   useEffect(() => {
+    if (!ENABLED) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     gsap.registerPlugin(ScrollTrigger);
@@ -15,6 +19,7 @@ export function SmoothScroll() {
       lerp: 0.11,
       wheelMultiplier: 1,
       touchMultiplier: 1.4,
+      anchors: true,
     });
     (window as unknown as { __lenis?: Lenis }).__lenis = lenis;
 
