@@ -47,7 +47,7 @@ export function LanguageSwitcher() {
         aria-expanded={open}
         aria-label={t("language")}
         title={t("language")}
-        className="flex h-9 cursor-pointer items-center gap-2 rounded-full border border-black/[0.09] bg-white/60 px-3.5 transition-colors duration-300 hover:border-black/20"
+        className="flex h-9 cursor-pointer items-center gap-2 rounded-full border border-black/[0.09] bg-white/60 px-3.5 transition-[border-color,background-color,transform] duration-300 hover:border-black/20 hover:bg-white active:translate-y-px"
       >
         <svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true" className="text-faint">
           <circle cx="8" cy="8" r="6.2" stroke="currentColor" strokeWidth="1.3" />

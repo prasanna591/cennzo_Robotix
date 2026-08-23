@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { DURATION, EASE } from "@/lib/animations";
 
@@ -47,15 +48,26 @@ export function MediaVisual({
   code,
   label,
   large = false,
+  src,
 }: {
   code: string;
   label: string;
   large?: boolean;
+  src?: string;
 }) {
   const reduced = useReducedMotion();
 
   return (
     <div className="absolute inset-0 select-none">
+      {src && (
+        <Image
+          src={src}
+          alt={label}
+          fill
+          sizes={large ? "100vw" : "(max-width: 768px) 100vw, 50vw"}
+          className="object-cover"
+        />
+      )}
       <div
         aria-hidden="true"
         className="absolute inset-0 opacity-[0.14]"
@@ -82,28 +94,30 @@ export function MediaVisual({
 
       <CornerBrackets />
 
-      <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 px-6 text-center">
-        <FrameIcon size={large ? 56 : 40} />
-        <p
-          className={`font-mono uppercase tracking-[0.3em] text-faint ${
-            large ? "text-[11px]" : "text-[9px]"
-          }`}
-        >
-          Awaiting Imagery
-        </p>
-      </div>
+      {!src && (
+        <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 px-6 text-center">
+          <FrameIcon size={large ? 56 : 40} />
+          <p
+            className={`font-mono uppercase tracking-[0.3em] text-faint ${
+              large ? "text-[11px]" : "text-[9px]"
+            }`}
+          >
+            Awaiting Imagery
+          </p>
+        </div>
+      )}
 
-      <div className="absolute left-4 top-4 font-mono text-[9px] uppercase tracking-[0.22em] text-faint">
+      <div className="absolute left-4 top-4 rounded-sm bg-void/60 px-1.5 py-0.5 font-mono text-[9px] uppercase tracking-[0.22em] text-faint backdrop-blur-sm">
         CR·{code}
       </div>
       <div className="absolute right-4 top-4 border border-accent/40 px-2 py-1 font-mono text-[8px] uppercase tracking-[0.22em] text-accent">
         Concept
       </div>
       <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between gap-4">
-        <p className="font-mono text-[10px] uppercase leading-relaxed tracking-[0.22em] text-mist">
+        <p className="rounded-sm bg-void/60 px-1.5 py-0.5 font-mono text-[10px] uppercase leading-relaxed tracking-[0.22em] text-mist backdrop-blur-sm">
           {label}
         </p>
-        <p className="hidden shrink-0 font-mono text-[9px] uppercase tracking-[0.22em] text-faint sm:block">
+        <p className="hidden shrink-0 rounded-sm bg-void/60 px-1.5 py-0.5 font-mono text-[9px] uppercase tracking-[0.22em] text-faint backdrop-blur-sm sm:block">
           {large ? "Concept Visualization" : "Expand +"}
         </p>
       </div>
@@ -116,11 +130,13 @@ function Lightbox({
   onClose,
   code,
   label,
+  src,
 }: {
   open: boolean;
   onClose: () => void;
   code: string;
   label: string;
+  src?: string;
 }) {
   const closeRef = useRef<HTMLButtonElement>(null);
 
@@ -165,7 +181,7 @@ function Lightbox({
             className="relative w-full max-w-5xl rounded-2xl border border-steel bg-graphite p-2 shadow-lift md:p-3"
           >
             <div className="relative aspect-[21/9] overflow-hidden rounded-xl border border-black/[0.08] bg-void">
-              <MediaVisual code={code} label={label} large />
+              <MediaVisual code={code} label={label} large src={src} />
             </div>
             <div className="flex items-center justify-between px-2 pb-1 pt-3">
               <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-mist">
@@ -175,7 +191,7 @@ function Lightbox({
                 ref={closeRef}
                 type="button"
                 onClick={onClose}
-                className="cursor-pointer border border-steel px-4 py-2 font-mono text-[10px] uppercase tracking-[0.2em] text-bone transition-colors duration-300 hover:border-accent hover:text-accent"
+                className="cursor-pointer border border-steel px-4 py-2 font-mono text-[10px] uppercase tracking-[0.2em] text-bone transition-[border-color,color,transform] duration-300 hover:border-accent hover:text-accent active:translate-y-px"
               >
                 [ Close ]
               </button>
@@ -192,11 +208,13 @@ export function MediaFrame({
   label,
   ratio = "16/9",
   className = "",
+  src,
 }: {
   code: string;
   label: string;
   ratio?: FrameRatio;
   className?: string;
+  src?: string;
 }) {
   const [open, setOpen] = useState(false);
 
@@ -205,20 +223,20 @@ export function MediaFrame({
       <button
         type="button"
         onClick={() => setOpen(true)}
-        aria-label={`View placeholder imagery: ${label}`}
+        aria-label={src ? `Expand imagery: ${label}` : `View placeholder imagery: ${label}`}
         className="block w-full cursor-pointer text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
       >
         <div
           className={`relative w-full overflow-hidden rounded-2xl border border-black/[0.08] bg-graphite shadow-soft transition-all duration-500 group-hover:border-faint group-hover:shadow-lift ${RATIOS[ratio]}`}
         >
-          <MediaVisual code={code} label={label} />
+          <MediaVisual code={code} label={label} src={src} />
         </div>
       </button>
       <figcaption className="mt-3 flex items-center justify-between gap-4 font-mono text-[9px] uppercase tracking-[0.22em] text-faint">
         <span>{label}</span>
-        <span>Placeholder — asset pending</span>
+        <span>{src ? "Concept visualization" : "Placeholder — asset pending"}</span>
       </figcaption>
-      <Lightbox open={open} onClose={() => setOpen(false)} code={code} label={label} />
+      <Lightbox open={open} onClose={() => setOpen(false)} code={code} label={label} src={src} />
     </figure>
   );
 }

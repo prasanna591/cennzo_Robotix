@@ -26,6 +26,18 @@ type Tone = {
   noteBorder: string;
 };
 
+const DOMAIN_IMAGES: Record<string, string> = {
+  "industrial-inspection": "/images/img-d1-inspection.webp",
+  "energy-utilities": "/images/img-d2-energy.webp",
+  "disaster-response": "/images/img-d3-disaster.webp",
+  "fire-hazardous": "/images/img-d4-fire.webp",
+  "marine-offshore": "/images/img-d5-marine.webp",
+  mining: "/images/img-d6-mining.webp",
+  logistics: "/images/img-d7-logistics.webp",
+  "defense-research": "/images/img-d8-defense.webp",
+  "space-robotics": "/images/img-d9-space.webp",
+};
+
 const TONES: Record<string, Tone> = {
   "industrial-inspection": {
     chip: "border-blue-500/30 bg-blue-500/[0.06] text-blue-600",
@@ -142,6 +154,7 @@ export default async function ApplicationsPage() {
                 code="IMG-06"
                 label={t("media.label")}
                 ratio="21/9"
+              src="/images/img-06-mission-configs.webp"
               />
             </Parallax>
           </Reveal>
@@ -173,6 +186,7 @@ export default async function ApplicationsPage() {
                 name: d.name,
                 tag: d.tag,
                 missions: d.missions.length,
+                img: DOMAIN_IMAGES[d.id],
                 bar: TONES[d.id].bar,
                 chip: `${TONES[d.id].chip} ${TONES[d.id].chipActive}`,
               }))}

@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { PageHero } from "@/components/sections/page-hero";
 import { CTASection } from "@/components/sections/cta-section";
 import { StaggerGroup, StaggerItem, Reveal } from "@/components/motion/reveal";
 
 export const metadata: Metadata = {
-  title: "Investors | Cennzo Robotix",
+  title: "Investors",
   description:
     "Investing in the next generation of robotics. Cennzo Robotix is building a scalable humanoid robotics platform with hardware, software and recurring service value layers.",
 };

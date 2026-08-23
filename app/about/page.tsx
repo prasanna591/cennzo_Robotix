@@ -90,6 +90,7 @@ export default async function AboutPage() {
                 code="IMG-03"
                 label={t("media.label")}
                 ratio="16/9"
+              src="/images/img-03-lab.webp"
               />
             </Parallax>
           </Reveal>

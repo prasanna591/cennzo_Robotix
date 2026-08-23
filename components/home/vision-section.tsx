@@ -69,6 +69,7 @@ export function VisionSection() {
               code="IMG-02"
               label={t("visionImgLabel")}
               ratio="21/9"
+            src="/images/img-02-extreme-environments.webp"
             />
           </Parallax>
         </Reveal>

@@ -139,7 +139,7 @@ export function ContactForm() {
                 setErrors({});
                 setMsgCount(0);
               }}
-              className="mt-10 cursor-pointer border border-steel px-7 py-3.5 font-mono text-[11px] uppercase tracking-[0.2em] text-bone transition-colors duration-300 hover:border-accent hover:text-accent"
+              className="mt-10 cursor-pointer border border-steel px-7 py-3.5 font-mono text-[11px] uppercase tracking-[0.2em] text-bone transition-[border-color,color,transform] duration-300 hover:border-accent hover:text-accent active:translate-y-px"
             >
               {t("success.again")}
             </button>

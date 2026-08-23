@@ -1,0 +1,448 @@
+================================================================================
+CENNZO ROBOTIX — COMPLETE IMAGE BRIEF & AI GENERATION GUIDE
+Site-wide visual specification for all 21 image slots
+================================================================================
+
+--------------------------------------------------------------------------------
+0. HOW TO USE THIS DOCUMENT
+--------------------------------------------------------------------------------
+Every slot below lists: WHERE it appears, WHAT it must communicate, exact ASPECT
+RATIO (+ recommended pixel size), COMPOSITION guidance, TONE & LIGHTING, and a
+ready-to-paste GENERATION PROMPT (Midjourney syntax, with a generic variant for
+DALL·E / SDXL / Flux / Ideogram).
+
+Golden rules:
+• Generate the GLOBAL CHARACTER SHEET first (Section 2), then reuse it as a
+  character/seed reference for every WAFEE appearance so the robot looks like
+  ONE machine across the whole site.
+• All images are displayed inside dark UI chrome on a near-black page. Images
+  must be dark-to-midtone with bright focal subjects so they sit naturally in
+  the layout. Avoid pure-white backgrounds anywhere.
+• Every frame is labelled "Concept" in the UI — imagery should feel like
+  credible engineering visualization, NOT consumer marketing gloss and NOT
+  sci-fi movie VFX. Think: Boston Dynamics documentation shot meets Apple
+  product film, shot by an industrial photographer.
+
+--------------------------------------------------------------------------------
+1. GLOBAL ART DIRECTION (applies to ALL images)
+--------------------------------------------------------------------------------
+PALETTE
+  Base/environment ....... graphite #16161A, ink #0B1220, void near-black #0A0A0C
+  Highlights/text ........ bone #F5F7FB, cool steel greys
+  Primary accent ......... electric blue #1565EF (used sparingly: status LEDs,
+                           holographic overlays, rim light)
+  Secondary accents ...... violet #7C3AED (energy/data), teal (sensor scans),
+                           signal amber #F59E0B (warning/servo glow)
+  Rule: max ~10% accent color per frame; environment stays desaturated.
+
+MOOD
+  Cinematic industrial realism · quiet confidence · "built for hard places" ·
+  documentary-product-film hybrid · precision engineering · calm danger.
+
+LIGHTING LANGUAGE (pick per slot, stay consistent site-wide)
+  • Soft top-light studio gradient on dark seamless backdrop (product shots)
+  • Hard practical work-lights / sodium or arc-lamp pools (industrial floors)
+  • Cold blue rim light + warm amber fill for drama (hero/close-ups)
+  • Volumetric haze at low density — depth without fog-wall clichés
+
+CAMERA LANGUAGE
+  Full-frame look, 35–85mm equivalents, f/2.8–f/8, shallow-ish DOF only for
+  close-ups; wide plates use deep focus. Subtle handheld-documentary energy is
+  OK; no fisheye, no tilt-shift toy effect, no HDR halos.
+
+TEXTURE & MATERIAL TRUTH
+  Brushed aluminium, matte composite shell, visible fasteners, cable looms,
+  machined actuator knuckles, fine machining marks, dust in hazardous scenes.
+  No chrome-liquid "terminator" surfaces, no glossy toy plastic.
+
+WAFEE CHARACTER SHEET — THE ROBOT (define once, reference forever)
+--------------------------------------------------------------------------------
+WAFEE is a full-body humanoid utility robot:
+  Height ~1.75 m human-scale. Proportions: slightly broad shoulders, compact
+  torso, segmented spine channel; head = smooth rounded visor slab (no face,
+  no eyes) with a single horizontal sensor slit that glows teal/blue; neck
+  ring with port details.
+  Skin/shell: two-tone matte — bone-white composite plates over graphite
+  under-frame; exposed dark actuator joints at shoulders/elbows/hips/knees
+  with thin amber status rings; cable looms along forearms and calves;
+  rectangular backpack power core with blue LED strip; four-finger hands,
+  articulated and mechanical (not gloves).
+  Feet: wide split-toe bipedal gripper feet. Overall read: "industrial
+  astronaut", friendly-mechanical, zero humanoid-face uncanny valley.
+
+NEGATIVE PROMPT (append everywhere applicable)
+  "no text, no watermark, no logo, no human faces, no crowd, no glossy plastic
+  toy look, no sci-fi neon cyberpunk city, no lens flare spam, no oversaturated
+  colors, no white background, no cartoon, no extra limbs, no distorted hands"
+
+QUALITY TAGS (append to generic prompts)
+  "photorealistic, cinematic lighting, high detail, 8k product photography,
+  industrial design portfolio, physically based materials"
+
+MIDJOURNEY SETUP
+  • Use --v 6.1 (or newer), --style raw for realism.
+  • Aspect flags per slot: --ar 21:9, --ar 16:9, --ar 4:3.
+  • After approving the character sheet image, add --cref <sheetURL> --cw 60
+    to every WAFEE prompt for consistency. Keep --sref of your best-approved
+    plate (--sref <url> --sw 40) to lock grading across slots.
+  • Upscale to max, then export per Section 4.
+
+--------------------------------------------------------------------------------
+2. MASTER PROMPTS — RUN THESE FIRST
+--------------------------------------------------------------------------------
+2A. WAFEE CHARACTER SHEET (internal reference — not a site slot)
+    MJ:
+      studio character sheet of a full-body humanoid utility robot, matte
+      bone-white composite armor over graphite under-frame, smooth rounded
+      visor head with single glowing teal horizontal sensor slit, no face,
+      exposed dark actuator joints with thin amber status rings at shoulders
+      elbows hips knees, cable looms on forearms, rectangular backpack power
+      core with electric-blue LED strip, four-finger mechanical hands,
+      wide split-toe feet, neutral A-pose plus three-quarter walking pose,
+      soft top light on dark charcoal seamless studio background, subtle
+      blue rim light, photorealistic industrial design, 85mm --ar 16:9
+      --style raw --v 6.1
+    GENERIC:
+      Character sheet, two poses, of [paste WAFEE paragraph above]. Dark
+      studio, soft top light, blue rim light. Photorealistic, high detail.
+
+2B. GRADING REFERENCE (optional internal style anchor)
+    MJ:
+      cinematic industrial robotics laboratory at night, cold blue key light,
+      warm amber practical lamps, low volumetric haze, deep shadows, graphite
+      and steel surfaces, documentary product film still, 35mm, f/4
+      --ar 21:9 --style raw --v 6.1
+
+--------------------------------------------------------------------------------
+3. SLOT-BY-SLOT BRIEFS
+--------------------------------------------------------------------------------
+Legend: PX = recommended master export before responsive downscaling.
+
+================================================================================
+SLOT 01 — IMG-01 · HOME / WAFEE SECTION
+Label shown: "WAFEE FULL-BODY PLATFORM — CONCEPT RENDER"
+Purpose: First full reveal of the robot; must define the brand silhouette.
+Ratio: 21:9 · Export 2520×1080 px (PX)
+Composition: Robot centered-right standing full-body on a dark reflective
+  studio floor, slight low camera angle (heroic but not comic-book); negative
+  space left for UI overlay; faint grid floor lines echoing site background.
+Tone: Studio hero shot. Soft overhead gradient light, strong blue rim from
+  rear-left, amber fill kissing joint rings. Minimal haze.
+Prompt (MJ):
+  full-body concept render of [WAFEE sheet] standing on dark reflective studio
+  floor, low three-quarter camera angle, soft overhead gradient light, strong
+  electric-blue rim light from rear, subtle amber glow on actuator joints,
+  faint engineering grid on floor, deep graphite background, cinematic product
+  film still, photorealistic, 50mm, f/5.6 --ar 21:9 --style raw --v 6.1
+  --cref <sheet> --cw 60
+Prompt (generic): same content + quality tags + negative prompt.
+
+================================================================================
+SLOT 02 — IMG-02 · HOME / VISION SECTION
+Label: "WAFEE IN EXTREME ENVIRONMENTS — CONCEPT VISUALIZATION"
+Purpose: The "hard places" promise — one plate, maximum environment drama.
+Ratio: 21:9 · Export 2520×1080 px
+Composition: Wide environmental plate, robot small-to-medium (25% frame
+  height) crossing hostile terrain toward camera-left; massive scale contrast
+  with landscape; horizon low third.
+Environment options (pick ONE): arctic whiteout edge / volcanic fissure field /
+  sandstorm refinery perimeter. Recommended: volcanic — best palette contrast.
+Tone: Cold teal ambient vs molten orange ground glow; heavy atmosphere,
+  backlit particulates; robot's blue pack-strip the brightest artificial light.
+Prompt (MJ):
+  cinematic wide shot, [WAFEE sheet] humanoid robot trekking across volcanic
+  fissure landscape at dusk, glowing lava cracks in black basalt, drifting
+  ash, robot small against vast terrain, teal ambient light versus orange
+  ground glow, volumetric haze, epic scale, documentary style, 35mm, f/8,
+  deep focus --ar 21:9 --style raw --v 6.1 --cref <sheet> --cw 55
+
+================================================================================
+SLOT 03 — IMG-03 · ABOUT PAGE
+Label: "INSIDE THE CENNZO ROBOTIX LAB — CONCEPT VISUALIZATION"
+Purpose: Humanize the company — R&D culture, real hardware in progress.
+Ratio: 16:9 · Export 1920×1080 px
+Composition: Engineering lab interior, NO identifiable human faces (backs,
+  silhouettes, hands only, or empty of people). Foreground: WAFEE torso on a
+  assembly stand, panels open exposing actuators; midground: engineer in
+  plain dark jacket from behind adjusting forearm module; background bokeh:
+  monitors with telemetry, tool walls, cable racks.
+Tone: Practical workshop light — cool fluorescents + warm task lamp pools;
+  honest, unglamorous, credible. Slight haze from machining.
+Prompt (MJ):
+  interior of advanced robotics lab at night, [WAFEE sheet] robot torso
+  mounted on assembly stand with chest panel open revealing actuators and
+  cable looms, unseen engineer seen from behind in dark work jacket adjusting
+  its forearm, monitors with telemetry glow in background bokeh, tool wall,
+  cool fluorescent light with warm task-lamp pools, documentary photography,
+  35mm, f/2.8 --ar 16:9 --style raw --v 6.1 --cref <sheet> --cw 50
+  --no faces, crowds
+
+================================================================================
+SLOT 04 — IMG-04 · WAFEE PRODUCT PAGE
+Label: "WAFEE SENSORY ARRAY — CLOSE-UP CONCEPT"
+Purpose: Detail credibility — sell the sensor package up close.
+Ratio: 16:9 · Export 1920×1080 px
+Composition: Extreme close-up macro of the head/visor three-quarter view
+  filling 60% of frame; teal sensor slit glowing sharply; micro-detail:
+  microporous acoustic mesh, LiDAR window seam, fastener hexes, fine panel
+  gaps; background = defocused dark lab.
+Tone: Product-jewelry lighting — narrow softbox strip reflection along visor
+  curvature, blue edge light, black falloff. Crisp, tactile.
+Prompt (MJ):
+  extreme macro close-up of [WAFEE sheet] robot head visor, smooth matte
+  composite surface, single horizontal sensor slit glowing teal, LiDAR window
+  seam and acoustic mesh detail, machined hex fasteners, narrow softbox strip
+  reflection, electric-blue edge light on black background falloff, product
+  jewelry lighting, photorealistic, 100mm macro, f/4
+  --ar 16:9 --style raw --v 6.1 --cref <sheet> --cw 70
+
+================================================================================
+SLOT 05 — IMG-05 · TECHNOLOGY PAGE  ⚠ DIAGRAM-TYPE
+Label: "WAFEE SYSTEM ARCHITECTURE — CONCEPT DIAGRAM"
+Purpose: Explains the stack visually; reads like an engineering poster.
+Ratio: 21:9 · Export 2520×1080 px
+Style exception: This may be a HYBRID render+graphic (robot + schematic
+  callouts), or a pure technical illustration. It must look authored, like a
+  premium annual-report diagram — flat dark background, hairline strokes.
+Composition: WAFEE in slight three-quarter side profile centered; exploded/
+  x-ray treatment: perceptual array highlighted at head, compute core in
+  chest, power cell in backpack, actuation chains down limbs; thin blueprint
+  leader lines to minimal HUD labels (NO readable text — keep labels abstract
+  glyphs so localization stays clean); faint circuit-trace background.
+Tone: Blueprint-on-graphite. Lines in bone-white + electric blue; amber only
+  on power path. Flat even illumination, no dramatic shadows.
+Prompt (MJ):
+  technical concept diagram of [WAFEE sheet] humanoid robot in side profile,
+  translucent x-ray exploded view showing sensor array in head, compute core
+  in chest, battery pack in backpack, actuator chains in limbs, thin
+  blueprint leader lines pointing to abstract unlabeled markers, hairline
+  circuit traces on dark graphite background, flat even lighting, precise
+  engineering poster aesthetic, bone-white and electric-blue linework,
+  minimal amber accents --ar 21:9 --style raw --v 6.1 --cref <sheet> --cw 40
+  --no text, letters, numbers
+  NOTE: if generative text artifacts appear, regenerate or clean in post;
+  alternatively commission this one as vector illustration over the render.
+
+================================================================================
+SLOT 06 — IMG-06 · APPLICATIONS PAGE (top media)
+Label: "WAFEE MISSION CONFIGURATIONS — CONCEPT PLATE"
+Purpose: One robot, many mission kits — modularity story.
+Ratio: 21:9 · Export 2520×1080 px
+Composition: Triptych-style single plate: same WAFEE body three times in a
+  row on dark turntable pedestals — LEFT: inspection config (sensor mast +
+  stereo camera bar), CENTER: baseline general-purpose (clean), RIGHT:
+  hazardous-duty config (heat-shielded shroud + nozzle manipulator). Even
+  spacing, identical lighting each bay; thin separation lines between bays.
+Tone: Configurator showroom — neutral dark studio, per-bay accent wash
+  (teal / blue / amber) subtly keyed to kit type.
+Prompt (MJ):
+  triptych configuration plate, three identical [WAFEE sheet] humanoid robots
+  on dark cylindrical pedestals, left unit fitted with tall inspection sensor
+  mast and stereo camera bar, center unit clean baseline, right unit with
+  heat-shielded shroud and heavy manipulator, dark studio showroom, each bay
+  lit with subtle different accent wash teal blue amber, symmetrical
+  composition, catalog precision, photorealistic, 50mm, f/8
+  --ar 21:9 --style raw --v 6.1 --cref <sheet> --cw 65
+
+================================================================================
+SLOTS 07–15 — IMG-D1 … IMG-D9 · APPLICATIONS DOMAIN TILES (nine images)
+All Ratio: 4:3 · Export 1600×1200 px · Same framing law for all nine:
+  WAFEE occupies right-two-thirds, medium-full shot, environment wrapping
+  left; leave upper-left quieter (UI chip overlays there). Consistent grade
+  across all nine is CRITICAL — they appear side-by-side in a grid.
+
+D1 · INDUSTRIAL INSPECTION
+  Scene: dim factory gantry catwalk; robot scanning pressure pipework with
+  wrist-mounted scanner emitting thin teal scan plane; gauge panels glow.
+  Tone: sodium-amber work lights vs teal scan line; oily steel textures.
+  Prompt (MJ): [WAFEE sheet] humanoid robot inspecting industrial pressure
+  pipework from gantry catwalk, wrist scanner projecting thin teal scanning
+  plane onto pipes, amber sodium work lights, oily steel and rivets,
+  shallow haze, documentary industrial photography, 35mm, f/4
+  --ar 4:3 --style raw --v 6.1 --cref <sheet> --cw 60
+
+D2 · ENERGY & UTILITIES
+  Scene: night electrical substation / turbine hall; robot before humming
+  transformer stacks; corona-glow hazard; rain-slick ground reflections.
+  Tone: cold blue night base, warning-orange beacon sweep, wet highlights.
+  Prompt: ...night substation with transformer stacks, orange beacon light
+  sweeping, rain-slick reflective ground, cold blue ambience, steam vent...
+  --ar 4:3 (same tags)
+
+D3 · DISASTER RESPONSE
+  Scene: collapsed concrete structure post-earthquake; rebar silhouettes;
+  robot threading rubble with flashlight beam; dust beams through gaps.
+  Tone: grey dust monochrome + single warm helmet-style beam + blue pack LED.
+  Prompt: ...searching collapsed concrete building, flashlight beam cutting
+  dust clouds, twisted rebar silhouettes, grey monochrome palette with warm
+  beam accent... --ar 4:3 (same tags)
+
+D4 · FIRE & HAZARDOUS ENVIRONMENTS
+  Scene: refinery flare zone / burning warehouse exterior; heat shimmer;
+  robot in heat-shielded config facing ember storm, reflective aluminized
+  shroud catching fire-glow.
+  Tone: dominant ember orange/red vs shield silver; smoke layering.
+  Prompt: ...facing burning refinery flare, heat-shielded aluminized mission
+  shroud reflecting flames, ember particles swirling, heavy smoke, dramatic
+  backlight... --ar 4:3 (same tags)
+
+D5 · MARINE & OFFSHORE
+  Scene: offshore wind platform deck in North-Sea swell; spray bursting over
+  railing; robot gripping handrail, inspecting blade nacelle beyond.
+  Tone: green-grey sea, steel-blue sky, high-key spray whites; salt mist.
+  Prompt: ...on offshore wind turbine platform deck, crashing spray, gale
+  conditions, inspecting nacelle, desaturated steel-blue grade... --ar 4:3
+
+D6 · MINING
+  Scene: underground tunnel drive; robot beside drill rig; headlamp array
+  cutting rock-dust; ore cart rails leading into black.
+  Tone: near-monochrome brown/black + harsh LED white beams + amber dust.
+  Prompt: ...underground mine tunnel beside drilling rig, powerful headlamps
+  cutting through rock dust, rail tracks vanishing into darkness, gritty
+  texture... --ar 4:3 (same tags)
+
+D7 · LOGISTICS & INDUSTRIAL AUTOMATION
+  Scene: automated warehouse at lights-out hour; robots (one WAFEE + distant
+  AMR pucks) among towering rack aisles; long exposure light trails.
+  Tone: cool LED strip aisles, magenta-free; orderly, hypnotic symmetry.
+  Prompt: ...in dark automated warehouse aisle between tall storage racks,
+  LED strip lighting rows into perspective, autonomous mobile robots in
+  background, long-exposure light trails, symmetrical composition...
+  --ar 4:3 (same tags)
+
+D8 · DEFENSE & GOVERNMENT RESEARCH
+  Scene: proving-ground at dawn; robot on observation berm beside antenna
+  mast and range flag; convoy dust on far horizon (no weapons visible).
+  Tone: desaturated olive/steel; low sun rake; serious restraint.
+  Prompt: ...on desert proving ground berm at dawn beside antenna mast,
+  range marker flags, distant dust column, no weapons, desaturated olive
+  steel grade, restrained military-industrial mood... --ar 4:3 (same tags)
+
+D9 · SPACE ROBOTICS
+  Scene: lunar regolith test field analog OR orbital truss backdrop; robot
+  anchored via tether inspecting solar array; Earth-star black sky.
+  Tone: hard unfiltered sunlight vs pitch shadow (space truth), silver-grey
+  palette, faint blue Earthlight fill.
+  Prompt: ...on lunar surface anchored by tether inspecting solar array
+  panel, harsh direct sunlight with pitch-black shadows, star field and
+  distant Earth, regolith boot-print textures... --ar 4:3 (same tags)
+
+================================================================================
+SLOT 16 — IMG-09 · INDUSTRIES PAGE
+Label: "WAFEE ON THE INDUSTRIAL FLOOR — CONCEPT VISUALIZATION"
+Ratio: 21:9 · Export 2520×1080 px
+Composition: Wide active factory floor during production; WAFEE mid-stride
+  between CNC cells and AGV lanes; motion-blurred forklift far left (safety
+  narrative); workers as distant PPE silhouettes only (no faces).
+Tone: Live operations — mixed sodium + daylight-balanced skylights; realistic
+  clutter, floor markings, hanging chain hoists. Documentary energy.
+Prompt (MJ):
+  wide shot of busy modern factory floor, [WAFEE sheet] humanoid robot
+  walking between CNC machining cells and AGV pathways, blurred forklift in
+  motion far left, distant workers in PPE seen from behind, hanging chain
+  hoists and floor markings, mixed sodium and skylight illumination, light
+  industrial haze, reportage style, 35mm, f/5.6 --ar 21:9 --style raw
+  --v 6.1 --cref <sheet> --cw 55 --no faces
+
+================================================================================
+SLOT 17 — IMG-10 · RESEARCH PAGE  ⚠ HYBRID TYPE
+Label: "DIGITAL TWIN SIMULATION — CONCEPT VISUALIZATION"
+Ratio: 16:9 · Export 1920×1080 px
+Composition: Split-world concept: LEFT half — physical WAFEE on treadmill
+  rig in lab; RIGHT half — its wireframe digital twin mirroring pose inside
+  floating simulation volume (thin teal mesh + physics ghost trails); seam
+  between halves marked by subtle vertical light line. Abstract glyph data
+  chips around twin (no readable text).
+Tone: Lab coolness on physical side; holographic teal/violet data space on
+  digital side; both share same camera angle for mirror effect.
+Prompt (MJ):
+  split composition concept, left half [WAFEE sheet] robot walking on
+  instrumented treadmill in dark lab, right half glowing teal wireframe
+  digital twin mirroring the pose inside floating simulation grid, vertical
+  light seam dividing halves, abstract data glyphs, violet secondary glow,
+  high-tech research aesthetic, photoreal base with CG overlay, 50mm
+  --ar 16:9 --style raw --v 6.1 --cref <sheet> --cw 45 --no text
+
+================================================================================
+SLOT 18 — IMG-11 · SAFETY PAGE
+Label: "ENVIRONMENTAL TEST CHAMBER — CONCEPT VISUALIZATION"
+Ratio: 16:9 · Export 1920×1080 px
+Composition: Climate chamber interior viewed through thick round observation
+  port (circular vignette = natural frame): WAFEE strapped to shake/dust
+  rig mid-test, dust cloud illuminated, frost on one chamber half and heat
+  lamps glowing on other; chamber walls ribbed steel; exterior control
+  panel edge in foreground bokeh.
+Tone: Clinical torture-test drama — cold cyan chamber light + amber heat-
+  lamp pool; condensation droplets on the port glass add realism.
+Prompt (MJ):
+  view through thick circular observation window into climate testing
+  chamber, [WAFEE sheet] robot secured to vibration test rig amid swirling
+  dust cloud, frost forming on one side, glowing heat lamps on other, ribbed
+  stainless chamber walls, condensation drops on glass, cyan chamber light
+  versus amber heat glow, clinical industrial photography, 50mm, f/4
+  --ar 16:9 --style raw --v 6.1 --cref <sheet> --cw 55
+
+================================================================================
+SLOT 19 — IMG-12 · CAREERS PAGE
+Label: "LIFE AT CENNZO ROBOTIX — CULTURE CONCEPT"
+Ratio: 16:9 · Export 1920×1080 px
+Composition: Warm candid scene in office-adjacent workshop lounge: diverse
+  engineers (faces NOT required — prefer over-shoulder/hands/silhouette or
+  natural laughter turned away) around a bench with a WAFEE forearm module;
+  whiteboard sketches, prototype shelf, plants, coffee. Robot present but
+  clearly the colleague-object of shared curiosity.
+Tone: Warmer than any other slot — golden-hour window light + practical
+  lamps; still within site palette (warmth comes from skin tones/wood, not
+  orange filters). Human-first framing, robot second.
+Prompt (MJ):
+  candid workplace scene in bright robotics startup workshop lounge, small
+  diverse team gathered around workbench examining a humanoid robot forearm
+  module, whiteboard mechanism sketches behind, shelves of prototypes,
+  plants, golden window light mixing with desk lamps, warm authentic
+  atmosphere, seen mostly from behind and sides, editorial photography,
+  35mm, f/2.8 --ar 16:9 --style raw --v 6.1 --cref <sheet> --cw 30
+  --no direct eye contact, stock-photo smiles
+
+================================================================================
+SLOT 20 — IMG-13 · PARTNERSHIPS PAGE
+Label: "THE CENNZO ROBOTIX PARTNER ECOSYSTEM — CONCEPT"
+Ratio: 21:9 · Export 2520×1080 px
+Composition: Symbolic ecosystem plate — WAFEE center pedestal surrounded in
+  gentle orbit by six floating translucent panels, each showing an abstract
+  partner-domain icon-shape (factory, bolt, wave, flame, mountain, orbit)
+  etched as hairline glass cards; thin connecting light arcs robot→cards;
+  dark void background with faint constellation dots. NO readable logos.
+Tone: Gallery-clean tech optimism; blue/violet gradients kept subtle;
+  glass refraction detail sells quality.
+Prompt (MJ):
+  futuristic ecosystem visualization, [WAFEE sheet] robot on central
+  pedestal encircled by six floating frosted-glass panels each etched with
+  simple abstract industry icon shapes factory bolt wave flame mountain
+  orbit, thin luminous connection arcs between robot and panels, faint
+  constellation points on black void background, subtle blue violet
+  gradients, premium gallery aesthetic, glass refraction detail, CG render
+  quality --ar 21:9 --style raw --v 6.1 --cref <sheet> --cw 40
+  --no text, letters, logos
+
+--------------------------------------------------------------------------------
+4. EXPORT & NAMING SPEC (all slots)
+--------------------------------------------------------------------------------
+Formats   : AVIF primary + WebP fallback (Next/Image handles serving).
+Quality   : AVIF q≈60 / WebP q≈78. sRGB color profile, embedded.
+Mastering : Generate/upsize at listed PX; sharpen lightly after any upscale;
+            never ship >400 KB per image (tiles target <180 KB).
+Naming    : img-01-wafee-platform.avif/.webp … img-d1-inspection.avif …
+            (kebab-case, code-prefixed to match CR codes in UI).
+Consistency checklist per batch: same WAFEE proportions · same accent blues ·
+            same black-point · same grain level · tiles D1–D9 graded as a set.
+
+--------------------------------------------------------------------------------
+5. OPTIONAL UPGRADE — SOCIAL/OG IMAGERY
+--------------------------------------------------------------------------------
+app/opengraph-image.tsx currently renders a code-generated typographic card
+(1200×630). Optional later: replace background layer with a cropped 16:9
+variant of IMG-01 (darkened 55%, robot pushed right third, safe margins
+72 px) for richer link previews. Keep the existing gradient bar + wordmark.
+
+— END OF BRIEF — 21 slots · 3 special types flagged (diagram/hybrid/culture)
+================================================================================

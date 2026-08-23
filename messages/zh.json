@@ -409,7 +409,7 @@
   },
   "wafeePage": {
     "meta": {
-      "title": "WAFEE 人形机器人 | Cennzo Robotix",
+      "title": "WAFEE 人形机器人",
       "description": "WAFEE —— Cennzo Robotix 的集成式多域人形机器人平台，为智能移动、操作、感知与自主行动而设计。"
     },
     "hero": {
@@ -635,7 +635,7 @@
   },
   "techPage": {
     "meta": {
-      "title": "人形机器人技术 | Cennzo Robotix",
+      "title": "人形机器人技术",
       "description": "WAFEE 采用垂直整合的机器人架构构建 — 机械系统、执行机构、感知、计算与 AI、控制、电力、热管理、材料与软件。"
     },
     "hero": {
@@ -876,7 +876,7 @@
   },
   "appsPage": {
     "meta": {
-      "title": "工业、危险环境与基础设施的人形机器人 | Cennzo Robotix",
+      "title": "工业、危险环境与基础设施的人形机器人",
       "description": "WAFEE 在工业检查、能源、灾害响应、危险环境、海事、采矿、物流、安防检查与太空机器人领域的设想应用。"
     },
     "hero": {
@@ -1039,7 +1039,7 @@
   },
   "industriesPage": {
     "meta": {
-      "title": "行业 | Cennzo Robotix",
+      "title": "行业",
       "description": "为无法停下的行业而构建 —— 制造、能源、公用事业、石油天然气、采矿、建筑、物流、海事、基础设施、政府与航空航天技术。"
     },
     "hero": {
@@ -1118,7 +1118,7 @@
   },
   "contactPage": {
     "meta": {
-      "title": "联系我们 | Cennzo Robotix",
+      "title": "联系我们",
       "description": "让我们共同书写下一个篇章。联系 Cennzo Robotix 了解 WAFEE 演示、技术合作、工业试点、研究协作、投资洽谈与职业机会。"
     },
     "hero": {

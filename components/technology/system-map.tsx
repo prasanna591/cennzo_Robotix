@@ -83,11 +83,7 @@ export function SystemMap() {
 
   const partClass = (id: GroupId, base: string) =>
     `${base} transition-all duration-300 ${
-      isOn(id)
-        ? `${TONES[id].stroke} opacity-100`
-        : dim
-          ? "stroke-black/[0.18] opacity-45"
-          : "stroke-black/[0.35] opacity-90"
+      isOn(id) ? TONES[id].stroke : dim ? "stroke-black/[0.18]" : "stroke-black/[0.35]"
     }`;
 
   return (
@@ -176,6 +172,7 @@ export function SystemMap() {
 
               {/* limbs */}
               <g
+                className={`transition-opacity duration-300 ${dim && !isOn("limbs") ? "opacity-40" : "opacity-100"}`}
                 onMouseEnter={() => setHovered("limbs")}
                 onMouseLeave={() => setHovered(null)}
                 onClick={() => jump("actuation")}
@@ -200,6 +197,7 @@ export function SystemMap() {
 
               {/* core */}
               <g
+                className={`transition-opacity duration-300 ${dim && !isOn("core") ? "opacity-40" : "opacity-100"}`}
                 onMouseEnter={() => setHovered("core")}
                 onMouseLeave={() => setHovered(null)}
                 onClick={() => jump("power")}
@@ -221,6 +219,7 @@ export function SystemMap() {
 
               {/* mind */}
               <g
+                className={`transition-opacity duration-300 ${dim && !isOn("mind") ? "opacity-40" : "opacity-100"}`}
                 onMouseEnter={() => setHovered("mind")}
                 onMouseLeave={() => setHovered(null)}
                 onClick={() => jump("perception")}

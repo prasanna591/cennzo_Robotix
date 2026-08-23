@@ -409,7 +409,7 @@
   },
   "wafeePage": {
     "meta": {
-      "title": "Robot humanoide WAFEE | Cennzo Robotix",
+      "title": "Robot humanoide WAFEE",
       "description": "WAFEE — la plataforma robótica humanoide multidominio integrada de Cennzo Robotix, diseñada para la movilidad inteligente, la manipulación, la percepción y la operación autónoma."
     },
     "hero": {
@@ -635,7 +635,7 @@
   },
   "techPage": {
     "meta": {
-      "title": "Tecnología robótica humanoide | Cennzo Robotix",
+      "title": "Tecnología robótica humanoide",
       "description": "WAFEE está construido como una arquitectura robótica de integración vertical — sistemas mecánicos, actuación, percepción, cómputo e IA, control, energía, gestión térmica, materiales y software."
     },
     "hero": {
@@ -876,7 +876,7 @@
   },
   "appsPage": {
     "meta": {
-      "title": "Robots humanoides para industria, ambientes peligrosos e infraestructura | Cennzo Robotix",
+      "title": "Robots humanoides para industria, ambientes peligrosos e infraestructura",
       "description": "Aplicaciones previstas de WAFEE en inspección industrial, energía, respuesta ante desastres, ambientes peligrosos, marítimo, minería, logística, inspección de seguridad y robótica espacial."
     },
     "hero": {
@@ -1039,7 +1039,7 @@
   },
   "industriesPage": {
     "meta": {
-      "title": "Industrias | Cennzo Robotix",
+      "title": "Industrias",
       "description": "Diseñado para industrias que no pueden detenerse — manufactura, energía, servicios públicos, petróleo y gas, minería, construcción, logística, marítimo, infraestructura, gobierno y tecnología aeroespacial."
     },
     "hero": {
@@ -1118,7 +1118,7 @@
   },
   "contactPage": {
     "meta": {
-      "title": "Contacto | Cennzo Robotix",
+      "title": "Contacto",
       "description": "Construyamos juntos el próximo capítulo. Contacte a Cennzo Robotix para demostraciones WAFEE, alianzas tecnológicas, pilotos industriales, colaboración en investigación, conversaciones con inversionistas y carreras."
     },
     "hero": {

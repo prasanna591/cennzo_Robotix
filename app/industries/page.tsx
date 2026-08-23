@@ -41,6 +41,7 @@ export default async function IndustriesPage() {
               code="IMG-09"
               label={t("media.label")}
               ratio="21/9"
+            src="/images/img-09-industrial-floor.webp"
             />
           </Reveal>
         </div>

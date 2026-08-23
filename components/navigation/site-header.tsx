@@ -126,7 +126,7 @@ export function SiteHeader() {
             <Link
               href="/contact"
               aria-current={isActive("/contact") ? "page" : undefined}
-              className={`cursor-pointer rounded-full px-5 py-2.5 font-mono text-[11px] uppercase tracking-[0.2em] text-white transition-all duration-300 ${
+              className={`cursor-pointer rounded-full px-5 py-2.5 font-mono text-[11px] uppercase tracking-[0.2em] text-white transition-all duration-300 active:translate-y-px ${
                 isActive("/contact")
                   ? "bg-gradient-to-r from-accent to-violet-600 shadow-lift"
                   : "bg-gradient-to-r from-ink to-[#1b2a55] hover:from-accent hover:to-violet-600 hover:shadow-lift"

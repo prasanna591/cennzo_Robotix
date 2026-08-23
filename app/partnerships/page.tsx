@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { PageHero } from "@/components/sections/page-hero";
 import { CTASection } from "@/components/sections/cta-section";
 import { StaggerGroup, StaggerItem, Reveal } from "@/components/motion/reveal";
@@ -6,7 +6,7 @@ import { MediaFrame } from "@/components/media/media-frame";
 import { PARTNER_TYPES } from "@/lib/content/site";
 
 export const metadata: Metadata = {
-  title: "Partnerships | Cennzo Robotix",
+  title: "Partnerships",
   description:
     "Build the future with us. Technology, industrial, research, manufacturing and government partnerships around the WAFEE humanoid robotics platform.",
 };
@@ -50,8 +50,9 @@ export default function PartnershipsPage() {
           <Reveal delay={0.15} className="mt-16">
             <MediaFrame
               code="IMG-13"
-              label="The Cennzo Robotix Partner Ecosystem — Concept"
+              label="The Cennzo Robotix Partner Ecosystem â€” Concept"
               ratio="21/9"
+            src="/images/img-13-ecosystem.webp"
             />
           </Reveal>
         </div>

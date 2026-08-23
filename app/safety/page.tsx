@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { PageHero } from "@/components/sections/page-hero";
 import { CTASection } from "@/components/sections/cta-section";
 import { StaggerGroup, StaggerItem, Reveal } from "@/components/motion/reveal";
@@ -6,9 +6,9 @@ import { Spotlight } from "@/components/motion/spotlight";
 import { MediaFrame } from "@/components/media/media-frame";
 
 export const metadata: Metadata = {
-  title: "Validation & Safety | Cennzo Robotix",
+  title: "Validation & Safety",
   description:
-    "Trust is engineered. Cennzo Robotix safety architecture across mechanical, electrical, software and operational layers — with a rigorous validation philosophy.",
+    "Trust is engineered. Cennzo Robotix safety architecture across mechanical, electrical, software and operational layers â€” with a rigorous validation philosophy.",
 };
 
 const LAYERS = [
@@ -133,8 +133,9 @@ export default function SafetyPage() {
           <Reveal>
             <MediaFrame
               code="IMG-11"
-              label="Environmental Test Chamber — Concept Visualization"
+              label="Environmental Test Chamber â€” Concept Visualization"
               ratio="16/9"
+            src="/images/img-11-test-chamber.webp"
             />
           </Reveal>
         </div>

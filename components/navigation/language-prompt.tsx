@@ -94,7 +94,7 @@ export function LanguagePrompt() {
                     key={lang.code}
                     type="button"
                     onClick={() => choose(lang.code)}
-                    className="group cursor-pointer rounded-xl border border-black/[0.09] px-4 py-3 text-left transition-colors duration-200 hover:border-accent/50 hover:bg-accent/[0.05]"
+                    className="group cursor-pointer rounded-xl border border-black/[0.09] px-4 py-3 text-left transition-[border-color,background-color,transform] duration-200 hover:border-accent/50 hover:bg-accent/[0.05] active:translate-y-px"
                   >
                     <span className="block text-sm font-medium text-bone group-hover:text-accent">
                       {lang.native}
@@ -109,7 +109,7 @@ export function LanguagePrompt() {
               <button
                 type="button"
                 onClick={skip}
-                className="mt-5 w-full cursor-pointer rounded-lg py-2 font-mono text-[10px] uppercase tracking-[0.22em] text-faint transition-colors duration-200 hover:text-bone"
+                className="mt-5 w-full cursor-pointer rounded-lg py-2 font-mono text-[10px] uppercase tracking-[0.22em] text-faint transition-colors duration-200 hover:text-bone active:translate-y-px"
               >
                 {t("skip")}
               </button>

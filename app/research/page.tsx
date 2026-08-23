@@ -1,13 +1,13 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { PageHero } from "@/components/sections/page-hero";
 import { CTASection } from "@/components/sections/cta-section";
 import { StaggerGroup, StaggerItem, Reveal } from "@/components/motion/reveal";
 import { MediaFrame } from "@/components/media/media-frame";
 
 export const metadata: Metadata = {
-  title: "Research & Engineering | Cennzo Robotix",
+  title: "Research & Engineering",
   description:
-    "From first principles to field validation — Cennzo Robotix R&D across locomotion, actuation, perception, AI, materials, thermal management and digital engineering.",
+    "From first principles to field validation â€” Cennzo Robotix R&D across locomotion, actuation, perception, AI, materials, thermal management and digital engineering.",
 };
 
 const DOMAINS = [
@@ -115,8 +115,9 @@ export default function ResearchPage() {
           <Reveal delay={0.15}>
             <MediaFrame
               code="IMG-10"
-              label="Digital Twin Simulation — Concept Visualization"
+              label="Digital Twin Simulation â€” Concept Visualization"
               ratio="16/9"
+            src="/images/img-10-digital-twin.webp"
             />
             <div className="mt-10 border-l-2 border-accent pl-8 lg:mt-16">
               <p className="text-subhead leading-relaxed text-bone">
@@ -136,7 +137,7 @@ export default function ResearchPage() {
           <Reveal>
             <p className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.25em] text-mist">
               <span aria-hidden="true" className="h-px w-8 bg-accent" />
-              Build → Test → Measure → Learn
+              Build â†’ Test â†’ Measure â†’ Learn
             </p>
             <h2 className="mt-6 max-w-2xl text-headline font-semibold tracking-tight text-bone">
               Every Subsystem Moves Through The Cycle.
@@ -157,7 +158,7 @@ export default function ResearchPage() {
                     {step}
                   </span>
                   {i < CYCLE.length - 1 && (
-                    <span aria-hidden="true" className="font-mono text-faint">→</span>
+                    <span aria-hidden="true" className="font-mono text-faint">â†’</span>
                   )}
                 </span>
               </StaggerItem>

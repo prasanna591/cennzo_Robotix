@@ -47,6 +47,7 @@ export default async function TechnologyPage() {
                 code="IMG-05"
                 label={t("media.label")}
                 ratio="21/9"
+              src="/images/img-05-system-architecture.webp"
               />
             </Parallax>
           </Reveal>

@@ -129,6 +129,7 @@ export function WafeeSection() {
             code="IMG-01"
             label={tHome("wafeeImgLabel")}
             ratio="21/9"
+          src="/images/img-01-wafee-platform.webp"
           />
         </Reveal>
       </div>

@@ -1,11 +1,11 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { PageHero } from "@/components/sections/page-hero";
 import { CTASection } from "@/components/sections/cta-section";
 import { StaggerGroup, StaggerItem, Reveal } from "@/components/motion/reveal";
 import { MissionConfigurator } from "@/components/technical/mission-configurator";
 
 export const metadata: Metadata = {
-  title: "Platform Architecture | Cennzo Robotix",
+  title: "Platform Architecture",
   description:
     "One robot. Many mission configurations. WAFEE is designed around a common core platform with mission-specific modules.",
 };

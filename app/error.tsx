@@ -30,13 +30,13 @@ export default function Error({
         <button
           type="button"
           onClick={reset}
-          className="cursor-pointer rounded-xl bg-ink px-7 py-3.5 font-mono text-[11px] uppercase tracking-[0.2em] text-white transition-colors duration-300 hover:bg-[#14274d]"
+          className="btn-sheen cursor-pointer rounded-xl bg-ink px-7 py-3.5 font-mono text-[11px] uppercase tracking-[0.2em] text-white transition-[background-color,box-shadow,transform] duration-300 hover:bg-[#14274d] hover:shadow-[0_10px_32px_rgba(21,94,239,0.22)] active:translate-y-px"
         >
           Retry
         </button>
         <Link
           href="/"
-          className="rounded-xl border border-steel px-7 py-3.5 font-mono text-[11px] uppercase tracking-[0.2em] text-bone transition-colors duration-300 hover:border-accent hover:text-accent"
+          className="rounded-xl border border-steel px-7 py-3.5 font-mono text-[11px] uppercase tracking-[0.2em] text-bone transition-colors duration-300 hover:border-accent hover:text-accent active:translate-y-px"
         >
           Back to Home
         </Link>

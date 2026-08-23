@@ -79,6 +79,7 @@ export default async function WafeePage() {
                 code="IMG-04"
                 label={t("media.label")}
                 ratio="16/9"
+              src="/images/img-04-sensory-closeup.webp"
               />
             </Parallax>
           </Reveal>

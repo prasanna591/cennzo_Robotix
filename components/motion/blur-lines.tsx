@@ -31,15 +31,17 @@ export function BlurLines({
 }) {
   const reduced = useReducedMotion();
   let charIndex = 0;
+  let wordIndex = 0;
 
   return (
     <span className={`block ${className}`}>
       {lines.map((line, li) => (
         <span key={`${line}-${li}`} className={`block ${lineClassName}`}>
           {line.split(" ").map((rawWord) => {
+            const wi = wordIndex++;
             const { text, tone } = parseWord(rawWord);
             return (
-              <span key={`${rawWord}-${li}`} className="inline-block whitespace-nowrap">
+              <span key={`${rawWord}-${wi}`} className="inline-block whitespace-nowrap">
                 {splitGraphemes(text).map((ch) => {
                   const i = charIndex++;
                   const d = delay + li * 0.14 + i * stagger;

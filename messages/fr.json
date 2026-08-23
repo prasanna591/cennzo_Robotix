@@ -409,7 +409,7 @@
   },
   "wafeePage": {
     "meta": {
-      "title": "Robot humanoïde WAFEE | Cennzo Robotix",
+      "title": "Robot humanoïde WAFEE",
       "description": "WAFEE — la plateforme robotique humanoïde multi-domaines intégrée de Cennzo Robotix, conçue pour la mobilité intelligente, la manipulation, la perception et le fonctionnement autonome."
     },
     "hero": {
@@ -635,7 +635,7 @@
   },
   "techPage": {
     "meta": {
-      "title": "Technologie robotique humanoïde | Cennzo Robotix",
+      "title": "Technologie robotique humanoïde",
       "description": "WAFEE est construit comme une architecture robotique à intégration verticale — systèmes mécaniques, actionnement, perception, calcul & IA, contrôle, énergie, gestion thermique, matériaux, logiciel."
     },
     "hero": {
@@ -876,7 +876,7 @@
   },
   "appsPage": {
     "meta": {
-      "title": "Robots humanoïdes pour l'industrie, les milieux dangereux et les infrastructures | Cennzo Robotix",
+      "title": "Robots humanoïdes pour l'industrie, les milieux dangereux et les infrastructures",
       "description": "Applications envisagées de WAFEE : inspection industrielle, énergie, réponse aux catastrophes, environnements dangereux, maritime, mines, logistique, inspection de sécurité et robotique spatiale."
     },
     "hero": {
@@ -1039,7 +1039,7 @@
   },
   "industriesPage": {
     "meta": {
-      "title": "Industries | Cennzo Robotix",
+      "title": "Industries",
       "description": "Conçu pour les industries qui ne peuvent pas s'arrêter — fabrication, énergie, services publics, pétrole et gaz, mines, construction, logistique, maritime, infrastructures, gouvernement et technologies aérospatiales."
     },
     "hero": {
@@ -1118,7 +1118,7 @@
   },
   "contactPage": {
     "meta": {
-      "title": "Contact | Cennzo Robotix",
+      "title": "Contact",
       "description": "Écrivons ensemble le chapitre suivant. Contactez Cennzo Robotix pour les démonstrations WAFEE, partenariats technologiques, pilotes industriels, collaborations de recherche, discussions investisseurs et carrières."
     },
     "hero": {

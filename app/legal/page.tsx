@@ -1,9 +1,9 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { PageHero } from "@/components/sections/page-hero";
 import { Reveal } from "@/components/motion/reveal";
 
 export const metadata: Metadata = {
-  title: "Legal | Cennzo Robotix",
+  title: "Legal",
   description:
     "Privacy policy, terms of use, responsible AI & robotics principles, and safety & compliance information for Cennzo Robotix.",
 };
@@ -13,7 +13,7 @@ const SECTIONS = [
     id: "privacy",
     title: "Privacy Policy",
     body: [
-      "Cennzo Robotix respects your privacy. Information submitted through this website — such as your name, organization and contact details — is used solely to respond to your inquiry and is not sold or shared with third parties for marketing purposes.",
+      "Cennzo Robotix respects your privacy. Information submitted through this website â€” such as your name, organization and contact details â€” is used solely to respond to your inquiry and is not sold or shared with third parties for marketing purposes.",
       "This website does not use tracking cookies beyond what is strictly necessary for site operation. You may request deletion of any personal data you have shared with us at any time by contacting us.",
     ],
   },
@@ -38,7 +38,7 @@ const SECTIONS = [
     id: "compliance",
     title: "Safety & Compliance",
     body: [
-      "Safety is engineered into every layer of our platforms — mechanical, electrical, software and operational. Environmental capability claims will be published only after controlled laboratory testing, subsystem qualification and full-system validation.",
+      "Safety is engineered into every layer of our platforms â€” mechanical, electrical, software and operational. Environmental capability claims will be published only after controlled laboratory testing, subsystem qualification and full-system validation.",
       "Our validation philosophy separates design targets, prototype results, validated performance and certified performance. All deployments are subject to applicable law, safety requirements and responsible-use principles.",
     ],
   },

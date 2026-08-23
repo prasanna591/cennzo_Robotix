@@ -1,11 +1,11 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { PageHero } from "@/components/sections/page-hero";
 import { CTASection } from "@/components/sections/cta-section";
 import { StaggerGroup, StaggerItem, Reveal } from "@/components/motion/reveal";
 import { MediaFrame } from "@/components/media/media-frame";
 
 export const metadata: Metadata = {
-  title: "Robotics Careers | Cennzo Robotix",
+  title: "Robotics Careers",
   description:
     "Build machines that change what is possible. Open domains across robotics, mechanical, electrical, embedded, AI/ML, control, thermal, materials and software engineering.",
 };
@@ -85,8 +85,9 @@ export default function CareersPage() {
             <Reveal delay={0.1}>
               <MediaFrame
                 code="IMG-12"
-                label="Life at Cennzo Robotix — Culture Concept"
+                label="Life at Cennzo Robotix â€” Culture Concept"
                 ratio="16/9"
+              src="/images/img-12-culture.webp"
               />
             </Reveal>
             <Reveal delay={0.15}>
