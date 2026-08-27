@@ -2,7 +2,6 @@
 import { PageHero } from "@/components/sections/page-hero";
 import { CTASection } from "@/components/sections/cta-section";
 import { StaggerGroup, StaggerItem, Reveal } from "@/components/motion/reveal";
-
 export const metadata: Metadata = {
   title: "Investors",
   description:

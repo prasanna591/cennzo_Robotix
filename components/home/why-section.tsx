@@ -5,6 +5,13 @@ import { HorizontalShowcase } from "@/components/sections/horizontal-showcase";
 
 const PRINCIPLE_KEYS = ["principle1", "principle2", "principle3", "principle4"] as const;
 
+const PRINCIPLE_IMAGES = [
+  "/images/img-p1-human-compatible.webp",
+  "/images/img-p2-modular.webp",
+  "/images/img-p3-intelligent.webp",
+  "/images/img-p4-resilient.webp",
+];
+
 export function WhySection() {
   const t = useTranslations("home");
 
@@ -12,6 +19,7 @@ export function WhySection() {
     title: t(`${key}Title`),
     tag: String(i + 1).padStart(2, "0"),
     body: t(`${key}Desc`),
+    img: PRINCIPLE_IMAGES[i],
   }));
 
   return (

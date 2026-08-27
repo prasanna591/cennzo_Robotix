@@ -97,7 +97,7 @@ function DomainTile({ domain, delay }: { domain: DomainCard; delay: number }) {
           />
           <div
             aria-hidden="true"
-            className="absolute inset-0 bg-gradient-to-t from-void via-void/45 to-transparent transition-opacity duration-500 group-hover:via-void/25"
+            className="absolute inset-x-0 bottom-0 h-[70%] bg-gradient-to-t from-graphite via-graphite/45 to-transparent transition-opacity duration-500"
           />
         </>
       )}

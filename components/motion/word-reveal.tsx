@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { DURATION, EASE, viewportOnce } from "@/lib/animations";
+import { DURATION, EASE } from "@/lib/animations";
 
 function parseWord(word: string): { text: string; tone: string } {
   if (word.length > 2 && word.startsWith("*") && word.endsWith("*")) {

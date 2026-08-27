@@ -22,7 +22,8 @@ export function HudPanel({ className = "" }: { className?: string }) {
   const timers = useRef<ReturnType<typeof setInterval>[]>([]);
 
   useEffect(() => {
-    return () => timers.current.forEach(clearInterval);
+    const snapshot = timers.current;
+    return () => snapshot.forEach(clearInterval);
   }, []);
 
   const runDiagnostic = () => {

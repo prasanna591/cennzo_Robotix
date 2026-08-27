@@ -1,4 +1,5 @@
 ﻿import type { Metadata } from "next";
+import Image from "next/image";
 import { PageHero } from "@/components/sections/page-hero";
 import { CTASection } from "@/components/sections/cta-section";
 import { StaggerGroup, StaggerItem, Reveal } from "@/components/motion/reveal";
@@ -37,39 +38,55 @@ function ModuleList({
   title,
   items,
   accent = false,
+  img,
 }: {
   eyebrow: string;
   title: string;
   items: readonly string[];
   accent?: boolean;
+  img?: string;
 }) {
   return (
-    <div className="h-full rounded-2xl border border-black/[0.1] bg-graphite p-8 shadow-soft md:p-12">
-      <p
-        className={`font-mono text-[10px] uppercase tracking-[0.25em] ${
-          accent ? "text-accent" : "text-mist"
-        }`}
-      >
-        {eyebrow}
-      </p>
-      <h2 className="mt-4 text-2xl font-semibold tracking-tight text-bone">
-        {title}
-      </h2>
-      <StaggerGroup stagger={0.05} className="mt-8">
-        {items.map((item) => (
-          <StaggerItem key={item}>
-            <p className="flex items-center gap-4 border-b border-black/[0.08] py-3.5 text-sm text-mist">
-              <span
-                aria-hidden="true"
-                className={`h-1 w-1 shrink-0 rounded-full ${
-                  accent ? "bg-accent" : "bg-faint"
-                }`}
-              />
-              {item}
-            </p>
-          </StaggerItem>
-        ))}
-      </StaggerGroup>
+    <div className="h-full overflow-hidden rounded-2xl border border-black/[0.1] bg-graphite shadow-soft">
+      {img ? (
+        <div className="relative h-52 w-full overflow-hidden md:h-64">
+          <Image
+            src={img}
+            alt=""
+            fill
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-graphite via-graphite/40 to-transparent" />
+        </div>
+      ) : null}
+      <div className="p-8 md:p-12">
+        <p
+          className={`font-mono text-[10px] uppercase tracking-[0.25em] ${
+            accent ? "text-accent" : "text-mist"
+          }`}
+        >
+          {eyebrow}
+        </p>
+        <h2 className="mt-4 text-2xl font-semibold tracking-tight text-bone">
+          {title}
+        </h2>
+        <StaggerGroup stagger={0.05} className="mt-8">
+          {items.map((item) => (
+            <StaggerItem key={item}>
+              <p className="flex items-center gap-4 border-b border-black/[0.08] py-3.5 text-sm text-mist">
+                <span
+                  aria-hidden="true"
+                  className={`h-1 w-1 shrink-0 rounded-full ${
+                    accent ? "bg-accent" : "bg-faint"
+                  }`}
+                />
+                {item}
+              </p>
+            </StaggerItem>
+          ))}
+        </StaggerGroup>
+      </div>
     </div>
   );
 }
@@ -94,6 +111,7 @@ export default function PlatformPage() {
                 eyebrow="Common Core"
                 title="Core Platform"
                 items={CORE}
+                img="/images/img-plat-core.webp"
               />
             </StaggerItem>
             <StaggerItem>
@@ -102,6 +120,7 @@ export default function PlatformPage() {
                 title="Mission Modules"
                 items={MODULES}
                 accent
+                img="/images/img-plat-modules.webp"
               />
             </StaggerItem>
           </StaggerGroup>

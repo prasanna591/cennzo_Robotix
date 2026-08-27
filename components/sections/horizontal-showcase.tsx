@@ -1,14 +1,19 @@
 "use client";
 
-import { useEffect, useRef, type ReactNode } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useEffect, useRef, useState, type ReactNode } from "react";
+import Image from "next/image";
+import {
+  useScroll,
+  useMotionValueEvent,
+  useReducedMotion,
+} from "framer-motion";
 import { WordReveal } from "@/components/motion/word-reveal";
 
 export type ShowcaseItem = {
   title: string;
   body: string;
   tag: string;
+  img?: string;
 };
 
 export function HorizontalShowcase({
@@ -25,52 +30,65 @@ export function HorizontalShowcase({
   const wrapRef = useRef<HTMLElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const progressRef = useRef<HTMLDivElement>(null);
+  const reduced = useReducedMotion();
+  const [pinHeight, setPinHeight] = useState<number | null>(null);
 
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-    const mm = gsap.matchMedia();
-
-    mm.add(
-      "(min-width: 1024px) and (prefers-reduced-motion: no-preference)",
-      () => {
-        const track = trackRef.current;
-        const wrap = wrapRef.current;
-        if (!track || !wrap) return;
-
-        const distance = () => Math.max(0, track.scrollWidth - window.innerWidth);
-
-        const tween = gsap.to(track, {
-          x: () => -distance(),
-          ease: "none",
-          scrollTrigger: {
-            trigger: wrap,
-            start: "top top",
-            end: () => `+=${distance()}`,
-            pin: true,
-            scrub: 1,
-            invalidateOnRefresh: true,
-            anticipatePin: 1,
-            onUpdate: (self) => {
-              if (progressRef.current) {
-                progressRef.current.style.transform = `scaleX(${self.progress})`;
-              }
-            },
-          },
-        });
-
-        return () => {
-          tween.scrollTrigger?.kill();
-          tween.kill();
-        };
-      }
+    const mq = window.matchMedia(
+      "(min-width: 1024px) and (prefers-reduced-motion: no-preference)"
     );
+    if (reduced) return;
 
-    return () => mm.revert();
-  }, []);
+    const measure = () => {
+      const track = trackRef.current;
+      if (!track) return;
+      const distance = Math.max(0, track.scrollWidth - window.innerWidth);
+      if (mq.matches && distance > 0) {
+        setPinHeight(window.innerHeight + distance);
+      } else {
+        setPinHeight(null);
+      }
+    };
+
+    measure();
+    mq.addEventListener("change", measure);
+    window.addEventListener("resize", measure);
+    return () => {
+      mq.removeEventListener("change", measure);
+      window.removeEventListener("resize", measure);
+    };
+  }, [reduced]);
+
+  const { scrollYProgress } = useScroll({
+    target: wrapRef,
+    offset: pinHeight != null ? ["start start", "end end"] : undefined,
+  });
+
+  useMotionValueEvent(scrollYProgress, "change", (v) => {
+    const track = trackRef.current;
+    if (!track) return;
+    const maxScroll = track.scrollWidth - window.innerWidth;
+    if (maxScroll <= 0) return;
+    track.style.transform = `translateX(${-v * maxScroll}px)`;
+    if (progressRef.current) {
+      progressRef.current.style.transform = `scaleX(${v})`;
+    }
+  });
 
   return (
-    <section ref={wrapRef} className="relative overflow-hidden border-b border-black/[0.08]">
-      <div className="flex min-h-screen flex-col justify-center py-20 md:py-16 lg:min-h-screen lg:pt-2 lg:pb-28">
+    <section
+      ref={wrapRef}
+      className="relative border-b border-black/[0.08]"
+      style={pinHeight != null ? { height: pinHeight } : undefined}
+    >
+      <div
+        className="flex flex-col justify-center py-20 md:py-16 lg:pt-2 lg:pb-28"
+        style={
+          pinHeight != null
+            ? { position: "sticky", top: 0, height: "100vh" }
+            : { minHeight: "100vh" }
+        }
+      >
         <div className="mx-auto w-full max-w-[1440px] px-6 md:px-10">
           <p className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.25em] text-mist">
             <span aria-hidden="true" className="h-px w-8 bg-accent" />
@@ -82,37 +100,48 @@ export function HorizontalShowcase({
           {children}
         </div>
 
-        <div className="mt-12 overflow-x-auto pb-6 lg:mt-10 lg:overflow-hidden lg:pb-0">
+        <div className="mt-12 overflow-hidden pb-6 lg:mt-10 lg:pb-0">
           <div
             ref={trackRef}
-            className="flex w-max snap-x snap-mandatory gap-5 px-6 will-change-transform md:px-10 lg:snap-none lg:pl-[max(2.5rem,calc((100vw-1440px)/2+2.5rem))]"
+            className="flex w-max gap-5 px-6 will-change-transform md:px-10 lg:pl-[max(2.5rem,calc((100vw-1440px)/2+2.5rem))]"
           >
             {items.map((item, i) => (
               <article
                 key={item.title}
-                className="group relative flex h-[420px] w-[82vw] shrink-0 snap-center flex-col justify-between overflow-hidden rounded-3xl border border-black/[0.08] bg-graphite p-8 shadow-soft transition-colors duration-500 hover:border-faint sm:w-[54vw] md:p-10 lg:h-[46vh] lg:min-h-[340px] lg:w-[30vw] lg:max-w-[420px]"
+                className="group relative flex h-[420px] w-[82vw] shrink-0 flex-col justify-between overflow-hidden rounded-3xl border border-black/[0.08] bg-graphite p-8 shadow-soft transition-colors duration-500 hover:border-faint sm:w-[54vw] md:p-10 lg:h-[46vh] lg:min-h-[340px] lg:w-[30vw] lg:max-w-[420px]"
               >
+                {item.img ? (
+                  <div className="absolute inset-0">
+                    <Image
+                      src={item.img}
+                      alt=""
+                      fill
+                      sizes="(max-width: 640px) 82vw, (max-width: 1024px) 54vw, 30vw"
+                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                    />
+                  </div>
+                ) : null}
                 <span
                   aria-hidden="true"
-                  className="absolute left-0 top-0 h-1 w-full origin-left scale-x-0 bg-gradient-to-r from-accent to-teal transition-transform duration-700 ease-out group-hover:scale-x-100"
+                  className="absolute left-0 top-0 z-10 h-1 w-full origin-left scale-x-0 bg-gradient-to-r from-accent to-teal transition-transform duration-700 ease-out group-hover:scale-x-100"
                 />
                 <div
                   aria-hidden="true"
-                  className="absolute -bottom-20 -right-20 h-48 w-48 rounded-full bg-[radial-gradient(circle,rgba(21,94,239,0.07),transparent_70%)] opacity-0 blur-2xl transition-opacity duration-700 group-hover:opacity-100"
+                  className="absolute -bottom-20 -right-20 z-10 h-48 w-48 rounded-full bg-[radial-gradient(circle,rgba(21,94,239,0.07),transparent_70%)] opacity-0 blur-2xl transition-opacity duration-700 group-hover:opacity-100"
                 />
                 <div className="flex items-start justify-between">
-                  <span className="font-mono text-[11px] tracking-[0.25em] text-faint transition-colors duration-300 group-hover:text-accent">
+                  <span className="relative font-mono text-[11px] tracking-[0.25em] text-white/60 transition-colors duration-300 group-hover:text-accent">
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <span className="rounded-full border border-black/[0.08] px-3 py-1 font-mono text-[9px] uppercase tracking-[0.18em] text-faint">
+                  <span className="relative rounded-full border border-white/20 bg-black/25 px-3 py-1 font-mono text-[9px] uppercase tracking-[0.18em] text-white/80 backdrop-blur-sm">
                     {item.tag}
                   </span>
                 </div>
-                <div>
-                  <h3 className="text-2xl font-semibold tracking-tight text-bone">
+                <div className="relative">
+                  <h3 className="text-2xl font-semibold tracking-tight text-white">
                     {item.title}
                   </h3>
-                  <p className="mt-4 text-sm leading-relaxed text-mist">
+                  <p className="mt-4 text-sm leading-relaxed text-white/75">
                     {item.body}
                   </p>
                 </div>
@@ -125,7 +154,9 @@ export function HorizontalShowcase({
             >
               <p className="font-mono text-[11px] uppercase leading-loose tracking-[0.22em] text-faint">
                 End of sequence
-                <span className="mt-3 block text-accent">— Contact for a mission brief</span>
+                <span className="mt-3 block text-accent">
+                  — Contact for a mission brief
+                </span>
               </p>
             </div>
           </div>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { PageHero } from "@/components/sections/page-hero";
 import { SectionHeading } from "@/components/sections/section-heading";
@@ -13,6 +14,23 @@ import { Spotlight } from "@/components/motion/spotlight";
 import { Parallax } from "@/components/motion/parallax";
 import { MediaFrame } from "@/components/media/media-frame";
 import { BackgroundObjects } from "@/components/decor/background-objects";
+
+const SHOWCASE_IMAGES = [
+  "/images/img-wd-earth.webp",
+  "/images/img-wd-water.webp",
+  "/images/img-wd-fire.webp",
+  "/images/img-wd-air.webp",
+  "/images/img-wd-space.webp",
+];
+
+const CAPABILITY_IMAGES = [
+  "/images/img-cap-mobility.webp",
+  "/images/img-cap-manipulation.webp",
+  "/images/img-cap-perception.webp",
+  "/images/img-cap-autonomy.webp",
+  "/images/img-cap-teleoperation.webp",
+  "/images/img-cap-collaboration.webp",
+];
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("wafeePage.meta");
@@ -31,10 +49,11 @@ export default async function WafeePage() {
 
   const domainItems: ShowcaseItem[] = (
     t.raw("showcase.items") as { title: string; tag: string; body: string }[]
-  ).map((item) => ({
+  ).map((item, i) => ({
     title: item.title,
     tag: item.tag,
     body: item.body,
+    img: SHOWCASE_IMAGES[i],
   }));
 
   return (
@@ -144,23 +163,35 @@ export default async function WafeePage() {
               stagger={0.07}
               className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-black/[0.1] bg-black/[0.1] shadow-soft sm:grid-cols-2 lg:grid-cols-3"
             >
-              {capabilities.map((capability) => (
+              {capabilities.map((capability, i) => (
                 <StaggerItem key={capability.index}>
                   <TiltCard className="h-full">
-                    <article className="spotlight-card group relative h-full overflow-hidden bg-graphite p-8 transition-colors duration-500 hover:bg-charcoal/60 md:p-10">
+                    <article className="spotlight-card group relative flex h-full flex-col overflow-hidden bg-graphite transition-colors duration-500 hover:bg-charcoal/60">
                       <span
                         aria-hidden="true"
-                        className="absolute left-0 top-0 h-1 w-full origin-left scale-x-0 bg-gradient-to-r from-accent to-teal transition-transform duration-700 ease-out group-hover:scale-x-100"
+                        className="absolute left-0 top-0 z-10 h-1 w-full origin-left scale-x-0 bg-gradient-to-r from-accent to-teal transition-transform duration-700 ease-out group-hover:scale-x-100"
                       />
-                      <p className="font-mono text-[11px] tracking-[0.25em] text-faint transition-colors duration-300 group-hover:text-accent">
-                        {capability.index}
-                      </p>
-                      <h3 className="mt-6 text-xl font-semibold tracking-tight text-bone md:text-2xl">
-                        {capability.name}
-                      </h3>
-                      <p className="mt-4 text-sm leading-relaxed text-mist">
-                        {capability.description}
-                      </p>
+                      <div className="relative h-44 shrink-0 overflow-hidden md:h-52">
+                        <Image
+                          src={CAPABILITY_IMAGES[i]}
+                          alt=""
+                          fill
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                          className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-graphite via-transparent to-transparent" />
+                      </div>
+                      <div className="flex flex-1 flex-col p-8 md:p-10">
+                        <p className="font-mono text-[11px] tracking-[0.25em] text-faint transition-colors duration-300 group-hover:text-accent">
+                          {capability.index}
+                        </p>
+                        <h3 className="mt-6 text-xl font-semibold tracking-tight text-bone md:text-2xl">
+                          {capability.name}
+                        </h3>
+                        <p className="mt-4 text-sm leading-relaxed text-mist">
+                          {capability.description}
+                        </p>
+                      </div>
                     </article>
                   </TiltCard>
                 </StaggerItem>

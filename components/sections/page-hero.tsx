@@ -3,7 +3,6 @@
 import { useRef } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import type { ReactNode } from "react";
-import { MaskLines } from "@/components/motion/mask-lines";
 import { BlurLines } from "@/components/motion/blur-lines";
 import { DecodeText } from "@/components/motion/decode-text";
 import { BackgroundObjects } from "@/components/decor/background-objects";

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { DURATION, EASE, viewportOnce, fadeUp } from "@/lib/animations";
+import { DURATION, EASE, fadeUp } from "@/lib/animations";
 
 const CONFIGS = {
   earth: {

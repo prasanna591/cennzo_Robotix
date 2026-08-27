@@ -6,6 +6,20 @@ import { Reveal } from "@/components/motion/reveal";
 import { MediaFrame } from "@/components/media/media-frame";
 import { HorizontalShowcase, type ShowcaseItem } from "@/components/sections/horizontal-showcase";
 
+const SECTOR_IMAGES = [
+  "/images/img-ind-manufacturing.webp",
+  "/images/img-ind-energy.webp",
+  "/images/img-ind-utilities.webp",
+  "/images/img-ind-oilgas.webp",
+  "/images/img-ind-mining.webp",
+  "/images/img-ind-construction.webp",
+  "/images/img-ind-logistics.webp",
+  "/images/img-ind-marine.webp",
+  "/images/img-ind-infrastructure.webp",
+  "/images/img-ind-government.webp",
+  "/images/img-ind-space.webp",
+];
+
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("industriesPage.meta");
   return { title: t("title"), description: t("description") };
@@ -15,10 +29,11 @@ export default async function IndustriesPage() {
   const t = await getTranslations("industriesPage");
   const showcaseItems: ShowcaseItem[] = (
     t.raw("showcase.items") as { title: string; body: string }[]
-  ).map((item) => ({
+  ).map((item, i) => ({
     title: item.title,
     tag: t("showcase.tag"),
     body: item.body,
+    img: SECTOR_IMAGES[i],
   }));
 
   return (

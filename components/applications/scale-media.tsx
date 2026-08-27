@@ -19,7 +19,6 @@ export function ScaleMedia({
 
   const scale = useTransform(scrollYProgress, [0, 1], [0.9, 1]);
   const innerScale = useTransform(scrollYProgress, [0, 1], [1.14, 1]);
-  const y = useTransform(scrollYProgress, [0, 1], [36, 0]);
   const opacity = useTransform(scrollYProgress, [0, 0.45], [0.4, 1]);
 
   return (

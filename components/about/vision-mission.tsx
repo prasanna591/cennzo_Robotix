@@ -29,7 +29,7 @@ export function VisionMission() {
   const reduced = useReducedMotion();
   const t = useTranslations("aboutVm");
 
-  const panel = (dark: boolean) => ({
+  const panel = (_dark: boolean) => ({
     initial: reduced ? false : { opacity: 0, y: 48 },
     whileInView: { opacity: 1, y: 0 },
     viewport: viewportOnce,

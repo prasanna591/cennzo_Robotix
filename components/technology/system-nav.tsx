@@ -51,9 +51,7 @@ export function SystemNav({
   const jump = (id: string) => {
     const el = document.getElementById(id);
     if (!el) return;
-    const lenis = (window as unknown as { __lenis?: { scrollTo: (t: HTMLElement, o?: object) => void } }).__lenis;
-    if (lenis && !reduced) lenis.scrollTo(el, { offset: -140 });
-    else el.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "start" });
+    el.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "start" });
   };
 
   return (

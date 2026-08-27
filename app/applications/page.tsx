@@ -268,6 +268,7 @@ export default async function ApplicationsPage() {
                     code={`IMG-D${i + 1}`}
                     label={`${domain.name} — ${t("domainMediaSuffix")}`}
                     ratio="4/3"
+                    src={DOMAIN_IMAGES[domain.id]}
                   />
                 </Reveal>
               </ScaleMedia>

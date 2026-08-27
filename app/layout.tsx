@@ -19,6 +19,7 @@ import { BackToTop } from "@/components/navigation/back-to-top";
 import { LanguagePrompt } from "@/components/navigation/language-prompt";
 import { FilmGrain } from "@/components/decor/film-grain";
 import { CircuitSpine } from "@/components/decor/circuit-spine";
+import { MeshGradient } from "@/components/decor/mesh-gradient";
 
 const geistSans = Geist({
   subsets: ["latin"],
@@ -89,7 +90,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export const viewport: Viewport = {
-  themeColor: "#f7f8fa",
+  themeColor: "#eef3fc",
   width: "device-width",
   initialScale: 1,
 };
@@ -125,6 +126,7 @@ export default async function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} ${spaceGrotesk.variable} ${notoTamil.variable} ${notoDevanagari.variable}`}
     >
       <body>
+        <MeshGradient />
         <NextIntlClientProvider messages={messages}>
           <Preloader />
           <SmoothScroll />

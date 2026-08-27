@@ -13,7 +13,7 @@ import { DURATION } from "@/lib/animations";
 export function BackToTop() {
   const [show, setShow] = useState(false);
   const reduced = useReducedMotion();
-  const { scrollY, scrollYProgress } = useScroll();
+  const { scrollYProgress } = useScroll();
   const pathLength = useSpring(scrollYProgress, {
     stiffness: 120,
     damping: 30,
@@ -28,12 +28,7 @@ export function BackToTop() {
   }, []);
 
   const toTop = () => {
-    const lenis = (window as unknown as { __lenis?: { scrollTo: (t: number, o?: object) => void } }).__lenis;
-    if (lenis) {
-      lenis.scrollTo(0, { duration: 1.2 });
-    } else {
-      window.scrollTo({ top: 0, behavior: reduced ? "auto" : "smooth" });
-    }
+    window.scrollTo({ top: 0, behavior: reduced ? "auto" : "smooth" });
   };
 
   return (

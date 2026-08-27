@@ -4,7 +4,6 @@ import { useRef } from "react";
 import { motion, useReducedMotion, useScroll, useSpring } from "framer-motion";
 import { SectionHeading } from "@/components/sections/section-heading";
 import { useTranslations } from "next-intl";
-import { viewportOnce } from "@/lib/animations";
 
 type Phase = {
   phase: string;
