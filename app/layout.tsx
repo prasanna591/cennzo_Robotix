@@ -56,7 +56,7 @@ const notoDevanagari = Noto_Sans_Devanagari({
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("meta");
   return {
-    metadataBase: new URL("https://cennzorobotix.com"),
+    metadataBase: new URL("https://cennzo.com"),
     title: {
       default: t("title"),
       template: "%s | Cennzo Robotix",
@@ -99,7 +99,7 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "Cennzo Robotix",
-  url: "https://cennzorobotix.com",
+  url: "https://cennzo.com",
   slogan: "Innovate · Automate · Elevate",
   description:
     "Deep-tech robotics company building WAFEE — a full-size humanoid robot platform engineered for the world's hardest industrial environments.",

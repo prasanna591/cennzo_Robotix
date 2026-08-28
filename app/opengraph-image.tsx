@@ -123,7 +123,7 @@ export default function OpengraphImage() {
               Innovate · Automate · Elevate
             </span>
             <span style={{ fontSize: 17, letterSpacing: 3, color: "#7d8db2" }}>
-              cennzorobotix.com
+              cennzo.com
             </span>
           </div>
         </div>

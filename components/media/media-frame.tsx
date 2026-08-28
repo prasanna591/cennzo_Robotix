@@ -65,7 +65,7 @@ export function MediaVisual({
           alt={label}
           fill
           sizes={large ? "100vw" : "(max-width: 768px) 100vw, 50vw"}
-          className="object-cover"
+          className="object-cover object-top"
         />
       )}
       <div

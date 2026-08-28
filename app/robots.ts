@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://cennzorobotix.com/sitemap.xml",
+    sitemap: "https://cennzo.com/sitemap.xml",
   };
 }

@@ -18,7 +18,7 @@ const ROUTES = [
 ] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = "https://cennzorobotix.com";
+  const base = "https://cennzo.com";
   const lastModified = new Date();
 
   return ROUTES.map((route) => ({

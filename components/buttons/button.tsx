@@ -29,7 +29,7 @@ const BASE =
 const VARIANTS = {
   primary: "btn-primary text-white cursor-pointer hover:-translate-y-0.5",
   light:
-    "bg-white text-[#0b1220] shadow-soft cursor-pointer hover:-translate-y-0.5 hover:bg-charcoal hover:shadow-lift",
+    "bg-white text-[#0b1220] shadow-soft cursor-pointer hover:-translate-y-0.5 hover:bg-charcoal hover:text-bone hover:shadow-lift",
   ghost:
     "border border-steel bg-graphite/60 text-bone cursor-pointer hover:-translate-y-0.5 hover:border-faint hover:bg-graphite hover:shadow-soft",
 } as const;
