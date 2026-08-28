@@ -8,7 +8,6 @@ import { FlowStack } from "@/components/technical/flow-stack";
 import { MediaFrame } from "@/components/media/media-frame";
 import { SystemNav } from "@/components/technology/system-nav";
 import { SpecList } from "@/components/technology/spec-list";
-import { SystemMap } from "@/components/technology/system-map";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("techPage.meta");
@@ -54,7 +53,24 @@ export default async function TechnologyPage() {
         </div>
       </section>
 
-      <SystemMap />
+      <section className="relative overflow-hidden border-b border-black/[0.08]">
+        <div
+          aria-hidden="true"
+          className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/50 to-transparent"
+        />
+        <div className="mx-auto w-full max-w-[1200px] px-6 py-section md:px-10">
+          <Reveal>
+            <Parallax speed={0.05}>
+              <MediaFrame
+                code="IMG-04"
+                label={t("media.label")}
+                ratio="16/9"
+                src="/images/img-04-sensory-closeup.webp"
+              />
+            </Parallax>
+          </Reveal>
+        </div>
+      </section>
 
       <div className="relative">
         <SystemNav systems={nav} />

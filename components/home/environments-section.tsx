@@ -61,7 +61,7 @@ export function EnvironmentsSection() {
           {ENVIRONMENTS.map((env, i) => (
             <div
               key={env.id}
-              className="sticky mb-10 last:mb-0"
+              className="sticky mb-10 last:mb-0 lg:mb-10"
               style={{ top: `${88 + i * 26}px`, zIndex: i + 1 }}
             >
               <motion.article

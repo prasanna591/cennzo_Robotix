@@ -19,6 +19,10 @@ vi.mock("next/link", () => ({
   ),
 }));
 
+vi.mock("next/image", () => ({
+  default: ({ alt, ...props }: { alt: string }) => <img alt={alt} {...props} />,
+}));
+
 vi.mock("next/navigation", () => ({
   usePathname: () => "/",
   useRouter: () => ({ push: vi.fn(), replace: vi.fn(), prefetch: vi.fn() }),
@@ -55,10 +59,12 @@ beforeEach(async () => {
 });
 
 describe("SiteHeader", () => {
-  it("renders the CENNZO ROBOTIX wordmark", () => {
+  it("renders the Cennzo Robotix logo wordmark", () => {
     render(<SiteHeader />);
     expect(screen.getByText("CENNZO")).toBeInTheDocument();
     expect(screen.getByText("ROBOTIX")).toBeInTheDocument();
+    const logo = document.querySelector('img[src="/logo/cennzo-icon.png"]');
+    expect(logo).not.toBeNull();
   });
 
   it("renders the home link with correct href", () => {

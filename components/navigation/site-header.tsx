@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
@@ -18,8 +19,8 @@ const NAV_LINKS = [
 ] as const;
 
 const MOBILE_LINKS = [
-  { href: "/", key: "home" },
   ...NAV_LINKS,
+  { href: "/contact", key: "contact" },
 ] as const;
 
 function Wordmark() {
@@ -27,20 +28,22 @@ function Wordmark() {
   return (
     <Link
       href="/"
-      className="group flex items-center gap-2.5"
+      className="group flex items-center gap-2.5 md:gap-3"
       aria-label={tHeader("home")}
     >
-      <span
-        aria-hidden="true"
-        className="relative flex h-6 w-6 items-center justify-center rounded-md bg-gradient-to-br from-accent via-violet-600 to-teal shadow-soft transition-transform duration-500 group-hover:rotate-90"
-      >
-        <span className="h-2 w-2 rounded-sm bg-white/95" />
-      </span>
+      <Image
+        src="/logo/cennzo-icon.png"
+        alt=""
+        width={245}
+        height={239}
+        priority
+        className="h-8 w-auto object-contain transition-transform duration-500 group-hover:scale-[1.04] md:h-10"
+      />
       <span className="flex items-baseline gap-2">
-        <span className="text-[15px] font-semibold tracking-[0.22em] text-bone">
+        <span className="text-[15px] font-semibold tracking-[0.22em] text-bone md:text-lg">
           CENNZO
         </span>
-        <span className="font-mono text-[10px] font-medium tracking-[0.3em] text-mist">
+        <span className="font-mono text-[10px] font-medium tracking-[0.3em] text-mist md:text-xs">
           ROBOTIX
         </span>
       </span>

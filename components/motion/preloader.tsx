@@ -1,8 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { animate } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { DURATION, EASE } from "@/lib/animations";
 
@@ -10,51 +9,82 @@ const STORAGE_KEY = "cr_preloaded";
 
 const BOOT_KEYS = ["line1", "line2", "line3", "line4", "line5"] as const;
 
+const PROGRESS_DURATION = 1400;
+
+// Ease-out cubic: progress follows a decelerating curve to 100.
+function easeOutCubic(t: number): number {
+  return 1 - Math.pow(1 - t, 3);
+}
+
 export function Preloader() {
   const reduced = useReducedMotion();
   const t = useTranslations("preloader");
   const [visible, setVisible] = useState(true);
+  const [ready, setReady] = useState(false);
   const [progress, setProgress] = useState(0);
   const [lineIndex, setLineIndex] = useState(0);
   const started = useRef(false);
 
-  const release = () => {
+  const release = useCallback(() => {
+    setReady(true);
     document.documentElement.dataset.ready = "true";
     window.dispatchEvent(new Event("cennzo:ready"));
-  };
+  }, []);
 
   useEffect(() => {
+    // useReducedMotion() can return null before the reduced-motion preference
+    // settles on the client. Wait for a definitive boolean before deciding, so
+    // we don't start-and-then-cancel the ticker on a null -> false transition.
+    if (reduced === null) return;
+
     if (started.current) return;
     started.current = true;
 
-    if (reduced || sessionStorage.getItem(STORAGE_KEY)) {
+    if (reduced === true || sessionStorage.getItem(STORAGE_KEY)) {
       setVisible(false);
       release();
       return;
     }
 
     sessionStorage.setItem(STORAGE_KEY, "1");
+
+    // Self-contained rAF progress ticker. Avoids depending on the animation
+    // driver so the preloader is guaranteed to advance and release the UI.
+    let raf = 0;
+    let released = false;
     const lineTimer = window.setInterval(
       () => setLineIndex((i) => (i + 1) % BOOT_KEYS.length),
       240
     );
-    const controls = animate(0, 100, {
-      duration: 1.4,
-      ease: [0.65, 0, 0.35, 1],
-      onUpdate: (v) => setProgress(Math.round(v)),
-      onComplete: () => {
-        window.clearInterval(lineTimer);
-        window.setTimeout(() => {
-          release();
-          setVisible(false);
-        }, 250);
-      },
-    });
-    return () => {
-      controls.stop();
+    const releaseOnce = () => {
+      if (released) return;
+      released = true;
       window.clearInterval(lineTimer);
+      release();
+      setVisible(false);
     };
-  }, [reduced]);
+    // Absolute failsafe: never trap the UI, even if rAF stalls for any reason.
+    const failsafe = window.setTimeout(releaseOnce, 4000);
+    const startTime = performance.now();
+    const tick = (now: number) => {
+      const tElapsed = Math.min((now - startTime) / PROGRESS_DURATION, 1);
+      setProgress(Math.round(easeOutCubic(tElapsed) * 100));
+      if (tElapsed < 1) {
+        raf = requestAnimationFrame(tick);
+      } else {
+        window.clearTimeout(failsafe);
+        window.setTimeout(releaseOnce, 250);
+      }
+    };
+
+    raf = requestAnimationFrame(tick);
+
+    return () => {
+      cancelAnimationFrame(raf);
+      window.clearInterval(lineTimer);
+      window.clearTimeout(failsafe);
+    };
+  }, [reduced, release]);
 
   return (
     <AnimatePresence>
@@ -64,7 +94,9 @@ export function Preloader() {
           initial={{ y: 0 }}
           exit={{ y: "-100%" }}
           transition={{ duration: DURATION.standard + 0.15, ease: EASE.mechanical }}
-          className="fixed inset-0 z-[95] flex flex-col items-center justify-center bg-void"
+          className={`fixed inset-0 z-[95] flex flex-col items-center justify-center bg-void ${
+            ready ? "pointer-events-none" : ""
+          }`}
           aria-hidden="true"
         >
           <noscript>

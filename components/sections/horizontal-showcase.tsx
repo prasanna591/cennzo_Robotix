@@ -67,6 +67,7 @@ export function HorizontalShowcase({
   useMotionValueEvent(scrollYProgress, "change", (v) => {
     const track = trackRef.current;
     if (!track) return;
+    if (pinHeight == null) return;
     const maxScroll = track.scrollWidth - window.innerWidth;
     if (maxScroll <= 0) return;
     track.style.transform = `translateX(${-v * maxScroll}px)`;
@@ -100,7 +101,7 @@ export function HorizontalShowcase({
           {children}
         </div>
 
-        <div className="mt-12 overflow-hidden pb-6 lg:mt-10 lg:pb-0">
+        <div className="mt-12 overflow-x-auto pb-6 [scrollbar-width:none] [-webkit-overflow-scrolling:touch] lg:mt-10 lg:overflow-hidden lg:pb-0 [&::-webkit-scrollbar]:hidden">
           <div
             ref={trackRef}
             className="flex w-max gap-5 px-6 will-change-transform md:px-10 lg:pl-[max(2.5rem,calc((100vw-1440px)/2+2.5rem))]"

@@ -1,0 +1,266 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: pages.spec.ts >> Contact Page >> has a submit button
+- Location: __tests__\e2e\pages.spec.ts:45:7
+
+# Error details
+
+```
+Error: expect(locator).toBeVisible() failed
+
+Locator: getByRole('button', { name: /send/i })
+Expected: visible
+Timeout: 5000ms
+Error: element(s) not found
+
+Call log:
+  - Expect "toBeVisible" with timeout 5000ms
+  - waiting for getByRole('button', { name: /send/i })
+
+```
+
+```yaml
+- banner:
+  - link "Cennzo Robotix — Home":
+    - /url: /
+    - text: CENNZO ROBOTIX
+  - button "Open menu"
+- main:
+  - paragraph: Contact
+  - heading "L e t ' s B u i l d W h a t C o m e s N e x t ." [level=1]
+  - text: Whether you are an industrial operator, technology partner, researcher, investor or engineer, we would like to hear from you.
+  - paragraph: Have a hard problem? Let's engineer the answer.
+  - paragraph: Contact For
+  - list:
+    - listitem: WAFEE demonstrations
+    - listitem: Technology partnerships
+    - listitem: Industrial pilots
+    - listitem: Research collaboration
+    - listitem: Investment discussions
+    - listitem: Component partnerships
+    - listitem: Careers
+    - listitem: Media
+  - paragraph: Cennzo Robotix Intelligent Machines for the Real World.
+  - text: Name *
+  - textbox "Name *":
+    - /placeholder: Your full name
+  - text: Company
+  - textbox "Company":
+    - /placeholder: Organization
+  - text: Email *
+  - textbox "Email *":
+    - /placeholder: name@company.com
+  - text: Phone
+  - textbox "Phone":
+    - /placeholder: +1 000 000 0000
+  - text: Country
+  - textbox "Country"
+  - text: Organization Type
+  - combobox "Organization Type":
+    - option "Select type" [disabled] [selected]
+    - option "Industrial Operator"
+    - option "Technology Company"
+    - option "Research Institution"
+    - option "Government / Public Sector"
+    - option "Investor"
+    - option "Individual"
+    - option "Other"
+  - text: Area of Interest
+  - combobox "Area of Interest":
+    - option "Select area" [disabled] [selected]
+    - option "WAFEE demonstrations"
+    - option "Technology partnerships"
+    - option "Industrial pilots"
+    - option "Research collaboration"
+    - option "Investment discussions"
+    - option "Component partnerships"
+    - option "Careers"
+    - option "Media"
+  - text: Message * 0 / 1000
+  - textbox "Message *":
+    - /placeholder: Tell us about your mission, project or interest.
+  - button "Start a Conversation"
+- contentinfo:
+  - link "Cennzo Robotix — Home":
+    - /url: /
+    - text: CENNZO ROBOTIX
+  - paragraph: Building intelligent robotic systems for complex and demanding environments.
+  - paragraph: Innovate · Automate · Elevate
+  - paragraph: Explore
+  - list:
+    - listitem:
+      - link "Home":
+        - /url: /
+    - listitem:
+      - link "About":
+        - /url: /about
+    - listitem:
+      - link "WAFEE":
+        - /url: /wafee
+    - listitem:
+      - link "Technology":
+        - /url: /technology
+    - listitem:
+      - link "Applications":
+        - /url: /applications
+  - paragraph: Company
+  - list:
+    - listitem:
+      - link "Platform":
+        - /url: /platform
+    - listitem:
+      - link "Research & Engineering":
+        - /url: /research
+    - listitem:
+      - link "Validation & Safety":
+        - /url: /safety
+    - listitem:
+      - link "Industries":
+        - /url: /industries
+    - listitem:
+      - link "Partnerships":
+        - /url: /partnerships
+    - listitem:
+      - link "Investors":
+        - /url: /investors
+    - listitem:
+      - link "Careers":
+        - /url: /careers
+    - listitem:
+      - link "Contact":
+        - /url: /contact
+  - paragraph: Legal
+  - list:
+    - listitem:
+      - link "Privacy Policy":
+        - /url: /privacy-policy
+    - listitem:
+      - link "Terms of Use":
+        - /url: /terms-of-use
+    - listitem:
+      - link "Responsible AI & Robotics":
+        - /url: /responsible-ai-robotics
+    - listitem:
+      - link "Safety & Compliance":
+        - /url: /safety-compliance
+  - paragraph: Follow
+  - list:
+    - listitem: LinkedIn
+    - listitem: YouTube
+    - listitem: Instagram
+    - listitem: X
+  - paragraph: © 2026 Cennzo Robotix. All rights reserved.
+  - paragraph: UTC 11:28:15 · 24.71°N 46.68°E
+  - paragraph: The future belongs to machines that can understand the world, move through it and act within it.
+- dialog "Choose your language":
+  - paragraph: System Setup · 01
+  - heading "Choose your language" [level=2]
+  - paragraph: Select a language for Cennzo Robotix. You can change it anytime.
+  - button "English English"
+  - button "हिन्दी Hindi"
+  - button "தமிழ் Tamil"
+  - button "日本語 Japanese"
+  - button "中文 Chinese"
+  - button "Français French"
+  - button "Español Spanish"
+  - button "Continue in English"
+- alert
+```
+
+# Test source
+
+```ts
+  1  | import { test, expect } from "@playwright/test";
+  2  | 
+  3  | test.describe("Contact Page", () => {
+  4  |   test("loads successfully", async ({ page }) => {
+  5  |     const response = await page.goto("/contact");
+  6  |     expect(response?.status()).toBe(200);
+  7  |   });
+  8  | 
+  9  |   test("renders the contact form", async ({ page }) => {
+  10 |     await page.goto("/contact");
+  11 |     await expect(page.getByRole("form")).toBeVisible();
+  12 |   });
+  13 | 
+  14 |   test("has required form fields", async ({ page }) => {
+  15 |     await page.goto("/contact");
+  16 |     await expect(page.getByLabel(/name/i)).toBeVisible();
+  17 |     await expect(page.getByLabel(/email/i)).toBeVisible();
+  18 |     await expect(page.getByLabel(/message/i)).toBeVisible();
+  19 |   });
+  20 | 
+  21 |   test("shows validation error for empty name on blur", async ({ page }) => {
+  22 |     await page.goto("/contact");
+  23 |     const nameInput = page.getByLabel(/name/i);
+  24 |     await nameInput.click();
+  25 |     await nameInput.blur();
+  26 |     await expect(page.getByText(/required/i)).toBeVisible();
+  27 |   });
+  28 | 
+  29 |   test("shows validation error for invalid email", async ({ page }) => {
+  30 |     await page.goto("/contact");
+  31 |     const emailInput = page.getByLabel(/email/i);
+  32 |     await emailInput.fill("not-an-email");
+  33 |     await emailInput.blur();
+  34 |     await expect(page.getByText(/invalid/i)).toBeVisible();
+  35 |   });
+  36 | 
+  37 |   test("shows validation error for short message", async ({ page }) => {
+  38 |     await page.goto("/contact");
+  39 |     const messageInput = page.getByLabel(/message/i);
+  40 |     await messageInput.fill("Short");
+  41 |     await messageInput.blur();
+  42 |     await expect(page.getByText(/short/i)).toBeVisible();
+  43 |   });
+  44 | 
+  45 |   test("has a submit button", async ({ page }) => {
+  46 |     await page.goto("/contact");
+> 47 |     await expect(page.getByRole("button", { name: /send/i })).toBeVisible();
+     |                                                               ^ Error: expect(locator).toBeVisible() failed
+  48 |   });
+  49 | });
+  50 | 
+  51 | test.describe("About Page", () => {
+  52 |   test("loads successfully", async ({ page }) => {
+  53 |     const response = await page.goto("/about");
+  54 |     expect(response?.status()).toBe(200);
+  55 |   });
+  56 | 
+  57 |   test("renders page content", async ({ page }) => {
+  58 |     await page.goto("/about");
+  59 |     await expect(page.locator("main")).toBeVisible();
+  60 |   });
+  61 | });
+  62 | 
+  63 | test.describe("Technology Page", () => {
+  64 |   test("loads successfully", async ({ page }) => {
+  65 |     const response = await page.goto("/technology");
+  66 |     expect(response?.status()).toBe(200);
+  67 |   });
+  68 | 
+  69 |   test("renders page content", async ({ page }) => {
+  70 |     await page.goto("/technology");
+  71 |     await expect(page.locator("main")).toBeVisible();
+  72 |   });
+  73 | });
+  74 | 
+  75 | test.describe("WAFEE Page", () => {
+  76 |   test("loads successfully", async ({ page }) => {
+  77 |     const response = await page.goto("/wafee");
+  78 |     expect(response?.status()).toBe(200);
+  79 |   });
+  80 | 
+  81 |   test("renders page content", async ({ page }) => {
+  82 |     await page.goto("/wafee");
+  83 |     await expect(page.locator("main")).toBeVisible();
+  84 |   });
+  85 | });
+  86 | 
+```
