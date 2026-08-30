@@ -3,8 +3,8 @@ import { LOCALES, DEFAULT_LOCALE, isLocale, LANGUAGES } from "@/i18n/config";
 
 describe("i18n config", () => {
   describe("LOCALES", () => {
-    it("contains 7 locales", () => {
-      expect(LOCALES).toHaveLength(7);
+    it("contains 10 locales", () => {
+      expect(LOCALES).toHaveLength(10);
     });
 
     it("includes English as first locale", () => {
@@ -15,6 +15,9 @@ describe("i18n config", () => {
       expect(LOCALES).toContain("en");
       expect(LOCALES).toContain("hi");
       expect(LOCALES).toContain("ta");
+      expect(LOCALES).toContain("te");
+      expect(LOCALES).toContain("ml");
+      expect(LOCALES).toContain("kn");
       expect(LOCALES).toContain("ja");
       expect(LOCALES).toContain("zh");
       expect(LOCALES).toContain("fr");

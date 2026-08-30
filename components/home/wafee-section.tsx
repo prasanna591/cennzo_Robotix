@@ -128,8 +128,9 @@ export function WafeeSection() {
           <MediaFrame
             code="IMG-01"
             label={tHome("wafeeImgLabel")}
-            ratio="21/9"
-          src="/images/img-01-wafee-platform.webp"
+            ratio="3/2"
+            tag="Reference"
+            src="/images/img-01-wafee-platform.webp"
           />
         </Reveal>
       </div>

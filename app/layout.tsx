@@ -44,6 +44,7 @@ const notoTamil = Noto_Sans_Tamil({
   weight: ["400", "500", "600", "700"],
   variable: "--font-noto-tamil",
   display: "swap",
+  preload: false,
 });
 
 const notoDevanagari = Noto_Sans_Devanagari({
@@ -51,6 +52,7 @@ const notoDevanagari = Noto_Sans_Devanagari({
   weight: ["400", "500", "600", "700"],
   variable: "--font-noto-devanagari",
   display: "swap",
+  preload: false,
 });
 
 export async function generateMetadata(): Promise<Metadata> {

@@ -8,6 +8,7 @@ import { DURATION, EASE } from "@/lib/animations";
 const RATIOS = {
   "21/9": "aspect-[21/9]",
   "16/9": "aspect-[16/9]",
+  "3/2": "aspect-[3/2]",
   "4/3": "aspect-[4/3]",
   "1/1": "aspect-square",
   "4/5": "aspect-[4/5]",
@@ -49,11 +50,13 @@ export function MediaVisual({
   label,
   large = false,
   src,
+  tag = "Concept",
 }: {
   code: string;
   label: string;
   large?: boolean;
   src?: string;
+  tag?: string;
 }) {
   const reduced = useReducedMotion();
 
@@ -111,14 +114,14 @@ export function MediaVisual({
         CR·{code}
       </div>
       <div className="absolute right-4 top-4 border border-accent/40 px-2 py-1 font-mono text-[8px] uppercase tracking-[0.22em] text-accent">
-        Concept
+        {tag}
       </div>
       <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between gap-4">
         <p className="rounded-sm bg-void/60 px-1.5 py-0.5 font-mono text-[10px] uppercase leading-relaxed tracking-[0.22em] text-mist backdrop-blur-sm">
           {label}
         </p>
         <p className="hidden shrink-0 rounded-sm bg-void/60 px-1.5 py-0.5 font-mono text-[9px] uppercase tracking-[0.22em] text-faint backdrop-blur-sm sm:block">
-          {large ? "Concept Visualization" : "Expand +"}
+          {large ? `${tag} Visualization` : "Expand +"}
         </p>
       </div>
     </div>
@@ -131,12 +134,14 @@ function Lightbox({
   code,
   label,
   src,
+  tag = "Concept",
 }: {
   open: boolean;
   onClose: () => void;
   code: string;
   label: string;
   src?: string;
+  tag?: string;
 }) {
   const closeRef = useRef<HTMLButtonElement>(null);
 
@@ -160,7 +165,9 @@ function Lightbox({
         <motion.div
           role="dialog"
           aria-modal="true"
-          aria-label={`Placeholder preview — ${label}`}
+          aria-label={`${
+            tag === "Concept" ? "Placeholder preview" : "Preview"
+          } — ${label}`}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -181,11 +188,14 @@ function Lightbox({
             className="relative w-full max-w-5xl rounded-2xl border border-steel bg-graphite p-2 shadow-lift md:p-3"
           >
             <div className="relative aspect-[21/9] overflow-hidden rounded-xl border border-black/[0.08] bg-void">
-              <MediaVisual code={code} label={label} large src={src} />
+              <MediaVisual code={code} label={label} large src={src} tag={tag} />
             </div>
             <div className="flex items-center justify-between px-2 pb-1 pt-3">
               <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-mist">
-                {label} — Concept visualization, not production imagery.
+                {label} —{" "}
+                {tag === "Concept"
+                  ? "Concept visualization, not production imagery."
+                  : "Reference imagery."}
               </p>
               <button
                 ref={closeRef}
@@ -209,12 +219,14 @@ export function MediaFrame({
   ratio = "16/9",
   className = "",
   src,
+  tag = "Concept",
 }: {
   code: string;
   label: string;
   ratio?: FrameRatio;
   className?: string;
   src?: string;
+  tag?: string;
 }) {
   const [open, setOpen] = useState(false);
 
@@ -229,14 +241,27 @@ export function MediaFrame({
         <div
           className={`relative w-full overflow-hidden rounded-2xl border border-black/[0.08] bg-graphite shadow-soft transition-all duration-500 group-hover:border-faint group-hover:shadow-lift ${RATIOS[ratio]}`}
         >
-          <MediaVisual code={code} label={label} src={src} />
+          <MediaVisual code={code} label={label} src={src} tag={tag} />
         </div>
       </button>
       <figcaption className="mt-3 flex items-center justify-between gap-4 font-mono text-[9px] uppercase tracking-[0.22em] text-faint">
         <span>{label}</span>
-        <span>{src ? "Concept visualization" : "Placeholder — asset pending"}</span>
+        <span>
+          {src
+            ? tag === "Concept"
+              ? "Concept visualization"
+              : "Reference imagery"
+            : "Placeholder — asset pending"}
+        </span>
       </figcaption>
-      <Lightbox open={open} onClose={() => setOpen(false)} code={code} label={label} src={src} />
+      <Lightbox
+        open={open}
+        onClose={() => setOpen(false)}
+        code={code}
+        label={label}
+        src={src}
+        tag={tag}
+      />
     </figure>
   );
 }

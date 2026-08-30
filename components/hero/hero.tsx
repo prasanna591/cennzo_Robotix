@@ -113,45 +113,47 @@ export function Hero() {
       <Atmosphere />
       <BackgroundObjects variant="light" />
 
-      <motion.div
-        style={reduced ? undefined : { y: contentY, opacity: contentOpacity }}
-        className="relative mx-auto flex w-full max-w-[1440px] flex-1 flex-col justify-center px-6 pb-14 pt-[120px] md:px-10"
-      >
-        <div>
-          <motion.p
-            {...enter(0.2)}
-            className="mb-8 flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.25em] text-mist"
-          >
-            <span className="relative flex h-1.5 w-1.5">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-60" />
-              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent" />
-            </span>
-            {t("eyebrow")}
-          </motion.p>
+<motion.div
+          style={reduced ? undefined : { y: contentY, opacity: contentOpacity }}
+          className="relative mx-auto flex w-full max-w-[1440px] flex-1 flex-col justify-center px-6 pb-14 pt-[120px] md:px-10"
+        >
+          <div className="max-w-3xl">
+          <div>
+            <motion.p
+              {...enter(0.2)}
+              className="mb-8 flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.25em] text-mist"
+            >
+              <span className="relative flex h-1.5 w-1.5">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-60" />
+                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent" />
+              </span>
+              {t("eyebrow")}
+            </motion.p>
 
-          <h1 className="text-hero font-semibold tracking-[-0.02em] text-bone">
-            <BlurLines
-              key={ready ? "ready" : "hold"}
-              lines={[t("line1"), t("line2")]}
-              delay={0.15}
-              start={Boolean(ready) || Boolean(reduced)}
-              lineClassName="text-bone"
-            />
-          </h1>
+            <h1 className="text-hero font-semibold tracking-[-0.02em] text-bone">
+              <BlurLines
+                key={ready ? "ready" : "hold"}
+                lines={[t("line1"), t("line2")]}
+                delay={0.15}
+                start={Boolean(ready) || Boolean(reduced)}
+                lineClassName="text-bone"
+              />
+            </h1>
 
-          <motion.p
-            {...enter(0.55)}
-            className="mt-8 max-w-2xl text-subhead text-mist"
-          >
-            {t("lede")}
-          </motion.p>
+            <motion.p
+              {...enter(0.55)}
+              className="mt-8 max-w-2xl text-subhead text-mist"
+            >
+              {t("lede")}
+            </motion.p>
 
-          <motion.div {...enter(0.7)} className="mt-12 flex flex-wrap gap-4">
-            <Button href="/wafee">{t("ctaPrimary")}</Button>
-            <Button href="/contact" variant="ghost">
-              {t("ctaSecondary")}
-            </Button>
-          </motion.div>
+            <motion.div {...enter(0.7)} className="mt-12 flex flex-wrap gap-4">
+              <Button href="/wafee">{t("ctaPrimary")}</Button>
+              <Button href="/contact" variant="ghost">
+                {t("ctaSecondary")}
+              </Button>
+            </motion.div>
+          </div>
         </div>
       </motion.div>
 

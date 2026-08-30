@@ -23,7 +23,7 @@ export function Preloader() {
   const [ready, setReady] = useState(false);
   const [progress, setProgress] = useState(0);
   const [lineIndex, setLineIndex] = useState(0);
-  const started = useRef(false);
+  const bootState = useRef({ started: false, raf: 0, failsafe: 0 });
 
   const release = useCallback(() => {
     setReady(true);
@@ -32,14 +32,10 @@ export function Preloader() {
   }, []);
 
   useEffect(() => {
-    // useReducedMotion() can return null before the reduced-motion preference
-    // settles on the client. Wait for a definitive boolean before deciding, so
-    // we don't start-and-then-cancel the ticker on a null -> false transition.
-    if (reduced === null) return;
-
-    if (started.current) return;
-    started.current = true;
-
+    // useReducedMotion() can return `null` for the first client render when
+    // its module-level media-query init was consumed during SSR prerender.
+    // Treat anything but `true` as "no reduce motion" so the boot sequence is
+    // always armed and released, and never traps the UI.
     if (reduced === true || sessionStorage.getItem(STORAGE_KEY)) {
       setVisible(false);
       release();
@@ -48,42 +44,46 @@ export function Preloader() {
 
     sessionStorage.setItem(STORAGE_KEY, "1");
 
-    // Self-contained rAF progress ticker. Avoids depending on the animation
-    // driver so the preloader is guaranteed to advance and release the UI.
-    let raf = 0;
+    if (bootState.current.started) return;
+    bootState.current.started = true;
+
     let released = false;
+
     const lineTimer = window.setInterval(
       () => setLineIndex((i) => (i + 1) % BOOT_KEYS.length),
       240
     );
+
     const releaseOnce = () => {
       if (released) return;
       released = true;
       window.clearInterval(lineTimer);
+      window.cancelAnimationFrame(bootState.current.raf);
+      window.clearTimeout(bootState.current.failsafe);
       release();
       setVisible(false);
     };
+
     // Absolute failsafe: never trap the UI, even if rAF stalls for any reason.
-    const failsafe = window.setTimeout(releaseOnce, 4000);
+    bootState.current.failsafe = window.setTimeout(releaseOnce, 4000);
+
     const startTime = performance.now();
     const tick = (now: number) => {
       const tElapsed = Math.min((now - startTime) / PROGRESS_DURATION, 1);
       setProgress(Math.round(easeOutCubic(tElapsed) * 100));
       if (tElapsed < 1) {
-        raf = requestAnimationFrame(tick);
+        bootState.current.raf = requestAnimationFrame(tick);
       } else {
-        window.clearTimeout(failsafe);
+        window.clearTimeout(bootState.current.failsafe);
         window.setTimeout(releaseOnce, 250);
       }
     };
 
-    raf = requestAnimationFrame(tick);
+    bootState.current.raf = requestAnimationFrame(tick);
 
-    return () => {
-      cancelAnimationFrame(raf);
-      window.clearInterval(lineTimer);
-      window.clearTimeout(failsafe);
-    };
+    // No cleanup: the preloader lives for the whole app session, and a re-run
+    // of this effect (SSR-init'ed reduced-motion preference, StrictMode) must
+    // never orphan the release path and trap the page invisible.
   }, [reduced, release]);
 
   return (

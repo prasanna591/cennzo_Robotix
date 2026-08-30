@@ -134,7 +134,7 @@
     "statEnvironments": "Entornos de misión",
     "statAttributes": "Atributos clave de la plataforma",
     "wafeeCta": "Descubre la plataforma WAFEE",
-    "wafeeImgLabel": "WAFEE Plataforma completa — Render conceptual",
+    "wafeeImgLabel": "WAFEE Plataforma completa — Referencia",
     "attr1": "Formato a escala humana",
     "attr2": "Actuación eléctrica de alto rendimiento",
     "attr3": "Percepción avanzada y fusión de sensores",
@@ -497,7 +497,7 @@
       "btnIdle": "Iniciar escaneo"
     },
     "media": {
-      "label": "Cabeza sensora WAFEE — concepto en primer plano",
+      "label": "Plataforma WAFEE de cuerpo completo — Referencia",
       "captionA": "Cada sensor está diseñado para mantener a WAFEE consciente de su entorno",
       "captionB": "— incluso cuando el mundo se oscurece."
     },

@@ -134,7 +134,7 @@
     "statEnvironments": "Environnements de mission",
     "statAttributes": "Attributs clés de la plateforme",
     "wafeeCta": "Découvrir la plateforme WAFEE",
-    "wafeeImgLabel": "WAFEE Plateforme complète — Rendu conceptuel",
+    "wafeeImgLabel": "WAFEE Plateforme complète — Référence",
     "attr1": "Format à échelle humaine",
     "attr2": "Actionnement électrique haute performance",
     "attr3": "Perception avancée et fusion de capteurs",
@@ -497,7 +497,7 @@
       "btnIdle": "Lancer l'analyse"
     },
     "media": {
-      "label": "Tête de capteurs WAFEE — concept en gros plan",
+      "label": "Plateforme WAFEE complète — Référence",
       "captionA": "Chaque capteur est conçu pour que WAFEE garde conscience de son environnement",
       "captionB": "— même quand le monde s'obscurcit."
     },

@@ -97,8 +97,9 @@ export default async function WafeePage() {
               <MediaFrame
                 code="IMG-04"
                 label={t("media.label")}
-                ratio="16/9"
-              src="/images/img-04-sensory-closeup.webp"
+                ratio="3/2"
+                tag="Reference"
+                src="/images/ref-wafee-wide.png"
               />
             </Parallax>
           </Reveal>

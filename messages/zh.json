@@ -134,7 +134,7 @@
     "statEnvironments": "任务环境",
     "statAttributes": "核心平台特性",
     "wafeeCta": "深入了解 WAFEE 平台",
-    "wafeeImgLabel": "WAFEE 整机平台 — 概念渲染图",
+    "wafeeImgLabel": "WAFEE 整机平台 — 参考影像",
     "attr1": "人体尺度外形",
     "attr2": "高性能电动驱动",
     "attr3": "先进感知与传感器融合",
@@ -497,7 +497,7 @@
       "btnIdle": "开始扫描"
     },
     "media": {
-      "label": "WAFEE 传感器头部 — 特写概念",
+      "label": "WAFEE 整机平台 — 参考影像",
       "captionA": "每一个传感器都被精心设计，让 WAFEE 始终保持警觉",
       "captionB": "——即使世界暗下来。"
     },

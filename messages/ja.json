@@ -134,7 +134,7 @@
     "statEnvironments": "ミッション環境",
     "statAttributes": "主要プラットフォーム特性",
     "wafeeCta": "WAFEEプラットフォームを詳しく",
-    "wafeeImgLabel": "WAFEE 全身プラットフォーム — コンセプトレンダー",
+    "wafeeImgLabel": "WAFEE 全身プラットフォーム — 参考画像",
     "attr1": "人間スケールのフォルム",
     "attr2": "高出力電動アクチュエーション",
     "attr3": "先進的な知覚とセンサーフュージョン",
@@ -497,7 +497,7 @@
       "btnIdle": "スキャン開始"
     },
     "media": {
-      "label": "WAFEE センサーヘッド — 近接コンセプト",
+      "label": "WAFEE 全身プラットフォーム — 参考画像",
       "captionA": "WAFEEが常に状況を把握できるよう、各センサーはエンジニアリングされています",
       "captionB": "— 世界が暗くなっても。"
     },

@@ -114,7 +114,9 @@
     "panelHint": "Move your cursor — it watches back.",
     "panelFig": "FIG·A / CHASSIS REV·04",
     "panelCalibrating": "Projection calibrating…",
-    "panelAria": "Live holographic projection of the WAFEE humanoid robot assembling itself on a grid floor"
+    "panelAria": "Live holographic projection of the WAFEE humanoid robot assembling itself on a grid floor",
+    "imageAlt": "WAFEE humanoid robot — portrait reference photograph",
+    "imageTag": "WAFEE·01 — Reference"
   },
   "home": {
     "introEyebrow": "The Mission",
@@ -134,7 +136,12 @@
     "statEnvironments": "Mission Environments",
     "statAttributes": "Core Platform Attributes",
     "wafeeCta": "Discover the WAFEE Platform",
-    "wafeeImgLabel": "WAFEE Full-Body Platform — Concept Render",
+    "wafeeImgLabel": "WAFEE Full-Body Platform — Reference",
+    "impactEyebrow": "Human Impact",
+    "impactL1": "Beyond the lab,",
+    "impactL2": "into everyday life.",
+    "impactEducationLabel": "Education — WAFEE in the Classroom",
+    "impactDoctorLabel": "Healthcare — WAFEE in Care Settings",
     "attr1": "Human-scale form factor",
     "attr2": "High-performance electric actuation",
     "attr3": "Advanced perception and sensor fusion",
@@ -497,7 +504,7 @@
       "btnIdle": "Run Diagnostic"
     },
     "media": {
-      "label": "WAFEE Sensory Array — Close-Up Concept",
+      "label": "WAFEE Full-Body Platform — Reference",
       "captionA": "Every sensor array is engineered to keep WAFEE aware",
       "captionB": "— even when the world goes dark."
     },
@@ -631,6 +638,21 @@
       "body": "See how WAFEE adapts across mission configurations.",
       "primary": "Explore the Platform Architecture",
       "secondary": "Talk To Us"
+    },
+    "projection": {
+      "eyebrow": "Interactive Projection",
+      "line1": "The Model,",
+      "line2": "Rendered Live",
+      "aria": "Interactive holographic projection of the complete WAFEE humanoid robot rotating on a grid floor",
+      "viewerLabel": "WAFEE·02 — Model Viewport",
+      "sysOnline": "Sys Online",
+      "calibrating": "Projection calibrating…",
+      "fig": "FIG·B / FULL CHASSIS · REV·04",
+      "renderLive": "Render · Live",
+      "hint": "Move your cursor — the projection tracks your position.",
+      "captionA": "A hardware-accurate viewport of the WAFEE platform, rendered directly from the engineering model.",
+      "captionB": "Move your cursor to inspect the chassis.",
+      "captionError": "Render unavailable off-line — showing engineering reference imagery instead."
     }
   },
   "techPage": {

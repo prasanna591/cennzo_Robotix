@@ -8,6 +8,12 @@ async function importMessages(locale: Locale) {
       return (await import("@/messages/hi.json")).default;
     case "ta":
       return (await import("@/messages/ta.json")).default;
+    case "te":
+      return (await import("@/messages/te.json")).default;
+    case "ml":
+      return (await import("@/messages/ml.json")).default;
+    case "kn":
+      return (await import("@/messages/kn.json")).default;
     case "ja":
       return (await import("@/messages/ja.json")).default;
     case "zh":
