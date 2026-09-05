@@ -105,7 +105,7 @@ export function MissionConfigurator() {
               type="button"
               onClick={() => setEnv(id)}
               aria-pressed={selected}
-              className={`cursor-pointer border px-5 py-2.5 font-mono text-[11px] uppercase tracking-[0.18em] transition-colors duration-300 ${
+              className={`cursor-pointer border px-5 py-3 font-mono text-[11px] uppercase tracking-[0.18em] transition-colors duration-300 ${
                 selected
                   ? "border-accent text-accent"
                   : "border-steel text-mist hover:border-faint hover:text-bone"

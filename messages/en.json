@@ -98,7 +98,7 @@
   "hero": {
     "eyebrow": "WAFEE — Unified Multi-Environment Humanoid Platform",
     "line1": "The Humanoid For",
-    "line2": "The *Hard Places.*",
+    "line2": "The Hard Places.",
     "lede": "WAFEE is Cennzo Robotix’s unified multi-environment humanoid platform — engineered to bring intelligent mobility, perception and manipulation into environments where conventional robots reach their limits.",
     "ctaPrimary": "Explore WAFEE",
     "ctaSecondary": "Build the Future With Us",
@@ -254,7 +254,7 @@
     "hero": {
       "eyebrow": "About Us",
       "line1": "Engineering Intelligence",
-      "line2": "For The *Real World.*",
+      "line2": "For The Real World.",
       "intro": "Cennzo Robotix is a deep-tech robotics company focused on developing intelligent humanoid systems for demanding real-world environments."
     },
     "whoWeAre": {
@@ -422,7 +422,7 @@
     "hero": {
       "eyebrow": "WAFEE — Unified Multi-Environment Humanoid Platform",
       "line1": "A Humanoid Designed For",
-      "line2": "The World *Beyond The Lab.*",
+      "line2": "The World Beyond The Lab.",
       "intro": "WAFEE is Cennzo Robotix's flagship humanoid robotics platform. Its architecture combines human-scale mobility, high-performance actuation, multimodal perception, intelligent control and environmental protection into one modular robotic system.",
       "meta": "WAFEE is an engineering platform under development."
     },
@@ -904,7 +904,7 @@
     "hero": {
       "eyebrow": "Applications",
       "line1": "Robots Where People",
-      "line2": "*Should Not Have To Go.*",
+      "line2": "Should Not Have To Go.",
       "intro": "From industrial inspection to planetary research — potential mission domains for the WAFEE platform.",
       "meta": "Applications represent engineering roadmap areas, not current commercial deployments."
     },
@@ -1067,7 +1067,7 @@
     "hero": {
       "eyebrow": "Industries",
       "line1": "Engineered For Industries",
-      "line2": "That *Cannot Stop.*"
+      "line2": "That Cannot Stop."
     },
     "showcase": {
       "eyebrow": "Sectors",

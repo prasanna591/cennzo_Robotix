@@ -7,6 +7,7 @@ import { BlurLines } from "@/components/motion/blur-lines";
 import { BackgroundObjects } from "@/components/decor/background-objects";
 import { Telemetry } from "@/components/technical/telemetry";
 import { useReady } from "@/hooks/use-ready";
+import { useMediaQuery } from "@/hooks/use-media-query";
 import { DURATION, EASE } from "@/lib/animations";
 
 const ENVIRONMENT_KEYS = ["envEarth", "envWater", "envFire", "envAir", "envSpace"] as const;
@@ -93,6 +94,7 @@ export function Hero() {
   const reduced = useReducedMotion();
   const ready = useReady();
   const t = useTranslations("hero");
+  const isMobile = useMediaQuery("(max-width: 767px)");
 
   const { scrollYProgress } = useScroll();
   const contentY = useTransform(scrollYProgress, [0, 0.3], [0, -110]);
@@ -114,7 +116,7 @@ export function Hero() {
       <BackgroundObjects variant="light" />
 
 <motion.div
-          style={reduced ? undefined : { y: contentY, opacity: contentOpacity }}
+          style={reduced || isMobile ? undefined : { y: contentY, opacity: contentOpacity }}
           className="relative mx-auto flex w-full max-w-[1440px] flex-1 flex-col justify-center px-6 pb-14 pt-[120px] md:px-10"
         >
           <div className="max-w-3xl">
@@ -130,13 +132,13 @@ export function Hero() {
               {t("eyebrow")}
             </motion.p>
 
-            <h1 className="text-hero font-semibold tracking-[-0.02em] text-bone">
+            <h1 className="text-hero font-bold uppercase tracking-[-0.02em] text-bone">
               <BlurLines
                 key={ready ? "ready" : "hold"}
                 lines={[t("line1"), t("line2")]}
                 delay={0.15}
                 start={Boolean(ready) || Boolean(reduced)}
-                lineClassName="text-bone"
+                lineClassName={["text-bone", "text-accent"]}
               />
             </h1>
 
@@ -163,9 +165,9 @@ export function Hero() {
       >
         <motion.div {...enter(0.85)}>
         <div className="mx-auto flex w-full max-w-[1440px] items-center justify-between gap-6 px-6 py-5 md:px-10">
-          <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-faint sm:text-[11px]">
+          <p className="truncate font-mono text-[10px] uppercase tracking-[0.24em] text-faint sm:text-[11px]">
             {ENVIRONMENT_KEYS.map((key, i) => (
-              <span key={key}>
+              <span key={key} className="whitespace-nowrap">
                 <span className="text-mist">{t(key)}</span>
                 {i < ENVIRONMENT_KEYS.length - 1 && (
                   <span className="mx-2 text-black/25">/</span>
@@ -174,7 +176,9 @@ export function Hero() {
             ))}
           </p>
           <Telemetry />
-          <ScrollCue />
+          <div className="hidden sm:block">
+            <ScrollCue />
+          </div>
         </div>
         </motion.div>
       </motion.div>

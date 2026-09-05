@@ -4,6 +4,10 @@ import { motion, useReducedMotion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { ScrollFillText } from "@/components/motion/scroll-fill-text";
 import { Reveal } from "@/components/motion/reveal";
+import {
+  SectionEyebrow,
+  SectionRail,
+} from "@/components/sections/section-eyebrow";
 import { DURATION, EASE, viewportOnce } from "@/lib/animations";
 
 export function IntroSection() {
@@ -14,10 +18,7 @@ export function IntroSection() {
     <section className="relative border-b border-black/[0.08]">
       <div className="mx-auto w-full max-w-[1440px] px-6 py-section md:px-10">
         <Reveal mode="fadeIn">
-          <p className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.25em] text-mist">
-            <span aria-hidden="true" className="h-px w-8 bg-accent" />
-            {t("introEyebrow")}
-          </p>
+          <SectionEyebrow>{t("introEyebrow")}</SectionEyebrow>
         </Reveal>
 
         <h2 className="mt-8 max-w-5xl text-headline font-semibold leading-[1.08] tracking-[-0.02em] text-bone md:text-display">
@@ -25,6 +26,7 @@ export function IntroSection() {
             lines={[t("introL1"), t("introL2"), t("introL3")].filter(Boolean)}
           />
         </h2>
+        <SectionRail />
 
         <div className="mt-8 grid gap-12 lg:grid-cols-2 lg:gap-20">
           <motion.div

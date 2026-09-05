@@ -4,6 +4,7 @@ import { PageHero } from "@/components/sections/page-hero";
 import { CTASection } from "@/components/sections/cta-section";
 import { StaggerGroup, StaggerItem, Reveal } from "@/components/motion/reveal";
 import { MissionConfigurator } from "@/components/technical/mission-configurator";
+import { IMAGES } from "@/lib/content/images";
 
 export const metadata: Metadata = {
   title: "Platform Architecture",
@@ -111,7 +112,7 @@ export default function PlatformPage() {
                 eyebrow="Common Core"
                 title="Core Platform"
                 items={CORE}
-                img="/images/img-plat-core.webp"
+                img={IMAGES.breakdown}
               />
             </StaggerItem>
             <StaggerItem>
@@ -120,7 +121,7 @@ export default function PlatformPage() {
                 title="Mission Modules"
                 items={MODULES}
                 accent
-                img="/images/img-plat-modules.webp"
+                img={IMAGES.concept}
               />
             </StaggerItem>
           </StaggerGroup>

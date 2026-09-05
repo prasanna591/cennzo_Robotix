@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl";
 import { DURATION, EASE } from "@/lib/animations";
 
 const INPUT_CLASS =
-  "w-full cursor-text rounded-xl border border-steel bg-white px-4 py-3.5 text-sm text-bone placeholder:text-faint transition-all duration-300 focus:border-accent focus:shadow-[0_0_0_1px_rgba(21,94,239,0.35),0_0_24px_rgba(21,94,239,0.12)] focus:outline-none";
+  "w-full cursor-text rounded-xl border border-steel bg-white px-4 py-3.5 text-base text-bone placeholder:text-faint transition-all duration-300 focus:border-accent focus:shadow-[0_0_0_1px_rgba(21,94,239,0.35),0_0_24px_rgba(21,94,239,0.12)] focus:outline-none sm:text-sm";
 
 const LABEL_CLASS = "mb-2 block font-mono text-[10px] uppercase tracking-[0.22em] text-mist";
 

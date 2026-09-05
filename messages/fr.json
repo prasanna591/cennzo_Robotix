@@ -98,7 +98,7 @@
   "hero": {
     "eyebrow": "WAFEE — Plateforme humanoïde multi-environnements unifiée",
     "line1": "L'humanoïde pour",
-    "line2": "les *endroits hostiles.*",
+    "line2": "les endroits hostiles.",
     "lede": "WAFEE est la plateforme humanoïde multi-environnements unifiée de Cennzo Robotix — conçue pour apporter mobilité intelligente, perception et manipulation dans les environnements où les robots conventionnels atteignent leurs limites.",
     "ctaPrimary": "Découvrir WAFEE",
     "ctaSecondary": "Bâtir l'avenir avec nous",
@@ -247,7 +247,7 @@
     "hero": {
       "eyebrow": "À propos",
       "line1": "L'intelligence",
-      "line2": "*d'ingénierie.*",
+      "line2": "d'ingénierie.",
       "intro": "Cennzo Robotix est une entreprise de robotique deep-tech qui conçoit des systèmes humanoïdes intelligents pour les environnements réels les plus exigeants."
     },
     "whoWeAre": {
@@ -415,7 +415,7 @@
     "hero": {
       "eyebrow": "WAFEE — plateforme humanoïde multi-domaines intégrée",
       "line1": "Un humanoïde conçu",
-      "line2": "pour le monde *au-delà du laboratoire.*",
+      "line2": "pour le monde au-delà du laboratoire.",
       "intro": "WAFEE est la plateforme robotique humanoïde phare de Cennzo Robotix. Son architecture intègre mobilité à échelle humaine, actionnement haute performance, perception multimodale, contrôle intelligent et protection contre l'environnement en un seul système robotique déployable.",
       "meta": "WAFEE est une plateforme d'ingénierie en développement."
     },
@@ -882,7 +882,7 @@
     "hero": {
       "eyebrow": "Applications",
       "line1": "Des robots là où",
-      "line2": "*l'humain ne devrait pas aller.*",
+      "line2": "l'humain ne devrait pas aller.",
       "intro": "De l'inspection industrielle à l'exploration planétaire — domaines de mission envisagés pour la plateforme WAFEE.",
       "meta": "Les applications représentent des territoires d'exploration d'ingénierie, non des déploiements commerciaux actuels."
     },
@@ -1045,7 +1045,7 @@
     "hero": {
       "eyebrow": "Industries",
       "line1": "Conçu pour les industries",
-      "line2": "*qui ne peuvent pas s'arrêter.*"
+      "line2": "qui ne peuvent pas s'arrêter."
     },
     "showcase": {
       "eyebrow": "Secteurs",

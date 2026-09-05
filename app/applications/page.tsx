@@ -10,6 +10,7 @@ import { BackgroundObjects } from "@/components/decor/background-objects";
 import { SpecList } from "@/components/technology/spec-list";
 import { DomainGrid } from "@/components/applications/domain-grid";
 import { ScaleMedia } from "@/components/applications/scale-media";
+import { IMAGES } from "@/lib/content/images";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("appsPage.meta");
@@ -27,15 +28,15 @@ type Tone = {
 };
 
 const DOMAIN_IMAGES: Record<string, string> = {
-  "industrial-inspection": "/images/img-d1-inspection.webp",
-  "energy-utilities": "/images/img-d2-energy.webp",
-  "disaster-response": "/images/img-d3-disaster.webp",
-  "fire-hazardous": "/images/img-d4-fire.webp",
-  "marine-offshore": "/images/img-d5-marine.webp",
-  mining: "/images/img-d6-mining.webp",
-  logistics: "/images/img-d7-logistics.webp",
-  "defense-research": "/images/img-d8-defense.webp",
-  "space-robotics": "/images/img-d9-space.webp",
+  "industrial-inspection": IMAGES.serviceArea,
+  "energy-utilities": IMAGES.wafeeAngle,
+  "disaster-response": IMAGES.wafeeCinematic,
+  "fire-hazardous": IMAGES.dimensions,
+  "marine-offshore": IMAGES.sample,
+  mining: IMAGES.breakdown,
+  logistics: IMAGES.wafeePortrait,
+  "defense-research": IMAGES.concept,
+  "space-robotics": IMAGES.wafeeStudio,
 };
 
 const TONES: Record<string, Tone> = {
@@ -154,7 +155,7 @@ export default async function ApplicationsPage() {
                 code="IMG-06"
                 label={t("media.label")}
                 ratio="21/9"
-              src="/images/img-06-mission-configs.webp"
+              src={IMAGES.concept}
               />
             </Parallax>
           </Reveal>

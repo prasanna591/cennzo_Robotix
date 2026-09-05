@@ -9,6 +9,11 @@ import { Reveal } from "@/components/motion/reveal";
 import { MediaFrame } from "@/components/media/media-frame";
 import { BackgroundObjects } from "@/components/decor/background-objects";
 import { Parallax } from "@/components/motion/parallax";
+import {
+  SectionEyebrow,
+  SectionRail,
+} from "@/components/sections/section-eyebrow";
+import { IMAGES } from "@/lib/content/images";
 import { DURATION, EASE, viewportOnce } from "@/lib/animations";
 
 export function VisionSection() {
@@ -32,17 +37,7 @@ export function VisionSection() {
       </motion.div>
 
       <div className="relative mx-auto w-full max-w-[1440px] px-6 py-section text-center md:px-10">
-        <motion.p
-          initial={reduced ? false : { opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={viewportOnce}
-          transition={{ duration: DURATION.standard }}
-          className="flex items-center justify-center gap-3 font-mono text-[11px] uppercase tracking-[0.25em] text-mist"
-        >
-          <span aria-hidden="true" className="h-px w-8 bg-teal" />
-          {t("visionEyebrow")}
-          <span aria-hidden="true" className="h-px w-8 bg-teal" />
-        </motion.p>
+        <SectionEyebrow centered>{t("visionEyebrow")}</SectionEyebrow>
 
         <h2 className="mx-auto mt-8 max-w-5xl text-headline font-semibold leading-[1.08] tracking-[-0.02em] text-bone md:text-display">
           <WordReveal
@@ -50,6 +45,7 @@ export function VisionSection() {
             wordClassName="text-bone"
           />
         </h2>
+        <SectionRail centered />
 
         <motion.div
           initial={reduced ? false : { opacity: 0, y: 24 }}
@@ -69,7 +65,7 @@ export function VisionSection() {
               code="IMG-02"
               label={t("visionImgLabel")}
               ratio="21/9"
-            src="/images/img-02-extreme-environments.webp"
+            src={IMAGES.wafeeCinematic}
             />
           </Parallax>
         </Reveal>

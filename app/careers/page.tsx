@@ -3,6 +3,7 @@ import { PageHero } from "@/components/sections/page-hero";
 import { CTASection } from "@/components/sections/cta-section";
 import { StaggerGroup, StaggerItem, Reveal } from "@/components/motion/reveal";
 import { MediaFrame } from "@/components/media/media-frame";
+import { IMAGES } from "@/lib/content/images";
 
 export const metadata: Metadata = {
   title: "Robotics Careers",
@@ -87,7 +88,7 @@ export default function CareersPage() {
                 code="IMG-12"
                 label="Life at Cennzo Robotix â€” Culture Concept"
                 ratio="16/9"
-              src="/images/img-12-culture.webp"
+              src={IMAGES.wafeePortrait}
               />
             </Reveal>
             <Reveal delay={0.15}>

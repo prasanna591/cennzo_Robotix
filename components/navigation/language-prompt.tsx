@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { useLocale, useTranslations } from "next-intl";
 import { DEFAULT_LOCALE, LANGUAGES, LOCALE_COOKIE, type Locale } from "@/i18n/config";
+import { useMediaQuery } from "@/hooks/use-media-query";
 
 function hasLocaleCookie() {
   return document.cookie
@@ -17,6 +18,7 @@ export function LanguagePrompt() {
   const locale = useLocale() as Locale;
   const t = useTranslations("langPrompt");
   const [visible, setVisible] = useState(false);
+  const isMobile = useMediaQuery("(max-width: 767px)");
 
   useEffect(() => {
     if (hasLocaleCookie()) return;
@@ -25,13 +27,13 @@ export function LanguagePrompt() {
   }, []);
 
   useEffect(() => {
-    if (!visible) return;
+    if (!visible || isMobile) return;
     const prevOverflow = document.documentElement.style.overflow;
     document.documentElement.style.overflow = "hidden";
     return () => {
       document.documentElement.style.overflow = prevOverflow;
     };
-  }, [visible]);
+  }, [visible, isMobile]);
 
   const choose = useCallback(
     (code: Locale) => {
@@ -73,7 +75,7 @@ export function LanguagePrompt() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 12, scale: 0.98 }}
             transition={{ duration: 0.32, ease: [0.16, 1, 0.3, 1] }}
-            className="relative w-full max-w-md overflow-hidden rounded-2xl border border-black/[0.08] bg-white shadow-lift"
+            className="relative max-h-[90vh] w-full max-w-md overflow-y-auto overflow-x-hidden rounded-2xl border border-black/[0.08] bg-white shadow-lift"
           >
             <span className="hairline-spectrum absolute inset-x-0 top-0 h-px opacity-80" />
 
@@ -109,7 +111,7 @@ export function LanguagePrompt() {
               <button
                 type="button"
                 onClick={skip}
-                className="mt-5 w-full cursor-pointer rounded-lg py-2 font-mono text-[10px] uppercase tracking-[0.22em] text-faint transition-colors duration-200 hover:text-bone active:translate-y-px"
+                className="mt-5 flex min-h-11 w-full items-center justify-center rounded-lg py-2.5 font-mono text-[10px] uppercase tracking-[0.22em] text-faint transition-colors duration-200 hover:text-bone active:translate-y-px"
               >
                 {t("skip")}
               </button>

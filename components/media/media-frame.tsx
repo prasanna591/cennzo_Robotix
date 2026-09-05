@@ -187,7 +187,7 @@ function Lightbox({
             transition={{ duration: DURATION.standard, ease: EASE.out }}
             className="relative w-full max-w-5xl rounded-2xl border border-steel bg-graphite p-2 shadow-lift md:p-3"
           >
-            <div className="relative aspect-[21/9] overflow-hidden rounded-xl border border-black/[0.08] bg-void">
+            <div className="relative aspect-[16/9] overflow-hidden rounded-xl border border-black/[0.08] bg-void md:aspect-[21/9]">
               <MediaVisual code={code} label={label} large src={src} tag={tag} />
             </div>
             <div className="flex items-center justify-between px-2 pb-1 pt-3">
@@ -201,7 +201,7 @@ function Lightbox({
                 ref={closeRef}
                 type="button"
                 onClick={onClose}
-                className="cursor-pointer border border-steel px-4 py-2 font-mono text-[10px] uppercase tracking-[0.2em] text-bone transition-[border-color,color,transform] duration-300 hover:border-accent hover:text-accent active:translate-y-px"
+                className="cursor-pointer border border-steel px-4 py-2.5 font-mono text-[10px] uppercase tracking-[0.2em] text-bone transition-[border-color,color,transform] duration-300 hover:border-accent hover:text-accent active:translate-y-px"
               >
                 [ Close ]
               </button>

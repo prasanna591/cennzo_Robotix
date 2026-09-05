@@ -140,7 +140,7 @@ export function HudPanel({ className = "" }: { className?: string }) {
           onClick={runDiagnostic}
           disabled={phase !== "idle"}
           aria-live="polite"
-          className={`shrink-0 cursor-pointer rounded-lg border px-3 py-1.5 font-mono text-[9px] uppercase tracking-[0.18em] transition-colors duration-300 ${
+          className={`shrink-0 cursor-pointer rounded-lg border px-4 py-2.5 font-mono text-[9px] uppercase tracking-[0.18em] transition-colors duration-300 ${
             phase === "scanning"
               ? "cursor-wait border-accent/50 text-accent/70"
               : phase === "done"

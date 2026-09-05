@@ -4,6 +4,7 @@ import { CTASection } from "@/components/sections/cta-section";
 import { StaggerGroup, StaggerItem, Reveal } from "@/components/motion/reveal";
 import { Spotlight } from "@/components/motion/spotlight";
 import { MediaFrame } from "@/components/media/media-frame";
+import { IMAGES } from "@/lib/content/images";
 
 export const metadata: Metadata = {
   title: "Validation & Safety",
@@ -135,7 +136,7 @@ export default function SafetyPage() {
               code="IMG-11"
               label="Environmental Test Chamber â€” Concept Visualization"
               ratio="16/9"
-            src="/images/img-11-test-chamber.webp"
+            src={IMAGES.dimensions}
             />
           </Reveal>
         </div>

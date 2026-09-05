@@ -3,6 +3,11 @@
 import { useTranslations } from "next-intl";
 import { Reveal } from "@/components/motion/reveal";
 import { MediaFrame } from "@/components/media/media-frame";
+import {
+  SectionEyebrow,
+  SectionRail,
+} from "@/components/sections/section-eyebrow";
+import { IMAGES } from "@/lib/content/images";
 
 export function ImpactSection() {
   const t = useTranslations("home");
@@ -15,10 +20,7 @@ export function ImpactSection() {
       />
       <div className="mx-auto w-full max-w-[1440px] px-6 py-section md:px-10">
         <Reveal mode="fadeIn">
-          <p className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.25em] text-mist">
-            <span aria-hidden="true" className="h-px w-8 bg-teal" />
-            {t("impactEyebrow")}
-          </p>
+          <SectionEyebrow>{t("impactEyebrow")}</SectionEyebrow>
         </Reveal>
 
         <Reveal delay={0.08}>
@@ -26,6 +28,7 @@ export function ImpactSection() {
             {t("impactL1")} <span className="text-mist">{t("impactL2")}</span>
           </h2>
         </Reveal>
+        <SectionRail />
 
         <div className="mt-14 grid gap-10 lg:grid-cols-2 lg:gap-8">
           <Reveal delay={0.1}>
@@ -34,7 +37,7 @@ export function ImpactSection() {
               label={t("impactEducationLabel")}
               ratio="4/3"
               tag="Reference"
-              src="/images/ref-education.png"
+              src={IMAGES.education}
             />
           </Reveal>
           <Reveal delay={0.2}>
@@ -43,7 +46,7 @@ export function ImpactSection() {
               label={t("impactDoctorLabel")}
               ratio="4/3"
               tag="Reference"
-              src="/images/ref-doctor.png"
+              src={IMAGES.doctor}
             />
           </Reveal>
         </div>

@@ -2,9 +2,12 @@ import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { PageHero } from "@/components/sections/page-hero";
 import { CTASection } from "@/components/sections/cta-section";
+import { SectionHeading } from "@/components/sections/section-heading";
+import { SectionEyebrow } from "@/components/sections/section-eyebrow";
 import { Reveal } from "@/components/motion/reveal";
 import { Parallax } from "@/components/motion/parallax";
 import { MediaFrame } from "@/components/media/media-frame";
+import { IMAGES } from "@/lib/content/images";
 import { SystemsIndex } from "@/components/technology/systems-index";
 import { BlueprintPanel } from "@/components/technology/blueprint-panel";
 import { SpecTable } from "@/components/technology/spec-table";
@@ -49,6 +52,7 @@ export default async function TechnologyPage() {
   const rest = systems.filter(
     (s) => !["mechanical", "compute-ai", "control"].includes(s.id)
   );
+  const [lead, ...remaining] = rest;
 
   return (
     <main>
@@ -62,20 +66,26 @@ export default async function TechnologyPage() {
       {/* Blueprint archive — two editorial image plates */}
       <section className="border-b border-black/[0.08]">
         <div className="mx-auto w-full max-w-[1440px] px-6 pt-section md:px-10">
+          <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
+            <SectionEyebrow>Blueprint Archive</SectionEyebrow>
+            <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-faint">
+              fig.05 — fig.04
+            </p>
+          </div>
           <Reveal>
             <Parallax speed={0.05}>
-              <div className="grid gap-6 lg:grid-cols-[1.35fr_1fr]">
+              <div className="grid gap-6 lg:grid-cols-[1.35fr_1fr] lg:items-end">
                 <MediaFrame
                   code="IMG-05"
                   label={t("media.label")}
-                  ratio="21/9"
-                  src="/images/img-05-system-architecture.webp"
+                  ratio="16/9"
+                  src={IMAGES.breakdown}
                 />
                 <MediaFrame
                   code="IMG-04"
                   label={t("media.label")}
-                  ratio="21/9"
-                  src="/images/img-04-sensory-closeup.webp"
+                  ratio="4/3"
+                  src={IMAGES.dimensions}
                 />
               </div>
             </Parallax>
@@ -92,17 +102,12 @@ export default async function TechnologyPage() {
           aria-hidden="true"
           className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/50 to-transparent"
         />
-        <div className="mx-auto grid w-full max-w-[1440px] gap-8 px-6 py-section md:px-10 lg:grid-cols-[1fr_1.4fr] lg:gap-20">
-          <Reveal>
-            <p className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.25em] text-mist">
-              <span aria-hidden="true" className="h-px w-8 bg-accent" />
-              System Register
-            </p>
-            <h2 className="mt-5 text-display font-semibold leading-[1.05] tracking-[-0.02em] text-bone">
-              Nine subsystems.{" "}
-              <span className="text-accent">One machine.</span>
-            </h2>
-          </Reveal>
+        <div className="mx-auto grid w-full max-w-[1440px] gap-10 px-6 py-section md:px-10 lg:grid-cols-[1fr_1.4fr] lg:gap-20">
+          <SectionHeading
+            eyebrow="System Register"
+            lines={["Nine subsystems.", "One Machine."]}
+            className="lg:sticky lg:top-40 lg:self-start"
+          />
           <Reveal delay={0.1}>
             <p className="max-w-2xl text-subhead leading-relaxed text-mist">
               Every joint, sensor and line of code is treated as a first-class
@@ -114,7 +119,7 @@ export default async function TechnologyPage() {
                 <a
                   key={s.id}
                   href={`#${s.id}`}
-                  className="group flex items-baseline gap-2 py-1 font-mono text-[10px] uppercase tracking-[0.18em] text-mist transition-colors duration-200 hover:text-accent"
+                  className="group flex items-baseline gap-2 py-2 font-mono text-[10px] uppercase tracking-[0.18em] text-mist transition-colors duration-200 hover:text-accent"
                 >
                   <span className="text-faint">{s.index}</span>
                   <span className="truncate group-hover:translate-x-1 transition-transform duration-200">
@@ -130,12 +135,15 @@ export default async function TechnologyPage() {
       {/* Blueprint panel grid */}
       <section className="relative overflow-hidden border-b border-black/[0.08]">
         <div className="mx-auto w-full max-w-[1440px] px-6 py-section md:px-10">
-          <div className="mb-12 flex flex-wrap items-end justify-between gap-4">
-            <Reveal>
-              <h2 className="text-headline font-semibold tracking-tight text-bone">
-                Technical Register
-              </h2>
-            </Reveal>
+          <div className="mb-14 flex flex-wrap items-end justify-between gap-4">
+            <div>
+              <SectionEyebrow>Registry</SectionEyebrow>
+              <Reveal>
+                <h2 className="mt-5 text-headline font-semibold tracking-tight text-bone">
+                  Technical Register
+                </h2>
+              </Reveal>
+            </div>
             <Reveal delay={0.05}>
               <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-faint">
                 {systems.length} sheets · v1.0 · confidential
@@ -143,7 +151,7 @@ export default async function TechnologyPage() {
             </Reveal>
           </div>
 
-          <div className="grid gap-6 lg:grid-cols-2">
+          <div className="grid gap-6 md:gap-8 lg:grid-cols-2">
             {/* Featured: Mechanical Architecture */}
             {mechanical && (
               <BlueprintPanel
@@ -155,6 +163,20 @@ export default async function TechnologyPage() {
                 readiness={READINESS.mechanical}
               >
                 <SpecTable points={mechanical.points ?? []} />
+              </BlueprintPanel>
+            )}
+
+            {/* Companion: first remaining subsystem fills the row */}
+            {lead && (
+              <BlueprintPanel
+                id={lead.id}
+                index={lead.index}
+                name={lead.name}
+                intro={lead.intro}
+                note={lead.note}
+                readiness={READINESS[lead.id] ?? 0.8}
+              >
+                <SpecTable points={lead.points ?? []} />
               </BlueprintPanel>
             )}
 
@@ -191,7 +213,7 @@ export default async function TechnologyPage() {
             )}
 
             {/* Remaining systems */}
-            {rest.map((system) => (
+            {remaining.map((system) => (
               <BlueprintPanel
                 key={system.id}
                 id={system.id}

@@ -5,6 +5,11 @@ import { motion, useReducedMotion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { MaskLines } from "@/components/motion/mask-lines";
 import { Reveal } from "@/components/motion/reveal";
+import {
+  SectionEyebrow,
+  SectionRail,
+} from "@/components/sections/section-eyebrow";
+import { IMAGES } from "@/lib/content/images";
 import { ENVIRONMENTS } from "@/lib/content/site";
 
 const ENV_KEYS = {
@@ -20,6 +25,14 @@ const STATUS_KEYS: Record<string, string> = {
   "ENGINEERING ROADMAP": "statusRoadmap",
   RESEARCH: "statusResearch",
   "LONG-TERM VISION": "statusVision",
+};
+
+const ENV_IMAGES: Record<string, string> = {
+  earth: IMAGES.wafeePortrait,
+  water: IMAGES.serviceArea,
+  fire: IMAGES.wafeeCinematic,
+  air: IMAGES.dimensions,
+  space: IMAGES.sample,
 };
 
 const STATUS_STYLE: Record<string, string> = {
@@ -42,15 +55,13 @@ export function EnvironmentsSection() {
 
       <div className="mx-auto w-full max-w-[1440px] px-6 py-section md:px-10">
         <Reveal mode="fadeIn">
-          <p className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.25em] text-mist">
-            <span aria-hidden="true" className="h-px w-8 bg-accent" />
-            {tHome("envEyebrow")}
-          </p>
+          <SectionEyebrow>{tHome("envEyebrow")}</SectionEyebrow>
         </Reveal>
 
         <h2 className="mt-8 max-w-3xl text-display font-semibold tracking-[-0.02em] text-bone">
           <MaskLines lines={[tHome("envTitle1"), tHome("envTitle2")]} lineClassName="text-bone" />
         </h2>
+        <SectionRail />
 
         <p className="mt-6 max-w-xl font-mono text-[10px] uppercase leading-loose tracking-[0.22em] text-faint">
           {tHome("envScrollA")}
@@ -61,10 +72,13 @@ export function EnvironmentsSection() {
           {ENVIRONMENTS.map((env, i) => (
             <div
               key={env.id}
-              className="sticky mb-10 last:mb-0 lg:mb-10"
-              style={{ top: `${88 + i * 26}px`, zIndex: i + 1 }}
+              className="mb-10 last:mb-0"
             >
-              <motion.article
+              <div
+                className="lg:sticky"
+                style={{ top: `${88 + i * 26}px`, zIndex: i + 1 }}
+              >
+                <motion.article
                 initial={reduced ? false : { opacity: 0, y: 60 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-8% 0px" }}
@@ -103,7 +117,7 @@ export function EnvironmentsSection() {
 
                 <div className="relative order-1 min-h-[280px] overflow-hidden bg-charcoal/50 md:min-h-[360px] lg:order-2 lg:min-h-[440px]">
                   <Image
-                    src={`/images/img-env-${env.id}.webp`}
+                    src={ENV_IMAGES[env.id]}
                     alt=""
                     fill
                     sizes="(max-width: 1024px) 100vw, 50vw"
@@ -112,6 +126,7 @@ export function EnvironmentsSection() {
                   <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-graphite to-transparent lg:hidden" />
                 </div>
               </motion.article>
+              </div>
             </div>
           ))}
         </div>

@@ -3,6 +3,7 @@ import { PageHero } from "@/components/sections/page-hero";
 import { CTASection } from "@/components/sections/cta-section";
 import { StaggerGroup, StaggerItem, Reveal } from "@/components/motion/reveal";
 import { MediaFrame } from "@/components/media/media-frame";
+import { IMAGES } from "@/lib/content/images";
 
 export const metadata: Metadata = {
   title: "Research & Engineering",
@@ -117,7 +118,7 @@ export default function ResearchPage() {
               code="IMG-10"
               label="Digital Twin Simulation â€” Concept Visualization"
               ratio="16/9"
-            src="/images/img-10-digital-twin.webp"
+            src={IMAGES.sample}
             />
             <div className="mt-10 border-l-2 border-accent pl-8 lg:mt-16">
               <p className="text-subhead leading-relaxed text-bone">

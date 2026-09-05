@@ -14,22 +14,23 @@ import { Spotlight } from "@/components/motion/spotlight";
 import { Parallax } from "@/components/motion/parallax";
 import { MediaFrame } from "@/components/media/media-frame";
 import { BackgroundObjects } from "@/components/decor/background-objects";
+import { IMAGES } from "@/lib/content/images";
 
 const SHOWCASE_IMAGES = [
-  "/images/img-wd-earth.webp",
-  "/images/img-wd-water.webp",
-  "/images/img-wd-fire.webp",
-  "/images/img-wd-air.webp",
-  "/images/img-wd-space.webp",
+  IMAGES.serviceArea,
+  IMAGES.sample,
+  IMAGES.wafeeCinematic,
+  IMAGES.dimensions,
+  IMAGES.wafeeStudio,
 ];
 
 const CAPABILITY_IMAGES = [
-  "/images/img-cap-mobility.webp",
-  "/images/img-cap-manipulation.webp",
-  "/images/img-cap-perception.webp",
-  "/images/img-cap-autonomy.webp",
-  "/images/img-cap-teleoperation.webp",
-  "/images/img-cap-collaboration.webp",
+  IMAGES.wafeePortrait,
+  IMAGES.breakdown,
+  IMAGES.dimensions,
+  IMAGES.concept,
+  IMAGES.serviceArea,
+  IMAGES.wafeeAngle,
 ];
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -99,7 +100,7 @@ export default async function WafeePage() {
                 label={t("media.label")}
                 ratio="3/2"
                 tag="Reference"
-                src="/images/ref-wafee-wide.png"
+                src={IMAGES.wafeeCinematic}
               />
             </Parallax>
           </Reveal>

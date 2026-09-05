@@ -5,19 +5,20 @@ import { CTASection } from "@/components/sections/cta-section";
 import { Reveal } from "@/components/motion/reveal";
 import { MediaFrame } from "@/components/media/media-frame";
 import { HorizontalShowcase, type ShowcaseItem } from "@/components/sections/horizontal-showcase";
+import { IMAGES } from "@/lib/content/images";
 
 const SECTOR_IMAGES = [
-  "/images/img-ind-manufacturing.webp",
-  "/images/img-ind-energy.webp",
-  "/images/img-ind-utilities.webp",
-  "/images/img-ind-oilgas.webp",
-  "/images/img-ind-mining.webp",
-  "/images/img-ind-construction.webp",
-  "/images/img-ind-logistics.webp",
-  "/images/img-ind-marine.webp",
-  "/images/img-ind-infrastructure.webp",
-  "/images/img-ind-government.webp",
-  "/images/img-ind-space.webp",
+  IMAGES.wafeePortrait,
+  IMAGES.wafeeAngle,
+  IMAGES.wafeeCinematic,
+  IMAGES.sample,
+  IMAGES.breakdown,
+  IMAGES.concept,
+  IMAGES.serviceArea,
+  IMAGES.wafeeStudio,
+  IMAGES.dimensions,
+  IMAGES.wafeePortrait,
+  IMAGES.wafeeCinematic,
 ];
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -56,7 +57,7 @@ export default async function IndustriesPage() {
               code="IMG-09"
               label={t("media.label")}
               ratio="21/9"
-            src="/images/img-09-industrial-floor.webp"
+            src={IMAGES.serviceArea}
             />
           </Reveal>
         </div>

@@ -78,7 +78,7 @@ export function HorizontalShowcase({
     let raf = 0;
     let last = 0;
     let offset = 0;
-    const speed = 0.55; // px per ms (@60fps ~33px/s) — deliberately slow
+    const speed = 0.1; // px per ms (@60fps ~100px/s) — deliberately slow
 
     const step = (now: number) => {
       if (last === 0) last = now;

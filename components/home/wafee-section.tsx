@@ -7,7 +7,10 @@ import { Magnetic } from "@/components/motion/magnetic";
 import { MaskLines } from "@/components/motion/mask-lines";
 import { StaggerGroup, StaggerItem, Reveal } from "@/components/motion/reveal";
 import { Counter } from "@/components/technical/counter";
-import { MediaFrame } from "@/components/media/media-frame";
+import {
+  SectionEyebrow,
+  SectionRail,
+} from "@/components/sections/section-eyebrow";
 import { DURATION, EASE, viewportOnce } from "@/lib/animations";
 
 const STAT_KEYS = ["statHeight", "statEnvironments", "statAttributes"] as const;
@@ -48,15 +51,13 @@ export function WafeeSection() {
         <div className="grid gap-16 lg:grid-cols-[1.1fr_1fr] lg:gap-24">
           <div>
             <Reveal mode="fadeIn">
-              <p className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.25em] text-mist">
-                <span aria-hidden="true" className="h-px w-8 bg-accent" />
-                {tHome("wafeeEyebrow")}
-              </p>
+              <SectionEyebrow>{tHome("wafeeEyebrow")}</SectionEyebrow>
             </Reveal>
 
             <h2 className="mt-8 text-display font-semibold tracking-[-0.02em] text-bone">
               <MaskLines lines={[tHome("wafeeTitle")]} lineClassName="text-bone" />
             </h2>
+            <SectionRail />
 
             <motion.div
               initial={reduced ? false : { opacity: 0, y: 28 }}
@@ -123,16 +124,6 @@ export function WafeeSection() {
             ))}
           </StaggerGroup>
         </div>
-
-        <Reveal className="mt-14">
-          <MediaFrame
-            code="IMG-01"
-            label={tHome("wafeeImgLabel")}
-            ratio="3/2"
-            tag="Reference"
-            src="/images/img-01-wafee-platform.webp"
-          />
-        </Reveal>
       </div>
     </section>
   );

@@ -2,14 +2,15 @@
 
 import { useTranslations } from "next-intl";
 import { HorizontalShowcase } from "@/components/sections/horizontal-showcase";
+import { IMAGES } from "@/lib/content/images";
 
 const PRINCIPLE_KEYS = ["principle1", "principle2", "principle3", "principle4"] as const;
 
 const PRINCIPLE_IMAGES = [
-  "/images/img-p1-human-compatible.webp",
-  "/images/img-p2-modular.webp",
-  "/images/img-p3-intelligent.webp",
-  "/images/img-p4-resilient.webp",
+  IMAGES.wafeePortrait,
+  IMAGES.wafeeAngle,
+  IMAGES.wafeeCinematic,
+  IMAGES.breakdown,
 ];
 
 export function WhySection() {

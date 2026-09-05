@@ -37,14 +37,8 @@ export function PhilosophyList() {
             <h3 className="text-3xl font-semibold tracking-tight text-mist transition-all duration-500 group-hover:translate-x-2 group-hover:text-bone md:text-5xl">
               {item.word}
             </h3>
-            <span
-              aria-hidden="true"
-              className="ml-auto shrink-0 font-mono text-lg text-faint opacity-0 transition-all duration-500 group-hover:translate-x-1 group-hover:text-accent group-hover:opacity-100"
-            >
-              &rarr;
-            </span>
           </div>
-          <p className="mt-3 max-w-md pl-10 text-sm leading-relaxed text-faint opacity-0 transition-all duration-500 group-hover:pl-12 group-hover:opacity-100 md:pl-[4.25rem] md:text-base">
+          <p className="mt-3 max-w-md pl-10 text-sm leading-relaxed text-faint md:pl-[4.25rem] md:text-base lg:opacity-0 lg:transition-all lg:duration-500 lg:group-hover:opacity-100">
             {item.body}
           </p>
         </motion.div>

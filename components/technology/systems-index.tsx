@@ -47,7 +47,7 @@ export function SystemsIndex({ systems }: { systems: NavSystem[] }) {
                 type="button"
                 onClick={() => jump(s.id)}
                 aria-current={isActive ? "true" : undefined}
-                className={`flex shrink-0 cursor-pointer items-center justify-center rounded-md px-2 py-1 font-mono text-[10px] tracking-[0.14em] transition-colors duration-200 ${
+                className={`flex shrink-0 cursor-pointer items-center justify-center rounded-md px-2.5 py-2 font-mono text-[10px] tracking-[0.14em] transition-colors duration-200 ${
                   isActive
                     ? "bg-ink text-white"
                     : "text-mist hover:bg-charcoal hover:text-bone"

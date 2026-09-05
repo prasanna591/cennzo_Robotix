@@ -7,6 +7,7 @@ import { BlurLines } from "@/components/motion/blur-lines";
 import { DecodeText } from "@/components/motion/decode-text";
 import { BackgroundObjects } from "@/components/decor/background-objects";
 import { useReady } from "@/hooks/use-ready";
+import { useMediaQuery } from "@/hooks/use-media-query";
 import { DURATION, EASE } from "@/lib/animations";
 
 export function PageHero({
@@ -24,6 +25,7 @@ export function PageHero({
 }) {
   const reduced = useReducedMotion();
   const ready = useReady();
+  const isMobile = useMediaQuery("(max-width: 767px)");
   const ref = useRef<HTMLElement>(null);
 
   const { scrollYProgress } = useScroll({
@@ -50,7 +52,7 @@ export function PageHero({
     >
       <motion.div
         aria-hidden="true"
-        style={reduced ? undefined : { y: bgY }}
+        style={reduced || isMobile ? undefined : { y: bgY }}
         className="absolute inset-0"
       >
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_55%_45%_at_75%_20%,rgba(22,22,26,0.05),transparent_70%)]" />
@@ -72,7 +74,7 @@ export function PageHero({
       <BackgroundObjects variant="light" />
 
       <motion.div
-        style={reduced ? undefined : { y: contentY, opacity: contentOpacity }}
+        style={reduced || isMobile ? undefined : { y: contentY, opacity: contentOpacity }}
         className="relative mx-auto w-full max-w-[1440px] px-6 pb-16 pt-[168px] md:px-10 md:pb-20 md:pt-[200px]"
       >
         <motion.p
@@ -83,13 +85,13 @@ export function PageHero({
           <DecodeText text={eyebrow} />
         </motion.p>
 
-        <h1 className="mt-8 max-w-5xl text-display font-semibold leading-[1.04] tracking-[-0.02em] text-bone md:text-hero">
+        <h1 className="mt-8 max-w-5xl text-display font-bold uppercase leading-[1.02] tracking-[-0.02em] text-bone md:text-hero">
           <BlurLines
             key={ready ? "ready" : "hold"}
             lines={lines}
             delay={0.15}
             start={Boolean(ready) || Boolean(reduced)}
-            lineClassName="text-bone"
+            lineClassName={["text-bone", "text-accent"]}
           />
         </h1>
 
@@ -117,7 +119,7 @@ export function PageHero({
           </motion.p>
         )}
 
-        <motion.span
+        <motion.div
           aria-hidden="true"
           initial={reduced ? false : { scaleX: 0 }}
           animate={ready ? { scaleX: 1 } : { scaleX: 0 }}
@@ -126,8 +128,11 @@ export function PageHero({
             ease: EASE.mechanical,
             delay: 0.6,
           }}
-          className="mt-14 block h-px w-full origin-left bg-black/[0.1]"
-        />
+          className="mt-14 flex h-px w-full max-w-[480px] origin-left items-center"
+        >
+          <span className="hairline-spectrum absolute inset-x-0 top-0 h-px" />
+          <span className="relative h-1.5 w-1.5 rounded-[2px] bg-teal shadow-[0_0_10px_rgba(0,168,168,0.55)]" />
+        </motion.div>
       </motion.div>
     </section>
   );

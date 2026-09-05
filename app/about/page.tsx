@@ -7,6 +7,7 @@ import { StaggerGroup, StaggerItem, Reveal } from "@/components/motion/reveal";
 import { ScrollFillText } from "@/components/motion/scroll-fill-text";
 import { Parallax } from "@/components/motion/parallax";
 import { MediaFrame } from "@/components/media/media-frame";
+import { IMAGES } from "@/lib/content/images";
 import { BackgroundObjects } from "@/components/decor/background-objects";
 import { StatBand } from "@/components/technical/stat-band";
 import { VisionMission } from "@/components/about/vision-mission";
@@ -90,7 +91,7 @@ export default async function AboutPage() {
                 code="IMG-03"
                 label={t("media.label")}
                 ratio="16/9"
-              src="/images/img-03-lab.webp"
+              src={IMAGES.wafeePortrait}
               />
             </Parallax>
           </Reveal>

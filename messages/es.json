@@ -98,7 +98,7 @@
   "hero": {
     "eyebrow": "WAFEE — Plataforma humanoide multientorno unificada",
     "line1": "El humanoide para",
-    "line2": "los *lugares hostiles.*",
+    "line2": "los lugares hostiles.",
     "lede": "WAFEE es la plataforma humanoide multientorno unificada de Cennzo Robotix: diseñada para llevar movilidad inteligente, percepción y manipulación a entornos donde los robots convencionales alcanzan sus límites.",
     "ctaPrimary": "Explorar WAFEE",
     "ctaSecondary": "Construyamos el futuro juntos",
@@ -247,7 +247,7 @@
     "hero": {
       "eyebrow": "Acerca de",
       "line1": "Ingeniería",
-      "line2": "*inteligente.*",
+      "line2": "inteligente.",
       "intro": "Cennzo Robotix es una empresa de robótica deep-tech que construye sistemas humanoides inteligentes para los entornos reales más exigentes."
     },
     "whoWeAre": {
@@ -415,7 +415,7 @@
     "hero": {
       "eyebrow": "WAFEE — plataforma humanoide multidominio integrada",
       "line1": "Un humanoide diseñado",
-      "line2": "para el mundo *más allá del laboratorio.*",
+      "line2": "para el mundo más allá del laboratorio.",
       "intro": "WAFEE es la plataforma robótica humanoide insignia de Cennzo Robotix. Su arquitectura integra movilidad a escala humana, actuación de alto rendimiento, percepción multimodal, control inteligente y protección frente al entorno en un único sistema robótico desplegable.",
       "meta": "WAFEE es una plataforma de ingeniería en desarrollo."
     },
@@ -882,7 +882,7 @@
     "hero": {
       "eyebrow": "Aplicaciones",
       "line1": "Robots donde",
-      "line2": "*las personas no deberían ir.*",
+      "line2": "las personas no deberían ir.",
       "intro": "Desde inspección industrial hasta exploración planetaria — dominios de misión previstos para la plataforma WAFEE.",
       "meta": "Las aplicaciones representan territorios de exploración de ingeniería, no despliegues comerciales actuales."
     },
@@ -1045,7 +1045,7 @@
     "hero": {
       "eyebrow": "Industrias",
       "line1": "Diseñado para industrias",
-      "line2": "*que no pueden detenerse.*"
+      "line2": "que no pueden detenerse."
     },
     "showcase": {
       "eyebrow": "Sectores",

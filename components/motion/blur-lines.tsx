@@ -24,7 +24,7 @@ export function BlurLines({
 }: {
   lines: string[];
   className?: string;
-  lineClassName?: string;
+  lineClassName?: string | string[];
   delay?: number;
   stagger?: number;
   start?: boolean;
@@ -36,7 +36,12 @@ export function BlurLines({
   return (
     <span className={`block ${className}`}>
       {lines.map((line, li) => (
-        <span key={`${line}-${li}`} className={`block ${lineClassName}`}>
+        <span
+          key={`${line}-${li}`}
+          className={`block ${
+            Array.isArray(lineClassName) ? lineClassName[li] ?? "" : lineClassName
+          }`}
+        >
           {line.split(" ").map((rawWord) => {
             const wi = wordIndex++;
             const { text, tone } = parseWord(rawWord);

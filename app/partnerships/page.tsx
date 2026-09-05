@@ -3,6 +3,7 @@ import { PageHero } from "@/components/sections/page-hero";
 import { CTASection } from "@/components/sections/cta-section";
 import { StaggerGroup, StaggerItem, Reveal } from "@/components/motion/reveal";
 import { MediaFrame } from "@/components/media/media-frame";
+import { IMAGES } from "@/lib/content/images";
 import { PARTNER_TYPES } from "@/lib/content/site";
 
 export const metadata: Metadata = {
@@ -52,7 +53,7 @@ export default function PartnershipsPage() {
               code="IMG-13"
               label="The Cennzo Robotix Partner Ecosystem â€” Concept"
               ratio="21/9"
-            src="/images/img-13-ecosystem.webp"
+            src={IMAGES.concept}
             />
           </Reveal>
         </div>

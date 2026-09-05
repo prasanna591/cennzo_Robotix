@@ -145,7 +145,7 @@ export function SiteHeader() {
             aria-expanded={menuOpen}
             aria-controls="mobile-menu"
             aria-label={menuOpen ? tHeader("closeMenu") : tHeader("openMenu")}
-            className="relative z-50 flex h-10 w-10 cursor-pointer flex-col items-center justify-center gap-[7px] lg:hidden"
+            className="relative z-50 flex h-11 w-11 cursor-pointer flex-col items-center justify-center gap-[7px] lg:hidden"
           >
             <span
               className={`h-px w-6 bg-bone transition-transform duration-300 ${

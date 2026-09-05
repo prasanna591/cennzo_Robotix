@@ -47,7 +47,7 @@ export function LanguageSwitcher() {
         aria-expanded={open}
         aria-label={t("language")}
         title={t("language")}
-        className="flex h-9 cursor-pointer items-center gap-2 rounded-full border border-black/[0.09] bg-white/60 px-3.5 transition-[border-color,background-color,transform] duration-300 hover:border-black/20 hover:bg-white active:translate-y-px"
+        className="flex h-10 cursor-pointer items-center gap-2 rounded-full border border-black/[0.09] bg-white/60 px-4 transition-[border-color,background-color,transform] duration-300 hover:border-black/20 hover:bg-white active:translate-y-px"
       >
         <svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true" className="text-faint">
           <circle cx="8" cy="8" r="6.2" stroke="currentColor" strokeWidth="1.3" />
@@ -78,7 +78,7 @@ export function LanguageSwitcher() {
                     role="option"
                     aria-selected={active}
                     onClick={() => pick(lang.code)}
-                    className={`flex w-full cursor-pointer items-center justify-between rounded-lg px-3 py-2 text-left text-[13px] transition-colors duration-150 ${
+                    className={`flex w-full cursor-pointer items-center justify-between rounded-lg px-3 py-2.5 text-left text-[13px] transition-colors duration-150 ${
                       active ? "bg-accent/[0.07] text-accent" : "text-bone hover:bg-charcoal/60"
                     }`}
                   >
