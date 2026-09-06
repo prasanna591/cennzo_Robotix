@@ -1,13 +1,11 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import type { ReactNode } from "react";
 import { BlurLines } from "@/components/motion/blur-lines";
 import { DecodeText } from "@/components/motion/decode-text";
 import { BackgroundObjects } from "@/components/decor/background-objects";
 import { useReady } from "@/hooks/use-ready";
-import { useMediaQuery } from "@/hooks/use-media-query";
 import { DURATION, EASE } from "@/lib/animations";
 
 export function PageHero({
@@ -25,16 +23,6 @@ export function PageHero({
 }) {
   const reduced = useReducedMotion();
   const ready = useReady();
-  const isMobile = useMediaQuery("(max-width: 767px)");
-  const ref = useRef<HTMLElement>(null);
-
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"],
-  });
-  const contentY = useTransform(scrollYProgress, [0, 1], [0, 90]);
-  const contentOpacity = useTransform(scrollYProgress, [0, 0.85], [1, 0]);
-  const bgY = useTransform(scrollYProgress, [0, 1], [0, -60]);
 
   const enter = (delay: number) =>
     reduced
@@ -47,12 +35,10 @@ export function PageHero({
 
   return (
     <section
-      ref={ref}
       className="relative overflow-hidden border-b border-black/[0.08]"
     >
-      <motion.div
+      <div
         aria-hidden="true"
-        style={reduced || isMobile ? undefined : { y: bgY }}
         className="absolute inset-0"
       >
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_55%_45%_at_75%_20%,rgba(22,22,26,0.05),transparent_70%)]" />
@@ -69,12 +55,11 @@ export function PageHero({
               "radial-gradient(ellipse 70% 60% at 50% 30%, black 30%, transparent 75%)",
           }}
         />
-      </motion.div>
+      </div>
 
       <BackgroundObjects variant="light" />
 
       <motion.div
-        style={reduced || isMobile ? undefined : { y: contentY, opacity: contentOpacity }}
         className="relative mx-auto w-full max-w-[1440px] px-6 pb-16 pt-[168px] md:px-10 md:pb-20 md:pt-[200px]"
       >
         <motion.p

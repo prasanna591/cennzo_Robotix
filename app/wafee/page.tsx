@@ -17,20 +17,20 @@ import { BackgroundObjects } from "@/components/decor/background-objects";
 import { IMAGES } from "@/lib/content/images";
 
 const SHOWCASE_IMAGES = [
-  IMAGES.serviceArea,
-  IMAGES.sample,
+  IMAGES.humanFriendly,
+  IMAGES.underwater,
   IMAGES.wafeeCinematic,
-  IMAGES.dimensions,
-  IMAGES.wafeeStudio,
+  IMAGES.airFlying,
+  IMAGES.spaceTwo,
 ];
 
 const CAPABILITY_IMAGES = [
   IMAGES.wafeePortrait,
+  IMAGES.wafeeAngle,
   IMAGES.breakdown,
   IMAGES.dimensions,
   IMAGES.concept,
-  IMAGES.serviceArea,
-  IMAGES.wafeeAngle,
+  IMAGES.wafeeStudio,
 ];
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -100,7 +100,7 @@ export default async function WafeePage() {
                 label={t("media.label")}
                 ratio="3/2"
                 tag="Reference"
-                src={IMAGES.wafeeCinematic}
+                src={IMAGES.qwafee}
               />
             </Parallax>
           </Reveal>

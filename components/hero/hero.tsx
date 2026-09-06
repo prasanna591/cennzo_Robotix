@@ -1,13 +1,12 @@
 "use client";
 
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/buttons/button";
 import { BlurLines } from "@/components/motion/blur-lines";
 import { BackgroundObjects } from "@/components/decor/background-objects";
 import { Telemetry } from "@/components/technical/telemetry";
 import { useReady } from "@/hooks/use-ready";
-import { useMediaQuery } from "@/hooks/use-media-query";
 import { DURATION, EASE } from "@/lib/animations";
 
 const ENVIRONMENT_KEYS = ["envEarth", "envWater", "envFire", "envAir", "envSpace"] as const;
@@ -94,12 +93,6 @@ export function Hero() {
   const reduced = useReducedMotion();
   const ready = useReady();
   const t = useTranslations("hero");
-  const isMobile = useMediaQuery("(max-width: 767px)");
-
-  const { scrollYProgress } = useScroll();
-  const contentY = useTransform(scrollYProgress, [0, 0.3], [0, -110]);
-  const contentOpacity = useTransform(scrollYProgress, [0, 0.24], [1, 0]);
-  const barOpacity = useTransform(scrollYProgress, [0, 0.18], [1, 0]);
 
   const enter = (delay: number) =>
     reduced
@@ -116,7 +109,6 @@ export function Hero() {
       <BackgroundObjects variant="light" />
 
 <motion.div
-          style={reduced || isMobile ? undefined : { y: contentY, opacity: contentOpacity }}
           className="relative mx-auto flex w-full max-w-[1440px] flex-1 flex-col justify-center px-6 pb-14 pt-[120px] md:px-10"
         >
           <div className="max-w-3xl">
@@ -160,7 +152,6 @@ export function Hero() {
       </motion.div>
 
       <motion.div
-        style={reduced ? undefined : { opacity: barOpacity }}
         className="relative border-t border-black/[0.08]"
       >
         <motion.div {...enter(0.85)}>

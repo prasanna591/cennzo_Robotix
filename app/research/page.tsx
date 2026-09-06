@@ -118,7 +118,7 @@ export default function ResearchPage() {
               code="IMG-10"
               label="Digital Twin Simulation â€” Concept Visualization"
               ratio="16/9"
-            src={IMAGES.sample}
+            src={IMAGES.seeThrough}
             />
             <div className="mt-10 border-l-2 border-accent pl-8 lg:mt-16">
               <p className="text-subhead leading-relaxed text-bone">

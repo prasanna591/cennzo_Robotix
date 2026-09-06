@@ -28,11 +28,11 @@ const STATUS_KEYS: Record<string, string> = {
 };
 
 const ENV_IMAGES: Record<string, string> = {
-  earth: IMAGES.wafeePortrait,
-  water: IMAGES.serviceArea,
-  fire: IMAGES.wafeeCinematic,
-  air: IMAGES.dimensions,
-  space: IMAGES.sample,
+  earth: IMAGES.serviceArea,
+  water: IMAGES.water,
+  fire: IMAGES.fire,
+  air: IMAGES.airPhoto,
+  space: IMAGES.space,
 };
 
 const STATUS_STYLE: Record<string, string> = {

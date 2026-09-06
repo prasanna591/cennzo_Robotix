@@ -9,8 +9,8 @@ const PRINCIPLE_KEYS = ["principle1", "principle2", "principle3", "principle4"] 
 const PRINCIPLE_IMAGES = [
   IMAGES.wafeePortrait,
   IMAGES.wafeeAngle,
-  IMAGES.wafeeCinematic,
-  IMAGES.breakdown,
+  IMAGES.wafeeStudio,
+  IMAGES.sample,
 ];
 
 export function WhySection() {

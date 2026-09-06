@@ -91,7 +91,7 @@ export default async function AboutPage() {
                 code="IMG-03"
                 label={t("media.label")}
                 ratio="16/9"
-              src={IMAGES.wafeePortrait}
+              src={IMAGES.proto}
               />
             </Parallax>
           </Reveal>

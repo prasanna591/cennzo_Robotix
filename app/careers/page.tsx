@@ -88,7 +88,7 @@ export default function CareersPage() {
                 code="IMG-12"
                 label="Life at Cennzo Robotix â€” Culture Concept"
                 ratio="16/9"
-              src={IMAGES.wafeePortrait}
+              src={IMAGES.humanFriendly}
               />
             </Reveal>
             <Reveal delay={0.15}>

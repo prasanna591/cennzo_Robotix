@@ -10,15 +10,15 @@ import { IMAGES } from "@/lib/content/images";
 const SECTOR_IMAGES = [
   IMAGES.wafeePortrait,
   IMAGES.wafeeAngle,
-  IMAGES.wafeeCinematic,
-  IMAGES.sample,
+  IMAGES.serviceArea,
+  IMAGES.fire,
   IMAGES.breakdown,
   IMAGES.concept,
-  IMAGES.serviceArea,
-  IMAGES.wafeeStudio,
-  IMAGES.dimensions,
-  IMAGES.wafeePortrait,
+  IMAGES.sample,
+  IMAGES.underwater,
+  IMAGES.airPhoto,
   IMAGES.wafeeCinematic,
+  IMAGES.spaceTwo,
 ];
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -57,7 +57,7 @@ export default async function IndustriesPage() {
               code="IMG-09"
               label={t("media.label")}
               ratio="21/9"
-            src={IMAGES.serviceArea}
+            src={IMAGES.wafeeStudio}
             />
           </Reveal>
         </div>

@@ -136,7 +136,7 @@ export default function SafetyPage() {
               code="IMG-11"
               label="Environmental Test Chamber â€” Concept Visualization"
               ratio="16/9"
-            src={IMAGES.dimensions}
+            src={IMAGES.seeThrough}
             />
           </Reveal>
         </div>

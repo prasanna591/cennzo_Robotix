@@ -14,7 +14,6 @@ import { SiteFooter } from "@/components/navigation/site-footer";
 import { ScrollProgress } from "@/components/technical/scroll-progress";
 import { Cursor } from "@/components/technical/cursor";
 import { Preloader } from "@/components/motion/preloader";
-import { SmoothScroll } from "@/components/motion/smooth-scroll";
 import { BackToTop } from "@/components/navigation/back-to-top";
 import { LanguagePrompt } from "@/components/navigation/language-prompt";
 import { FilmGrain } from "@/components/decor/film-grain";
@@ -131,7 +130,6 @@ export default async function RootLayout({
         <MeshGradient />
         <NextIntlClientProvider messages={messages}>
           <Preloader />
-          <SmoothScroll />
           <ScrollProgress />
           <Cursor />
           <SiteHeader />
