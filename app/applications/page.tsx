@@ -29,13 +29,13 @@ type Tone = {
 
 const DOMAIN_IMAGES: Record<string, string> = {
   "industrial-inspection": IMAGES.serviceArea,
-  "energy-utilities": IMAGES.wafeeAngle,
-  "disaster-response": IMAGES.sample,
+  "energy-utilities": IMAGES.energyScene,
+  "disaster-response": IMAGES.mountainScene,
   "fire-hazardous": IMAGES.fire,
   "marine-offshore": IMAGES.water,
-  mining: IMAGES.breakdown,
-  logistics: IMAGES.wafeePortrait,
-  "defense-research": IMAGES.seeThrough,
+  mining: IMAGES.miningScene,
+  logistics: IMAGES.logisticsScene,
+  "defense-research": IMAGES.armyScene,
   "space-robotics": IMAGES.space,
 };
 

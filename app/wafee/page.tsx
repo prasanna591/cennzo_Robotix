@@ -17,7 +17,7 @@ import { BackgroundObjects } from "@/components/decor/background-objects";
 import { IMAGES } from "@/lib/content/images";
 
 const SHOWCASE_IMAGES = [
-  IMAGES.humanFriendly,
+  IMAGES.welcomeScene,
   IMAGES.underwater,
   IMAGES.wafeeCinematic,
   IMAGES.airFlying,

@@ -8,16 +8,16 @@ import { HorizontalShowcase, type ShowcaseItem } from "@/components/sections/hor
 import { IMAGES } from "@/lib/content/images";
 
 const SECTOR_IMAGES = [
-  IMAGES.wafeePortrait,
-  IMAGES.wafeeAngle,
+  IMAGES.manufacturingScene,
+  IMAGES.energyScene,
   IMAGES.serviceArea,
-  IMAGES.fire,
-  IMAGES.breakdown,
-  IMAGES.concept,
-  IMAGES.sample,
+  IMAGES.oilGasScene,
+  IMAGES.miningScene,
+  IMAGES.constructionScene,
+  IMAGES.logisticsScene,
   IMAGES.underwater,
   IMAGES.airPhoto,
-  IMAGES.wafeeCinematic,
+  IMAGES.armyScene,
   IMAGES.spaceTwo,
 ];
 

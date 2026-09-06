@@ -46,7 +46,7 @@ export function ImpactSection() {
               label={t("impactDoctorLabel")}
               ratio="4/3"
               tag="Reference"
-              src={IMAGES.doctor}
+              src={IMAGES.homecareScene}
             />
           </Reveal>
         </div>
