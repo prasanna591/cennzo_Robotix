@@ -28,24 +28,24 @@ function Wordmark() {
   return (
     <Link
       href="/"
-      className="group flex items-center gap-2.5 md:gap-3"
+      className="group flex flex-col"
       aria-label={tHeader("home")}
     >
-      <Image
-        src="/logo/cennzo-icon.png"
-        alt=""
-        width={245}
-        height={239}
-        priority
-        className="h-8 w-auto object-contain transition-transform duration-500 group-hover:scale-[1.04] md:h-10"
-      />
-      <span className="flex items-baseline gap-2">
-        <span className="text-[15px] font-semibold tracking-[0.22em] text-bone md:text-lg">
+      <span className="flex items-center gap-2.5 md:gap-3">
+        <Image
+          src="/logo/cennzo-icon.png"
+          alt=""
+          width={245}
+          height={239}
+          priority
+          className="h-8 w-auto object-contain transition-transform duration-500 group-hover:scale-[1.04] md:h-10"
+        />
+        <span className="text-[16px] font-semibold leading-none tracking-[0.2em] text-bone md:text-lg">
           CENNZO
         </span>
-        <span className="font-mono text-[10px] font-medium tracking-[0.3em] text-mist md:text-xs">
-          ROBOTIX
-        </span>
+      </span>
+      <span className="-mt-[6px] pl-[calc(2rem+0.625rem)] font-mono text-[10px] font-medium leading-none tracking-[0.28em] text-mist md:pl-[calc(2.5rem+0.75rem)] md:text-xs">
+        ROBOTIX
       </span>
     </Link>
   );

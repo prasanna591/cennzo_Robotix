@@ -105,11 +105,11 @@ export function SiteFooter() {
           className="grid gap-14 lg:grid-cols-[1.4fr_1fr_1fr_1fr]"
         >
           <div>
-            <Link href="/" className="flex items-baseline gap-2" aria-label="Cennzo Robotix — Home">
+            <Link href="/" className="flex flex-col items-start leading-none" aria-label="Cennzo Robotix — Home">
               <span className="text-lg font-semibold tracking-[0.22em] text-bone">
                 CENNZO
               </span>
-              <span className="font-mono text-[11px] font-medium tracking-[0.3em] text-mist">
+              <span className="mt-1 font-mono text-[11px] font-medium tracking-[0.3em] text-mist">
                 ROBOTIX
               </span>
             </Link>
