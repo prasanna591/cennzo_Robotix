@@ -654,7 +654,8 @@
       "imageAlt": "WAFEE —— 为实验室之外的环境而打造的人形平台"
     },
     "media": {
-      "label": "WAFEE 系统架构 — 概念图"
+      "label": "WAFEE 系统架构 — 概念图",
+      "labelSample": "WAFEE Platform Sample — Reference"
     },
     "map": {
       "eyebrow": "关联解剖",

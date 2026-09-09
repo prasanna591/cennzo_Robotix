@@ -5,7 +5,6 @@ import { CTASection } from "@/components/sections/cta-section";
 import { SectionHeading } from "@/components/sections/section-heading";
 import { SectionEyebrow } from "@/components/sections/section-eyebrow";
 import { Reveal } from "@/components/motion/reveal";
-import { Parallax } from "@/components/motion/parallax";
 import { MediaFrame } from "@/components/media/media-frame";
 import { IMAGES } from "@/lib/content/images";
 import { SystemsIndex } from "@/components/technology/systems-index";
@@ -77,27 +76,34 @@ export default async function TechnologyPage() {
           <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
             <SectionEyebrow>Blueprint Archive</SectionEyebrow>
             <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-faint">
-              fig.05 — fig.04
+              fig.05 — fig.03
             </p>
           </div>
-          <Reveal>
-            <Parallax speed={0.05}>
-              <div className="grid gap-6 lg:grid-cols-[1.35fr_1fr] lg:items-end">
-                <MediaFrame
-                  code="IMG-05"
-                  label={t("media.label")}
-                  ratio="16/9"
-                  src={IMAGES.breakdown}
-                />
-                <MediaFrame
-                  code="IMG-04"
-                  label={t("media.label")}
-                  ratio="4/3"
-                  src={IMAGES.dimensions}
-                />
-              </div>
-            </Parallax>
-          </Reveal>
+          <div className="grid gap-6 lg:grid-cols-[1.35fr_1fr] lg:items-end">
+            <MediaFrame
+              code="IMG-05"
+              label={t("media.label")}
+              ratio="16/9"
+              src={IMAGES.breakdown}
+              plain
+            />
+            <div className="flex flex-col gap-6">
+              <MediaFrame
+                code="IMG-03"
+                label={t("media.labelSample")}
+                ratio="1/1"
+                src={IMAGES.sample}
+                plain
+              />
+              <MediaFrame
+                code="IMG-04"
+                label={t("media.label")}
+                ratio="4/3"
+                src={IMAGES.dimensions}
+                plain
+              />
+            </div>
+          </div>
         </div>
       </section>
 
@@ -116,7 +122,7 @@ export default async function TechnologyPage() {
             lines={["Nine subsystems", "One Machine"]}
             className="lg:sticky lg:top-40 lg:self-start"
           />
-          <Reveal delay={0.1}>
+          <div>
             <p className="max-w-2xl text-subhead leading-relaxed text-mist">
               Every joint, sensor and line of code is treated as a first-class
               engineering subsystem. Select a system to inspect its technical
@@ -136,7 +142,7 @@ export default async function TechnologyPage() {
                 </a>
               ))}
             </div>
-          </Reveal>
+          </div>
         </div>
       </section>
 

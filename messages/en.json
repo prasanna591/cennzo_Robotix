@@ -676,7 +676,8 @@
       "imageAlt": "WAFEE — humanoid platform engineered for environments beyond the lab"
     },
     "media": {
-      "label": "WAFEE System Architecture — Concept Diagram"
+      "label": "WAFEE System Architecture — Concept Diagram",
+      "labelSample": "WAFEE Platform Sample — Reference"
     },
     "map": {
       "eyebrow": "Interactive Anatomy",

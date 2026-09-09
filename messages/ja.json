@@ -654,7 +654,8 @@
       "imageAlt": "WAFEE — ラボの外の環境のために設計された人型プラットフォーム"
     },
     "media": {
-      "label": "WAFEE システムアーキテクチャ — 概念図"
+      "label": "WAFEE システムアーキテクチャ — 概念図",
+      "labelSample": "WAFEE Platform Sample — Reference"
     },
     "map": {
       "eyebrow": "関連するアナトミー",

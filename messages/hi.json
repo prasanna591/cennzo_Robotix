@@ -654,7 +654,8 @@
       "imageAlt": "WAFEE — प्रयोगशाला से परे के वातावरण के लिए बनाया गया ह्यूमनॉइड प्लेटफ़ॉर्म"
     },
     "media": {
-      "label": "WAFEE सिस्टम आर्किटेक्चर — कॉन्सेप्ट आरेख"
+      "label": "WAFEE सिस्टम आर्किटेक्चर — कॉन्सेप्ट आरेख",
+      "labelSample": "WAFEE Platform Sample — Reference"
     },
     "map": {
       "eyebrow": "इंटरैक्टिव शरीर-रचना",

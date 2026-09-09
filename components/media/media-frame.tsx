@@ -52,12 +52,14 @@ export function MediaVisual({
   large = false,
   src,
   tag = "Concept",
+  plain = false,
 }: {
   code: string;
   label: string;
   large?: boolean;
   src?: string;
   tag?: string;
+  plain?: boolean;
 }) {
   const reduced = useReducedMotion();
 
@@ -72,59 +74,63 @@ export function MediaVisual({
           className="object-contain object-center"
         />
       )}
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 opacity-[0.14]"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(22,22,26,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(22,22,26,0.06) 1px, transparent 1px)",
-          backgroundSize: "44px 44px",
-          maskImage:
-            "radial-gradient(ellipse 75% 70% at 50% 50%, black 30%, transparent 80%)",
-          WebkitMaskImage:
-            "radial-gradient(ellipse 75% 70% at 50% 50%, black 30%, transparent 80%)",
-        }}
-      />
+      {!plain && (
+        <>
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 opacity-[0.14]"
+            style={{
+              backgroundImage:
+                "linear-gradient(rgba(22,22,26,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(22,22,26,0.06) 1px, transparent 1px)",
+              backgroundSize: "44px 44px",
+              maskImage:
+                "radial-gradient(ellipse 75% 70% at 50% 50%, black 30%, transparent 80%)",
+              WebkitMaskImage:
+                "radial-gradient(ellipse 75% 70% at 50% 50%, black 30%, transparent 80%)",
+            }}
+          />
 
-      {!reduced && (
-        <motion.span
-          aria-hidden="true"
-          className="absolute inset-x-0 h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent"
-          initial={{ top: "-2%" }}
-          animate={{ top: "102%" }}
-          transition={{ duration: 5.5, repeat: Infinity, ease: "linear" }}
-        />
+          {!reduced && (
+            <motion.span
+              aria-hidden="true"
+              className="absolute inset-x-0 h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent"
+              initial={{ top: "-2%" }}
+              animate={{ top: "102%" }}
+              transition={{ duration: 5.5, repeat: Infinity, ease: "linear" }}
+            />
+          )}
+
+          <CornerBrackets />
+
+          {!src && (
+            <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 px-6 text-center">
+              <FrameIcon size={large ? 56 : 40} />
+              <p
+                className={`font-mono uppercase tracking-[0.3em] text-faint ${
+                  large ? "text-[11px]" : "text-[9px]"
+                }`}
+              >
+                Awaiting Imagery
+              </p>
+            </div>
+          )}
+
+          <div className="absolute left-4 top-4 rounded-sm bg-void/60 px-1.5 py-0.5 font-mono text-[9px] uppercase tracking-[0.22em] text-faint backdrop-blur-sm">
+            CR·{code}
+          </div>
+          <div className="absolute right-4 top-4 border border-accent/40 px-2 py-1 font-mono text-[8px] uppercase tracking-[0.22em] text-accent">
+            {tag}
+          </div>
+          <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between gap-4">
+            <p className="rounded-sm bg-void/60 px-1.5 py-0.5 font-mono text-[10px] uppercase leading-relaxed tracking-[0.22em] text-mist backdrop-blur-sm">
+              {label}
+            </p>
+            <p className="hidden shrink-0 rounded-sm bg-void/60 px-1.5 py-0.5 font-mono text-[9px] uppercase tracking-[0.22em] text-faint backdrop-blur-sm sm:block">
+              {large ? `${tag} Visualization` : "Expand +"}
+            </p>
+          </div>
+        </>
       )}
-
-      <CornerBrackets />
-
-      {!src && (
-        <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 px-6 text-center">
-          <FrameIcon size={large ? 56 : 40} />
-          <p
-            className={`font-mono uppercase tracking-[0.3em] text-faint ${
-              large ? "text-[11px]" : "text-[9px]"
-            }`}
-          >
-            Awaiting Imagery
-          </p>
-        </div>
-      )}
-
-      <div className="absolute left-4 top-4 rounded-sm bg-void/60 px-1.5 py-0.5 font-mono text-[9px] uppercase tracking-[0.22em] text-faint backdrop-blur-sm">
-        CR·{code}
-      </div>
-      <div className="absolute right-4 top-4 border border-accent/40 px-2 py-1 font-mono text-[8px] uppercase tracking-[0.22em] text-accent">
-        {tag}
-      </div>
-      <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between gap-4">
-        <p className="rounded-sm bg-void/60 px-1.5 py-0.5 font-mono text-[10px] uppercase leading-relaxed tracking-[0.22em] text-mist backdrop-blur-sm">
-          {label}
-        </p>
-        <p className="hidden shrink-0 rounded-sm bg-void/60 px-1.5 py-0.5 font-mono text-[9px] uppercase tracking-[0.22em] text-faint backdrop-blur-sm sm:block">
-          {large ? `${tag} Visualization` : "Expand +"}
-        </p>
-      </div>
     </div>
   );
 }
@@ -137,6 +143,7 @@ function Lightbox({
   src,
   tag = "Concept",
   natural,
+  plain = false,
 }: {
   open: boolean;
   onClose: () => void;
@@ -145,6 +152,7 @@ function Lightbox({
   src?: string;
   tag?: string;
   natural?: number | null;
+  plain?: boolean;
 }) {
   const closeRef = useRef<HTMLButtonElement>(null);
 
@@ -194,7 +202,7 @@ function Lightbox({
               className="relative overflow-hidden rounded-xl border border-black/[0.08] bg-void"
               style={natural ? { aspectRatio: `${natural}` } : undefined}
             >
-              <MediaVisual code={code} label={label} large src={src} tag={tag} />
+              <MediaVisual code={code} label={label} large src={src} tag={tag} plain={plain} />
             </div>
             <div className="flex items-center justify-between px-2 pb-1 pt-3">
               <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-mist">
@@ -226,6 +234,7 @@ export function MediaFrame({
   className = "",
   src,
   tag = "Concept",
+  plain = false,
 }: {
   code: string;
   label: string;
@@ -233,6 +242,7 @@ export function MediaFrame({
   className?: string;
   src?: string;
   tag?: string;
+  plain?: boolean;
 }) {
   const [open, setOpen] = useState(false);
   const natural = useNaturalAspect(src);
@@ -249,7 +259,7 @@ export function MediaFrame({
           className={`relative w-full overflow-hidden rounded-2xl border border-black/[0.08] bg-graphite shadow-soft transition-all duration-500 group-hover:border-faint group-hover:shadow-lift ${RATIOS[ratio]}`}
           style={natural ? { aspectRatio: `${natural}` } : undefined}
         >
-          <MediaVisual code={code} label={label} src={src} tag={tag} />
+          <MediaVisual code={code} label={label} src={src} tag={tag} plain={plain} />
         </div>
       </button>
       <figcaption className="mt-3 flex items-center justify-between gap-4 font-mono text-[9px] uppercase tracking-[0.22em] text-faint">
@@ -270,6 +280,7 @@ export function MediaFrame({
         src={src}
         tag={tag}
         natural={natural}
+        plain={plain}
       />
     </figure>
   );

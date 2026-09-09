@@ -654,7 +654,8 @@
       "imageAlt": "WAFEE — plataforma humanoide diseñada para entornos más allá del laboratorio"
     },
     "media": {
-      "label": "Arquitectura del sistema WAFEE — esquema conceptual"
+      "label": "Arquitectura del sistema WAFEE — esquema conceptual",
+      "labelSample": "WAFEE Platform Sample — Reference"
     },
     "map": {
       "eyebrow": "Anatomía asociada",

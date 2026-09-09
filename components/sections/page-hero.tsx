@@ -2,7 +2,7 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
-import type { ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 import { BlurLines } from "@/components/motion/blur-lines";
 import { DecodeText } from "@/components/motion/decode-text";
 import { BackgroundObjects } from "@/components/decor/background-objects";
@@ -41,6 +41,22 @@ export function PageHero({
   const reduced = useReducedMotion();
   const ready = useReady();
   const mediaNatural = useNaturalAspect(media?.src);
+  const [mediaLoaded, setMediaLoaded] = useState(false);
+
+  const mediaLoad = (delay: number) =>
+    reduced
+      ? {}
+      : {
+          initial: { opacity: 0, scale: 1.06, filter: "blur(10px)" },
+          animate: mediaLoaded
+            ? { opacity: 1, scale: 1, filter: "blur(0px)" }
+            : { opacity: 0, scale: 1.06, filter: "blur(10px)" },
+          transition: {
+            duration: DURATION.cinematic,
+            ease: EASE.out,
+            delay,
+          },
+        };
 
   const headlineClass =
     headlineSize === "hero"
@@ -67,14 +83,21 @@ export function PageHero({
       }`}
     >
       {media?.background && (
-        <Image
-          src={media.src}
-          alt={media.alt}
-          fill
-          priority
-          sizes="100vw"
-          className={`object-contain ${media.backgroundClass ?? "object-center"}`}
-        />
+        <motion.div
+          aria-hidden="true"
+          {...mediaLoad(0)}
+          className="absolute inset-0"
+        >
+          <Image
+            src={media.src}
+            alt={media.alt}
+            fill
+            priority
+            sizes="100vw"
+            onLoad={() => setMediaLoaded(true)}
+            className={`object-contain ${media.backgroundClass ?? "object-center"}`}
+          />
+        </motion.div>
       )}
       {media?.background && (
         <div aria-hidden="true" className="absolute inset-0 bg-void/10" />
@@ -178,18 +201,25 @@ export function PageHero({
               } ${media.ratio ?? "aspect-[4/5]"}`}
               style={mediaNatural ? { aspectRatio: `${mediaNatural}` } : undefined}
             >
-              <Image
-                src={media.src}
-                alt={media.alt}
-                fill
-                priority
-                sizes="(max-width: 1024px) 560px, 760px"
-                className={`${
-                  media.fit === "contain"
-                    ? "object-contain"
-                    : "object-cover object-top"
-                }`}
-              />
+              <motion.div
+                aria-hidden="true"
+                {...mediaLoad(0.1)}
+                className="absolute inset-0"
+              >
+                <Image
+                  src={media.src}
+                  alt={media.alt}
+                  fill
+                  priority
+                  sizes="(max-width: 1024px) 560px, 760px"
+                  onLoad={() => setMediaLoaded(true)}
+                  className={`${
+                    media.fit === "contain"
+                      ? "object-contain"
+                      : "object-cover object-top"
+                  }`}
+                />
+              </motion.div>
             </div>
           </motion.div>
         )}
