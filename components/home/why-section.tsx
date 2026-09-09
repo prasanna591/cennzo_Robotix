@@ -7,10 +7,10 @@ import { IMAGES } from "@/lib/content/images";
 const PRINCIPLE_KEYS = ["principle1", "principle2", "principle3", "principle4"] as const;
 
 const PRINCIPLE_IMAGES = [
-  IMAGES.wafeePortrait,
-  IMAGES.wafeeAngle,
-  IMAGES.wafeeStudio,
-  IMAGES.sample,
+  IMAGES.humanFriendly,
+  "/new_image/modularity.jpeg",
+  IMAGES.seeThrough,
+  IMAGES.miningScene,
 ];
 
 export function WhySection() {

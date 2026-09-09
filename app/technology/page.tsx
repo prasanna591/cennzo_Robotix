@@ -61,6 +61,14 @@ export default async function TechnologyPage() {
         lines={[t("hero.line1"), t("hero.line2")]}
         intro={t("hero.intro")}
         meta={t("hero.meta")}
+        contentRight
+        headlineSize="display"
+        media={{
+          src: "/new_image/technology_hero.png",
+          alt: t("hero.imageAlt"),
+          background: true,
+          backgroundClass: "object-center scale-[0.85] -translate-x-[12%]",
+        }}
       />
 
       {/* Blueprint archive — two editorial image plates */}
@@ -105,7 +113,7 @@ export default async function TechnologyPage() {
         <div className="mx-auto grid w-full max-w-[1440px] gap-10 px-6 py-section md:px-10 lg:grid-cols-[1fr_1.4fr] lg:gap-20">
           <SectionHeading
             eyebrow="System Register"
-            lines={["Nine subsystems.", "One Machine."]}
+            lines={["Nine subsystems", "One Machine"]}
             className="lg:sticky lg:top-40 lg:self-start"
           />
           <Reveal delay={0.1}>

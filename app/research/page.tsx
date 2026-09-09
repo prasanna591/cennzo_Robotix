@@ -3,12 +3,11 @@ import { PageHero } from "@/components/sections/page-hero";
 import { CTASection } from "@/components/sections/cta-section";
 import { StaggerGroup, StaggerItem, Reveal } from "@/components/motion/reveal";
 import { MediaFrame } from "@/components/media/media-frame";
-import { IMAGES } from "@/lib/content/images";
 
 export const metadata: Metadata = {
   title: "Research & Engineering",
   description:
-    "From first principles to field validation â€” Cennzo Robotix R&D across locomotion, actuation, perception, AI, materials, thermal management and digital engineering.",
+    "From first principles to field validation â€” Cennzo Robotix R&D across locomotion, actuation, perception, AI, materials, thermal management and digital engineering",
 };
 
 const DOMAINS = [
@@ -60,8 +59,8 @@ export default function ResearchPage() {
     <main>
       <PageHero
         eyebrow="Research & Engineering"
-        lines={["From First Principles", "To Field Validation."]}
-        intro="Deep-tech robotics is built through engineering discipline. Our R&D roadmap covers the full stack."
+        lines={["From First Principles", "To Field Validation"]}
+        intro="Deep-tech robotics is built through engineering discipline. Our R&D roadmap covers the full stack"
       />
 
       <section className="border-b border-black/[0.08]">
@@ -118,7 +117,7 @@ export default function ResearchPage() {
               code="IMG-10"
               label="Digital Twin Simulation â€” Concept Visualization"
               ratio="16/9"
-            src={IMAGES.seeThrough}
+            src="/new_image/standalone_movements.jpeg"
             />
             <div className="mt-10 border-l-2 border-accent pl-8 lg:mt-16">
               <p className="text-subhead leading-relaxed text-bone">
@@ -145,7 +144,7 @@ export default function ResearchPage() {
             </h2>
           </Reveal>
 
-          <StaggerGroup stagger={0.06} className="mt-14 flex flex-wrap gap-x-3 gap-y-4">
+          <StaggerGroup stagger={0.06} className="mt-8 flex flex-wrap gap-x-3 gap-y-4">
             {CYCLE.map((step, i) => (
               <StaggerItem key={step}>
                 <span className="flex items-center gap-3">
@@ -169,8 +168,8 @@ export default function ResearchPage() {
       </section>
 
       <CTASection
-        lines={["Engineering", "Is The Strategy."]}
-        body="Collaborate with our research and engineering teams."
+        lines={["Engineering", "Is The Strategy"]}
+        body="Collaborate with our research and engineering teams"
         primary={{ label: "Partner With Us", href: "/partnerships" }}
         secondary={{ label: "See the Technology", href: "/technology" }}
       />

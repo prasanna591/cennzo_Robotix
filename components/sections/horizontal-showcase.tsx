@@ -193,7 +193,7 @@ export function HorizontalShowcase({
           onPointerLeave={() => (hovering.current = false)}
           onPointerDown={() => (dragging.current = true)}
           onPointerUp={() => (dragging.current = false)}
-          className={`mt-12 pb-6 [scrollbar-width:none] [-webkit-overflow-scrolling:touch] [&::-webkit-scrollbar]:hidden lg:mt-10 lg:pb-0 ${
+          className={`mt-8 pb-6 [scrollbar-width:none] [-webkit-overflow-scrolling:touch] [&::-webkit-scrollbar]:hidden lg:mt-8 lg:pb-0 ${
             mobile && !reduced ? "overflow-hidden" : "overflow-x-auto"
           }`}
         >

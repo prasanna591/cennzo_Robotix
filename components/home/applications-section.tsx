@@ -69,7 +69,7 @@ export function ApplicationsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={viewportOnce}
           transition={{ duration: DURATION.standard, ease: EASE.out, delay: 0.2 }}
-          className="mt-10"
+          className="mt-8"
         >
           <Magnetic>
             <Button href="/applications" variant="ghost">
@@ -84,7 +84,7 @@ export function ApplicationsSection() {
         whileInView={{ opacity: 1 }}
         viewport={viewportOnce}
         transition={{ duration: DURATION.cinematic }}
-        className="marquee-hover mt-12 space-y-2 border-y border-black/[0.08] py-8 md:space-y-3"
+        className="marquee-hover mt-8 space-y-2 border-y border-black/[0.08] py-8 md:space-y-3"
       >
         <MarqueeRow items={domains} />
         <MarqueeRow reverse items={domains} />

@@ -58,7 +58,7 @@ export function VisionMission() {
           </p>
         </div>
 
-        <div className="mt-14 grid gap-6 lg:grid-cols-2 lg:gap-8">
+        <div className="mt-8 grid gap-6 lg:grid-cols-2 lg:gap-8">
           <motion.article
             {...panel(false)}
             className="group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-black/[0.08] bg-graphite p-9 shadow-lift md:p-14"

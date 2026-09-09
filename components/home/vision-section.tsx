@@ -59,7 +59,7 @@ export function VisionSection() {
           <p className="text-bone">{t("visionP3")}</p>
         </motion.div>
 
-        <Reveal className="mx-auto mt-16 max-w-5xl">
+        <Reveal className="mx-auto mt-8 max-w-5xl">
           <Parallax speed={0.06}>
             <MediaFrame
               code="IMG-02"
@@ -75,7 +75,7 @@ export function VisionSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={viewportOnce}
           transition={{ duration: DURATION.standard, ease: EASE.out, delay: 0.3 }}
-          className="mt-12"
+          className="mt-8"
         >
           <Magnetic>
             <Button href="/partnerships" variant="light">

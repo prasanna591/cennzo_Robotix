@@ -8,6 +8,8 @@ import { HudPanel } from "@/components/technical/hud-panel";
 import { StatBand } from "@/components/technical/stat-band";
 import { HorizontalShowcase, type ShowcaseItem } from "@/components/sections/horizontal-showcase";
 import { PhilosophyList } from "@/components/wafee/philosophy-list";
+import { OverviewSection } from "@/components/wafee/overview-section";
+import { EnvironmentsSection } from "@/components/wafee/environments-section";
 import { StaggerGroup, StaggerItem, Reveal } from "@/components/motion/reveal";
 import { TiltCard } from "@/components/motion/tilt-card";
 import { Spotlight } from "@/components/motion/spotlight";
@@ -25,12 +27,12 @@ const SHOWCASE_IMAGES = [
 ];
 
 const CAPABILITY_IMAGES = [
-  IMAGES.wafeePortrait,
-  IMAGES.wafeeAngle,
-  IMAGES.breakdown,
-  IMAGES.dimensions,
-  IMAGES.concept,
-  IMAGES.wafeeStudio,
+  "/new_image/mobility.jpeg",
+  "/new_image/manipulation.jpeg",
+  "/new_image/perception.jpeg",
+  "/new_image/autonomy.jpeg",
+  "/new_image/telemetry.jpeg",
+  "/new_image/collabration.jpeg",
 ];
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -77,6 +79,8 @@ export default async function WafeePage() {
         />
       </section>
 
+      <OverviewSection />
+
       <section className="relative overflow-hidden border-b border-black/[0.08]">
         <BackgroundObjects variant="light" />
         <div className="relative mx-auto grid w-full max-w-[1440px] gap-16 px-6 py-section md:px-10 lg:grid-cols-2 lg:gap-20">
@@ -100,7 +104,7 @@ export default async function WafeePage() {
                 label={t("media.label")}
                 ratio="3/2"
                 tag="Reference"
-                src={IMAGES.qwafee}
+                src="/new_image/wafee_five%20elemnet.png"
               />
             </Parallax>
           </Reveal>
@@ -119,13 +123,15 @@ export default async function WafeePage() {
         items={domainItems}
       />
 
+      <EnvironmentsSection />
+
       <section className="border-b border-black/[0.08]">
         <div className="mx-auto w-full max-w-[1440px] px-6 py-section md:px-10">
           <SectionHeading
             eyebrow={t("reference.eyebrow")}
             lines={[t("reference.line1"), t("reference.line2")]}
           />
-          <StaggerGroup stagger={0.04} className="mt-14 border-t border-black/[0.1]">
+          <StaggerGroup stagger={0.04} className="mt-8 border-t border-black/[0.1]">
             {specs.map((spec) => (
               <StaggerItem key={spec.label}>
                 <div className="group relative grid grid-cols-[110px_1fr] items-baseline gap-x-6 border-b border-black/[0.1] px-2 py-6 transition-colors duration-300 hover:bg-graphite md:grid-cols-[200px_260px_1fr] md:px-4 md:py-7">
@@ -163,7 +169,7 @@ export default async function WafeePage() {
           <Spotlight>
             <StaggerGroup
               stagger={0.07}
-              className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-black/[0.1] bg-black/[0.1] shadow-soft sm:grid-cols-2 lg:grid-cols-3"
+              className="mt-8 grid gap-px overflow-hidden rounded-2xl border border-black/[0.1] bg-black/[0.1] shadow-soft sm:grid-cols-2 lg:grid-cols-3"
             >
               {capabilities.map((capability, i) => (
                 <StaggerItem key={capability.index}>

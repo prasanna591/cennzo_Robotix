@@ -8,7 +8,7 @@ import { IMAGES } from "@/lib/content/images";
 export const metadata: Metadata = {
   title: "Robotics Careers",
   description:
-    "Build machines that change what is possible. Open domains across robotics, mechanical, electrical, embedded, AI/ML, control, thermal, materials and software engineering.",
+    "Build machines that change what is possible. Open domains across robotics, mechanical, electrical, embedded, AI/ML, control, thermal, materials and software engineering",
 };
 
 const DOMAINS = [
@@ -35,13 +35,13 @@ const DOMAINS = [
 ];
 
 const CULTURE = [
-  "Think deeply.",
-  "Build quickly.",
-  "Test honestly.",
-  "Learn continuously.",
-  "Take ownership.",
-  "Respect safety.",
-  "Solve real problems.",
+  "Think deeply",
+  "Build quickly",
+  "Test honestly",
+  "Learn continuously",
+  "Take ownership",
+  "Respect safety",
+  "Solve real problems",
 ];
 
 export default function CareersPage() {
@@ -49,9 +49,9 @@ export default function CareersPage() {
     <main>
       <PageHero
         eyebrow="Careers"
-        lines={["Build Machines That", "Change What Is Possible."]}
-        intro="If you want to build the future, build it with us."
-        meta="Don't just work in robotics. Push robotics forward."
+        lines={["Build Machines That", "Change What Is Possible"]}
+        intro="If you want to build the future, build it with us"
+        meta="Don't just work in robotics. Push robotics forward"
       />
 
       <section className="border-b border-black/[0.08]">
@@ -69,7 +69,7 @@ export default function CareersPage() {
             </Reveal>
             <StaggerGroup
               stagger={0.02}
-              className="mt-10 grid gap-x-10 sm:grid-cols-2"
+              className="mt-8 grid gap-x-10 sm:grid-cols-2"
             >
               {DOMAINS.map((domain) => (
                 <StaggerItem key={domain}>
@@ -113,8 +113,8 @@ export default function CareersPage() {
       </section>
 
       <CTASection
-        lines={["Push Robotics Forward."]}
-        body="Send your profile and tell us what you want to build."
+        lines={["Push Robotics Forward"]}
+        body="Send your profile and tell us what you want to build"
         primary={{ label: "View Open Roles", href: "/contact" }}
         secondary={{ label: "Send Your Profile", href: "/contact" }}
       />

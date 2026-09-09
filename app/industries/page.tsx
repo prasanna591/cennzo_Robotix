@@ -8,7 +8,7 @@ import { HorizontalShowcase, type ShowcaseItem } from "@/components/sections/hor
 import { IMAGES } from "@/lib/content/images";
 
 const SECTOR_IMAGES = [
-  IMAGES.manufacturingScene,
+  "/new_image/industry_robot.png",
   IMAGES.energyScene,
   IMAGES.serviceArea,
   IMAGES.oilGasScene,

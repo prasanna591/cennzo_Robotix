@@ -57,7 +57,7 @@ export function TechnologySection() {
           </motion.div>
         </div>
 
-        <div ref={listRef} className="relative mt-10 border-t border-black/[0.1] pl-6 md:pl-10">
+        <div ref={listRef} className="relative mt-8 border-t border-black/[0.1] pl-6 md:pl-10">
           <div aria-hidden="true" className="absolute bottom-0 left-0 top-0 w-px bg-black/[0.08]" />
           <motion.div
             aria-hidden="true"

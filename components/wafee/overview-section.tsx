@@ -27,9 +27,9 @@ const ATTRIBUTE_KEYS = [
   "attr9",
 ] as const;
 
-export function WafeeSection() {
+export function OverviewSection() {
   const reduced = useReducedMotion();
-  const tHome = useTranslations("home");
+  const t = useTranslations("wafeePage.overview");
   const stats = [
     { value: 178, suffix: " cm", decimals: 0 },
     { value: 5, suffix: "", decimals: 0 },
@@ -51,11 +51,11 @@ export function WafeeSection() {
         <div className="grid gap-16 lg:grid-cols-[1.1fr_1fr] lg:gap-24">
           <div>
             <Reveal mode="fadeIn">
-              <SectionEyebrow>{tHome("wafeeEyebrow")}</SectionEyebrow>
+              <SectionEyebrow>{t("wafeeEyebrow")}</SectionEyebrow>
             </Reveal>
 
             <h2 className="mt-8 text-display font-semibold tracking-[-0.02em] text-bone">
-              <MaskLines lines={[tHome("wafeeTitle")]} lineClassName="text-bone" />
+              <MaskLines lines={[t("wafeeTitle")]} lineClassName="text-bone" />
             </h2>
             <SectionRail />
 
@@ -66,8 +66,8 @@ export function WafeeSection() {
               transition={{ duration: DURATION.standard, ease: EASE.out }}
               className="mt-8 max-w-xl space-y-6 text-body leading-relaxed text-mist"
             >
-              <p>{tHome("wafeeP1")}</p>
-              <p>{tHome("wafeeP2")}</p>
+              <p>{t("wafeeP1")}</p>
+              <p>{t("wafeeP2")}</p>
             </motion.div>
 
             <motion.div
@@ -75,7 +75,7 @@ export function WafeeSection() {
               whileInView={{ opacity: 1 }}
               viewport={viewportOnce}
               transition={{ duration: DURATION.cinematic, delay: 0.2 }}
-              className="mt-12 grid grid-cols-3 gap-6 border-t border-black/[0.1] pt-8 sm:gap-10"
+              className="mt-8 grid grid-cols-3 gap-6 border-t border-black/[0.1] pt-8 sm:gap-10"
             >
               {stats.map((stat, i) => (
                 <div key={STAT_KEYS[i]}>
@@ -84,7 +84,7 @@ export function WafeeSection() {
                     <span className="text-lg text-mist">{stat.suffix}</span>
                   </p>
                   <p className="mt-2 font-mono text-[9px] uppercase leading-relaxed tracking-[0.18em] text-faint">
-                    {tHome(STAT_KEYS[i])}
+                    {t(STAT_KEYS[i])}
                   </p>
                 </div>
               ))}
@@ -95,10 +95,10 @@ export function WafeeSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={viewportOnce}
               transition={{ duration: DURATION.standard, ease: EASE.out, delay: 0.15 }}
-              className="mt-12"
+              className="mt-8"
             >
               <Magnetic>
-                <Button href="/wafee">{tHome("wafeeCta")}</Button>
+                <Button href="/platform">{t("wafeeCta")}</Button>
               </Magnetic>
             </motion.div>
           </div>
@@ -112,7 +112,7 @@ export function WafeeSection() {
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <span className="text-[15px] text-mist transition-colors duration-300 group-hover:text-bone">
-                      {tHome(key)}
+                      {t(key)}
                     </span>
                   </span>
                   <span

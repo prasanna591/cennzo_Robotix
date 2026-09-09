@@ -10,18 +10,30 @@ import { DURATION, EASE } from "@/lib/animations";
 import { useReady } from "@/hooks/use-ready";
 import { LanguageSwitcher } from "@/components/navigation/language-switcher";
 
-const NAV_LINKS = [
+type NavItem = {
+  href?: string;
+  key: string;
+  children?: { href: string; key: string }[];
+};
+
+const NAV_LINKS: NavItem[] = [
   { href: "/about", key: "about" },
-  { href: "/wafee", key: "wafee" },
+  {
+    key: "products",
+    children: [
+      { href: "/household", key: "productsHousehold" },
+      { href: "/industries", key: "productsIndustry" },
+      { href: "/wafee", key: "productsWafee" },
+    ],
+  },
   { href: "/technology", key: "technology" },
   { href: "/applications", key: "applications" },
-  { href: "/industries", key: "industries" },
-] as const;
+];
 
-const MOBILE_LINKS = [
+const MOBILE_LINKS: NavItem[] = [
   ...NAV_LINKS,
   { href: "/contact", key: "contact" },
-] as const;
+];
 
 function Wordmark() {
   const tHeader = useTranslations("header");
@@ -54,6 +66,7 @@ function Wordmark() {
 export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [productsOpen, setProductsOpen] = useState(false);
   const reduced = useReducedMotion();
   const ready = useReady();
   const pathname = usePathname();
@@ -81,6 +94,11 @@ export function SiteHeader() {
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
 
+  const productsItem = NAV_LINKS.find((item) => item.key === "products");
+  const productsActive = productsItem?.children?.some(
+    (child) => child.href !== "/" && isActive(child.href),
+  );
+
   return (
     <>
       <motion.header
@@ -96,33 +114,117 @@ export function SiteHeader() {
         <div
           className={`mx-auto flex max-w-[1380px] items-center justify-between border-b transition-all duration-500 ${
             scrolled && !menuOpen
-              ? "mt-3 h-[58px] rounded-2xl border-black/[0.06] bg-white/75 px-5 shadow-soft backdrop-blur-xl md:px-6"
-              : "mt-0 h-[72px] rounded-none border-transparent bg-transparent px-2 backdrop-blur-none md:px-4"
+              ? "mt-3 h-[54px] rounded-2xl border-black/[0.06] bg-white/75 px-5 shadow-soft backdrop-blur-xl md:px-6"
+              : "mt-0 h-[60px] rounded-none border-transparent bg-transparent px-2 backdrop-blur-none md:px-4"
           }`}
         >
           <Wordmark />
 
           <nav aria-label="Primary" className="hidden items-center gap-9 lg:flex">
-            {NAV_LINKS.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                aria-current={isActive(link.href) ? "page" : undefined}
-                className={`group relative text-[11px] font-medium uppercase tracking-[0.18em] transition-colors duration-300 ${
-                  isActive(link.href) ? "text-bone" : "text-mist hover:text-bone"
-                }`}
-              >
-                {tNav(link.key)}
-                <span
-                  aria-hidden="true"
-                  className={`absolute -bottom-1.5 left-0 h-[2px] w-full origin-left rounded-full bg-gradient-to-r from-accent via-violet-500 to-teal transition-transform duration-300 ease-out ${
-                    isActive(link.href)
-                      ? "scale-x-100"
-                      : "scale-x-0 group-hover:scale-x-100"
+            {NAV_LINKS.map((item) =>
+              item.children ? (
+                <div
+                  key={item.key}
+                  className="relative"
+                  onMouseEnter={() => setProductsOpen(true)}
+                  onMouseLeave={() => setProductsOpen(false)}
+                >
+                  <button
+                    type="button"
+                    aria-expanded={productsOpen}
+                    aria-haspopup="menu"
+                    onClick={() => setProductsOpen((v) => !v)}
+                    className={`group relative flex items-center gap-1.5 text-[11px] font-medium uppercase tracking-[0.18em] transition-colors duration-300 ${
+                      productsActive ? "text-bone" : "text-mist hover:text-bone"
+                    }`}
+                  >
+                    {tNav(item.key)}
+                    <svg
+                      aria-hidden="true"
+                      viewBox="0 0 12 12"
+                      className={`h-3 w-3 transition-transform duration-300 ${
+                        productsOpen ? "rotate-180" : ""
+                      }`}
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M2.5 4.5 6 8l3.5-3.5" />
+                    </svg>
+                    <span
+                      aria-hidden="true"
+                      className={`absolute -bottom-1.5 left-0 h-[2px] w-full origin-left rounded-full bg-gradient-to-r from-accent via-violet-500 to-teal transition-transform duration-300 ease-out ${
+                        productsActive
+                          ? "scale-x-100"
+                          : "scale-x-0 group-hover:scale-x-100"
+                      }`}
+                    />
+                  </button>
+                  <AnimatePresence>
+                    {productsOpen && (
+                      <motion.ul
+                        role="menu"
+                        initial={reduced ? false : { opacity: 0, y: 8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={reduced ? undefined : { opacity: 0, y: 8 }}
+                        transition={{ duration: DURATION.fast, ease: EASE.out }}
+                        className="absolute left-1/2 top-full -translate-x-1/2 pb-6 pt-4"
+                      >
+                        <div className="min-w-[230px] rounded-2xl border border-black/[0.06] bg-white/90 p-2.5 shadow-soft backdrop-blur-xl">
+                          {item.children.map((child) => (
+                            <li key={child.href} role="none">
+                              <Link
+                                role="menuitem"
+                                href={child.href}
+                                onClick={() => setProductsOpen(false)}
+                                className={`flex items-center justify-between gap-6 rounded-xl px-3.5 py-3 text-[11px] font-medium uppercase tracking-[0.18em] transition-colors duration-200 ${
+                                  isActive(child.href)
+                                    ? "bg-void/[0.04] text-bone"
+                                    : "text-mist hover:bg-void/[0.04] hover:text-bone"
+                                }`}
+                              >
+                                {tNav(child.key)}
+                                <span
+                                  aria-hidden="true"
+                                  className={`h-1.5 w-1.5 rounded-full ${
+                                    isActive(child.href)
+                                      ? "bg-gradient-to-r from-accent to-violet-500"
+                                      : "bg-black/15"
+                                  }`}
+                                />
+                              </Link>
+                            </li>
+                          ))}
+                        </div>
+                      </motion.ul>
+                    )}
+                  </AnimatePresence>
+                </div>
+              ) : (
+                <Link
+                  key={item.href}
+                  href={item.href ?? "/"}
+                  aria-current={item.href ? (isActive(item.href) ? "page" : undefined) : undefined}
+                  className={`group relative text-[11px] font-medium uppercase tracking-[0.18em] transition-colors duration-300 ${
+                    item.href && isActive(item.href)
+                      ? "text-bone"
+                      : "text-mist hover:text-bone"
                   }`}
-                />
-              </Link>
-            ))}
+                >
+                  {tNav(item.key)}
+                  <span
+                    aria-hidden="true"
+                    className={`absolute -bottom-1.5 left-0 h-[2px] w-full origin-left rounded-full bg-gradient-to-r from-accent via-violet-500 to-teal transition-transform duration-300 ease-out ${
+                      item.href && isActive(item.href)
+                        ? "scale-x-100"
+                        : "scale-x-0 group-hover:scale-x-100"
+                    }`}
+                  />
+                </Link>
+              ),
+            )}
             <span className="ml-2 flex items-center gap-2">
               <LanguageSwitcher />
             </span>
@@ -172,34 +274,79 @@ export function SiteHeader() {
             className="fixed inset-0 z-40 flex flex-col justify-between overflow-y-auto bg-void px-6 pb-10 pt-24"
           >
             <nav aria-label="Mobile" className="flex flex-col gap-1">
-              {MOBILE_LINKS.map((link, i) => (
-                <div key={link.href} className="overflow-hidden">
-                  <motion.div
-                    initial={reduced ? false : { y: "110%" }}
-                    animate={{ y: "0%" }}
-                    exit={{ y: "110%" }}
-                    transition={{
-                      duration: DURATION.standard,
-                      ease: EASE.out,
-                      delay: 0.04 + i * 0.035,
-                    }}
-                  >
-                    <Link
-                      href={link.href}
-                      onClick={() => setMenuOpen(false)}
-                      aria-current={isActive(link.href) ? "page" : undefined}
-                      className={`flex items-baseline justify-between py-2.5 text-[1.65rem] font-semibold leading-none tracking-tight transition-colors ${
-                        isActive(link.href) ? "text-accent" : "text-bone"
-                      }`}
+              {MOBILE_LINKS.map((item, i) =>
+                item.children ? (
+                  <div key={item.key} className="overflow-hidden">
+                    <motion.div
+                      initial={reduced ? false : { y: "110%" }}
+                      animate={{ y: "0%" }}
+                      exit={{ y: "110%" }}
+                      transition={{
+                        duration: DURATION.standard,
+                        ease: EASE.out,
+                        delay: 0.04 + i * 0.035,
+                      }}
                     >
-                      {tNav(link.key)}
-                      <span className="font-mono text-[10px] tracking-[0.2em] text-faint">
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
-                    </Link>
-                  </motion.div>
-                </div>
-              ))}
+                      <div className="flex items-baseline justify-between py-2.5 text-[1.65rem] font-semibold leading-none tracking-tight text-bone">
+                        {tNav(item.key)}
+                        <span className="font-mono text-[10px] tracking-[0.2em] text-faint">
+                          {String(i + 1).padStart(2, "0")}
+                        </span>
+                      </div>
+                      <div className="mb-3 ml-1 flex flex-col gap-0.5 border-l border-black/[0.08] pl-4">
+                        {item.children.map((child) => (
+                          <Link
+                            key={child.href}
+                            href={child.href}
+                            onClick={() => setMenuOpen(false)}
+                            aria-current={
+                              isActive(child.href) ? "page" : undefined
+                            }
+                            className={`py-2 text-lg font-medium leading-none tracking-tight transition-colors ${
+                              isActive(child.href)
+                                ? "text-accent"
+                                : "text-mist hover:text-bone"
+                            }`}
+                          >
+                            {tNav(child.key)}
+                          </Link>
+                        ))}
+                      </div>
+                    </motion.div>
+                  </div>
+                ) : (
+                  <div key={item.href} className="overflow-hidden">
+                    <motion.div
+                      initial={reduced ? false : { y: "110%" }}
+                      animate={{ y: "0%" }}
+                      exit={{ y: "110%" }}
+                      transition={{
+                        duration: DURATION.standard,
+                        ease: EASE.out,
+                        delay: 0.04 + i * 0.035,
+                      }}
+                    >
+                      <Link
+                        href={item.href ?? "/"}
+                        onClick={() => setMenuOpen(false)}
+                        aria-current={
+                          item.href ? (isActive(item.href) ? "page" : undefined) : undefined
+                        }
+                        className={`flex items-baseline justify-between py-2.5 text-[1.65rem] font-semibold leading-none tracking-tight transition-colors ${
+                          item.href && isActive(item.href)
+                            ? "text-accent"
+                            : "text-bone"
+                        }`}
+                      >
+                        {tNav(item.key)}
+                        <span className="font-mono text-[10px] tracking-[0.2em] text-faint">
+                          {String(i + 1).padStart(2, "0")}
+                        </span>
+                      </Link>
+                    </motion.div>
+                  </div>
+                ),
+              )}
             </nav>
 
             <motion.div

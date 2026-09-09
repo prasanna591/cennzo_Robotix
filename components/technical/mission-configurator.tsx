@@ -8,7 +8,7 @@ const CONFIGS = {
   earth: {
     name: "Earth",
     focus:
-      "Industrial, infrastructure and disaster environments built around human-scale spaces.",
+      "Industrial, infrastructure and disaster environments built around human-scale spaces",
     modules: [
       "Inspection payloads",
       "Manipulation tools",
@@ -20,7 +20,7 @@ const CONFIGS = {
   water: {
     name: "Water",
     focus:
-      "Marine and offshore assets requiring protected architectures and remote operation.",
+      "Marine and offshore assets requiring protected architectures and remote operation",
     modules: [
       "Environmental sensing",
       "Communication modules",
@@ -32,7 +32,7 @@ const CONFIGS = {
   fire: {
     name: "Fire",
     focus:
-      "High-temperature zones where thermal protection and cooling define the configuration.",
+      "High-temperature zones where thermal protection and cooling define the configuration",
     modules: [
       "Thermal sensing",
       "Mission-specific protective systems",
@@ -44,7 +44,7 @@ const CONFIGS = {
   air: {
     name: "Air",
     focus:
-      "Elevated and exposed structures reached through intelligent mobility and comms.",
+      "Elevated and exposed structures reached through intelligent mobility and comms",
     modules: [
       "Navigation payloads",
       "Communication modules",
@@ -56,7 +56,7 @@ const CONFIGS = {
   space: {
     name: "Space",
     focus:
-      "Vacuum, radiation and off-world operations on the long-term research frontier.",
+      "Vacuum, radiation and off-world operations on the long-term research frontier",
     modules: [
       "Communication modules",
       "Mission-specific protective systems",

@@ -85,7 +85,7 @@ export function CTASection({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={viewportOnce}
           transition={{ duration: DURATION.standard, ease: EASE.out, delay: 0.25 }}
-          className="mt-10 flex flex-wrap items-center justify-center gap-4"
+          className="mt-8 flex flex-wrap items-center justify-center gap-4"
         >
           <Magnetic>
             <Button href={primary.href} variant="light">

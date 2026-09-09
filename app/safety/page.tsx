@@ -9,7 +9,7 @@ import { IMAGES } from "@/lib/content/images";
 export const metadata: Metadata = {
   title: "Validation & Safety",
   description:
-    "Trust is engineered. Cennzo Robotix safety architecture across mechanical, electrical, software and operational layers â€” with a rigorous validation philosophy.",
+    "Trust is engineered. Cennzo Robotix safety architecture across mechanical, electrical, software and operational layers â€” with a rigorous validation philosophy",
 };
 
 const LAYERS = [
@@ -61,19 +61,19 @@ const LAYERS = [
 const VALIDATION_LEVELS = [
   {
     level: "Design Target",
-    description: "An engineering objective. Not yet demonstrated.",
+    description: "An engineering objective. Not yet demonstrated",
   },
   {
     level: "Prototype Result",
-    description: "Observed on prototype hardware under test conditions.",
+    description: "Observed on prototype hardware under test conditions",
   },
   {
     level: "Validated Performance",
-    description: "Confirmed through defined, documented test procedures.",
+    description: "Confirmed through defined, documented test procedures",
   },
   {
     level: "Certified Performance",
-    description: "Verified by recognized third-party certification.",
+    description: "Verified by recognized third-party certification",
   },
 ];
 
@@ -82,8 +82,8 @@ export default function SafetyPage() {
     <main>
       <PageHero
         eyebrow="Validation & Safety"
-        lines={["Trust Is Engineered."]}
-        intro="A humanoid robot operating around people cannot rely on intelligence alone. Safety must exist at every layer."
+        lines={["Trust Is Engineered"]}
+        intro="A humanoid robot operating around people cannot rely on intelligence alone. Safety must exist at every layer"
       />
 
       <section className="border-b border-black/[0.08]">
@@ -96,7 +96,7 @@ export default function SafetyPage() {
           <Spotlight>
           <StaggerGroup
             stagger={0.1}
-            className="mt-10 grid gap-px overflow-hidden rounded-2xl border border-black/[0.1] bg-black/[0.1] shadow-soft sm:grid-cols-2 lg:grid-cols-4"
+            className="mt-8 grid gap-px overflow-hidden rounded-2xl border border-black/[0.1] bg-black/[0.1] shadow-soft sm:grid-cols-2 lg:grid-cols-4"
           >
             {LAYERS.map((layer) => (
               <StaggerItem key={layer.index}>
@@ -159,7 +159,7 @@ export default function SafetyPage() {
             </p>
           </Reveal>
 
-          <StaggerGroup stagger={0.08} className="mt-14 border-t border-black/[0.1]">
+          <StaggerGroup stagger={0.08} className="mt-8 border-t border-black/[0.1]">
             {VALIDATION_LEVELS.map((item, i) => (
               <StaggerItem key={item.level}>
                 <div className="group grid grid-cols-[auto_1fr] items-baseline gap-x-8 gap-y-2 border-b border-black/[0.1] py-6 md:grid-cols-[80px_320px_1fr]">
@@ -184,8 +184,8 @@ export default function SafetyPage() {
       </section>
 
       <CTASection
-        lines={["Credibility Is", "The Product."]}
-        body="Review our validation approach for your deployment scenario."
+        lines={["Credibility Is", "The Product"]}
+        body="Review our validation approach for your deployment scenario"
         primary={{ label: "Contact Us", href: "/contact" }}
         secondary={{ label: "Explore WAFEE", href: "/wafee" }}
       />

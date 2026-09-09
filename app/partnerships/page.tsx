@@ -9,7 +9,7 @@ import { PARTNER_TYPES } from "@/lib/content/site";
 export const metadata: Metadata = {
   title: "Partnerships",
   description:
-    "Build the future with us. Technology, industrial, research, manufacturing and government partnerships around the WAFEE humanoid robotics platform.",
+    "Build the future with us. Technology, industrial, research, manufacturing and government partnerships around the WAFEE humanoid robotics platform",
 };
 
 export default function PartnershipsPage() {
@@ -17,8 +17,8 @@ export default function PartnershipsPage() {
     <main>
       <PageHero
         eyebrow="Partnerships"
-        lines={["Build The Future", "With Us."]}
-        intro="No deep-tech company builds the future alone. Cennzo Robotix is building an ecosystem across robotics, AI, advanced materials, motors and actuators, batteries, sensors, manufacturing, simulation, aerospace, research and industrial deployment."
+        lines={["Build The Future", "With Us"]}
+        intro="No deep-tech company builds the future alone. Cennzo Robotix is building an ecosystem across robotics, AI, advanced materials, motors and actuators, batteries, sensors, manufacturing, simulation, aerospace, research and industrial deployment"
       />
 
       <section className="border-b border-black/[0.08]">
@@ -60,8 +60,8 @@ export default function PartnershipsPage() {
       </section>
 
       <CTASection
-        lines={["Become A Partner."]}
-        body="Bring your technology, your mission problems or your capital to the platform."
+        lines={["Become A Partner"]}
+        body="Bring your technology, your mission problems or your capital to the platform"
         primary={{ label: "Become a Partner", href: "/contact" }}
         secondary={{ label: "Investor Information", href: "/investors" }}
       />

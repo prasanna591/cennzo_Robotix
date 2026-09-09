@@ -7,7 +7,6 @@ import { StaggerGroup, StaggerItem, Reveal } from "@/components/motion/reveal";
 import { ScrollFillText } from "@/components/motion/scroll-fill-text";
 import { Parallax } from "@/components/motion/parallax";
 import { MediaFrame } from "@/components/media/media-frame";
-import { IMAGES } from "@/lib/content/images";
 import { BackgroundObjects } from "@/components/decor/background-objects";
 import { StatBand } from "@/components/technical/stat-band";
 import { VisionMission } from "@/components/about/vision-mission";
@@ -32,6 +31,14 @@ export default async function AboutPage() {
         eyebrow={t("hero.eyebrow")}
         lines={[t("hero.line1"), t("hero.line2")]}
         intro={<>{t("hero.intro")}</>}
+        headlineSize="display"
+        contentTop
+        media={{
+          src: "/new_image/about_hero.png",
+          alt: t("hero.imageAlt"),
+          background: true,
+          backgroundClass: "object-center translate-x-[16%]",
+        }}
       />
 
       <section className="relative overflow-hidden border-b border-black/[0.08]">
@@ -50,7 +57,7 @@ export default async function AboutPage() {
             />
           </h2>
 
-          <div className="mt-16 grid gap-12 lg:grid-cols-2 lg:gap-20">
+          <div className="mt-8 grid gap-12 lg:grid-cols-2 lg:gap-20">
             <Reveal>
               <p className="text-body leading-relaxed text-mist">
                 {t("whoWeAre.para1")}
@@ -91,7 +98,7 @@ export default async function AboutPage() {
                 code="IMG-03"
                 label={t("media.label")}
                 ratio="16/9"
-              src={IMAGES.workingModel}
+              src="/new_image/humanois_fullest_usage.png"
               />
             </Parallax>
           </Reveal>
@@ -128,7 +135,7 @@ export default async function AboutPage() {
           <SectionHeading eyebrow={t("values.eyebrow")} lines={[t("values.line1"), t("values.line2")]} />
           <StaggerGroup
             stagger={0.07}
-            className="mt-14 grid gap-x-12 gap-y-12 sm:grid-cols-2 lg:grid-cols-3"
+            className="mt-8 grid gap-x-12 gap-y-12 sm:grid-cols-2 lg:grid-cols-3"
           >
             {values.map((value, i) => (
               <StaggerItem key={value.title}>

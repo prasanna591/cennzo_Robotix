@@ -85,7 +85,7 @@ export default function OpengraphImage() {
                 color: "transparent",
               }}
             >
-              Hard Places.
+              Hard Places
             </span>
           </span>
         </div>

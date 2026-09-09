@@ -9,7 +9,7 @@ import { IMAGES } from "@/lib/content/images";
 export const metadata: Metadata = {
   title: "Platform Architecture",
   description:
-    "One robot. Many mission configurations. WAFEE is designed around a common core platform with mission-specific modules.",
+    "One robot. Many mission configurations. WAFEE is designed around a common core platform with mission-specific modules",
 };
 
 const CORE = [
@@ -97,8 +97,8 @@ export default function PlatformPage() {
     <main>
       <PageHero
         eyebrow="Platform Architecture"
-        lines={["One Robot.", "Many Mission Configurations."]}
-        intro="WAFEE is designed around a common core platform with mission-specific modules."
+        lines={["One Robot", "Many Mission Configurations"]}
+        intro="WAFEE is designed around a common core platform with mission-specific modules"
       />
 
       <section className="border-b border-black/[0.08]">
@@ -141,8 +141,8 @@ export default function PlatformPage() {
       </section>
 
       <CTASection
-        lines={["Configured For", "The Mission."]}
-        body="Discuss a mission configuration for your industry."
+        lines={["Configured For", "The Mission"]}
+        body="Discuss a mission configuration for your industry"
         primary={{ label: "Contact Us", href: "/contact" }}
         secondary={{ label: "View Industries", href: "/industries" }}
       />

@@ -1,9 +1,7 @@
 import { getTranslations } from "next-intl/server";
 import { Hero } from "@/components/hero/hero";
 import { IntroSection } from "@/components/home/intro-section";
-import { WafeeSection } from "@/components/home/wafee-section";
 import { ImpactSection } from "@/components/home/impact-section";
-import { EnvironmentsSection } from "@/components/home/environments-section";
 import { WhySection } from "@/components/home/why-section";
 import { TechnologySection } from "@/components/home/technology-section";
 import { ApplicationsSection } from "@/components/home/applications-section";
@@ -17,9 +15,7 @@ export default async function Home() {
     <main>
       <Hero />
       <IntroSection />
-      <WafeeSection />
       <ImpactSection />
-      <EnvironmentsSection />
       <WhySection />
       <TechnologySection />
       <ApplicationsSection />

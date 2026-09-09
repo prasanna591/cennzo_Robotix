@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/buttons/button";
 import { BlurLines } from "@/components/motion/blur-lines";
@@ -108,11 +109,8 @@ export function Hero() {
       <Atmosphere />
       <BackgroundObjects variant="light" />
 
-<motion.div
-          className="relative mx-auto flex w-full max-w-[1440px] flex-1 flex-col justify-center px-6 pb-14 pt-[120px] md:px-10"
-        >
+<motion.div className="relative mx-auto grid w-full max-w-[1440px] flex-1 items-center gap-14 px-6 pb-14 pt-[120px] md:px-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
           <div className="max-w-3xl">
-          <div>
             <motion.p
               {...enter(0.2)}
               className="mb-8 flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.25em] text-mist"
@@ -141,14 +139,26 @@ export function Hero() {
               {t("lede")}
             </motion.p>
 
-            <motion.div {...enter(0.7)} className="mt-12 flex flex-wrap gap-4">
+            <motion.div {...enter(0.7)} className="mt-8 flex flex-wrap gap-4">
               <Button href="/wafee">{t("ctaPrimary")}</Button>
               <Button href="/contact" variant="ghost">
                 {t("ctaSecondary")}
               </Button>
             </motion.div>
           </div>
-        </div>
+
+        <motion.div {...enter(0.5)} className="relative lg:pl-6">
+          <div className="relative mx-auto aspect-[2/3] w-full max-w-[600px]">
+            <Image
+              src="/new_image/updated_hero.png"
+              alt={t("imageAlt")}
+              fill
+              priority
+              sizes="(max-width: 1024px) 600px, 680px"
+              className="object-cover object-top"
+            />
+          </div>
+        </motion.div>
       </motion.div>
 
       <motion.div

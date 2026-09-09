@@ -194,8 +194,8 @@ function Lightbox({
               <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-mist">
                 {label} —{" "}
                 {tag === "Concept"
-                  ? "Concept visualization, not production imagery."
-                  : "Reference imagery."}
+                  ? "Concept visualization, not production imagery"
+                  : "Reference imagery"}
               </p>
               <button
                 ref={closeRef}

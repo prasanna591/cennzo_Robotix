@@ -5,11 +5,13 @@
   },
   "nav": {
     "about": "关于我们",
-    "wafee": "WAFEE",
+    "products": "产品",
     "technology": "技术",
     "applications": "应用",
-    "industries": "行业",
-    "contact": "联系我们"
+    "contact": "联系我们",
+    "productsHousehold": "家用",
+    "productsIndustry": "工业",
+    "productsWafee": "WAFEE"
   },
   "palette": {
     "searchPlaceholder": "搜索这台机器…",
@@ -126,49 +128,6 @@
     "introP3": "Cennzo Robotix 正在将 WAFEE 打造为一类全新的人形机器人平台——融合人体兼容形态、先进驱动、智能感知、自主控制与精心设计的环境保护架构。",
     "introGoalLabel": "我们的目标",
     "introGoal": "在人员暴露风险高、作业复杂或环境不确定性使传统方式低效甚至危险的场所，部署具备实战能力的机器。",
-    "wafeeEyebrow": "平台",
-    "wafeeTitle": "认识 WAFEE。",
-    "wafeeP1": "WAFEE 是一个身高约 178 厘米级别的人形机器人平台，以模块化架构支撑移动、操作、感知与自主运行。",
-    "wafeeP2": "WAFEE 被设计为一个平台而非单一用途的机器，可以跨行业、跨任务类型并面向未来几代机器人智能持续演进。",
-    "statHeight": "人形级身高",
-    "statEnvironments": "任务环境",
-    "statAttributes": "核心平台特性",
-    "wafeeCta": "深入了解 WAFEE 平台",
-    "wafeeImgLabel": "WAFEE 整机平台 — 参考影像",
-    "attr1": "人体尺度外形",
-    "attr2": "高性能电动驱动",
-    "attr3": "先进感知与传感器融合",
-    "attr4": "AI 辅助决策",
-    "attr5": "模块化软硬件架构",
-    "attr6": "环境保护架构",
-    "attr7": "面向任务的自主性",
-    "attr8": "远程与自主运行",
-    "attr9": "持续健康与系统监测",
-    "envEyebrow": "征程 — 五种环境",
-    "envTitle1": "一个平台。",
-    "envTitle2": "多个世界。",
-    "envScrollA": "滚动查看路线图",
-    "envScrollB": " —— 从地球到太空。",
-    "envDisclaimer": "WAFEE 的多环境愿景代表一项长期工程路线图。具体环境能力取决于特定任务配置、验证与认证。",
-    "statusPrimary": "主要开发中",
-    "statusRoadmap": "工程路线图",
-    "statusResearch": "研究阶段",
-    "statusVision": "长期愿景",
-    "earthName": "地球",
-    "earthDomain": "工业 · 基础设施 · 灾害",
-    "earthDesc": "凭借人体兼容的移动与操作能力，穿行于工业、基础设施、物流与灾害环境。",
-    "waterName": "水",
-    "waterDomain": "海洋 · 海上 · 水下",
-    "waterDesc": "通过受保护的机器人架构，在水域环境中执行检查、干预与支援作业。",
-    "fireName": "火",
-    "fireDomain": "高温 · 危险区域",
-    "fireDesc": "在人员难以直接进入的高温与危险区域提供作业支持。",
-    "airName": "气",
-    "airDomain": "高空 · 暴露 · 进入受限",
-    "airDesc": "借助智能机动性与专用任务系统，在高空、暴露及难以进入的环境中作业。",
-    "spaceName": "宇",
-    "spaceDomain": "真空 · 辐射 · 地外",
-    "spaceDesc": "为真空、强辐射及地外环境中的机器人作业开辟道路。",
     "whyEyebrow": "为何是 Cennzo",
     "whyL1": "为使命而造，",
     "whyL2": "而非为了~演示~。",
@@ -248,7 +207,8 @@
       "eyebrow": "关于我们",
       "line1": "工程",
       "line2": "智能。",
-      "intro": "Cennzo Robotix 是一家深科技机器人公司，致力于为严酷的真实环境打造智能仿人系统。"
+      "intro": "Cennzo Robotix 是一家深科技机器人公司，致力于为严酷的真实环境打造智能仿人系统。",
+      "imageAlt": "关于 Cennzo Robotix —— 任务准备就绪环境中的 WAFEE 人形机器人"
     },
     "whoWeAre": {
       "eyebrow": "我们是谁",
@@ -337,16 +297,16 @@
       "title1": "拓展人的能力边界。",
       "titlePre": "让人们",
       "titleAccent": "远离危险。",
-      "body": "我们构建能够前往对人类而言困难、危险或低效之处的智能机器——在提升运营安全的同时，打开曾经无法企及的环境。",
-      "footer": "当工程信守承诺之时"
+      "body": "造出能将人类触角延伸到对肉身而言过于危险、过于偏远或过于极端之环境的人形机器人——覆盖工业、国防、太空与日常生活。",
+      "footer": "因为机器人最有价值的行为，就是先行一步。"
     },
     "vision": {
       "label": "愿景",
       "title1": "一个机器人与人类",
       "titlePre": "并肩工作",
       "titleAccent": "的世界。",
-      "body": "危险、重复、难以到达且技术上苛刻的工作，交由具备毅力、精度与韧性的机器承担；人类得以追求更高的志向。",
-      "footer": "超越地平线"
+      "body": "以能够感知、学习并在任何环境中运作的智能自适应人形机器人，重新定义人类能力的边界——从地球上最具挑战的环境，到更遥远的前沿。",
+      "footer": "WAFEE —— 一种智能，无处不在。"
     }
   },
   "aboutApproach": {
@@ -631,6 +591,53 @@
       "body": "看看 WAFEE 如何适应不同的任务剖面。",
       "primary": "查看平台架构",
       "secondary": "与我们交谈"
+    },
+    "overview": {
+      "wafeeEyebrow": "平台",
+      "wafeeTitle": "认识 WAFEE。",
+      "wafeeP1": "WAFEE 是一个身高约 178 厘米级别的人形机器人平台，以模块化架构支撑移动、操作、感知与自主运行。",
+      "wafeeP2": "WAFEE 被设计为一个平台而非单一用途的机器，可以跨行业、跨任务类型并面向未来几代机器人智能持续演进。",
+      "statHeight": "人形级身高",
+      "statEnvironments": "任务环境",
+      "statAttributes": "核心平台特性",
+      "wafeeCta": "深入了解 WAFEE 平台",
+      "wafeeImgLabel": "WAFEE 整机平台 — 参考影像",
+      "attr1": "人体尺度外形",
+      "attr2": "高性能电动驱动",
+      "attr3": "先进感知与传感器融合",
+      "attr4": "AI 辅助决策",
+      "attr5": "模块化软硬件架构",
+      "attr6": "环境保护架构",
+      "attr7": "面向任务的自主性",
+      "attr8": "远程与自主运行",
+      "attr9": "持续健康与系统监测"
+    },
+    "environments": {
+      "envEyebrow": "征程 — 五种环境",
+      "envTitle1": "一个平台。",
+      "envTitle2": "多个世界。",
+      "envScrollA": "滚动查看路线图",
+      "envScrollB": " —— 从地球到太空。",
+      "envDisclaimer": "WAFEE 的多环境愿景代表一项长期工程路线图。具体环境能力取决于特定任务配置、验证与认证。",
+      "statusPrimary": "主要开发中",
+      "statusRoadmap": "工程路线图",
+      "statusResearch": "研究阶段",
+      "statusVision": "长期愿景",
+      "earthName": "地球",
+      "earthDomain": "工业 · 基础设施 · 灾害",
+      "earthDesc": "凭借人体兼容的移动与操作能力，穿行于工业、基础设施、物流与灾害环境。",
+      "waterName": "水",
+      "waterDomain": "海洋 · 海上 · 水下",
+      "waterDesc": "通过受保护的机器人架构，在水域环境中执行检查、干预与支援作业。",
+      "fireName": "火",
+      "fireDomain": "高温 · 危险区域",
+      "fireDesc": "在人员难以直接进入的高温与危险区域提供作业支持。",
+      "airName": "气",
+      "airDomain": "高空 · 暴露 · 进入受限",
+      "airDesc": "借助智能机动性与专用任务系统，在高空、暴露及难以进入的环境中作业。",
+      "spaceName": "宇",
+      "spaceDomain": "真空 · 辐射 · 地外",
+      "spaceDesc": "为真空、强辐射及地外环境中的机器人作业开辟道路。"
     }
   },
   "techPage": {
@@ -643,7 +650,8 @@
       "line1": "WAFEE 背后的",
       "line2": "技术栈。",
       "intro": "WAFEE 采用垂直整合的机器人架构构建。",
-      "meta": "每一个关节。每一个传感器。每一行代码。同一个系统。"
+      "meta": "每一个关节。每一个传感器。每一行代码。同一个系统。",
+      "imageAlt": "WAFEE —— 为实验室之外的环境而打造的人形平台"
     },
     "media": {
       "label": "WAFEE 系统架构 — 概念图"
@@ -1197,6 +1205,56 @@
         "body": "您的邮件客户端现在会打开 <email>info@cennzo.com</email> 并附上您的留言。发送后，我们的团队会尽快回复您。",
         "again": "再发一条消息"
       }
+    }
+  },
+  "householdPage": {
+    "meta": {
+      "title": "家用机器人 | Cennzo Robotix",
+      "description": "面向家庭的 WAFEE —— 专为家务协助、照护和日常任务打造的人形机器人平台。了解家用机器人路线图。"
+    },
+    "hero": {
+      "eyebrow": "家用",
+      "imageAlt": "WAFEE —— 专为日常居家生活设计的人形机器人伴侣",
+      "line1": "智能生活，",
+      "line2": "走进每个家庭",
+      "intro": "WAFEE 的家用路线图将人形友好机器人带入日常生活 —— 在为人们设计的环境中提供服务、协助和家务支持。",
+      "meta": "家用应用属于工程路线图范畴，并非当前商业部署。"
+    },
+    "vision": {
+      "eyebrow": "家庭智能",
+      "line1": "可靠协助，",
+      "line2": "人形尺度",
+      "body": "人形尺度外形、温和交互与任务适配的自主能力融为一体，让 WAFEE 进入人们生活的空间。"
+    },
+    "features": {
+      "eyebrow": "能力",
+      "line1": "为日常",
+      "line2": "生活而设计",
+      "items": [
+        {
+          "name": "协助",
+          "description": "通过人形友好型的移动与操作能力，协助完成家务和日常生活。"
+        },
+        {
+          "name": "陪伴",
+          "description": "专为居家环境中的舒适、安全与信任而设计的存在感与互动。"
+        },
+        {
+          "name": "监测",
+          "description": "通过持续的健康与系统监测，确保在人群环境中可靠运行。"
+        },
+        {
+          "name": "适应",
+          "description": "模块化的硬件与软件，随每个家庭的需求持续演进。"
+        }
+      ]
+    },
+    "cta": {
+      "line1": "把 WAFEE",
+      "line2": "带回家",
+      "body": "了解家用路线图，或开启家庭机器人对话",
+      "primary": "联系我们",
+      "secondary": "了解 WAFEE"
     }
   }
 }

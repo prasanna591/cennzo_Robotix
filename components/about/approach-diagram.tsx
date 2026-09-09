@@ -33,7 +33,7 @@ export function ApproachDiagram() {
   }));
 
   return (
-    <div className="mt-16">
+    <div className="mt-8">
       <div className="grid gap-5 md:grid-cols-3">
         {items.map((item, i) => (
           <motion.div

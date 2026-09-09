@@ -179,7 +179,7 @@ export default async function ApplicationsPage() {
             lines={[t("matrix.line1"), t("matrix.line2")]}
             body={<p>{t("matrix.body")}</p>}
           />
-          <div className="mt-14">
+          <div className="mt-8">
             <DomainGrid
               domains={domains.map((d) => ({
                 id: d.id,

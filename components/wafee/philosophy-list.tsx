@@ -12,7 +12,7 @@ export function PhilosophyList() {
   const items = t.raw("items") as Item[];
 
   return (
-    <div className="mt-12">
+    <div className="mt-8">
       {items.map((item, i) => (
         <motion.div
           key={item.word}

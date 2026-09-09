@@ -30,7 +30,7 @@ export function ImpactSection() {
         </Reveal>
         <SectionRail />
 
-        <div className="mt-14 grid gap-10 lg:grid-cols-2 lg:gap-8">
+        <div className="mt-8 grid gap-10 lg:grid-cols-2 lg:gap-8">
           <Reveal delay={0.1}>
             <MediaFrame
               code="IMG-07"
@@ -46,7 +46,7 @@ export function ImpactSection() {
               label={t("impactDoctorLabel")}
               ratio="4/3"
               tag="Reference"
-              src={IMAGES.homecareScene}
+              src="/new_image/surgergy%20humanoid.png"
             />
           </Reveal>
         </div>

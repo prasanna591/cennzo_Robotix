@@ -81,7 +81,7 @@ export async function generateMetadata(): Promise<Metadata> {
       card: "summary_large_image",
       title: "Cennzo Robotix | Deep-Tech Humanoid Robotics",
       description:
-        "Intelligent machines for the real world. Meet WAFEE — the unified multi-environment humanoid platform.",
+        "Intelligent machines for the real world. Meet WAFEE — the unified multi-environment humanoid platform",
     },
     robots: {
       index: true,
@@ -103,7 +103,7 @@ const jsonLd = {
   url: "https://cennzo.com",
   slogan: "Innovate · Automate · Elevate",
   description:
-    "Deep-tech robotics company building WAFEE — a full-size humanoid robot platform engineered for the world's hardest industrial environments.",
+    "Deep-tech robotics company building WAFEE — a full-size humanoid robot platform engineered for the world's hardest industrial environments",
   knowsAbout: [
     "Humanoid robotics",
     "Multi-environment robotics",

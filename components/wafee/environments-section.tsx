@@ -44,7 +44,7 @@ const STATUS_STYLE: Record<string, string> = {
 
 export function EnvironmentsSection() {
   const reduced = useReducedMotion();
-  const tHome = useTranslations("home");
+  const t = useTranslations("wafeePage.environments");
 
   return (
     <section id="environments" className="relative border-b border-black/[0.08]">
@@ -55,20 +55,20 @@ export function EnvironmentsSection() {
 
       <div className="mx-auto w-full max-w-[1440px] px-6 py-section md:px-10">
         <Reveal mode="fadeIn">
-          <SectionEyebrow>{tHome("envEyebrow")}</SectionEyebrow>
+          <SectionEyebrow>{t("envEyebrow")}</SectionEyebrow>
         </Reveal>
 
         <h2 className="mt-8 max-w-3xl text-display font-semibold tracking-[-0.02em] text-bone">
-          <MaskLines lines={[tHome("envTitle1"), tHome("envTitle2")]} lineClassName="text-bone" />
+          <MaskLines lines={[t("envTitle1"), t("envTitle2")]} lineClassName="text-bone" />
         </h2>
         <SectionRail />
 
         <p className="mt-6 max-w-xl font-mono text-[10px] uppercase leading-loose tracking-[0.22em] text-faint">
-          {tHome("envScrollA")}
-          <span className="text-accent">{tHome("envScrollB")}</span>
+          {t("envScrollA")}
+          <span className="text-accent">{t("envScrollB")}</span>
         </p>
 
-        <div className="mt-16">
+        <div className="mt-8">
           {ENVIRONMENTS.map((env, i) => (
             <div
               key={env.id}
@@ -98,16 +98,16 @@ export function EnvironmentsSection() {
                     }`}
                   >
                     <span aria-hidden="true" className="h-1 w-1 rounded-full bg-current" />
-                    {tHome(STATUS_KEYS[env.status] ?? "statusRoadmap")}
+                    {t(STATUS_KEYS[env.status] ?? "statusRoadmap")}
                   </span>
                   <p className="mt-8 font-mono text-[10px] uppercase tracking-[0.25em] text-faint">
-                    {env.index} / 05 — {tHome(ENV_KEYS[env.id as keyof typeof ENV_KEYS].domain)}
+                    {env.index} / 05 — {t(ENV_KEYS[env.id as keyof typeof ENV_KEYS].domain)}
                   </p>
                   <h3 className="mt-4 text-4xl font-semibold tracking-tight text-bone md:text-5xl">
-                    {tHome(ENV_KEYS[env.id as keyof typeof ENV_KEYS].name)}
+                    {t(ENV_KEYS[env.id as keyof typeof ENV_KEYS].name)}
                   </h3>
                   <p className="mt-5 max-w-md text-body leading-relaxed text-mist">
-                    {tHome(ENV_KEYS[env.id as keyof typeof ENV_KEYS].desc)}
+                    {t(ENV_KEYS[env.id as keyof typeof ENV_KEYS].desc)}
                   </p>
                   <span
                     aria-hidden="true"
@@ -133,7 +133,7 @@ export function EnvironmentsSection() {
 
         <Reveal mode="fadeIn">
           <p className="mx-auto mt-12 max-w-2xl text-center font-mono text-[10px] leading-relaxed tracking-[0.08em] text-faint">
-            {tHome("envDisclaimer")}
+            {t("envDisclaimer")}
           </p>
         </Reveal>
       </div>

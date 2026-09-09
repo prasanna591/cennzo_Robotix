@@ -61,7 +61,7 @@ export const ENVIRONMENTS = [
     name: "Earth",
     domain: "Industrial · Infrastructure · Disaster",
     description:
-      "Navigate industrial, infrastructure, logistics and disaster environments with human-compatible mobility and manipulation.",
+      "Navigate industrial, infrastructure, logistics and disaster environments with human-compatible mobility and manipulation",
     status: "PRIMARY DEVELOPMENT",
   },
   {
@@ -70,7 +70,7 @@ export const ENVIRONMENTS = [
     name: "Water",
     domain: "Marine · Offshore · Subsurface",
     description:
-      "Enable inspection, intervention and support operations in aquatic environments through a protected robotic architecture.",
+      "Enable inspection, intervention and support operations in aquatic environments through a protected robotic architecture",
     status: "ENGINEERING ROADMAP",
   },
   {
@@ -79,7 +79,7 @@ export const ENVIRONMENTS = [
     name: "Fire",
     domain: "High-Temperature · Hazardous Zones",
     description:
-      "Support operations in high-temperature and hazardous zones where direct human access is limited.",
+      "Support operations in high-temperature and hazardous zones where direct human access is limited",
     status: "ENGINEERING ROADMAP",
   },
   {
@@ -88,7 +88,7 @@ export const ENVIRONMENTS = [
     name: "Air",
     domain: "Elevated · Exposed · Access-Limited",
     description:
-      "Operate across elevated, exposed and difficult-to-access environments using intelligent mobility and mission-specific systems.",
+      "Operate across elevated, exposed and difficult-to-access environments using intelligent mobility and mission-specific systems",
     status: "RESEARCH",
   },
   {
@@ -97,7 +97,7 @@ export const ENVIRONMENTS = [
     name: "Space",
     domain: "Vacuum · Radiation · Off-World",
     description:
-      "Create a pathway toward robotic operations in vacuum, extreme radiation and off-world environments.",
+      "Create a pathway toward robotic operations in vacuum, extreme radiation and off-world environments",
     status: "LONG-TERM VISION",
   },
 ] as const;
@@ -119,25 +119,25 @@ export const PRINCIPLES = [
     index: "01",
     title: "Human-Compatible",
     description:
-      "Designed around a human-scale form factor so the robot can interact with spaces, tools and infrastructure created for people.",
+      "Designed around a human-scale form factor so the robot can interact with spaces, tools and infrastructure created for people",
   },
   {
     index: "02",
     title: "Modular",
     description:
-      "Hardware and software are designed to evolve without redesigning the entire platform.",
+      "Hardware and software are designed to evolve without redesigning the entire platform",
   },
   {
     index: "03",
     title: "Intelligent",
     description:
-      "Perception, planning and control are integrated to enable increasingly autonomous operation.",
+      "Perception, planning and control are integrated to enable increasingly autonomous operation",
   },
   {
     index: "04",
     title: "Resilient",
     description:
-      "The platform is being engineered around demanding environmental, thermal, mechanical and operational requirements.",
+      "The platform is being engineered around demanding environmental, thermal, mechanical and operational requirements",
   },
 ] as const;
 
@@ -147,56 +147,56 @@ export const TECHNOLOGY_SYSTEMS = [
     index: "01",
     name: "Mechanical Systems",
     summary:
-      "High-performance joints, lightweight structural architecture and precision transmission systems.",
+      "High-performance joints, lightweight structural architecture and precision transmission systems",
   },
   {
     id: "actuation",
     index: "02",
     name: "Actuation",
     summary:
-      "High-torque electric actuation engineered for dynamic humanoid movement, manipulation and controlled force.",
+      "High-torque electric actuation engineered for dynamic humanoid movement, manipulation and controlled force",
   },
   {
     id: "perception",
     index: "03",
     name: "Perception",
     summary:
-      "Multi-modal sensing combining vision, depth, inertial information, force/torque feedback and environmental sensing.",
+      "Multi-modal sensing combining vision, depth, inertial information, force/torque feedback and environmental sensing",
   },
   {
     id: "compute",
     index: "04",
     name: "Compute & AI",
     summary:
-      "Onboard computing architecture for perception, planning, control, diagnostics and mission intelligence.",
+      "Onboard computing architecture for perception, planning, control, diagnostics and mission intelligence",
   },
   {
     id: "power",
     index: "05",
     name: "Power",
     summary:
-      "High-density energy storage, intelligent power distribution and protection systems.",
+      "High-density energy storage, intelligent power distribution and protection systems",
   },
   {
     id: "thermal",
     index: "06",
     name: "Thermal Management",
     summary:
-      "Integrated thermal architecture designed to control heat across motors, drives, compute and power electronics.",
+      "Integrated thermal architecture designed to control heat across motors, drives, compute and power electronics",
   },
   {
     id: "materials",
     index: "07",
     name: "Materials & Protection",
     summary:
-      "Advanced structural and protective materials selected according to mechanical, thermal, environmental and mission requirements.",
+      "Advanced structural and protective materials selected according to mechanical, thermal, environmental and mission requirements",
   },
   {
     id: "software",
     index: "08",
     name: "Software",
     summary:
-      "A layered robotics software stack connecting sensors, perception, planning, control, diagnostics and mission applications.",
+      "A layered robotics software stack connecting sensors, perception, planning, control, diagnostics and mission applications",
   },
 ] as const;
 
@@ -234,66 +234,66 @@ export const WAFEE_CAPABILITIES = [
     index: "01",
     name: "Mobility",
     description:
-      "Dynamic walking, balance, terrain adaptation and controlled whole-body movement.",
+      "Dynamic walking, balance, terrain adaptation and controlled whole-body movement",
   },
   {
     index: "02",
     name: "Manipulation",
     description:
-      "Human-compatible arms and hands designed for interaction with tools, equipment and infrastructure.",
+      "Human-compatible arms and hands designed for interaction with tools, equipment and infrastructure",
   },
   {
     index: "03",
     name: "Perception",
     description:
-      "Real-time understanding of surroundings using multiple sensing modalities.",
+      "Real-time understanding of surroundings using multiple sensing modalities",
   },
   {
     index: "04",
     name: "Autonomy",
     description:
-      "Mission planning, navigation, obstacle handling, system monitoring and intelligent decision support.",
+      "Mission planning, navigation, obstacle handling, system monitoring and intelligent decision support",
   },
   {
     index: "05",
     name: "Teleoperation",
     description:
-      "Remote human control for situations where supervised operation is preferred or required.",
+      "Remote human control for situations where supervised operation is preferred or required",
   },
   {
     index: "06",
     name: "Collaboration",
     description:
-      "Designed to work around humans, tools and existing infrastructure.",
+      "Designed to work around humans, tools and existing infrastructure",
   },
 ] as const;
 
 export const VALUES = [
   {
     title: "Engineering First",
-    description: "We prioritize measurable performance over appearance.",
+    description: "We prioritize measurable performance over appearance",
   },
   {
     title: "Mission First",
-    description: "Every subsystem must serve a real operational requirement.",
+    description: "Every subsystem must serve a real operational requirement",
   },
   {
     title: "Human Impact",
-    description: "Technology should reduce danger and expand human capability.",
+    description: "Technology should reduce danger and expand human capability",
   },
   {
     title: "Iterate Fast",
-    description: "Build, test, measure, learn and improve.",
+    description: "Build, test, measure, learn and improve",
   },
   {
     title: "Open Innovation",
     description:
-      "The most important breakthroughs often happen across disciplines and organizations.",
+      "The most important breakthroughs often happen across disciplines and organizations",
   },
   {
     title: "Responsible Autonomy",
     description:
-      "Robots should operate within defined safety boundaries, with traceability and human oversight where required.",
+      "Robots should operate within defined safety boundaries, with traceability and human oversight where required",
   },
 ] as const;
 
@@ -301,34 +301,34 @@ export const PARTNER_TYPES = [
   {
     index: "01",
     title: "Technology Partners",
-    description: "Develop next-generation components and subsystems with us.",
+    description: "Develop next-generation components and subsystems with us",
   },
   {
     index: "02",
     title: "Industrial Partners",
-    description: "Bring real-world mission problems to the platform.",
+    description: "Bring real-world mission problems to the platform",
   },
   {
     index: "03",
     title: "Research Partners",
-    description: "Collaborate on fundamental robotics and advanced engineering.",
+    description: "Collaborate on fundamental robotics and advanced engineering",
   },
   {
     index: "04",
     title: "Manufacturing Partners",
-    description: "Scale precision robotic hardware from prototype to production.",
+    description: "Scale precision robotic hardware from prototype to production",
   },
   {
     index: "05",
     title: "Government & Institutional Partners",
     description:
-      "Develop responsible robotic capabilities for public-interest missions.",
+      "Develop responsible robotic capabilities for public-interest missions",
   },
   {
     index: "06",
     title: "Investors",
     description:
-      "Help accelerate the transition from advanced prototype to scalable deep-tech company.",
+      "Help accelerate the transition from advanced prototype to scalable deep-tech company",
   },
 ] as const;
 

@@ -5,7 +5,7 @@ import { StaggerGroup, StaggerItem, Reveal } from "@/components/motion/reveal";
 export const metadata: Metadata = {
   title: "Investors",
   description:
-    "Investing in the next generation of robotics. Cennzo Robotix is building a scalable humanoid robotics platform with hardware, software and recurring service value layers.",
+    "Investing in the next generation of robotics. Cennzo Robotix is building a scalable humanoid robotics platform with hardware, software and recurring service value layers",
 };
 
 const VALUE_LAYERS = [
@@ -58,9 +58,9 @@ export default function InvestorsPage() {
     <main>
       <PageHero
         eyebrow="Investors"
-        lines={["Investing In The Next", "Generation Of Robotics."]}
-        intro="We are building a robotics platform, not a single product."
-        meta="Cennzo Robotix is developing a scalable humanoid robotics platform designed to support multiple industries and mission configurations."
+        lines={["Investing In The Next", "Generation Of Robotics"]}
+        intro="We are building a robotics platform, not a single product"
+        meta="Cennzo Robotix is developing a scalable humanoid robotics platform designed to support multiple industries and mission configurations"
       />
 
       <section className="border-b border-black/[0.08]">
@@ -94,7 +94,7 @@ export default function InvestorsPage() {
                 Investment Thesis
               </h2>
             </Reveal>
-            <StaggerGroup stagger={0.07} className="mt-10 space-y-6">
+            <StaggerGroup stagger={0.07} className="mt-8 space-y-6">
               {THESIS.map((item) => (
                 <StaggerItem key={item.index}>
                   <div className="flex items-baseline gap-5 border-l border-black/[0.12] pl-6 transition-colors duration-300 hover:border-accent">
@@ -123,8 +123,8 @@ export default function InvestorsPage() {
       </section>
 
       <CTASection
-        lines={["Build With", "The Platform."]}
-        body="Request the investor information package."
+        lines={["Build With", "The Platform"]}
+        body="Request the investor information package"
         primary={{ label: "Request Investor Information", href: "/contact" }}
         secondary={{ label: "About Cennzo", href: "/about" }}
       />
