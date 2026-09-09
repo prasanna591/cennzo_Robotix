@@ -162,7 +162,7 @@ export function PageHero({
                 ease: EASE.mechanical,
                 delay: 0.6,
               }}
-              className="mt-8 flex h-px w-full max-w-[480px] origin-left items-center"
+              className="relative mt-8 flex h-px w-full max-w-[480px] origin-left items-center"
             >
               <span className="hairline-spectrum absolute inset-x-0 top-0 h-px" />
               <span className="relative h-1.5 w-1.5 rounded-[2px] bg-teal shadow-[0_0_10px_rgba(0,168,168,0.55)]" />
