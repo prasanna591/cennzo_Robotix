@@ -892,7 +892,8 @@
       "line1": "Des robots là où",
       "line2": "l'humain ne devrait pas aller",
       "intro": "De l'inspection industrielle à l'exploration planétaire — domaines de mission envisagés pour la plateforme WAFEE",
-      "meta": "Les applications représentent des territoires d'exploration d'ingénierie, non des déploiements commerciaux actuels"
+      "meta": "Les applications représentent des territoires d'exploration d'ingénierie, non des déploiements commerciaux actuels",
+      "imageAlt": "WAFEE robot in application environments"
     },
     "media": {
       "label": "Profils de mission WAFEE — planche conceptuelle",

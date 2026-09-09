@@ -7,6 +7,7 @@ import { BlurLines } from "@/components/motion/blur-lines";
 import { DecodeText } from "@/components/motion/decode-text";
 import { BackgroundObjects } from "@/components/decor/background-objects";
 import { useReady } from "@/hooks/use-ready";
+import { useNaturalAspect } from "@/hooks/use-natural-aspect";
 import { DURATION, EASE } from "@/lib/animations";
 
 const GRID_COLS_LEFT =
@@ -24,6 +25,7 @@ export function PageHero({
   contentRight = false,
   contentTop = false,
   headlineSize = "hero",
+  contentClassName = "",
 }: {
   eyebrow?: string;
   lines?: string[];
@@ -34,9 +36,11 @@ export function PageHero({
   contentRight?: boolean;
   contentTop?: boolean;
   headlineSize?: "hero" | "display" | "headline";
+  contentClassName?: string;
 }) {
   const reduced = useReducedMotion();
   const ready = useReady();
+  const mediaNatural = useNaturalAspect(media?.src);
 
   const headlineClass =
     headlineSize === "hero"
@@ -101,7 +105,7 @@ export function PageHero({
           media ? (contentRight ? GRID_COLS_RIGHT : GRID_COLS_LEFT) : ""
         }`}
       >
-        <div className={contentRight ? "lg:col-start-2" : ""}>
+        <div className={contentRight ? `lg:col-start-2 ${contentClassName}` : contentClassName}>
           {eyebrow && (
             <motion.p
               {...enter(0.05)}
@@ -172,6 +176,7 @@ export function PageHero({
               className={`relative mx-auto w-full ${
                 media.maxWidth ?? "max-w-[560px]"
               } ${media.ratio ?? "aspect-[4/5]"}`}
+              style={mediaNatural ? { aspectRatio: `${mediaNatural}` } : undefined}
             >
               <Image
                 src={media.src}

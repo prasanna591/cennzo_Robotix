@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { PageHero } from "@/components/sections/page-hero";
 import { SectionHeading } from "@/components/sections/section-heading";
@@ -9,6 +8,7 @@ import { Spotlight } from "@/components/motion/spotlight";
 import { TiltCard } from "@/components/motion/tilt-card";
 import { BackgroundObjects } from "@/components/decor/background-objects";
 import { MediaFrame } from "@/components/media/media-frame";
+import { MediaStrip } from "@/components/media/media-strip";
 import { IMAGES } from "@/lib/content/images";
 
 const FEATURE_IMAGES = [
@@ -65,16 +65,12 @@ export default async function HouseholdPage() {
               {features.map((feature, i) => (
                 <TiltCard key={feature.name} className="h-full">
                   <article className="spotlight-card group relative flex h-full flex-col overflow-hidden bg-graphite transition-colors duration-500 hover:bg-charcoal/60">
-                    <div className="relative h-40 shrink-0 overflow-hidden md:h-44">
-                      <Image
-                        src={FEATURE_IMAGES[i]}
-                        alt=""
-                        fill
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                        className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-graphite via-transparent to-transparent" />
-                    </div>
+<MediaStrip
+  src={FEATURE_IMAGES[i]}
+  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+>
+  <div className="absolute inset-0 bg-gradient-to-t from-graphite via-transparent to-transparent" />
+</MediaStrip>
                     <div className="flex flex-1 flex-col p-8 md:p-9">
                       <p className="font-mono text-[11px] tracking-[0.25em] text-faint transition-colors duration-300 group-hover:text-accent">
                         {String(i + 1).padStart(2, "0")} / 04

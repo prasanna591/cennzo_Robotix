@@ -914,7 +914,8 @@
       "line1": "Robots Where People",
       "line2": "Should Not Have To Go",
       "intro": "From industrial inspection to planetary research — potential mission domains for the WAFEE platform",
-      "meta": "Applications represent engineering roadmap areas, not current commercial deployments"
+      "meta": "Applications represent engineering roadmap areas, not current commercial deployments",
+      "imageAlt": "WAFEE robot in application environments"
     },
     "media": {
       "label": "WAFEE Mission Configurations — Concept Plate",

@@ -144,6 +144,15 @@ export default async function ApplicationsPage() {
         lines={[t("hero.line1"), t("hero.line2")]}
         intro={t("hero.intro")}
         meta={t("hero.meta")}
+        contentRight
+        headlineSize="display"
+        contentClassName="lg:-translate-x-[48%]"
+        media={{
+          src: "/new_image/application_hero.png",
+          alt: t("hero.imageAlt"),
+          background: true,
+          backgroundClass: "object-center scale-[0.95] -translate-x-[18%]",
+        }}
       />
 
       <section className="relative overflow-hidden border-b border-black/[0.08] py-section">

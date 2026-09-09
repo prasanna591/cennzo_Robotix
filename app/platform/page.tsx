@@ -1,9 +1,9 @@
 ﻿import type { Metadata } from "next";
-import Image from "next/image";
 import { PageHero } from "@/components/sections/page-hero";
 import { CTASection } from "@/components/sections/cta-section";
 import { StaggerGroup, StaggerItem, Reveal } from "@/components/motion/reveal";
 import { MissionConfigurator } from "@/components/technical/mission-configurator";
+import { MediaStrip } from "@/components/media/media-strip";
 import { IMAGES } from "@/lib/content/images";
 
 export const metadata: Metadata = {
@@ -50,16 +50,9 @@ function ModuleList({
   return (
     <div className="h-full overflow-hidden rounded-2xl border border-black/[0.1] bg-graphite shadow-soft">
       {img ? (
-        <div className="relative h-52 w-full overflow-hidden md:h-64">
-          <Image
-            src={img}
-            alt=""
-            fill
-            sizes="(max-width: 1024px) 100vw, 50vw"
-            className="object-cover"
-          />
+        <MediaStrip src={img} sizes="(max-width: 1024px) 100vw, 50vw">
           <div className="absolute inset-0 bg-gradient-to-t from-graphite via-graphite/40 to-transparent" />
-        </div>
+        </MediaStrip>
       ) : null}
       <div className="p-8 md:p-12">
         <p

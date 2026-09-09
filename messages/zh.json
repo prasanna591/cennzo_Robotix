@@ -892,7 +892,8 @@
       "line1": "让机器人抵达",
       "line2": "人类不宜涉足之处。",
       "intro": "从工业检测到行星探测 —— WAFEE 平台的设想任务领域。",
-      "meta": "应用代表工程探索领域，而非当前的商业部署。"
+      "meta": "应用代表工程探索领域，而非当前的商业部署。",
+      "imageAlt": "WAFEE robot in application environments"
     },
     "media": {
       "label": "WAFEE 任务剖面 — 概念板",

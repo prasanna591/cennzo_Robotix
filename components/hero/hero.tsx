@@ -8,6 +8,7 @@ import { BlurLines } from "@/components/motion/blur-lines";
 import { BackgroundObjects } from "@/components/decor/background-objects";
 import { Telemetry } from "@/components/technical/telemetry";
 import { useReady } from "@/hooks/use-ready";
+import { useNaturalAspect } from "@/hooks/use-natural-aspect";
 import { DURATION, EASE } from "@/lib/animations";
 
 const ENVIRONMENT_KEYS = ["envEarth", "envWater", "envFire", "envAir", "envSpace"] as const;
@@ -93,6 +94,7 @@ function ScrollCue() {
 export function Hero() {
   const reduced = useReducedMotion();
   const ready = useReady();
+  const natural = useNaturalAspect("/new_image/updated_hero.png");
   const t = useTranslations("hero");
 
   const enter = (delay: number) =>
@@ -147,15 +149,39 @@ export function Hero() {
             </motion.div>
           </div>
 
-        <motion.div {...enter(0.5)} className="relative lg:pl-6">
-          <div className="relative mx-auto aspect-[2/3] w-full max-w-[600px]">
+        <motion.div
+          initial={
+            reduced
+              ? { opacity: 1 }
+              : { opacity: 0, scale: 1.08, filter: "blur(12px)" }
+          }
+          animate={
+            ready
+              ? { opacity: 1, scale: 1, filter: "blur(0px)" }
+              : { opacity: 0, scale: 1.08, filter: "blur(12px)" }
+          }
+          transition={{
+            duration: DURATION.cinematic + 0.4,
+            ease: EASE.out,
+            delay: 0.25,
+          }}
+          className="relative lg:pl-6"
+        >
+          <div
+            className="relative mx-auto aspect-[2/3] w-full max-w-[600px]"
+            style={
+              natural && Math.abs(natural - 2 / 3) > 0.01
+                ? { aspectRatio: `${natural}` }
+                : undefined
+            }
+          >
             <Image
               src="/new_image/updated_hero.png"
               alt={t("imageAlt")}
               fill
               priority
               sizes="(max-width: 1024px) 600px, 680px"
-              className="object-cover object-top"
+              className="object-contain object-center"
             />
           </div>
         </motion.div>

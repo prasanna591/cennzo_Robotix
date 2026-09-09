@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { DURATION, EASE } from "@/lib/animations";
+import { useNaturalAspect } from "@/hooks/use-natural-aspect";
 
 const RATIOS = {
   "21/9": "aspect-[21/9]",
@@ -68,7 +69,7 @@ export function MediaVisual({
           alt={label}
           fill
           sizes={large ? "100vw" : "(max-width: 768px) 100vw, 50vw"}
-          className="object-cover object-top"
+          className="object-contain object-center"
         />
       )}
       <div
@@ -135,6 +136,7 @@ function Lightbox({
   label,
   src,
   tag = "Concept",
+  natural,
 }: {
   open: boolean;
   onClose: () => void;
@@ -142,6 +144,7 @@ function Lightbox({
   label: string;
   src?: string;
   tag?: string;
+  natural?: number | null;
 }) {
   const closeRef = useRef<HTMLButtonElement>(null);
 
@@ -187,7 +190,10 @@ function Lightbox({
             transition={{ duration: DURATION.standard, ease: EASE.out }}
             className="relative w-full max-w-5xl rounded-2xl border border-steel bg-graphite p-2 shadow-lift md:p-3"
           >
-            <div className="relative aspect-[16/9] overflow-hidden rounded-xl border border-black/[0.08] bg-void md:aspect-[21/9]">
+            <div
+              className="relative overflow-hidden rounded-xl border border-black/[0.08] bg-void"
+              style={natural ? { aspectRatio: `${natural}` } : undefined}
+            >
               <MediaVisual code={code} label={label} large src={src} tag={tag} />
             </div>
             <div className="flex items-center justify-between px-2 pb-1 pt-3">
@@ -229,6 +235,7 @@ export function MediaFrame({
   tag?: string;
 }) {
   const [open, setOpen] = useState(false);
+  const natural = useNaturalAspect(src);
 
   return (
     <figure className={`group ${className}`}>
@@ -240,6 +247,7 @@ export function MediaFrame({
       >
         <div
           className={`relative w-full overflow-hidden rounded-2xl border border-black/[0.08] bg-graphite shadow-soft transition-all duration-500 group-hover:border-faint group-hover:shadow-lift ${RATIOS[ratio]}`}
+          style={natural ? { aspectRatio: `${natural}` } : undefined}
         >
           <MediaVisual code={code} label={label} src={src} tag={tag} />
         </div>
@@ -261,6 +269,7 @@ export function MediaFrame({
         label={label}
         src={src}
         tag={tag}
+        natural={natural}
       />
     </figure>
   );

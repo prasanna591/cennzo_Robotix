@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { PageHero } from "@/components/sections/page-hero";
 import { SectionHeading } from "@/components/sections/section-heading";
@@ -15,6 +14,7 @@ import { TiltCard } from "@/components/motion/tilt-card";
 import { Spotlight } from "@/components/motion/spotlight";
 import { Parallax } from "@/components/motion/parallax";
 import { MediaFrame } from "@/components/media/media-frame";
+import { MediaStrip } from "@/components/media/media-strip";
 import { BackgroundObjects } from "@/components/decor/background-objects";
 import { IMAGES } from "@/lib/content/images";
 
@@ -31,7 +31,7 @@ const CAPABILITY_IMAGES = [
   "/new_image/manipulation.jpeg",
   "/new_image/perception.jpeg",
   "/new_image/autonomy.jpeg",
-  "/new_image/telemetry.jpeg",
+  "/new_image/intelligent.jpeg",
   "/new_image/collabration.jpeg",
 ];
 
@@ -179,16 +179,12 @@ export default async function WafeePage() {
                         aria-hidden="true"
                         className="absolute left-0 top-0 z-10 h-1 w-full origin-left scale-x-0 bg-gradient-to-r from-accent to-teal transition-transform duration-700 ease-out group-hover:scale-x-100"
                       />
-                      <div className="relative h-44 shrink-0 overflow-hidden md:h-52">
-                        <Image
-                          src={CAPABILITY_IMAGES[i]}
-                          alt=""
-                          fill
-                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                          className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-graphite via-transparent to-transparent" />
-                      </div>
+<MediaStrip
+  src={CAPABILITY_IMAGES[i]}
+  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+>
+  <div className="absolute inset-0 bg-gradient-to-t from-graphite via-transparent to-transparent" />
+</MediaStrip>
                       <div className="flex flex-1 flex-col p-8 md:p-10">
                         <p className="font-mono text-[11px] tracking-[0.25em] text-faint transition-colors duration-300 group-hover:text-accent">
                           {capability.index}

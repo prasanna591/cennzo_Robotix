@@ -21,11 +21,13 @@ export function HorizontalShowcase({
   lines,
   items,
   children,
+  headingScale = "display",
 }: {
   eyebrow: string;
   lines: string[];
   items: ShowcaseItem[];
   children?: ReactNode;
+  headingScale?: "display" | "headline";
 }) {
   const wrapRef = useRef<HTMLElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
@@ -182,7 +184,11 @@ export function HorizontalShowcase({
             <span aria-hidden="true" className="h-px w-8 bg-accent" />
             {eyebrow}
           </p>
-          <h2 className="mt-4 max-w-3xl text-display font-semibold leading-[1.05] tracking-[-0.02em] text-bone">
+          <h2
+            className={`mt-4 max-w-3xl ${
+              headingScale === "headline" ? "text-headline" : "text-display"
+            } font-semibold leading-[1.05] tracking-[-0.02em] text-bone`}
+          >
             <WordReveal lines={lines} />
           </h2>
           {children}

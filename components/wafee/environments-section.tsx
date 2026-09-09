@@ -1,10 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { MaskLines } from "@/components/motion/mask-lines";
 import { Reveal } from "@/components/motion/reveal";
+import { MediaStrip } from "@/components/media/media-strip";
 import {
   SectionEyebrow,
   SectionRail,
@@ -115,16 +115,13 @@ export function EnvironmentsSection() {
                   />
                 </div>
 
-                <div className="relative order-1 min-h-[280px] overflow-hidden bg-charcoal/50 md:min-h-[360px] lg:order-2 lg:min-h-[440px]">
-                  <Image
-                    src={ENV_IMAGES[env.id]}
-                    alt=""
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    className="object-cover object-top"
-                  />
-                  <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-graphite to-transparent lg:hidden" />
-                </div>
+<MediaStrip
+  src={ENV_IMAGES[env.id]}
+  sizes="(max-width: 1024px) 100vw, 50vw"
+  className="order-1 min-h-[280px] bg-charcoal/50 md:min-h-[360px] lg:order-2 lg:min-h-[440px]"
+>
+  <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-graphite to-transparent lg:hidden" />
+</MediaStrip>
               </motion.article>
               </div>
             </div>

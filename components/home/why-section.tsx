@@ -2,15 +2,14 @@
 
 import { useTranslations } from "next-intl";
 import { HorizontalShowcase } from "@/components/sections/horizontal-showcase";
-import { IMAGES } from "@/lib/content/images";
 
 const PRINCIPLE_KEYS = ["principle1", "principle2", "principle3", "principle4"] as const;
 
 const PRINCIPLE_IMAGES = [
-  IMAGES.humanFriendly,
+  "/new_image/human-compactability.jpeg",
   "/new_image/modularity.jpeg",
-  IMAGES.seeThrough,
-  IMAGES.miningScene,
+  "/new_image/intelligence.jpeg",
+  "/new_image/resiliance.jpeg",
 ];
 
 export function WhySection() {
@@ -28,8 +27,9 @@ export function WhySection() {
       eyebrow={t("whyEyebrow")}
       lines={[t("whyL1"), t("whyL2")]}
       items={items}
+      headingScale="headline"
     >
-      <p className="mt-4 max-w-2xl text-body leading-relaxed text-mist">
+      <p className="mt-2 max-w-2xl text-body leading-relaxed text-mist">
         {t("whyBodyPre")}
         <span className="font-semibold text-bone">{t("whyBodyBold")}</span>
         {t("whyBodyPost")}
