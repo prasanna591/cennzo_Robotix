@@ -9,6 +9,7 @@ export function BlueprintPanel({
   intro,
   children,
   note,
+  readiness,
   dark = false,
   className = "",
   split = false,
@@ -19,6 +20,7 @@ export function BlueprintPanel({
   intro: string;
   children?: ReactNode;
   note?: string;
+  readiness?: number;
   dark?: boolean;
   className?: string;
   split?: boolean;
