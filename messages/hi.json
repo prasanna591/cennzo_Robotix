@@ -12,7 +12,17 @@
     "contact": "संपर्क करें",
     "productsHousehold": "घरेलू",
     "productsIndustry": "उद्योग",
-    "productsWafee": "WAFEE"
+    "productsWafee": "WAFEE",
+    "solutionsTab": "समाधान",
+    "productsWafeeDesc": "एकीकृत बहु-पर्यावरण ह्यूमनॉइड प्लेटफ़ॉर्म",
+    "productsHouseholdDesc": "घर और देखभाल के लिए मानव-अनुकूल रोबोटिक्स",
+    "productsIndustryDesc": "उन उद्योगों के लिए मिशन-तैयार रोबोट जो रुक नहीं सकते",
+    "army": "सेना",
+    "aerospace": "एयरोस्पेस",
+    "space": "अंतरिक्ष",
+    "defence": "रक्षा",
+    "sectors": "क्षेत्र",
+    "explore": "एक्सप्लोर"
   },
   "palette": {
     "searchPlaceholder": "मशीन में खोजें…",

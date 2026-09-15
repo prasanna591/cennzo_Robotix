@@ -12,7 +12,17 @@
     "contact": "联系我们",
     "productsHousehold": "家用",
     "productsIndustry": "工业",
-    "productsWafee": "WAFEE"
+    "productsWafee": "WAFEE",
+    "solutionsTab": "解决方案",
+    "productsWafeeDesc": "统一的跨环境人形机器人平台",
+    "productsHouseholdDesc": "面向家庭与照护的人机友好机器人技术",
+    "productsIndustryDesc": "为不能停摆的产业打造的任务就绪机器人",
+    "army": "军队",
+    "aerospace": "航空航天",
+    "space": "太空",
+    "defence": "防务",
+    "sectors": "领域",
+    "explore": "了解更多"
   },
   "palette": {
     "searchPlaceholder": "搜索这台机器…",

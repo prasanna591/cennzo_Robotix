@@ -95,6 +95,29 @@ describe("SiteHeader", () => {
     expect(screen.getByText("Applications")).toBeInTheDocument();
   });
 
+  it("opens the products mega menu with the sector links", async () => {
+    const user = userEvent.setup();
+    render(<SiteHeader />);
+    await user.click(
+      screen.getByRole("button", { name: /products/i }),
+    );
+
+    const container = document.body;
+    for (const href of [
+      "/army",
+      "/aerospace",
+      "/space",
+      "/defence",
+    ]) {
+      expect(
+        container.querySelector(`a[href="${href}"]`),
+      ).not.toBeNull();
+      expect(
+        container.querySelector(`a[href="${href}"]`)?.textContent,
+      ).toContain(href.replace("/", ""));
+    }
+  });
+
   it("renders the contact link", () => {
     render(<SiteHeader />);
     const contactLink = screen.getByRole("link", { name: /contact/i });

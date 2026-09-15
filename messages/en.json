@@ -12,7 +12,17 @@
     "contact": "Contact",
     "productsHousehold": "Household",
     "productsIndustry": "Industry",
-    "productsWafee": "WAFEE"
+    "productsWafee": "WAFEE",
+    "solutionsTab": "Solutions",
+    "productsWafeeDesc": "The unified multi-environment humanoid platform",
+    "productsHouseholdDesc": "Human-compatible robotics for home and care",
+    "productsIndustryDesc": "Mission-ready robots for industries that cannot stop",
+    "army": "Army",
+    "aerospace": "Aerospace",
+    "space": "Space",
+    "defence": "Defence",
+    "sectors": "Sectors",
+    "explore": "Explore"
   },
   "palette": {
     "searchPlaceholder": "Search the machine…",
@@ -1280,6 +1290,222 @@
       "body": "Explore the household roadmap or start a conversation about home robotics",
       "primary": "Talk To Us",
       "secondary": "Explore WAFEE"
+    }
+  },
+  "armyPage": {
+    "meta": {
+      "title": "WAFEE for the Army — Ground Operations",
+      "description": "Mission-ready humanoid robots for army logistics, reconnaissance, and hazardous ground operations."
+    },
+    "hero": {
+      "eyebrow": "Sector / Army",
+      "line1": "Standing watch",
+      "line2": "in the field",
+      "intro": "WAFEE moves with the squad — carrying heavy loads, mapping dangerous terrain, and working where people cannot go.",
+      "meta": "Field-ready · Networked · Unmanned",
+      "imageAlt": "WAFEE humanoid robot in an army field environment"
+    },
+    "overview": {
+      "eyebrow": "The mission",
+      "line1": "Built for",
+      "line2": "the front line",
+      "body": "Armies operate in conditions machines were never expected to survive — dust, mud, noise, and live fire. WAFEE is engineered to move, perceive, and act alongside personnel in those environments, taking on the tasks that put people at the most risk."
+    },
+    "capabilities": {
+      "eyebrow": "Capabilities",
+      "line1": "Four domains",
+      "line2": "of military utility",
+      "items": [
+        {
+          "name": "Load Carriage",
+          "description": "Shouldering rucksacks, ammunition, and supplies across uneven terrain so a squad can keep moving."
+        },
+        {
+          "name": "Route Reconnaissance",
+          "description": "Autonomous scouting of roads, buildings, and corridors returns terrain data before boots hit the ground."
+        },
+        {
+          "name": "Hazardous Extraction",
+          "description": "Reaching casualties and sensitive payloads in contaminated or active zones where a human cannot go."
+        },
+        {
+          "name": "Perimeter Security",
+          "description": "Continuous patrolling of camps and perimeters with thermal perception, day and night."
+        }
+      ]
+    },
+    "media": {
+      "code": "IMG-11",
+      "label": "WAFEE · Army Operations"
+    },
+    "cta": {
+      "line1": "Deploy WAFEE",
+      "line2": "to your unit",
+      "body": "Partner with Cennzo to evaluate WAFEE in your operational environment.",
+      "primary": "Request evaluation",
+      "secondary": "Explore applications"
+    }
+  },
+  "aerospacePage": {
+    "meta": {
+      "title": "WAFEE for Aerospace & Aviation",
+      "description": "Humanoid robots for aircraft hangars, airport ground operations, and aerospace manufacturing."
+    },
+    "hero": {
+      "eyebrow": "Sector / Aerospace",
+      "line1": "Where flight",
+      "line2": "begins on the ground",
+      "intro": "From hangar bays to tarmac turnarounds, WAFEE works the ground tasks that keep aircraft in the air.",
+      "meta": "Hangar · Terminal · Ramp",
+      "imageAlt": "WAFEE humanoid robot in an aerospace environment"
+    },
+    "overview": {
+      "eyebrow": "The mission",
+      "line1": "Ground truth",
+      "line2": "for flight operations",
+      "body": "Aerospace operations live between minutes on the ground and hours in the air. WAFEE automates inspection, tooling, and cargo flow so crews and technicians can focus on readiness and safety."
+    },
+    "capabilities": {
+      "eyebrow": "Capabilities",
+      "line1": "Four domains",
+      "line2": "of aerospace utility",
+      "items": [
+        {
+          "name": "Aircraft Inspection",
+          "description": "Wing-to-tail visual and sensor inspection across hangar bays, feeding structured reports to maintenance teams."
+        },
+        {
+          "name": "Cargo & Baggage",
+          "description": "Handling unit load devices, baggage, and spares with precise two-arm manipulation."
+        },
+        {
+          "name": "Line Maintenance",
+          "description": "Tooling retrieval, part staging, and repetitive service tasks side-by-side with licensed technicians."
+        },
+        {
+          "name": "Ramp Operations",
+          "description": "Guiding and monitoring ground-movement zones with persistent perception and safety awareness."
+        }
+      ]
+    },
+    "media": {
+      "code": "IMG-12",
+      "label": "WAFEE · Aerospace Ground Ops"
+    },
+    "cta": {
+      "line1": "Bring WAFEE",
+      "line2": "to the line",
+      "body": "See WAFEE working alongside your hangar and ramp teams.",
+      "primary": "Book a demonstration",
+      "secondary": "Explore applications"
+    }
+  },
+  "spacePage": {
+    "meta": {
+      "title": "WAFEE for Space — Orbital, Lunar & Deep-Space",
+      "description": "Humanoid robots for orbital assembly, planetary surface operations, and off-planet logistics."
+    },
+    "hero": {
+      "eyebrow": "Sector / Space",
+      "line1": "Built for",
+      "line2": "beyond Earth",
+      "intro": "From the launch pad to the lunar surface, WAFEE is designed for the continuum of space operations — autonomous, modular, and mission-grade.",
+      "meta": "Orbital · Lunar · Deep-space",
+      "imageAlt": "WAFEE humanoid robot in a space environment"
+    },
+    "overview": {
+      "eyebrow": "The mission",
+      "line1": "The humanoid,",
+      "line2": "off-world",
+      "body": "Space is the hardest environment we engineer for — vacuum, radiation, and extreme thermal swings. WAFEE modular architecture and autonomous perception extend human capability to stations, habitats, and planetary surfaces."
+    },
+    "capabilities": {
+      "eyebrow": "Capabilities",
+      "line1": "Four domains",
+      "line2": "of space utility",
+      "items": [
+        {
+          "name": "Orbital Assembly",
+          "description": "Supporting structure assembly and payload integration in micro-gravity habitats and stations."
+        },
+        {
+          "name": "Surface Mobility",
+          "description": "Traversing regolith and undeveloped terrain with terrain-adaptive locomotion and perception."
+        },
+        {
+          "name": "Payload Handling",
+          "description": "Moving, docking, and deploying assets within constraint-rich habitats and landers."
+        },
+        {
+          "name": "Habitat Operations",
+          "description": "Routine inspection, maintenance, and housekeeping inside pressurized crew habitats."
+        }
+      ]
+    },
+    "media": {
+      "code": "IMG-13",
+      "label": "WAFEE · Space Operations"
+    },
+    "cta": {
+      "line1": "Send WAFEE",
+      "line2": "to your mission",
+      "body": "Align WAFEE with your orbital program or surface campaign.",
+      "primary": "Contact our space team",
+      "secondary": "Explore applications"
+    }
+  },
+  "defencePage": {
+    "meta": {
+      "title": "WAFEE for Defence & Security",
+      "description": "Humanoid robots for defence, homeland security, and critical infrastructure protection."
+    },
+    "hero": {
+      "eyebrow": "Sector / Defence",
+      "line1": "Ready when",
+      "line2": "the mission is",
+      "intro": "WAFEE stands by for defence and security operations — guarding installations, clearing hazards, and preserving human life.",
+      "meta": "Protect · Clear · Respond",
+      "imageAlt": "WAFEE humanoid robot in a defence environment"
+    },
+    "overview": {
+      "eyebrow": "The mission",
+      "line1": "Defence begins",
+      "line2": "with protecting people",
+      "body": "WAFEE assumes the highest-risk roles first — patrolling perimeters, investigating threats, and operating in chemical or radiological environments where humans are quickly exhausted by protective limits."
+    },
+    "capabilities": {
+      "eyebrow": "Capabilities",
+      "line1": "Four domains",
+      "line2": "of defence readiness",
+      "items": [
+        {
+          "name": "Installation Protection",
+          "description": "Autonomous patrol and threat perception for bases, depots, and critical infrastructure."
+        },
+        {
+          "name": "Hazard Clearing",
+          "description": "Investigating suspicious objects and IED-adjacent zones from a safe standoff."
+        },
+        {
+          "name": "Chemical & Radiological",
+          "description": "Operating in CBRN and radiological environments where protective limits bind human crews."
+        },
+        {
+          "name": "Emergency Response",
+          "description": "Rescue, firefighting support, and casualty evacuation in collapsed or burning structures."
+        }
+      ]
+    },
+    "media": {
+      "code": "IMG-14",
+      "label": "WAFEE · Defence Operations"
+    },
+    "cta": {
+      "line1": "Equip WAFEE",
+      "line2": "for your force",
+      "body": "Talk to Cennzo about WAFEE in your defence programme.",
+      "primary": "Request a briefing",
+      "secondary": "Explore applications"
     }
   }
 }

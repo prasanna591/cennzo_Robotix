@@ -12,7 +12,17 @@
     "contact": "Contacto",
     "productsHousehold": "Hogar",
     "productsIndustry": "Industria",
-    "productsWafee": "WAFEE"
+    "productsWafee": "WAFEE",
+    "solutionsTab": "Soluciones",
+    "productsWafeeDesc": "La plataforma humanoide unificada multi-entorno",
+    "productsHouseholdDesc": "Robótica compatible con humanos para el hogar y los cuidados",
+    "productsIndustryDesc": "Robots listos para la misión para industrias que no pueden detenerse",
+    "army": "Ejército",
+    "aerospace": "Aeroespacial",
+    "space": "Espacio",
+    "defence": "Defensa",
+    "sectors": "Sectores",
+    "explore": "Explorar"
   },
   "palette": {
     "searchPlaceholder": "Buscar en la máquina…",

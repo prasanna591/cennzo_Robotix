@@ -12,7 +12,17 @@
     "contact": "தொடர்பு",
     "productsHousehold": "வீடு",
     "productsIndustry": "தொழில்",
-    "productsWafee": "WAFEE"
+    "productsWafee": "WAFEE",
+    "solutionsTab": "தீர்வுகள்",
+    "productsWafeeDesc": "ஒருங்கிணைந்த பல-சூழல் ஹ்யூமனாய்ட் தளம்",
+    "productsHouseholdDesc": "வீடு மற்றும் பராமரிப்புக்கான மனித-இணக்க ரோபோட்டிக்ஸ்",
+    "productsIndustryDesc": "நிறுத்த முடியாத தொழில்களுக்கான பணி-தயாரான ரோபோக்கள்",
+    "army": "ராணுவம்",
+    "aerospace": "விண்வெளியியல்",
+    "space": "விண்வெளி",
+    "defence": "பாதுகாப்பு",
+    "sectors": "துறைகள்",
+    "explore": "ஆராய்க"
   },
   "palette": {
     "searchPlaceholder": "இயந்திரத்தில் தேடுங்கள்…",

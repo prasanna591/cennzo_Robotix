@@ -12,7 +12,17 @@
     "contact": "సంప్రదించండి",
     "productsHousehold": "ఇల్లు",
     "productsIndustry": "పరిశ్రమ",
-    "productsWafee": "WAFEE"
+    "productsWafee": "WAFEE",
+    "solutionsTab": "పరిష్కారాలు",
+    "productsWafeeDesc": "ఏకీకృత బహుళ-పర్యావరణ హ్యూమనాయిడ్ వేదిక",
+    "productsHouseholdDesc": "ఇంటికి మరియు సంరక్షణకు మానవ-అనుకూల రోబోటిక్స్",
+    "productsIndustryDesc": "ఆగని పరిశ్రమల కోసం మిషన్-సిద్ధ రోబోట్లు",
+    "army": "సైన్యం",
+    "aerospace": "ఏరోస్పేస్",
+    "space": "అంతరిక్షం",
+    "defence": "రక్షణ",
+    "sectors": "రంగాలు",
+    "explore": "అన్వేషించు"
   },
   "palette": {
     "searchPlaceholder": "యంత్రాన్ని వెతకండి…",

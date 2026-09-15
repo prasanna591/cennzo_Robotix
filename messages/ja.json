@@ -12,7 +12,17 @@
     "contact": "お問い合わせ",
     "productsHousehold": "家庭向け",
     "productsIndustry": "産業用",
-    "productsWafee": "WAFEE"
+    "productsWafee": "WAFEE",
+    "solutionsTab": "ソリューション",
+    "productsWafeeDesc": "統合マルチ環境ヒューマノイドプラットフォーム",
+    "productsHouseholdDesc": "家庭とケアのための人間適合型ロボティクス",
+    "productsIndustryDesc": "止まることができない産業のための実戦対応ロボット",
+    "army": "陸軍",
+    "aerospace": "航空宇宙",
+    "space": "宇宙",
+    "defence": "防衛",
+    "sectors": "セクター",
+    "explore": "もっと見る"
   },
   "palette": {
     "searchPlaceholder": "マシンを検索…",

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -9,6 +9,8 @@ import { useTranslations } from "next-intl";
 import { DURATION, EASE } from "@/lib/animations";
 import { useReady } from "@/hooks/use-ready";
 import { LanguageSwitcher } from "@/components/navigation/language-switcher";
+import { ProductsMegaMenu } from "@/components/navigation/products-mega-menu";
+import { IMAGES } from "@/lib/content/images";
 
 type NavItem = {
   href?: string;
@@ -24,6 +26,10 @@ const NAV_LINKS: NavItem[] = [
       { href: "/household", key: "productsHousehold" },
       { href: "/industries", key: "productsIndustry" },
       { href: "/wafee", key: "productsWafee" },
+      { href: "/army", key: "army" },
+      { href: "/aerospace", key: "aerospace" },
+      { href: "/space", key: "space" },
+      { href: "/defence", key: "defence" },
     ],
   },
   { href: "/technology", key: "technology" },
@@ -35,6 +41,16 @@ const MOBILE_LINKS: NavItem[] = [
   ...NAV_LINKS,
   { href: "/contact", key: "contact" },
 ];
+
+const PRODUCT_IMAGES: Record<string, string> = {
+  productsWafee: "/new_image/updated_hero.png",
+  productsIndustry: "/new_image/industry_robot.png",
+  productsHousehold: "/new_image/friendlyrobot.png",
+  army: IMAGES.armyScene,
+  aerospace: IMAGES.airPhoto,
+  space: IMAGES.spaceTwo,
+  defence: IMAGES.wafeeCinematic,
+};
 
 function Wordmark() {
   const tHeader = useTranslations("header");
@@ -68,17 +84,50 @@ export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [productsOpen, setProductsOpen] = useState(false);
+  const closeTimer = useRef<number | null>(null);
   const reduced = useReducedMotion();
   const ready = useReady();
   const pathname = usePathname();
   const tNav = useTranslations("nav");
   const tHeader = useTranslations("header");
 
+  const openProducts = () => {
+    if (closeTimer.current) window.clearTimeout(closeTimer.current);
+    closeTimer.current = null;
+    setProductsOpen(true);
+  };
+
+  const closeProducts = () => {
+    if (closeTimer.current) window.clearTimeout(closeTimer.current);
+    closeTimer.current = null;
+    setProductsOpen(false);
+  };
+
+  const startCloseProducts = () => {
+    if (closeTimer.current) window.clearTimeout(closeTimer.current);
+    closeTimer.current = window.setTimeout(
+      () => setProductsOpen(false),
+      240,
+    );
+  };
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll, { passive: true } as never);
+  }, []);
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        if (closeTimer.current) window.clearTimeout(closeTimer.current);
+        closeTimer.current = null;
+        setProductsOpen(false);
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
   }, []);
 
   useEffect(() => {
@@ -90,7 +139,16 @@ export function SiteHeader() {
 
   useEffect(() => {
     setMenuOpen(false);
+    if (closeTimer.current) window.clearTimeout(closeTimer.current);
+    closeTimer.current = null;
+    setProductsOpen(false);
   }, [pathname]);
+
+  useEffect(() => {
+    return () => {
+      if (closeTimer.current) window.clearTimeout(closeTimer.current);
+    };
+  }, []);
 
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
@@ -127,14 +185,16 @@ export function SiteHeader() {
                 <div
                   key={item.key}
                   className="relative"
-                  onMouseEnter={() => setProductsOpen(true)}
-                  onMouseLeave={() => setProductsOpen(false)}
+                  onMouseEnter={openProducts}
+                  onMouseLeave={startCloseProducts}
                 >
                   <button
                     type="button"
                     aria-expanded={productsOpen}
                     aria-haspopup="menu"
-                    onClick={() => setProductsOpen((v) => !v)}
+                    onClick={() =>
+                      productsOpen ? closeProducts() : openProducts()
+                    }
                     className={`group relative flex items-center gap-1.5 text-[11px] font-medium uppercase tracking-[0.18em] transition-colors duration-300 ${
                       productsActive ? "text-bone" : "text-mist hover:text-bone"
                     }`}
@@ -163,45 +223,6 @@ export function SiteHeader() {
                       }`}
                     />
                   </button>
-                  <AnimatePresence>
-                    {productsOpen && (
-                      <motion.ul
-                        role="menu"
-                        initial={reduced ? false : { opacity: 0, y: 8 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={reduced ? undefined : { opacity: 0, y: 8 }}
-                        transition={{ duration: DURATION.fast, ease: EASE.out }}
-                        className="absolute left-1/2 top-full -translate-x-1/2 pb-6 pt-4"
-                      >
-                        <div className="min-w-[230px] rounded-2xl border border-black/[0.06] bg-white/90 p-2.5 shadow-soft backdrop-blur-xl">
-                          {item.children.map((child) => (
-                            <li key={child.href} role="none">
-                              <Link
-                                role="menuitem"
-                                href={child.href}
-                                onClick={() => setProductsOpen(false)}
-                                className={`flex items-center justify-between gap-6 rounded-xl px-3.5 py-3 text-[11px] font-medium uppercase tracking-[0.18em] transition-colors duration-200 ${
-                                  isActive(child.href)
-                                    ? "bg-void/[0.04] text-bone"
-                                    : "text-mist hover:bg-void/[0.04] hover:text-bone"
-                                }`}
-                              >
-                                {tNav(child.key)}
-                                <span
-                                  aria-hidden="true"
-                                  className={`h-1.5 w-1.5 rounded-full ${
-                                    isActive(child.href)
-                                      ? "bg-gradient-to-r from-accent to-violet-500"
-                                      : "bg-black/15"
-                                  }`}
-                                />
-                              </Link>
-                            </li>
-                          ))}
-                        </div>
-                      </motion.ul>
-                    )}
-                  </AnimatePresence>
                 </div>
               ) : (
                 <Link
@@ -244,7 +265,10 @@ export function SiteHeader() {
 
           <button
             type="button"
-            onClick={() => setMenuOpen((v) => !v)}
+            onClick={() => {
+              setMenuOpen((v) => !v);
+              closeProducts();
+            }}
             aria-expanded={menuOpen}
             aria-controls="mobile-menu"
             aria-label={menuOpen ? tHeader("closeMenu") : tHeader("openMenu")}
@@ -262,6 +286,22 @@ export function SiteHeader() {
             />
           </button>
         </div>
+
+        <AnimatePresence>
+          {productsOpen && !menuOpen && (
+            <motion.div
+              onMouseEnter={openProducts}
+              onMouseLeave={startCloseProducts}
+              initial={reduced ? false : { opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={reduced ? undefined : { opacity: 0, y: 12 }}
+              transition={{ duration: DURATION.standard, ease: EASE.out }}
+              className="relative z-40 mx-auto mt-3 w-full max-w-[1240px]"
+            >
+              <ProductsMegaMenu onNavigate={closeProducts} />
+            </motion.div>
+          )}
+        </AnimatePresence>
       </motion.header>
 
       <AnimatePresence>
@@ -303,13 +343,28 @@ export function SiteHeader() {
                             aria-current={
                               isActive(child.href) ? "page" : undefined
                             }
-                            className={`py-2 text-lg font-medium leading-none tracking-tight transition-colors ${
-                              isActive(child.href)
-                                ? "text-accent"
-                                : "text-mist hover:text-bone"
-                            }`}
+                            className="group flex items-center gap-3 py-2"
                           >
-                            {tNav(child.key)}
+                            {PRODUCT_IMAGES[child.key] && (
+                              <span className="relative h-9 w-9 shrink-0 overflow-hidden rounded-lg bg-white/5">
+                                <Image
+                                  src={PRODUCT_IMAGES[child.key]}
+                                  alt=""
+                                  fill
+                                  sizes="36px"
+                                  className="object-contain object-center transition-transform duration-300 group-hover:scale-105"
+                                />
+                              </span>
+                            )}
+                            <span
+                              className={`text-lg font-medium leading-none tracking-tight transition-colors ${
+                                isActive(child.href)
+                                  ? "text-accent"
+                                  : "text-mist group-hover:text-bone"
+                              }`}
+                            >
+                              {tNav(child.key)}
+                            </span>
                           </Link>
                         ))}
                       </div>

@@ -12,7 +12,17 @@
     "contact": "ബന്ധപ്പെടുക",
     "productsHousehold": "ഹോം",
     "productsIndustry": "വ്യവസായം",
-    "productsWafee": "WAFEE"
+    "productsWafee": "WAFEE",
+    "solutionsTab": "പരിഹാരങ്ങള്‌",
+    "productsWafeeDesc": "ഏകീകൃത മൺട്ടി-എൻവയോണെമെന്റ് ഹ്യൂമനോയിഡ് പ്ലാറ്ട്ഫോം",
+    "productsHouseholdDesc": "വീടിനും പരിചരണത്തിനുമുള്ള മനുഷ്യ-അനുയോജ്യ റോബോട്ടിക്സ്",
+    "productsIndustryDesc": "നിർത്താനാവാത്ത വ്യവസായങ്ങള്ക്കുള്ള ദോത്യ-സജ്ജ റോബോട്ടുകള്ൽ",
+    "army": "സൈന്യം",
+    "aerospace": "എയ്റോസ്പേസ്",
+    "space": "ബഹിരാകാശം",
+    "defence": "പ്രതിരോദം",
+    "sectors": "മേഖലകള്‍",
+    "explore": "പര്യവേക്ഷണം"
   },
   "palette": {
     "searchPlaceholder": "മെഷീൻ തിരയുക…",
