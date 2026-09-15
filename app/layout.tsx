@@ -15,7 +15,6 @@ import { ScrollProgress } from "@/components/technical/scroll-progress";
 import { Cursor } from "@/components/technical/cursor";
 import { Preloader } from "@/components/motion/preloader";
 import { BackToTop } from "@/components/navigation/back-to-top";
-import { LanguagePrompt } from "@/components/navigation/language-prompt";
 import { FilmGrain } from "@/components/decor/film-grain";
 import { CircuitSpine } from "@/components/decor/circuit-spine";
 import { MeshGradient } from "@/components/decor/mesh-gradient";
@@ -137,7 +136,6 @@ export default async function RootLayout({
           {children}
           <SiteFooter />
           <BackToTop />
-          <LanguagePrompt />
           <FilmGrain />
         </NextIntlClientProvider>
         <script

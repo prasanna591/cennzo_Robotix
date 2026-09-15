@@ -121,8 +121,8 @@ export function MediaVisual({
           <div className="absolute right-4 top-4 border border-accent/40 px-2 py-1 font-mono text-[8px] uppercase tracking-[0.22em] text-accent">
             {tag}
           </div>
-          <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between gap-4">
-            <p className="rounded-sm bg-void/60 px-1.5 py-0.5 font-mono text-[10px] uppercase leading-relaxed tracking-[0.22em] text-mist backdrop-blur-sm">
+          <div className="absolute bottom-4 left-4 right-4 flex flex-wrap items-end justify-between gap-2 gap-4">
+            <p className="min-w-0 truncate rounded-sm bg-void/60 px-1.5 py-0.5 font-mono text-[10px] uppercase leading-relaxed tracking-[0.22em] text-mist backdrop-blur-sm">
               {label}
             </p>
             <p className="hidden shrink-0 rounded-sm bg-void/60 px-1.5 py-0.5 font-mono text-[9px] uppercase tracking-[0.22em] text-faint backdrop-blur-sm sm:block">
@@ -262,9 +262,9 @@ export function MediaFrame({
           <MediaVisual code={code} label={label} src={src} tag={tag} plain={plain} />
         </div>
       </button>
-      <figcaption className="mt-3 flex items-center justify-between gap-4 font-mono text-[9px] uppercase tracking-[0.22em] text-faint">
-        <span>{label}</span>
-        <span>
+      <figcaption className="mt-3 flex flex-wrap items-center justify-between gap-2 gap-x-4 font-mono text-[9px] uppercase leading-relaxed tracking-[0.22em] text-faint">
+        <span className="truncate min-w-0 flex-1">{label}</span>
+        <span className="shrink-0">
           {src
             ? tag === "Concept"
               ? "Concept visualization"

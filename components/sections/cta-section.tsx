@@ -57,7 +57,7 @@ export function CTASection({
           whileInView={{ opacity: 1 }}
           viewport={viewportOnce}
           transition={{ duration: DURATION.standard }}
-          className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.3em] text-mist"
+          className="flex flex-wrap items-center justify-center gap-3 font-mono text-[11px] uppercase leading-relaxed tracking-[0.3em] text-mist"
         >
           <span aria-hidden="true" className="h-px w-8 bg-teal" />
           <DecodeText text={eyebrow} />

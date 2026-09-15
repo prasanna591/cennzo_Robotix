@@ -28,10 +28,10 @@ const COMPANY_LINKS = [
 ] as const;
 
 const LEGAL_LINKS = [
-  { href: "/privacy-policy", key: "legalPrivacy" },
-  { href: "/terms-of-use", key: "legalTerms" },
-  { href: "/responsible-ai-robotics", key: "legalAI" },
-  { href: "/safety-compliance", key: "legalCompliance" },
+  { href: "/legal#privacy", key: "legalPrivacy" },
+  { href: "/legal#terms", key: "legalTerms" },
+  { href: "/legal#responsible-ai", key: "legalAI" },
+  { href: "/legal#compliance", key: "legalCompliance" },
 ] as const;
 
 function MissionClock() {

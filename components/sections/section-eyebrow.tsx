@@ -15,7 +15,7 @@ export function SectionEyebrow({
 }) {
   return (
     <p
-      className={`relative flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.25em] ${
+      className={`relative flex flex-wrap items-center gap-3 font-mono text-[11px] uppercase leading-relaxed tracking-[0.25em] ${
         centered ? "justify-center" : ""
       } ${className}`}
     >

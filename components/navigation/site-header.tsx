@@ -28,6 +28,7 @@ const NAV_LINKS: NavItem[] = [
   },
   { href: "/technology", key: "technology" },
   { href: "/applications", key: "applications" },
+  { href: "/careers", key: "careers" },
 ];
 
 const MOBILE_LINKS: NavItem[] = [

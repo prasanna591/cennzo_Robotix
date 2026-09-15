@@ -115,7 +115,7 @@ export function Hero() {
           <div className="max-w-3xl">
             <motion.p
               {...enter(0.2)}
-              className="mb-8 flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.25em] text-mist"
+              className="mb-8 flex flex-wrap items-center gap-x-3 gap-y-2 font-mono text-[11px] uppercase leading-relaxed tracking-[0.25em] text-mist"
             >
               <span className="relative flex h-1.5 w-1.5">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-60" />
@@ -192,7 +192,7 @@ export function Hero() {
       >
         <motion.div {...enter(0.85)}>
         <div className="mx-auto flex w-full max-w-[1440px] items-center justify-between gap-6 px-6 py-5 md:px-10">
-          <p className="truncate font-mono text-[10px] uppercase tracking-[0.24em] text-faint sm:text-[11px]">
+          <p className="max-w-full font-mono text-[10px] uppercase leading-relaxed tracking-[0.24em] text-faint sm:text-[11px]">
             {ENVIRONMENT_KEYS.map((key, i) => (
               <span key={key} className="whitespace-nowrap">
                 <span className="text-mist">{t(key)}</span>

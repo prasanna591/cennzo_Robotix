@@ -24,7 +24,7 @@ function ArrowIcon() {
 }
 
 const BASE =
-  "btn-sheen group inline-flex items-center gap-3 rounded-xl px-7 py-4 text-xs font-medium uppercase tracking-[0.14em] transition-[background-color,border-color,color,box-shadow,transform] duration-300 active:translate-y-px";
+  "btn-sheen group inline-flex max-w-full items-center gap-3 rounded-xl px-5 py-3.5 text-xs font-medium uppercase tracking-[0.14em] transition-[background-color,border-color,color,box-shadow,transform] duration-300 active:translate-y-px sm:px-7 sm:py-4";
 
 const VARIANTS = {
   primary: "btn-primary text-white cursor-pointer hover:-translate-y-0.5",
@@ -47,7 +47,7 @@ export function Button({
 }) {
   return (
     <Link href={href} className={`${BASE} ${VARIANTS[variant]} ${className}`}>
-      <span>{children}</span>
+      <span className="whitespace-normal">{children}</span>
       <ArrowIcon />
     </Link>
   );

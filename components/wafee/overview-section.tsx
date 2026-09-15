@@ -75,7 +75,7 @@ export function OverviewSection() {
               whileInView={{ opacity: 1 }}
               viewport={viewportOnce}
               transition={{ duration: DURATION.cinematic, delay: 0.2 }}
-              className="mt-8 grid grid-cols-3 gap-6 border-t border-black/[0.1] pt-8 sm:gap-10"
+              className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-10 border-t border-black/[0.1] pt-8"
             >
               {stats.map((stat, i) => (
                 <div key={STAT_KEYS[i]}>

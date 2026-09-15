@@ -31,7 +31,15 @@ export function PageHero({
   lines?: string[];
   intro?: ReactNode;
   meta?: string;
-  media?: { src: string; alt: string; ratio?: string; fit?: "cover" | "contain"; maxWidth?: string; background?: boolean; backgroundClass?: string };
+  media?: {
+    src: string;
+    alt: string;
+    ratio?: string;
+    fit?: "cover" | "contain";
+    maxWidth?: string;
+    background?: boolean;
+    backgroundClass?: string;
+  };
   children?: ReactNode;
   contentRight?: boolean;
   contentTop?: boolean;
@@ -74,34 +82,113 @@ export function PageHero({
           transition: { duration: DURATION.standard, ease: EASE.out, delay },
         };
 
+  const hasBgImage = Boolean(media?.background);
+
+  const headlineContent = (
+    <>
+      {eyebrow && (
+        <motion.p
+          {...enter(0.05)}
+          className="flex flex-wrap items-center gap-x-3 gap-y-2 font-mono text-[11px] uppercase leading-relaxed tracking-[0.25em] text-mist"
+        >
+          <span aria-hidden="true" className="h-px w-8 bg-accent" />
+          <DecodeText text={eyebrow} />
+        </motion.p>
+      )}
+
+      {lines && lines.length > 0 && (
+        <h1
+          className={`mt-8 max-w-5xl font-bold uppercase leading-[1.02] tracking-[-0.02em] text-bone ${headlineClass}`}
+        >
+          <BlurLines
+            key={ready ? "ready" : "hold"}
+            lines={lines}
+            delay={0.15}
+            start={Boolean(ready) || Boolean(reduced)}
+            lineClassName={["text-bone", "text-accent"]}
+          />
+        </h1>
+      )}
+
+      {intro && (
+        <motion.div
+          {...enter(0.4)}
+          className="mt-8 max-w-2xl text-subhead leading-relaxed text-mist"
+        >
+          {intro}
+        </motion.div>
+      )}
+
+      {children && (
+        <motion.div {...enter(0.55)} className="mt-8">
+          {children}
+        </motion.div>
+      )}
+
+      {meta && (
+        <motion.p
+          {...enter(0.65)}
+          className="mt-8 font-mono text-[10px] uppercase tracking-[0.3em] text-faint"
+        >
+          {meta}
+        </motion.p>
+      )}
+
+      {(eyebrow || (lines && lines.length > 0)) && (
+        <motion.div
+          aria-hidden="true"
+          initial={reduced ? false : { scaleX: 0 }}
+          animate={ready ? { scaleX: 1 } : { scaleX: 0 }}
+          transition={{
+            duration: DURATION.cinematic,
+            ease: EASE.mechanical,
+            delay: 0.6,
+          }}
+          className="relative mt-8 flex h-px w-full max-w-[480px] origin-left items-center"
+        >
+          <span className="hairline-spectrum absolute inset-x-0 top-0 h-px" />
+          <span className="relative h-1.5 w-1.5 rounded-[2px] bg-teal shadow-[0_0_10px_rgba(0,168,168,0.55)]" />
+        </motion.div>
+      )}
+    </>
+  );
+
   return (
     <section
       className={`relative overflow-hidden border-b border-black/[0.08] ${
-        media?.background
-            ? `flex min-h-svh flex-col ${contentTop ? "justify-start" : "justify-center"}`
-            : ""
+        hasBgImage
+          ? `flex flex-col lg:min-h-svh ${
+              contentTop ? "lg:justify-start" : "lg:justify-center"
+            }`
+          : ""
       }`}
     >
-      {media?.background && (
+      {/* Desktop: absolute background image */}
+      {hasBgImage && (
         <motion.div
           aria-hidden="true"
           {...mediaLoad(0)}
-          className="absolute inset-0"
+          className="absolute inset-0 hidden lg:block"
         >
           <Image
-            src={media.src}
-            alt={media.alt}
+            src={media!.src}
+            alt={media!.alt}
             fill
             priority
             sizes="100vw"
             onLoad={() => setMediaLoaded(true)}
-            className={`object-contain ${media.backgroundClass ?? "object-center"}`}
+            className={`object-contain ${media!.backgroundClass ?? "object-center"}`}
           />
         </motion.div>
       )}
-      {media?.background && (
-        <div aria-hidden="true" className="absolute inset-0 bg-void/10" />
+      {hasBgImage && (
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-void/10 hidden lg:block"
+        />
       )}
+
+      {/* Decorative gradients (always visible) */}
       <div aria-hidden="true" className="absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_55%_45%_at_75%_20%,rgba(22,22,26,0.05),transparent_70%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_40%_35%_at_10%_90%,rgba(37,99,235,0.08),transparent_70%)]" />
@@ -128,70 +215,38 @@ export function PageHero({
           media ? (contentRight ? GRID_COLS_RIGHT : GRID_COLS_LEFT) : ""
         }`}
       >
-        <div className={contentRight ? `lg:col-start-2 ${contentClassName}` : contentClassName}>
-          {eyebrow && (
-            <motion.p
-              {...enter(0.05)}
-              className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.25em] text-mist"
-            >
-              <span aria-hidden="true" className="h-px w-8 bg-accent" />
-              <DecodeText text={eyebrow} />
-            </motion.p>
-          )}
-
-          {lines && lines.length > 0 && (
-            <h1 className={`mt-8 max-w-5xl font-bold uppercase leading-[1.02] tracking-[-0.02em] text-bone ${headlineClass}`}>
-              <BlurLines
-                key={ready ? "ready" : "hold"}
-                lines={lines}
-                delay={0.15}
-                start={Boolean(ready) || Boolean(reduced)}
-                lineClassName={["text-bone", "text-accent"]}
-              />
-            </h1>
-          )}
-
-          {intro && (
-            <motion.div
-              {...enter(0.4)}
-              className="mt-8 max-w-2xl text-subhead leading-relaxed text-mist"
-            >
-              {intro}
-            </motion.div>
-          )}
-
-          {children && (
-            <motion.div {...enter(0.55)} className="mt-8">
-              {children}
-            </motion.div>
-          )}
-
-          {meta && (
-            <motion.p
-              {...enter(0.65)}
-              className="mt-8 font-mono text-[10px] uppercase tracking-[0.3em] text-faint"
-            >
-              {meta}
-            </motion.p>
-          )}
-
-          {(eyebrow || (lines && lines.length > 0)) && (
-            <motion.div
-              aria-hidden="true"
-              initial={reduced ? false : { scaleX: 0 }}
-              animate={ready ? { scaleX: 1 } : { scaleX: 0 }}
-              transition={{
-                duration: DURATION.cinematic,
-                ease: EASE.mechanical,
-                delay: 0.6,
-              }}
-              className="relative mt-8 flex h-px w-full max-w-[480px] origin-left items-center"
-            >
-              <span className="hairline-spectrum absolute inset-x-0 top-0 h-px" />
-              <span className="relative h-1.5 w-1.5 rounded-[2px] bg-teal shadow-[0_0_10px_rgba(0,168,168,0.55)]" />
-            </motion.div>
-          )}
+        <div
+          className={
+            contentRight ? `lg:col-start-2 ${contentClassName}` : contentClassName
+          }
+        >
+          {headlineContent}
         </div>
+
+        {/* Mobile only: background-hero image stacked below the text */}
+        {hasBgImage && (
+          <motion.div
+            {...mediaLoad(0.2)}
+            className="relative mt-10 w-full md:mt-12 lg:hidden"
+          >
+            <div
+              className="relative mx-auto w-full max-w-[560px] overflow-hidden rounded-2xl"
+              style={
+                mediaNatural ? { aspectRatio: `${mediaNatural}` } : undefined
+              }
+            >
+              <Image
+                src={media!.src}
+                alt={media!.alt}
+                fill
+                priority
+                sizes="(max-width: 1024px) 100vw, 0px"
+                onLoad={() => setMediaLoaded(true)}
+                className="object-contain object-center"
+              />
+            </div>
+          </motion.div>
+        )}
 
         {media && !media.background && (
           <motion.div {...enter(0.5)} className="relative lg:pl-6">
@@ -199,7 +254,9 @@ export function PageHero({
               className={`relative mx-auto w-full ${
                 media.maxWidth ?? "max-w-[560px]"
               } ${media.ratio ?? "aspect-[4/5]"}`}
-              style={mediaNatural ? { aspectRatio: `${mediaNatural}` } : undefined}
+              style={
+                mediaNatural ? { aspectRatio: `${mediaNatural}` } : undefined
+              }
             >
               <motion.div
                 aria-hidden="true"

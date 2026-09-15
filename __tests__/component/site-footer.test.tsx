@@ -85,7 +85,7 @@ describe("SiteFooter", () => {
   it("renders legal links", () => {
     render(<SiteFooter />);
     const privacyLink = screen.getByRole("link", { name: "Privacy Policy" });
-    expect(privacyLink).toHaveAttribute("href", "/privacy-policy");
+    expect(privacyLink).toHaveAttribute("href", "/legal#privacy");
   });
 
   it("renders company section links", () => {
